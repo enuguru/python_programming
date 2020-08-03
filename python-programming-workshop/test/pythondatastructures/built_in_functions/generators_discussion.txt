@@ -1,0 +1,15 @@
+
+
+Discussion
+
+Generators are a syntax form. Their underlying concept is explored elsewhere in Python. 
+In lists, we use list comprehensions (which require square brackets). And with map(), 
+we also create iterators in a declarative way.
+
+
+These syntax forms are all declarative. In declarative programming, we specify our 
+requirement with a declaration. Python then does the actual low-level work to fulfill our request.
+
+And: Imperative programming is where you specify individual statements on lines. It 
+often involves traditional loops, While and For
+

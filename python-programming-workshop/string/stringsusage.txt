@@ -1,0 +1,11 @@
+
+How do I use quotes in strings
+------------------------------
+
+Double quotes for text
+
+Single quotes for anything that behaves like an identifier
+
+Double quoted raw string literals for regexps
+
+Triple double quotes for docstrings

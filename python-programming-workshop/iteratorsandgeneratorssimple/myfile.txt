@@ -1,0 +1,4 @@
+this is a sample file
+to prove the concept
+of iterators
+

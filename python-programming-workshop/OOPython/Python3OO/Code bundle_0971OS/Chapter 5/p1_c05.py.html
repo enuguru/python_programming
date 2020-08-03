@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
+<title>Chapter 5 -- Callables and Contexts</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+/* example stylesheet for Docutils */
+
+/* :Author:    Günter Milde */
+/* :Copyright: © 2012 G. Milde */
+/* :License:   This stylesheet is placed in the public domain. */
+
+/* Syntax highlight rules for HTML documents generated with Docutils */
+/* using the ``--syntax-highlight=long`` option (new in v. 0.9). */
+
+/* This stylesheet implements Pygment's "default" style with less rules than */
+/* pygments-default using class hierarchies.                                 */
+/* Use it as example for "handcrafted" styles with only few rules.      */
+
+.code                              { background: #f8f8f8; }
+.code .comment                     { color: #008800; font-style: italic }
+.code .error                       { border: 1px solid #FF0000 }
+.code .generic.deleted             { color: #A00000 }
+.code .generic.emph                { font-style: italic }
+.code .generic.error               { color: #FF0000 }
+.code .generic.heading             { color: #000080; font-weight: bold }
+.code .generic.inserted            { color: #00A000 }
+.code .generic.output              { color: #808080 }
+.code .generic.prompt              { color: #000080; font-weight: bold }
+.code .generic.strong              { font-weight: bold }
+.code .generic.subheading          { color: #800080; font-weight: bold }
+.code .generic.traceback           { color: #0040D0 }
+.code .keyword                     { color: #AA22FF; font-weight: bold }
+.code .keyword.pseudo              { font-weight: normal }
+.code .literal.number              { color: #666666 }
+.code .literal.string              { color: #BB4444 }
+.code .literal.string.doc          { color: #BB4444; font-style: italic }
+.code .literal.string.escape       { color: #BB6622; font-weight: bold }
+.code .literal.string.interpol     { color: #BB6688; font-weight: bold }
+.code .literal.string.other        { color: #008000 }
+.code .literal.string.regex        { color: #BB6688 }
+.code .literal.string.symbol       { color: #B8860B }
+.code .name.attribute              { color: #BB4444 }
+.code .name.builtin                { color: #AA22FF }
+.code .name.class                  { color: #0000FF }
+.code .name.constant               { color: #880000 }
+.code .name.decorator              { color: #AA22FF }
+.code .name.entity                 { color: #999999; font-weight: bold }
+.code .name.exception              { color: #D2413A; font-weight: bold }
+.code .name.function               { color: #00A000 }
+.code .name.label                  { color: #A0A000 }
+.code .name.namespace              { color: #0000FF; font-weight: bold }
+.code .name.tag                    { color: #008000; font-weight: bold }
+.code .name.variable               { color: #B8860B }
+.code .operator                    { color: #666666 }
+.code .operator.word               { color: #AA22FF; font-weight: bold }
+
+</style>
+<style type="text/css">
+
+/* Page layout tweaks */
+div.document { width: 6in; }
+
+</style>
+</head>
+<body>
+<div class="document" id="chapter-5-callables-and-contexts">
+<h1 class="title">Chapter 5 -- Callables and Contexts</h1>
+
+<!-- #!/usr/bin/env python3 -->
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#callable" id="id1">1&nbsp;&nbsp;&nbsp;Callable</a></li>
+<li><a class="reference internal" href="#context" id="id2">2&nbsp;&nbsp;&nbsp;Context</a></li>
+</ul>
+</div>
+<div class="section" id="callable">
+<h1><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;Callable</a></h1>
+<p>Callable Example #1. Inefficient.  But. It does work.</p>
+<pre class="literal-block">
+import collections.abc
+class Power1( collections.abc.Callable ):
+    def __call__( self, x, n ):
+        p= 1
+        for i in range(n):
+            p *= x
+        return p
+
+pow1= Power1()
+print( pow1(2, 1024) )
+</pre>
+<p>Example 2. Subtle error, readily detectable.</p>
+<pre class="literal-block">
+class Power2( collections.abc.Callable ):
+    def __call_( self, x, n ):
+        p= 1
+        for i in range(n):
+            p *= x
+        return p
+
+try:
+    pow2= Power2()
+except TypeError as e:
+    print( e)
+</pre>
+<p>Example 3. Subtle error, not readily detectable.</p>
+<pre class="literal-block">
+class Power3:
+    def __call_( self, x, n ):
+        p= 1
+        for i in range(n):
+            p *= x
+        return p
+
+pow3= Power3()
+try:
+    print( pow3(2,1024) )
+except TypeError as e:
+    print( e )
+</pre>
+<p>Example 4. Super Efficient.</p>
+<pre class="literal-block">
+import collections.abc
+class Power4( collections.abc.Callable ):
+    def __call__( self, x, n ):
+        if n == 0: return 1
+        elif n % 2 == 1:
+            return self.__call__(x, n-1) * x
+        else: # n % 2 == 0:
+            t= self.__call__(x, n//2)
+            return t*t
+
+pow4= Power4()
+print( pow4(2, 1024) )
+</pre>
+<p>Timeit results.</p>
+<pre class="literal-block">
+import timeit
+iterative= timeit.timeit( &quot;pow1(2,1024)&quot;,&quot;&quot;&quot;
+import collections.abc
+class Power1( collections.abc.Callable ):
+    def __call__( self, x, n ):
+        p= 1
+        for i in range(n):
+            p *= x
+        return p
+
+pow1= Power1()
+&quot;&quot;&quot;, number=100000 ) # otherwise it takes 2 minutes
+print( &quot;Iterative&quot;, iterative )
+
+import timeit
+recursive= timeit.timeit( &quot;pow4(2,1024)&quot;,&quot;&quot;&quot;
+import collections.abc
+class Power4( collections.abc.Callable ):
+    def __call__( self, x, n ):
+        if n == 0: return 1
+        elif n % 2 == 1:
+            return self.__call__(x, n-1) * x
+        else: # n % 2 == 0:
+            t= self.__call__(x, n//2)
+            return t*t
+
+pow4= Power4()
+&quot;&quot;&quot;, number=100000 )
+print( &quot;Recursive&quot;, recursive )
+</pre>
+<p>Example 4, iterative, also super efficient.</p>
+<pre class="literal-block">
+import collections.abc
+class Power4i( collections.abc.Callable ):
+    def __call__( self, x, n ):
+        p= 1
+        while n != 0:
+            if n % 2 == 1:
+                p *= x
+                n -= 1
+            else: # n % 2 == 0:
+                t= self.__call__(x, n//2)
+                p *= t
+                p *= t
+                n = 0
+        return p
+
+pow4i= Power4i()
+print( pow4i(2, 1024) )
+</pre>
+<p>Example 5, memoization</p>
+<pre class="literal-block">
+import collections.abc
+class Power5( collections.abc.Callable ):
+    def __init__( self ):
+        self.memo = {}
+    def __call__( self, x, n ):
+        if (x,n) not in self.memo:
+            if n == 0:
+                self.memo[x,n]= 1
+            elif n % 2 == 1:
+                self.memo[x,n]= self.__call__(x, n-1) * x
+            elif n % 2 == 0:
+                t= self.__call__(x, n//2)
+                self.memo[x,n]= t*t
+            else:
+                raise Exception(&quot;Logic Error&quot;)
+        return self.memo[x,n]
+
+pow5= Power5()
+print( pow5(2, 1024) )
+
+import timeit
+memoized= timeit.timeit( &quot;pow5(2,1024)&quot;,&quot;&quot;&quot;
+import collections.abc
+class Power5( collections.abc.Callable ):
+    def __init__( self ):
+        self.memo = {}
+    def __call__( self, x, n ):
+        if (x,n) not in self.memo:
+            if n == 0:
+                self.memo[x,n]= 1
+            elif n % 2 == 1:
+                self.memo[x,n]= self.__call__(x, n-1) * x
+            elif n % 2 == 0:
+                t= self.__call__(x, n//2)
+                self.memo[x,n]= t*t
+            else:
+                raise Exception(&quot;Logic Error&quot;)
+        return self.memo[x,n]
+
+pow5= Power5()
+&quot;&quot;&quot;, number=100000 )
+print( &quot;Memoized&quot;, memoized )
+</pre>
+<p>Example 6, functools memoization</p>
+<pre class="literal-block">
+from functools import lru_cache
+&#64;lru_cache(None)
+def pow6( x, n ):
+    if n == 0: return 1
+    elif n % 2 == 1:
+        return pow6(x, n-1) * x
+    else: # n % 2 == 0:
+        t= pow6(x, n//2)
+        return t*t
+
+print( pow6(2, 1024) )
+</pre>
+<p>Some additional Callable Examples.
+The BetingStrategy superclass.</p>
+<pre class="literal-block">
+class BettingStrategy:
+    def __init__( self ):
+       self.win= 0
+       self.loss= 0
+    def __call__( self ):
+        return 1
+
+bet= BettingStrategy()
+bet()
+bet.win += 1
+bet()
+bet.loss += 1
+bet()
+</pre>
+<p>A stateful betting strategy. Property-based</p>
+<pre class="literal-block">
+class BettingMartingale( BettingStrategy ):
+    def __init__( self ):
+        self._win= 0
+        self._loss= 0
+        self.stage= 1
+    &#64;property
+    def win(self): return self._win
+    &#64;win.setter
+    def win(self, value):
+        self._win = value
+        self.stage= 1
+    &#64;property
+    def loss(self): return self._loss
+    &#64;loss.setter
+    def loss(self, value):
+        self._loss = value
+        self.stage *= 2
+    def __call__( self ):
+       return self.stage
+
+bet= BettingMartingale()
+bet()
+bet.win += 1
+bet()
+bet.loss += 1
+bet()
+</pre>
+<p>Another stateful betting strategy, using <tt class="docutils literal">__setattr__()</tt> instead
+if properties.</p>
+<pre class="literal-block">
+class BettingMartingale2( BettingStrategy ):
+    def __init__( self ):
+        self.win= 0
+        self.loss= 0
+        self.stage= 1
+    def __setattr__( self, name, value ):
+        if name == 'win':
+            self.stage= 1
+        elif name == 'loss':
+            self.stage *= 2
+        super().__setattr__( name, value )
+    def __call__( self ):
+       return self.stage
+
+bet= BettingMartingale2()
+bet()
+bet.win += 1
+bet()
+bet.loss += 1
+bet()
+</pre>
+</div>
+<div class="section" id="context">
+<h1><a class="toc-backref" href="#id2">2&nbsp;&nbsp;&nbsp;Context</a></h1>
+<p>With statement example 1</p>
+<pre class="literal-block">
+def slow():
+    import os
+    path = os.path.expanduser( &quot;~/Documents/Work/ItMayBeAHack/itmaybeahack.com.bkup-Feb-2012.gz&quot; )
+
+    import re
+    format_1_pat= re.compile(
+        r&quot;([\d\.]+)\s+&quot; # digits and .'s: host
+        r&quot;(\S+)\s+&quot;     # non-space: logname
+        r&quot;(\S+)\s+&quot;     # non-space: user
+        r&quot;\[(.+?)\]\s+&quot; # Everything in []: time
+        r'&quot;(.+?)&quot;\s+'   # Everything in &quot;&quot;: request
+        r&quot;(\d+)\s+&quot;     # digits: status
+        r&quot;(\S+)\s+&quot;     # non-space: bytes
+        r'&quot;(.*?)&quot;\s+'   # Everything in &quot;&quot;: referrer
+        r'&quot;(.*?)&quot;\s*'   # Everything in &quot;&quot;: user agent
+    )
+    import gzip
+    import csv
+    with open( &quot;subset.csv&quot;, &quot;w&quot; ) as target:
+        wtr= csv.writer( target )
+        with gzip.open( path, &quot;r&quot; ) as source:
+            line_iter= (b.decode() for b in source)
+            match_iter = (format_1_pat.match( line ) for line in line_iter)
+            wtr.writerows( (m.groups() for m in match_iter if m is not None) )
+</pre>
+<p>Don't actualy run it, it's slow.</p>
+<p>slow()</p>
+<p>Another with statement example using decimal contexts</p>
+<pre class="literal-block">
+import decimal
+PENNY=decimal.Decimal(&quot;0.00&quot;)
+price= decimal.Decimal('15.99')
+rate= decimal.Decimal('0.0075')
+print( &quot;Tax=&quot;, (price*rate).quantize(PENNY), &quot;Fully=&quot;, price*rate )
+with decimal.localcontext() as ctx:
+    ctx.rounding= decimal.ROUND_DOWN
+    tax= (price*rate).quantize(PENNY)
+    print( &quot;Tax=&quot;, tax )
+</pre>
+<p>A simple context manager which changes a global value.</p>
+<pre class="literal-block">
+import logging, sys
+class Debugging:
+    def __init__( self, aName=None ):
+        self.logname= aName
+    def __enter__( self ):
+        self.default = logging.getLogger(self.logname).getEffectiveLevel()
+        logging.getLogger().setLevel( logging.DEBUG )
+    def __exit__( self, exc_type, exc_value, traceback ):
+        logging.getLogger(self.logname).setLevel(self.default)
+        # return True # will silence an exception!
+
+logging.basicConfig( stream=sys.stderr, level=logging.INFO )
+logging.info( &quot;Before&quot; )
+logging.debug( &quot;Silenced before&quot; )
+with Debugging():
+    logging.info( &quot;During&quot; )
+    logging.debug( &quot;Enabled during&quot; )
+logging.info( &quot;Between&quot; )
+logging.debug( &quot;Silenced between&quot; )
+with Debugging():
+    logging.info( &quot;Again&quot; )
+    logging.debug( &quot;Enabled Again&quot; )
+logging.info( &quot;Done&quot; )
+logging.debug( &quot;Silenced at the end&quot; )
+</pre>
+<p>Another simple context manager which sets a global value.</p>
+<pre class="literal-block">
+import random
+
+class KnownSequence:
+    def __init__( self, seed=0 ):
+        self.seed= 0
+    def __enter__( self ):
+        self.was= random.getstate()
+        random.seed( self.seed, version=1 )
+        return self
+    def __exit__( self, exc_type, exc_value, traceback ):
+        random.setstate( self.was )
+
+print( tuple(random.randint(-1,36) for i in range(5)) )
+with KnownSequence():
+    print( tuple(random.randint(-1,36) for i in range(5)) )
+print( tuple(random.randint(-1,36) for i in range(5)) )
+with KnownSequence():
+    print( tuple(random.randint(-1,36) for i in range(5)) )
+print( tuple(random.randint(-1,36) for i in range(5)) )
+</pre>
+<p>Some classes for the examples</p>
+<pre class="literal-block">
+from collections import namedtuple
+card = namedtuple( 'card', 'rank,suit' )
+
+Suits = '♣', '♦', '♥', '♠'
+
+class Deck( list ):
+    def __init__( self, size=1 ):
+        super().__init__()
+        for d in range(size):
+            cards = [ card(r,s) for r in range(13) for s in Suits ]
+            super().extend( cards )
+        random.shuffle( self )
+</pre>
+<p>A Context Manager as Factory example</p>
+<pre class="literal-block">
+class Deterministic_Deck:
+    def __init__( self, *args, **kw ):
+        self.args= args
+        self.kw= kw
+    def __enter__( self ):
+        self.was= random.getstate()
+        random.seed( 0, version=1 )
+        return Deck( *self.args, **self.kw )
+    def __exit__( self, exc_type, exc_value, traceback ):
+        random.setstate( self.was )
+
+for i in range(3):
+    d1= Deck()
+    print( d1.pop(), d1.pop(), d1.pop() )
+for i in range(3):
+    with Deterministic_Deck( 1 ) as d2:
+        print( d2.pop(), d2.pop(), d2.pop() )
+</pre>
+<p>A Context Manager as Mixin Exampl</p>
+<pre class="literal-block">
+class Deck2( list, KnownSequence ):
+    def __init__( self, size=1 ):
+        super().__init__()
+        for d in range(size):
+            cards = [ card(r,s) for r in range(13) for s in Suits ]
+            super().extend( cards )
+        self.raw= True
+        KnownSequence.__init__(self)
+    def pop( self, *args, **kw ):
+        if self.raw:
+            random.shuffle( self )
+            self.raw= False
+        return super().pop( *args, **kw )
+
+for i in range(3):
+    d1= Deck2()
+    print( d1.pop(), d1.pop(), d1.pop() )
+for i in range(3):
+    with Deck2( 1 ) as d2:
+        print( d2.pop(), d2.pop(), d2.pop() )
+</pre>
+<p>A Context Manager for File Operations</p>
+<pre class="literal-block">
+import os
+class Updating:
+    def __init__( self, filename ):
+        self.filename= filename
+    def __enter__( self ):
+        try:
+            self.previous= self.filename+&quot; copy&quot;
+            os.rename( self.filename, self.previous )
+        except FileNotFoundError:
+            # Never existed, no previous copy
+            self.previous= None
+    def __exit__( self, exc_type, exc_value, traceback ):
+        if exc_type is not None:
+            try:
+                os.rename( self.filename, self.filename+ &quot; error&quot; )
+            except FileNotFoundError:
+                pass # Never even got created?
+            if self.previous:
+                os.rename( self.previous, self.filename )
+
+if __name__ == &quot;__main__&quot;:
+        try:
+                os.remove( &quot;some_file&quot; )
+        except IOError as e:
+                pass
+        with open(&quot;some_file&quot;,&quot;w&quot;) as original:
+                original.write( &quot;Original data\n&quot; )
+        try:
+                with Updating( &quot;some_file&quot; ):
+                        with open( &quot;some_file&quot;, &quot;w&quot; ) as target:
+                                target.write( &quot;Attempted Update\n&quot; )
+                                raise Exception( &quot;oops&quot; )
+                # ``some_file error`` left for us to examine.
+                # ``some_fie`` left intact
+        except Exception:
+                pass
+        with open(&quot;some_file&quot;) as original:
+                print( &quot;original&quot;, original.read() )
+        with open(&quot;some_file error&quot;) as problem:
+                print( &quot;error&quot;, problem.read() )
+</pre>
+</div>
+</div>
+</body>
+</html>

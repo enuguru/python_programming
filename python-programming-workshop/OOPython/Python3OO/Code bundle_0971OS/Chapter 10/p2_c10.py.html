@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>Chapter 10 -- Object Storage via shelve</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7056 2011-06-17 10:50:48Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+/* example stylesheet for Docutils */
+
+/* :Author:    Günter Milde */
+/* :Copyright: © 2012 G. Milde */
+/* :License:   This stylesheet is placed in the public domain. */
+
+/* Syntax highlight rules for HTML documents generated with Docutils */
+/* using the ``--syntax-highlight=long`` option (new in v. 0.9). */
+
+/* This stylesheet implements Pygment's "default" style with less rules than */
+/* pygments-default using class hierarchies.                                 */
+/* Use it as example for "handcrafted" styles with only few rules.      */
+
+.code                              { background: #f8f8f8; }
+.code .comment                     { color: #008800; font-style: italic }
+.code .error                       { border: 1px solid #FF0000 }
+.code .generic.deleted             { color: #A00000 }
+.code .generic.emph                { font-style: italic }
+.code .generic.error               { color: #FF0000 }
+.code .generic.heading             { color: #000080; font-weight: bold }
+.code .generic.inserted            { color: #00A000 }
+.code .generic.output              { color: #808080 }
+.code .generic.prompt              { color: #000080; font-weight: bold }
+.code .generic.strong              { font-weight: bold }
+.code .generic.subheading          { color: #800080; font-weight: bold }
+.code .generic.traceback           { color: #0040D0 }
+.code .keyword                     { color: #AA22FF; font-weight: bold }
+.code .keyword.pseudo              { font-weight: normal }
+.code .literal.number              { color: #666666 }
+.code .literal.string              { color: #BB4444 }
+.code .literal.string.doc          { color: #BB4444; font-style: italic }
+.code .literal.string.escape       { color: #BB6622; font-weight: bold }
+.code .literal.string.interpol     { color: #BB6688; font-weight: bold }
+.code .literal.string.other        { color: #008000 }
+.code .literal.string.regex        { color: #BB6688 }
+.code .literal.string.symbol       { color: #B8860B }
+.code .name.attribute              { color: #BB4444 }
+.code .name.builtin                { color: #AA22FF }
+.code .name.class                  { color: #0000FF }
+.code .name.constant               { color: #880000 }
+.code .name.decorator              { color: #AA22FF }
+.code .name.entity                 { color: #999999; font-weight: bold }
+.code .name.exception              { color: #D2413A; font-weight: bold }
+.code .name.function               { color: #00A000 }
+.code .name.label                  { color: #A0A000 }
+.code .name.namespace              { color: #0000FF; font-weight: bold }
+.code .name.tag                    { color: #008000; font-weight: bold }
+.code .name.variable               { color: #B8860B }
+.code .operator                    { color: #666666 }
+.code .operator.word               { color: #AA22FF; font-weight: bold }
+
+</style>
+<style type="text/css">
+
+/* Page layout tweaks */
+div.document { width: 6in; }
+
+</style>
+</head>
+<body>
+<div class="document" id="chapter-10-object-storage-via-shelve">
+<h1 class="title">Chapter 10 -- Object Storage via shelve</h1>
+
+<!-- #!/usr/bin/env python3 -->
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#shelve-basics" id="id1">1&nbsp;&nbsp;&nbsp;Shelve Basics</a></li>
+<li><a class="reference internal" href="#proper-access-layer" id="id2">2&nbsp;&nbsp;&nbsp;Proper Access Layer</a></li>
+<li><a class="reference internal" href="#another-application" id="id3">3&nbsp;&nbsp;&nbsp;Another Application</a></li>
+<li><a class="reference internal" href="#better-access-layer" id="id4">4&nbsp;&nbsp;&nbsp;Better Access Layer</a></li>
+<li><a class="reference internal" href="#top-level-index" id="id5">5&nbsp;&nbsp;&nbsp;Top-Level Index</a></li>
+<li><a class="reference internal" href="#additional-indices" id="id6">6&nbsp;&nbsp;&nbsp;Additional Indices</a></li>
+<li><a class="reference internal" href="#timing-comparison" id="id7">7&nbsp;&nbsp;&nbsp;Timing Comparison</a></li>
+</ul>
+</div>
+<div class="section" id="shelve-basics">
+<h1><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;Shelve Basics</a></h1>
+<p>Some Example Application Classes</p>
+<pre class="literal-block">
+import datetime
+class Post:
+    def __init__( self, date, title, rst_text, tags ):
+        self.date= date
+        self.title= title
+        self.rst_text= rst_text
+        self.tags= tags
+    def as_dict( self ):
+        return dict(
+            date= str(self.date),
+            title= self.title,
+            underline= &quot;-&quot;*len(self.title),
+            rst_text= self.rst_text,
+            tag_text= &quot; &quot;.join(self.tags),
+        )
+
+class Blog:
+    def __init__( self, title, *posts ):
+        self.title= title
+    def as_dict( self ):
+        return dict(
+            title= self.title,
+            underline= &quot;=&quot;*len(self.title),
+        )
+</pre>
+<p>A Blog example</p>
+<pre class="literal-block">
+b1= Blog( title=&quot;Travel Blog&quot; )
+</pre>
+<p>Some Manual access</p>
+<pre class="literal-block">
+import shelve
+shelf= shelve.open(&quot;p2_c10_blog&quot;)
+b1._id= 'Blog:1'
+shelf[b1._id]= b1
+print( shelf['Blog:1']._id, shelf['Blog:1'].title,  )
+
+results = ( shelf[k] for k in shelf.keys() if k.startswith('Blog:') and shelf[k].title == 'Travel Blog' )
+for r0 in results:
+    print( r0._id, r0.title )
+
+shelf.close()
+</pre>
+<p>Some Post Examples</p>
+<pre class="literal-block">
+p2= Post( date=datetime.datetime(2013,11,14,17,25),
+        title=&quot;Hard Aground&quot;,
+        rst_text=&quot;&quot;&quot;Some embarrassing revelation. Including ☹ and ⚓︎&quot;&quot;&quot;,
+        tags=(&quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#ICW&quot;),
+        )
+
+p3= Post( date=datetime.datetime(2013,11,18,15,30),
+        title=&quot;Anchor Follies&quot;,
+        rst_text=&quot;&quot;&quot;Some witty epigram. Including ☺ and ☀︎︎&quot;&quot;&quot;,
+        tags=(&quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#Mistakes&quot;),
+        )
+</pre>
+<p>Some more manual access</p>
+<pre class="literal-block">
+import shelve
+shelf= shelve.open(&quot;p2_c10_blog&quot;)
+owner= shelf['Blog:1']
+
+p2._parent= owner._id
+p2._id= p2._parent + ':Post:2'
+shelf[p2._id]= p2
+
+p3._parent= owner._id
+p3._id= p3._parent + ':Post:3'
+shelf[p3._id]= p3
+
+list(shelf.keys())
+
+shelf.close()
+</pre>
+</div>
+<div class="section" id="proper-access-layer">
+<h1><a class="toc-backref" href="#id2">2&nbsp;&nbsp;&nbsp;Proper Access Layer</a></h1>
+<p>An access layer.</p>
+<p>We'll use hierarchical keys Post:id and Post:id:Child:id</p>
+<pre class="literal-block">
+import shelve
+
+class OperationError( Exception ):
+    pass
+
+class Access:
+    def new( self, filename ):
+        self.database= shelve.open(filename,'n')
+        self.max= { 'Post': 0, 'Blog': 0 }
+        self.sync()
+    def open( self, filename ):
+        self.database= shelve.open(filename,'w')
+        self.max= self.database['_DB:max']
+    def close( self ):
+        if self.database:
+            self.database['_DB:max']= self.max
+            self.database.close()
+        self.database= None
+    def sync( self ):
+        self.database['_DB:max']= self.max
+        self.database.sync()
+    def quit( self ):
+        self.close()
+
+    def add_blog( self, blog ):
+        self.max['Blog'] += 1
+        key= &quot;Blog:{id}&quot;.format(id=self.max['Blog'])
+        blog._id= key
+        self.database[blog._id]= blog
+        return blog
+    def get_blog( self, id ):
+        return self.database[id]
+    def add_post( self, blog, post ):
+        self.max['Post'] += 1
+        try:
+            key= &quot;{blog}:Post:{id}&quot;.format(blog=blog._id,id=self.max['Post'])
+        except AttributeError:
+            raise OperationError( &quot;Blog not added&quot; )
+        post._id= key
+        post._blog= blog._id
+        self.database[post._id]= post
+        return post
+    def get_post( self, id ):
+        return self.database[id]
+    def replace_post( self, post ):
+        self.database[post._id]= post
+        return post
+    def delete_post( self, post ):
+        del self.database[post._id]
+
+    def __iter__( self ):
+        for k in self.database:
+            if k[0] == &quot;_&quot;: continue
+            yield self.database[k]
+    def blog_iter( self ):
+        for k in self.database:
+            if not k.startswith(&quot;Blog:&quot;): continue
+            if &quot;:Post:&quot; in k: continue # Skip children
+            yield self.database[k]
+    def post_iter( self, blog ):
+        key= &quot;{blog}:Post:&quot;.format(blog=blog._id)
+        for k in self.database:
+            if not k.startswith(key): continue
+            yield self.database[k]
+    def title_iter( self, blog, title ):
+        return ( p for p in self.post_iter(blog) if p.title == title )
+</pre>
+<p>Demonstration Script</p>
+<pre class="literal-block">
+from contextlib import closing
+
+def database_script( access ):
+    access.add_blog( b1 )
+    # b1._id is set.
+    for post in p2, p3:
+        access.add_post( b1, post )
+        # post._id is set
+    b = access.get_blog( b1._id )
+    print( b._id, b )
+    for p in access.post_iter( b ):
+        print( p._id, p )
+    access.quit()
+
+with closing( Access() ) as access:
+    access.new( 'p2_c10_blog' )
+    database_script( access )
+</pre>
+</div>
+<div class="section" id="another-application">
+<h1><a class="toc-backref" href="#id3">3&nbsp;&nbsp;&nbsp;Another Application</a></h1>
+<p>Some rendering application. We'll assume a kind of batch style.</p>
+<pre class="literal-block">
+import sys
+class Redirect_Stdout:
+    def __init__( self, destination ):
+        self.dest= destination
+        self.was= sys.__stdout__
+    def __enter__( self ):
+        self.was= sys.stdout
+        sys.stdout= self.dest
+    def __exit__( self, *args ):
+        sys.stdout= self.was
+
+import string
+from collections import defaultdict
+
+class Render:
+    def __init__( self, access ):
+        self.access= access
+    def emit_all( self, destination=sys.stdout ):
+        for blog in self.access.blog_iter():
+            # Compute a filename for each blog.
+            self.emit_blog( blog, destination )
+    def emit_blog( self, blog, output ):
+        with Redirect_Stdout(output):
+            self.tag_index= defaultdict(list)
+            print( &quot;{title}\n{underline}\n&quot;.format(**blog.as_dict()) )
+            for post in self.access.post_iter(blog):
+                self.emit_post( post )
+                for tag in post.tags:
+                    self.tag_index[tag].append( post._id )
+            self.emit_index()
+    def emit_post( self, post ):
+        template= string.Template( &quot;&quot;&quot;
+        $title
+        $underline
+
+        $rst_text
+
+        :date: $date
+
+        :tags: $tag_text
+        &quot;&quot;&quot;)
+        print( template.substitute( post.as_dict() ) )
+    def emit_index( self ):
+        print( &quot;Tag Index&quot; )
+        print( &quot;=========&quot; )
+        print()
+        for tag in self.tag_index:
+            print( &quot;*   {0}&quot;.format(tag) )
+            print()
+            for b in self.tag_index[tag]:
+                post= self.access.get_post(b)
+                print( &quot;    -   `{title}`_&quot;.format(**post.as_dict()) )
+            print()
+</pre>
+<p>Demo Script</p>
+<pre class="literal-block">
+import shelve
+from contextlib import closing
+
+with closing( Access() ) as access:
+    access.open( 'p2_c10_blog' )
+    renderer= Render( access )
+    renderer.emit_all()
+</pre>
+</div>
+<div class="section" id="better-access-layer">
+<h1><a class="toc-backref" href="#id4">4&nbsp;&nbsp;&nbsp;Better Access Layer</a></h1>
+<p>Maintain indexes at the Blog level</p>
+<pre class="literal-block">
+class Access2( Access ):
+
+    def add_blog( self, blog ):
+        self.max['Blog'] += 1
+        key= &quot;Blog:{id}&quot;.format(id=self.max['Blog'])
+        blog._id= key
+        blog._post_list= []
+        self.database[blog._id]= blog
+        return blog
+    def get_blog( self, id ):
+        return self.database[id]
+
+    def add_post( self, blog, post ):
+        self.max['Post'] += 1
+        try:
+            key= &quot;{blog}:Post:{id}&quot;.format(blog=blog._id,id=self.max['Post'])
+        except AttributeError:
+            raise OperationError( &quot;Blog not added&quot; )
+        post._id= key
+        post._blog= blog._id
+        self.database[post._id]= post
+        blog._post_list.append( post._id )
+        self.database[blog._id]= blog
+        return post
+    def get_post( self, id ):
+        return self.database[id]
+    def replace_post( self, post ):
+        self.database[post._id]= post
+        return post
+    def delete_post( self, post ):
+        del self.database[post._id]
+        blog= self.database[blog._id]
+        blog._post_list.remove( post._id )
+        self.database[blog._id]= blog
+
+    def __iter__( self ):
+        for k in self.database:
+            if k[0] == &quot;_&quot;: continue
+            yield self.database[k]
+    def blog_iter( self ):
+        for k in self.database:
+            if not k.startswith(&quot;Blog:&quot;): continue
+            if &quot;:Post:&quot; in k: continue # Skip children
+            yield self.database[k]
+    def post_iter( self, blog ):
+        for k in blog._post_list:
+            yield self.database[k]
+    def title_iter( self, blog, title ):
+        return ( p for p in self.post_iter(blog) if p.title == title )
+</pre>
+<p>Demo Script</p>
+<pre class="literal-block">
+with closing( Access2() ) as access:
+    access.new( 'p2_c10_blog2' )
+    database_script( access )
+
+with closing( Access2() ) as access:
+    access.open( 'p2_c10_blog2' )
+    renderer= Render( access )
+    renderer.emit_all()
+</pre>
+</div>
+<div class="section" id="top-level-index">
+<h1><a class="toc-backref" href="#id5">5&nbsp;&nbsp;&nbsp;Top-Level Index</a></h1>
+<p>Another version of Access with slightly differnt blog add and search</p>
+<pre class="literal-block">
+class Access3( Access2 ):
+    def new( self, *args, **kw ):
+        super().new( *args, **kw )
+        self.database['_DB:Blog']= list()
+
+    def add_blog( self, blog ):
+        self.max['Blog'] += 1
+        key= &quot;Blog:{id}&quot;.format(id=self.max['Blog'])
+        blog._id= key
+        blog._post_list= []
+        self.database[blog._id]= blog
+        self.database['_DB:Blog'].append( blog._id )
+        return blog
+
+    def blog_iter( self ):
+        return ( self.database[k] for k in self.database['_DB:Blog'] )
+</pre>
+</div>
+<div class="section" id="additional-indices">
+<h1><a class="toc-backref" href="#id6">6&nbsp;&nbsp;&nbsp;Additional Indices</a></h1>
+<p>A class with multiple indices</p>
+<pre class="literal-block">
+class Access4( Access2 ):
+    def new( self, *args, **kw ):
+        super().new( *args, **kw )
+        self.database['_DB:Blog']= list()
+        self.database['_DB:Blog_Title']= defaultdict(list)
+
+    def add_blog( self, blog ):
+        self.max['Blog'] += 1
+        key= &quot;Blog:{id}&quot;.format(id=self.max['Blog'])
+        blog._id= key
+        blog._post_list= []
+        self.database[blog._id]= blog
+        self.database['_DB:Blog'].append( blog._id )
+        blog_title= self.database['_DB:Blog_Title']
+        blog_title[blog.title].append( blog._id )
+        self.database['_DB:Blog_Title']= blog_title
+        return blog
+
+    def update_blog( self, blog ):
+        &quot;&quot;&quot;Replace this Blog; update index.&quot;&quot;&quot;
+        self.database[blog._id]= blog
+        blog_title= self.database['_DB:Blog_Title']
+        # Remove key from index in old spot.
+        empties= []
+        for k in blog_title:
+            if blog._id in blog_title[k]:
+                blog_title[k].remove( blog._id )
+                if len(blog_title[k]) == 0: empties.append( k )
+        # Cleanup zero-length lists from defaultdict.
+        for k in empties:
+            del blog_title[k]
+        # Put key into index in new spot.
+        blog_title[blog.title].append( blog._id )
+        self.database['_DB:Blog_Title']= blog_title
+
+    def blog_iter( self ):
+        return ( self.database[k] for k in self.database['_DB:Blog'] )
+
+    def blog_title_iter( self, title ):
+        blog_title= self.database['_DB:Blog_Title']
+        return ( self.database[k] for k in blog_title[title] )
+</pre>
+<p>Demonstration Script</p>
+<pre class="literal-block">
+from contextlib import closing
+
+def database_script4( access ):
+    access.add_blog( b1 )
+    # b1._id is set.
+    for post in p2, p3:
+        access.add_post( b1, post )
+        # post._id is set
+
+    print( access.database['_DB:Blog_Title'] )
+
+    b = access.get_blog( b1._id )
+    b.title= &quot;Revised Title&quot;
+    access.update_blog( b )
+
+    print( access.database['_DB:Blog_Title'] )
+
+    access.quit()
+
+with closing( Access4() ) as access:
+    access.new( 'p2_c10_blog' )
+    database_script4( access )
+</pre>
+</div>
+<div class="section" id="timing-comparison">
+<h1><a class="toc-backref" href="#id7">7&nbsp;&nbsp;&nbsp;Timing Comparison</a></h1>
+<p>Larger Database Required</p>
+<pre class="literal-block">
+import time
+import io
+
+def create( access, blogs=100, posts_per_blog=100 ):
+    for b_n in range(blogs):
+        b= Blog( &quot;Blog {0}&quot;.format(b_n) )
+        access.add_blog( b )
+        for p_n in range(posts_per_blog):
+            p= Post( date= datetime.datetime.now(),
+                title=&quot;Blog {0}; Post {1}&quot;.format(b_n, p_n),
+                rst_text=&quot;Blog {0}; Post {1}\nText\n&quot;.format(b_n, p_n),
+                tags=tuple( &quot;#tag{0}&quot;.format(p_n+i) for i in range(3) )
+            )
+            access.add_post( b, p )
+
+result= defaultdict( int )
+for filename, class_ in ('p2_c10_blog3',Access), ('p2_c10_blog4',Access2), ('p2_c10_blog5',Access3):
+
+    buffer= io.StringIO()
+    start= time.perf_counter()
+    for i in range(3):
+        with closing( class_() ) as access:
+            access.new( filename )
+            create( access )
+        with closing( class_() ) as access:
+            access.open( filename )
+            renderer= Render( access )
+            renderer.emit_all(buffer)
+    finish= time.perf_counter()
+    result[class_.__name__]= finish-start
+
+for r in sorted( result ):
+    print( &quot;{0}: {1:.1f}&quot;.format(r, result[r]) )
+
+import os
+os.unlink( 'p2_c10_blog3.db' )
+os.unlink( 'p2_c10_blog4.db' )
+os.unlink( 'p2_c10_blog5.db' )
+</pre>
+</div>
+</div>
+</body>
+</html>

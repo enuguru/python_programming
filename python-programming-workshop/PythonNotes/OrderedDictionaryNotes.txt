@@ -1,0 +1,29 @@
+
+
+Ordered Dictionary from the collections module
+----------------------------------------------
+
+OrderedDict from the collections module.
+
+If it has the added functionality of being orderable, which I realize may often not be necessary but even so, are there any downsides? Is it slower? Is it missing any functionality? I didn't see any missing methods.
+
+In short, why shouldn't I always use this instead of a normal dictionary?
+
+	
+
+OrderedDict is a subclass of dict, and needs more memory to keep track of the order in which keys are added. This isn't trivial. The implementation adds a second dict under the covers, and a doubly-linked list of all the keys (that's the part that remembers the order), and a bunch of weakref proxies. It's not a lot slower, but at least doubles the memory over using a plain dict.
+
+But if it's appropriate, use it! That's why it's there :-)
+How it works
+
+The base dict is just an ordinary dict mapping keys to values - it's not "ordered" at all. When a <key, value> pair is added, the key is appended to a list. The list is the part that remembers the order.
+
+But if this were a Python list, deleting a key would take O(n) time twice over: O(n) time to find the key in the list, and O(n) time to remove the key from the list.
+
+So it's a doubly-linked list instead. That makes deleting a key constant (O(1)) time. But we still need to find the doubly-linked list node belonging to the key. To make that operation O(1) time too, a second - hidden - dict maps keys to nodes in the doubly-linked list.
+
+So adding a new <key, value> pair requires adding the pair to the base dict, creating a new doubly-linked list node to hold the key, appending that new node to the doubly-linked list, and mapping the key to that new node in the hidden dict. A bit over twice as much work, but still O(1) (expected case) time overall.
+
+Similarly, deleting a key that's present is also a bit over twice as much work but O(1) expected time overall: use the hidden dict to find the key's doubly-linked list node, delete that node from the list, and remove the key from both dicts.
+
+Etc. It's quite efficient.

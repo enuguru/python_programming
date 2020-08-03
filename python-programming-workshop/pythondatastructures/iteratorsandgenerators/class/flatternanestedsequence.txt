@@ -1,0 +1,10 @@
+
+Flattening a Nested Sequence
+
+Problem
+You have a nested sequence that you want to flatten into a 
+single list of values
+
+Solution
+This is easily solved by writing a recursive generator 
+function involving a yield from statement

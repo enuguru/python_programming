@@ -1,0 +1,33 @@
+
+
+Python supports the creation of anonymous functions (i.e. functions that 
+are not bound to a name) at runtime, using a construct called lambda. 
+This is not exactly the same as lambda in functional programming languages 
+such as Lisp, but it is a very powerful concept that's well integrated into 
+Python and is often used in conjunction with typical functional concepts like 
+filter(), map() and reduce().
+
+
+The lambda's general form is :
+
+lambda arg1, arg2, ...argN : expression using arguments
+
+
+Function objects returned by running lambda expressions work exactly the same 
+as those created and assigned by defs. However, there are a few differences 
+that make lambda useful in specialized roles:
+
+lambda is an expression, not a statement.
+Because of this, a lambda can appear in places a def is not allowed. 
+
+For example, places like inside a list literal, or a function call's arguments. 
+As an expression, lambda returns a value that can optionally be assigned a name. 
+In contrast, the def statement always assigns the new function to 
+the name in the header, instead of returning is as a result.
+
+lambda's body is a single expression, not a block of statements.
+The lambda's body is similar to what we'd put in a def body's return statement. 
+We simply type the result as an expression instead of explicitly returning it. 
+Because it is limited to an expression, a lambda is less general that a def. 
+We can only squeeze design, to limit program nesting. lambda is designed for 
+coding simple functions, and def handles larger tasks.

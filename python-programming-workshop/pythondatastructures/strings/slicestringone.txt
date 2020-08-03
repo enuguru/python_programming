@@ -1,0 +1,13 @@
+
+Slicing
+
+To extract substring from the whole string then then we use the syntax like
+
+string_name[beginning: end : step]
+
+beginning represents the starting index of string
+
+end denotes the end index of string which is not inclusive 
+
+steps denotes the distance between the two words.
+

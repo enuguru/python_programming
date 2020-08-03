@@ -1,0 +1,9 @@
+
+
+Globals. The globals() method returns all the global variables, and their values, in a dictionary. 
+To display them in a program, we can first copy them into another dictionary with dict. Some hidden 
+variables, like __file__ are shown.
+
+User-defined:
+The two user-defined global variables, named value1 and value2, are present as well. They have no 
+surrounding underscores.

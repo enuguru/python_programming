@@ -1,0 +1,11 @@
+
+
+The lambdas can be used as a function shorthand that allows us to embed a 
+function within the code. 
+
+For instance, callback handlers are frequently coded as inline lambda expressions 
+embedded directly in a registration call's arguments list. 
+
+Instead of being define with a def elsewhere in a file and referenced by name, 
+lambdas are also commonly used to code jump tables which are lists or dictionaries 
+of actions to be performed on demand.

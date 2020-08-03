@@ -1,0 +1,9 @@
+
+
+None is a special value. It is a value that indicates no value. It is often returned 
+by collections (such as dictionaries) or methods.
+
+Keywords
+
+Usage. We must handle None in a special way. We cannot call methods, such as len(),
+on a None value. A TypeError may result from invalid usage.

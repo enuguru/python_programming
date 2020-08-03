@@ -1,0 +1,3 @@
+
+
+In our thinking, we can understand "any" to read "has any element that evaluates to True." The name "any" is easier to type than that phrase.

@@ -1,0 +1,96 @@
+
+1.  Take five names as input, and sort the names in 
+    alphabetical order - done
+
+2.  In a class there are many students. The class
+    teacher wants to use the computer store the names
+    create a menu like the one given below to store,
+    delete and manange all the names by the teacher 
+    (clue: use a list) - done
+
+   1. press 1 for adding new names
+   2. press 2 for deleting names
+   3. press 3 for listing all the names
+   4. press 4 for finding if the is name already existing 
+      in list
+   5. press 5 to modify the name
+   6. press 6 to exit
+
+3.  write a program to print the factorial of a given 
+    number. can you do the factorial of the program by using list comprehention? - done
+
+4.  There are 3 sisters in a family, all of them have 
+    3 children each. Take the names of the sisters and each of their three children and store them. write a program to print the names of children, if the sister's
+    name is given - done
+
+5.  There are 5 students in a class, Ravi, Sneha, Priya, 
+    Kumar and Girish.
+    There are studying in 10th standard. All of them study 6 subjects. Take input of all their marks in 6 subjects. Write a program to store their names and the corresponsing marks. print the names and the appropriate marks for each of them. If you give name as input the program should output the correponsing marks for that particular student.
+    (clue: use a dictionary) - not done
+
+6.  After writing the above program, print the name of 
+    the student who is the class topper and who is the topper in each subject - not done
+
+7.  Compute the number of unique characters in a string 
+    using a dictionary (clue: unique characters means you have count the characters and print the characters that are unique) - not done
+
+8   find if two strings are anagrams of each other and 
+    report the answer as "yes" or "no" - done
+
+9.  Read a collection of words entered by the user. display 
+    each word entered by the user only once, in the same order that the words are entered. use a list - 
+
+10. please solve the above problem by using a dictionary
+
+11. Read a collections of integers from the user which can 
+    be negative numbers, zeros or positive numbers. Display all the of the negative numbers, followed by all of the zeros, followed by all of the positive integers. do all this with lists
+
+12. solve the above problem using dictionary
+
+13. compute random and distinct numbers for a lottery ticket.
+    (clue: what we I am asking is, generate unique random numbers for a lottery ticket)
+
+14. Create a pack of cards: 4 suits - ace, hearts, diamond 
+    and spade, 13 values per suit
+
+15. Remove duplicates from a list of numbers
+
+16. Count the number of elements in a list that are greater 
+    than or equal to some minimum number and less that or equal to some maximum number for example, the list of numbers can be 12, 5, 23, 79, 63, 11, 7, 6, 115, 129
+    minimum is 10 and maximum is 100
+
+17. write a program create a tuple by taking input 
+    from the user
+
+18. write a program to create a tuple with different data 
+    types and do the following
+	a) delete an element tuple -- not possible
+	b) add an element to the tuple  -- not possible
+	c) print the element which is 2nd from the beginning
+	d) print the element which is 2nd from the last
+
+19. write a program to reverse a tuple and print
+
+20. write a program to find the maximum and minimum 
+    value in a set
+
+21. write a program which first creates a set, then takes an 
+    element as input and deletes that element from the set if present
+
+22. write a python program to add members to a set
+
+23. write a program that uses a set to remove duplicates
+
+24. write a program to multiply all the data items in a 
+    dictionary
+
+25. write a program to print all the unique values in a 
+    dictionary
+
+26. write a program that creates a dictionary with numbers 
+    as values and print the top 3 highest values in the dictionary
+
+
+
+list comprehension syntax
+"result" =[] "transformation" "iteration" "condition" ]

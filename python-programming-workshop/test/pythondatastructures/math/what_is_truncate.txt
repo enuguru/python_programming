@@ -1,0 +1,6 @@
+
+
+Truncate. Truncating a number removes everything past the decimal place. This does not 
+round the number. Instead it just eliminates the fractional part.
+
+Note:A positive number becomes smaller with trunc. And a negative number becomes larger.

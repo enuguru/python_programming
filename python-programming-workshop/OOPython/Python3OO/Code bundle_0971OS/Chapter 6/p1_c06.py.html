@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
+<title>Chapter 6 -- Creating Containers and Collectibles</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+/* example stylesheet for Docutils */
+
+/* :Author:    Günter Milde */
+/* :Copyright: © 2012 G. Milde */
+/* :License:   This stylesheet is placed in the public domain. */
+
+/* Syntax highlight rules for HTML documents generated with Docutils */
+/* using the ``--syntax-highlight=long`` option (new in v. 0.9). */
+
+/* This stylesheet implements Pygment's "default" style with less rules than */
+/* pygments-default using class hierarchies.                                 */
+/* Use it as example for "handcrafted" styles with only few rules.      */
+
+.code                              { background: #f8f8f8; }
+.code .comment                     { color: #008800; font-style: italic }
+.code .error                       { border: 1px solid #FF0000 }
+.code .generic.deleted             { color: #A00000 }
+.code .generic.emph                { font-style: italic }
+.code .generic.error               { color: #FF0000 }
+.code .generic.heading             { color: #000080; font-weight: bold }
+.code .generic.inserted            { color: #00A000 }
+.code .generic.output              { color: #808080 }
+.code .generic.prompt              { color: #000080; font-weight: bold }
+.code .generic.strong              { font-weight: bold }
+.code .generic.subheading          { color: #800080; font-weight: bold }
+.code .generic.traceback           { color: #0040D0 }
+.code .keyword                     { color: #AA22FF; font-weight: bold }
+.code .keyword.pseudo              { font-weight: normal }
+.code .literal.number              { color: #666666 }
+.code .literal.string              { color: #BB4444 }
+.code .literal.string.doc          { color: #BB4444; font-style: italic }
+.code .literal.string.escape       { color: #BB6622; font-weight: bold }
+.code .literal.string.interpol     { color: #BB6688; font-weight: bold }
+.code .literal.string.other        { color: #008000 }
+.code .literal.string.regex        { color: #BB6688 }
+.code .literal.string.symbol       { color: #B8860B }
+.code .name.attribute              { color: #BB4444 }
+.code .name.builtin                { color: #AA22FF }
+.code .name.class                  { color: #0000FF }
+.code .name.constant               { color: #880000 }
+.code .name.decorator              { color: #AA22FF }
+.code .name.entity                 { color: #999999; font-weight: bold }
+.code .name.exception              { color: #D2413A; font-weight: bold }
+.code .name.function               { color: #00A000 }
+.code .name.label                  { color: #A0A000 }
+.code .name.namespace              { color: #0000FF; font-weight: bold }
+.code .name.tag                    { color: #008000; font-weight: bold }
+.code .name.variable               { color: #B8860B }
+.code .operator                    { color: #666666 }
+.code .operator.word               { color: #AA22FF; font-weight: bold }
+
+</style>
+<style type="text/css">
+
+/* Page layout tweaks */
+div.document { width: 6in; }
+
+</style>
+</head>
+<body>
+<div class="document" id="chapter-6-creating-containers-and-collectibles">
+<h1 class="title">Chapter 6 -- Creating Containers and Collectibles</h1>
+
+<!-- #!/usr/bin/env python3 -->
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#existing-classes" id="id1">1&nbsp;&nbsp;&nbsp;Existing Classes</a><ul class="auto-toc">
+<li><a class="reference internal" href="#namedtuple" id="id2">1.1&nbsp;&nbsp;&nbsp;namedtuple</a></li>
+<li><a class="reference internal" href="#deque" id="id3">1.2&nbsp;&nbsp;&nbsp;deque</a></li>
+<li><a class="reference internal" href="#chainmap" id="id4">1.3&nbsp;&nbsp;&nbsp;ChainMap</a></li>
+<li><a class="reference internal" href="#ordereddict" id="id5">1.4&nbsp;&nbsp;&nbsp;OrderedDict</a></li>
+<li><a class="reference internal" href="#defaultdict" id="id6">1.5&nbsp;&nbsp;&nbsp;Defaultdict</a></li>
+<li><a class="reference internal" href="#counter" id="id7">1.6&nbsp;&nbsp;&nbsp;Counter</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#extending-classes" id="id8">2&nbsp;&nbsp;&nbsp;Extending Classes</a></li>
+<li><a class="reference internal" href="#wrapping-classes" id="id9">3&nbsp;&nbsp;&nbsp;Wrapping Classes</a></li>
+<li><a class="reference internal" href="#heading-4-extending-classes" id="id10">4&nbsp;&nbsp;&nbsp;Heading 4 -- Extending Classes</a><ul class="auto-toc">
+<li><a class="reference internal" href="#new-sequence-from-scratch" id="id11">4.1&nbsp;&nbsp;&nbsp;New Sequence from Scratch.</a></li>
+<li><a class="reference internal" href="#comparisons" id="id12">4.2&nbsp;&nbsp;&nbsp;Comparisons</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="existing-classes">
+<h1><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;Existing Classes</a></h1>
+<div class="section" id="namedtuple">
+<h2><a class="toc-backref" href="#id2">1.1&nbsp;&nbsp;&nbsp;namedtuple</a></h2>
+<pre class="literal-block">
+from collections import namedtuple
+BlackjackCard = namedtuple('BlackjackCard','rank,suit,hard,soft')
+
+def card( rank, suit ):
+        if rank == 1:
+                return BlackjackCard( 'A', suit, 1, 11 )
+        elif 2 &lt;= rank &lt; 11:
+                return BlackjackCard( str(rank), suit, rank, rank )
+        elif rank == 11:
+                return BlackjackCard( 'J', suit, 10, 10 )
+        elif rank == 12:
+                return BlackjackCard( 'Q', suit, 10, 10 )
+        elif rank == 13:
+                return BlackjackCard( 'K', suit, 10, 10 )
+
+c = card( 1, '♠' )
+print( c )
+
+class AceCard( BlackjackCard ):
+    __slots__ = ()
+    def __new__( self, rank, suit ):
+        return super().__new__( AceCard, 'A', suit, 1, 11 )
+
+c = AceCard( 1, '♠' )
+print( c )
+
+try:
+    c.rank= 12
+    raise Exception( &quot;Shouldn't be able to set attribute.&quot; )
+except AttributeError as e:
+    print(&quot;Expected error:&quot;, repr(e))
+</pre>
+</div>
+<div class="section" id="deque">
+<h2><a class="toc-backref" href="#id3">1.2&nbsp;&nbsp;&nbsp;deque</a></h2>
+<p>Example of Deck built from deque.</p>
+<pre class="literal-block">
+from collections import namedtuple
+card = namedtuple( 'card', 'rank,suit' )
+
+Suits = '♣', '♦', '♥', '♠'
+
+import random
+from collections import deque
+class Deck( deque ):
+    def __init__( self, size=1 ):
+        super().__init__()
+        for d in range(size):
+            cards = [ card(r,s) for r in range(13) for s in Suits ]
+            super().extend( cards )
+        random.shuffle( self )
+
+d= Deck()
+print( d.pop(), d.pop(), d.pop() )
+</pre>
+</div>
+<div class="section" id="chainmap">
+<h2><a class="toc-backref" href="#id4">1.3&nbsp;&nbsp;&nbsp;ChainMap</a></h2>
+<pre class="literal-block">
+import argparse
+import json
+import os
+
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument( &quot;-c&quot;, &quot;--configuration&quot;, type=open, nargs='?')
+parser.add_argument( &quot;-p&quot;, &quot;--playerclass&quot;, type=str, nargs='?', default=&quot;Simple&quot; )
+cmdline= parser.parse_args('-p Aggressive'.split())
+
+if cmdline.configuration:
+    config_file= json.load( options.configuration )
+    options.configuration.close()
+else:
+    config_file= {}
+
+with open(&quot;p1_c06_defaults.json&quot;) as installation:
+    defaults= json.load( installation )
+
+from collections import ChainMap
+combined = ChainMap(vars(cmdline), config_file, os.environ, defaults)
+
+print( &quot;combined&quot;, combined['playerclass'] )
+print( &quot;cmdline&quot;, cmdline.playerclass )
+print( &quot;config_file&quot;, config_file.get('playerclass', None) )
+print( &quot;defaults&quot;, defaults.get('playerclass', None) )
+</pre>
+</div>
+<div class="section" id="ordereddict">
+<h2><a class="toc-backref" href="#id5">1.4&nbsp;&nbsp;&nbsp;OrderedDict</a></h2>
+<p>Some Sample XML</p>
+<pre class="literal-block">
+source= &quot;&quot;&quot;
+&lt;blog&gt;
+    &lt;topics&gt;
+        &lt;entry ID=&quot;UUID98766&quot;&gt;&lt;title&gt;first&lt;/title&gt;&lt;body&gt;more words&lt;/body&gt;&lt;/entry&gt;
+        &lt;entry ID=&quot;UUID86543&quot;&gt;&lt;title&gt;second&lt;/title&gt;&lt;body&gt;more words&lt;/body&gt;&lt;/entry&gt;
+        &lt;entry ID=&quot;UUID64319&quot;&gt;&lt;title&gt;third&lt;/title&gt;&lt;body&gt;more words&lt;/body&gt;&lt;/entry&gt;
+    &lt;/topics&gt;
+    &lt;indices&gt;
+        &lt;bytag&gt;
+            &lt;tag text=&quot;#sometag&quot;&gt;
+                &lt;entry IDREF=&quot;UUID98766&quot;/&gt;
+                &lt;entry IDREF=&quot;UUID86543&quot;/&gt;
+            &lt;/tag&gt;
+            &lt;tag text=&quot;#anothertag&quot;&gt;
+                &lt;entry IDREF=&quot;UUID98766&quot;/&gt;
+                &lt;entry IDREF=&quot;UUID64319&quot;/&gt;
+            &lt;/tag&gt;
+        &lt;/bytag&gt;
+        &lt;bylocation&gt;
+            &lt;location text=&quot;Somewhere&quot;&gt;
+                &lt;entry IDREF=&quot;UUID98766&quot;/&gt;
+                &lt;entry IDREF=&quot;UUID86543&quot;/&gt;
+            &lt;/location&gt;
+            &lt;location text=&quot;Somewhere Else&quot;&gt;
+                &lt;entry IDREF=&quot;UUID98766&quot;/&gt;
+                &lt;entry IDREF=&quot;UUID86543&quot;/&gt;
+            &lt;/location&gt;
+        &lt;/bylocation&gt;
+    &lt;/indices&gt;
+&lt;/blog&gt;
+&quot;&quot;&quot;
+</pre>
+<p>Parsing</p>
+<pre class="literal-block">
+from collections import OrderedDict
+import xml.etree.ElementTree as etree
+
+doc= etree.XML( source ) # Parse
+
+topics= OrderedDict() # Gather
+for topic in doc.findall( &quot;topics/entry&quot; ):
+    topics[topic.attrib['ID']] = topic
+
+for topic in topics: # Display
+    print( topic, topics[topic].find(&quot;title&quot;).text )
+
+for tag in doc.findall( &quot;indices/bytag/tag&quot; ):
+    print( tag.attrib['text'] )
+    for e in tag.findall( &quot;entry&quot; ):
+        print( ' ', e.attrib['IDREF'] )
+</pre>
+<p>The point is to keep the topics in an ordereddict by ID.
+We can reference them from other places without scrambling
+the original order.</p>
+</div>
+<div class="section" id="defaultdict">
+<h2><a class="toc-backref" href="#id6">1.5&nbsp;&nbsp;&nbsp;Defaultdict</a></h2>
+<pre class="literal-block">
+from collections import defaultdict
+messages = defaultdict( lambda: &quot;N/A&quot; )
+messages['error1']= 'Full Error Text'
+messages['other']
+
+used_default= [k for k in messages if messages[k] == &quot;N/A&quot;]
+</pre>
+</div>
+<div class="section" id="counter">
+<h2><a class="toc-backref" href="#id7">1.6&nbsp;&nbsp;&nbsp;Counter</a></h2>
+<p>A Data Source</p>
+<pre class="literal-block">
+import random
+def some_iterator( count= 10000, seed=0 ):
+    random.seed( seed, version=1 )
+    for i in range(count):
+        yield random.randint( -1, 36 )
+</pre>
+<p>The defaultdict version</p>
+<pre class="literal-block">
+from collections import defaultdict
+frequency = defaultdict(int)
+for k in some_iterator():
+    frequency[k] += 1
+
+print( frequency )
+
+by_value = defaultdict(list)
+for k in frequency:
+    by_value[ frequency[k] ].append(k)
+
+for freq in sorted(by_value, reverse=True):
+    print( by_value[freq], freq )
+
+print( &quot;expected&quot;, 10000//38 )
+</pre>
+<p>The Counter version</p>
+<pre class="literal-block">
+from collections import Counter
+frequency = Counter(some_iterator())
+
+print( frequency )
+
+for k,freq in frequency.most_common():
+    print( k, freq )
+
+print( &quot;expected&quot;, 10000//38 )
+</pre>
+</div>
+</div>
+<div class="section" id="extending-classes">
+<h1><a class="toc-backref" href="#id8">2&nbsp;&nbsp;&nbsp;Extending Classes</a></h1>
+<p>Basic Stats formulae</p>
+<pre class="literal-block">
+import math
+
+def mean( outcomes ):
+    return sum(outcomes)/len(outcomes)
+
+def stdev( outcomes ):
+    n= len(outcomes)
+    return math.sqrt( n*sum(x**2 for x in outcomes)-sum(outcomes)**2 )/n
+
+test_case = [2, 4, 4, 4, 5, 5, 7, 9]
+assert mean(test_case) == 5
+assert stdev(test_case) == 2
+
+print( &quot;Passed Unit Tests&quot; )
+</pre>
+<p>A simple (lazy) stats list class.</p>
+<pre class="literal-block">
+class Statslist(list):
+    &#64;property
+    def mean(self):
+        return sum(self)/len(self)
+    &#64;property
+    def stdev(self):
+        n= len(self)
+        return math.sqrt( n*sum(x**2 for x in self)-sum(self)**2 )/n
+
+tc = Statslist( [2, 4, 4, 4, 5, 5, 7, 9] )
+print( tc.mean, tc.stdev )
+</pre>
+<p>Eager Stats List class</p>
+<pre class="literal-block">
+class StatsList2(list):
+    &quot;&quot;&quot;Eager Stats.&quot;&quot;&quot;
+    def __init__( self, *args, **kw ):
+        self.sum0 = 0 # len(self), sometimes called &quot;N&quot;
+        self.sum1 = 0 # sum(self)
+        self.sum2 = 0 # sum(x**2 for x in self)
+        super().__init__( *args, **kw )
+        for x in self:
+            self._new(x)
+    def _new( self, value ):
+        self.sum0 += 1
+        self.sum1 += value
+        self.sum2 += value*value
+    def _rmv( self, value ):
+        self.sum0 -= 1
+        self.sum1 -= value
+        self.sum2 -= value*value
+    def insert( self, index, value ):
+        super().insert( index, value )
+        self._new(value)
+    def append( self, value ):
+        super().append( value )
+        self._new(value)
+    def extend( self, sequence ):
+        super().extend( sequence )
+        for value in sequence:
+            self._new(value)
+    def pop( self, index=0 ):
+        value= super().pop( index )
+        self._rmv(value)
+        return value
+    def remove( self, value ):
+        super().remove( value )
+        self._rmv(value)
+    def __iadd__( self, sequence ):
+        result= super().__iadd__( sequence )
+        for value in sequence:
+            self._new(value)
+        return result
+    &#64;property
+    def mean(self):
+        return self.sum1/self.sum0
+    &#64;property
+    def stdev(self):
+        return math.sqrt( self.sum0*self.sum2-self.sum1*self.sum1 )/self.sum0
+    def __setitem__( self, index, value ):
+        if isinstance(index, slice):
+            start, stop, step = index.indices(len(self))
+            olds = [ self[i] for i in range(start,stop,step) ]
+            super().__setitem__( index, value )
+            for x in olds:
+                self._rmv(x)
+            for x in value:
+                self._new(x)
+        else:
+            old= self[index]
+            super().__setitem__( index, value )
+            self._rmv(old)
+            self._new(value)
+    def __delitem__( self, index ):
+        # Index may be a single integer, or a slice
+        if isinstance(index, slice):
+            start, stop, step = index.indices(len(self))
+            olds = [ self[i] for i in range(start,stop,step) ]
+            super().__delitem__( index )
+            for x in olds:
+                self._rmv(x)
+        else:
+            old= self[index]
+            super().__delitem__( index )
+            self._rmv(old)
+
+sl2 = StatsList2( [2, 4, 3, 4, 5, 5, 7, 9, 10] )
+print( sl2, sl2.sum0, sl2.sum1, sl2.sum2 )
+sl2[2]= 4
+print( sl2, sl2.sum0, sl2.sum1, sl2.sum2 )
+del sl2[-1]
+print( sl2, sl2.sum0, sl2.sum1, sl2.sum2 )
+sl2.insert( 0, -1 )
+print( sl2, sl2.sum0, sl2.sum1, sl2.sum2 )
+r= sl2.pop()
+print( sl2, sl2.sum0, sl2.sum1, sl2.sum2 )
+
+sl2.append( 1 )
+print( sl2, sl2.sum0, sl2.sum1, sl2.sum2 )
+sl2.extend( [10, 11, 12] )
+print( sl2, sl2.sum0, sl2.sum1, sl2.sum2 )
+try:
+    sl2.remove( -2 )
+except ValueError:
+    pass
+print( sl2, sl2.sum0, sl2.sum1, sl2.sum2 )
+sl2 += [21, 22, 23]
+print( sl2, sl2.sum0, sl2.sum1, sl2.sum2 )
+
+tc= Statslist([2, 4, 4, 4, 5, 5, 7, 9, 1, 10, 11, 12, 21, 22, 23])
+print( &quot;expected&quot;, len(tc), &quot;actual&quot;, sl2.sum0 )
+print( &quot;expected&quot;, sum(tc), &quot;actual&quot;, sl2.sum1 )
+print( &quot;expected&quot;, sum(x*x for x in tc), &quot;actual&quot;, sl2.sum2 )
+assert tc.mean == sl2.mean
+assert tc.stdev == sl2.stdev
+
+sl2a= StatsList2( [2, 4, 3, 4, 5, 5, 7, 9, 10] )
+del sl2a[1:3]
+print( sl2a, sl2a.sum0, sl2a.sum1, sl2a.sum2 )
+</pre>
+</div>
+<div class="section" id="wrapping-classes">
+<h1><a class="toc-backref" href="#id9">3&nbsp;&nbsp;&nbsp;Wrapping Classes</a></h1>
+<p>Stats List Wrapper</p>
+<pre class="literal-block">
+class StatsList3:
+    def __init__( self ):
+        self._list= list()
+        self.sum0 = 0 # len(self), sometimes called &quot;N&quot;
+        self.sum1 = 0 # sum(self)
+        self.sum2 = 0 # sum(x**2 for x in self)
+    def append( self, value ):
+        self._list.append(value)
+        self.sum0 += 1
+        self.sum1 += value
+        self.sum2 += value*value
+    def __getitem__( self, index ):
+        return self._list.__getitem__( index )
+    &#64;property
+    def mean(self):
+        return self.sum1/self.sum0
+    &#64;property
+    def stdev(self):
+        return math.sqrt( self.sum0*self.sum2-self.sum1*self.sum1 )/self.sum0
+
+sl3= StatsList3()
+for data in 2, 4, 4, 4, 5, 5, 7, 9:
+    sl3.append(data)
+print( sl3.mean, sl3.stdev )
+</pre>
+</div>
+<div class="section" id="heading-4-extending-classes">
+<h1><a class="toc-backref" href="#id10">4&nbsp;&nbsp;&nbsp;Heading 4 -- Extending Classes</a></h1>
+<p>Stats Counter</p>
+<pre class="literal-block">
+import math
+from collections import Counter
+class StatsCounter( Counter ):
+    &#64;property
+    def mean( self ):
+        sum0= sum( v for k,v in self.items() )
+        sum1= sum( k*v for k,v in self.items() )
+        return sum1/sum0
+    &#64;property
+    def stdev( self ):
+        sum0= sum( v for k,v in self.items() )
+        sum1= sum( k*v for k,v in self.items() )
+        sum2= sum( k*k*v for k,v in self.items() )
+        return math.sqrt( sum0*sum2-sum1*sum1 )/sum0
+    &#64;property
+    def median( self ):
+        all= list(sorted(sc.elements()))
+        return all[len(all)//2]
+    &#64;property
+    def median2( self ):
+        mid = sum(self.values())//2
+        low= 0
+        for k,v in sorted(self.items()):
+            if low &lt;= mid &lt; low+v: return k
+            low += v
+
+sc = StatsCounter( [2, 4, 4, 4, 5, 5, 7, 9] )
+print( sc.mean, sc.stdev, sc.most_common(), sc.median, sc.median2 )
+</pre>
+<div class="section" id="new-sequence-from-scratch">
+<h2><a class="toc-backref" href="#id11">4.1&nbsp;&nbsp;&nbsp;New Sequence from Scratch.</a></h2>
+<p>A Binary Searh Tree.</p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Binary_search_tree">http://en.wikipedia.org/wiki/Binary_search_tree</a></p>
+<pre class="literal-block">
+import collections.abc
+import weakref
+class TreeNode:
+    &quot;&quot;&quot;..   TODO:: weakref to the tree; tree has the key() function.&quot;&quot;&quot;
+    def __init__( self, item, less=None, more=None, parent=None ):
+        self.item= item
+        self.less= less
+        self.more= more
+        if parent != None:
+            self.parent = parent
+    &#64;property
+    def parent( self ):
+        return self.parent_ref()
+    &#64;parent.setter
+    def parent( self, value ):
+        self.parent_ref= weakref.ref(value)
+    def __repr__( self ):
+        return( &quot;TreeNode({item!r},{less!r},{more!r})&quot;.format( **self.__dict__ ) )
+    def find( self, item ):
+        if self.item is None: # Root
+            if self.more: return self.more.find(item)
+        elif self.item == item: return self
+        elif self.item &gt; item and self.less: return self.less.find(item)
+        elif self.item &lt; item and self.more: return self.more.find(item)
+        raise KeyError
+    def __iter__( self ):
+        if self.less:
+            for item in iter(self.less):
+                yield item
+        yield self.item
+        if self.more:
+            for item in iter(self.more):
+                yield item
+    def add( self, item ):
+        if self.item is None: # Root Special Case
+            if self.more:
+                self.more.add( item )
+            else:
+                self.more= TreeNode( item, parent=self )
+        elif self.item &gt;= item:
+            if self.less:
+                self.less.add( item )
+            else:
+                self.less= TreeNode( item, parent=self )
+        elif self.item &lt; item:
+            if self.more:
+                self.more.add( item )
+            else:
+                self.more= TreeNode( item, parent=self )
+    def remove( self, item ):
+        # Recursive search for node
+        if self.item is None or item &gt; self.item:
+            if self.more:
+                self.more.remove(item)
+            else:
+                raise KeyError
+        elif item &lt; self.item:
+            if self.less:
+                self.less.remove(item)
+            else:
+                raise KeyError
+        else: # self.item == item
+            if self.less and self.more: # Two children are present
+                successor = self.more._least()
+                self.item = successor.item
+                successor.remove(successor.item)
+            elif self.less:   # One child on less
+                self._replace(self.less)
+            elif self.more:  # On child on more
+                self._replace(self.more)
+            else: # Zero children
+                self._replace(None)
+    def _least(self):
+        if self.less is None: return self
+        return self.less._least()
+    def _replace(self,new=None):
+        if self.parent:
+            if self == self.parent.less:
+                self.parent.less = new
+            else:
+                self.parent.more = new
+        if new is not None:
+            new.parent = self.parent
+
+class Tree(collections.abc.MutableSet):
+    def __init__( self, iterable=None ):
+        self.root= TreeNode(None)
+        self.size= 0
+        if iterable:
+            for item in iterable:
+                self.root.add( item )
+                self.size += 1
+    def add( self, item ):
+        self.root.add( item )
+        self.size += 1
+    def discard( self, item ):
+        try:
+            self.root.more.remove( item )
+            self.size -= 1
+        except KeyError:
+            pass
+    def __contains__( self, item ):
+        try:
+            self.root.more.find( item )
+            return True
+        except KeyError:
+            return False
+    def __iter__( self ):
+        for item in iter(self.root.more):
+            yield item
+    def __len__( self ):
+        return self.size
+
+bt= Tree()
+bt.add( &quot;Number 1&quot; )
+print( list( iter(bt) ) )
+bt.add( &quot;Number 3&quot; )
+print( list( iter(bt) ) )
+bt.add( &quot;Number 2&quot; )
+print( list( iter(bt) ) )
+print( repr(bt.root) )
+print( &quot;Number 2&quot; in bt )
+print( len(bt) )
+bt.remove( &quot;Number 3&quot; )
+print( list( iter(bt) ) )
+bt.discard( &quot;Number 3&quot; ) # Should be silent
+try:
+    bt.remove( &quot;Number 3&quot; )
+    raise Exception( &quot;Fail&quot; )
+except KeyError as e:
+    pass # Expected
+bt.add( &quot;Number 1&quot; )
+print( list( iter(bt) ) )
+
+import random
+for i in range(25):
+    values= ['1','2','3','4','5']
+    random.shuffle( values )
+    bt= Tree()
+    for i in values:
+        bt.add(i)
+    assert list( iter(bt) ) == ['1','2','3','4','5'], &quot;IN: {0}, OUT: {1}&quot;.format(values,list( iter(bt) ))
+    random.shuffle(values)
+    for i in values:
+        bt.remove(i)
+        values.remove(i)
+        assert list( iter(bt) ) == list(sorted(values)), &quot;IN: {0}, OUT: {1}&quot;.format(values,list( iter(bt) ))
+
+s1 = Tree( [&quot;Item 1&quot;, &quot;Another&quot;, &quot;Middle&quot;] )
+s2 = Tree( [&quot;Another&quot;, &quot;More&quot;, &quot;Yet More&quot;] )
+print( list( iter(bt) ) )
+print( list( iter(bt) ) )
+print( list( iter(s1|s2) ) )
+</pre>
+</div>
+<div class="section" id="comparisons">
+<h2><a class="toc-backref" href="#id12">4.2&nbsp;&nbsp;&nbsp;Comparisons</a></h2>
+<p>Using a list vs. a set</p>
+<pre class="literal-block">
+import timeit
+timeit.timeit( 'l.remove(10); l.append(10)', 'l = list(range(20))' )
+timeit.timeit( 'l.remove(10); l.add(10)', 'l = set(range(20))' )
+</pre>
+<p>Using two parallel lists vs. a mapping</p>
+<pre class="literal-block">
+import timeit
+timeit.timeit( 'i= k.index(10); v[i]= 0', 'k=list(range(20)); v=list(range(20))' )
+timeit.timeit( 'm[10]= 0', 'm=dict(zip(list(range(20)),list(range(20))))' )
+</pre>
+</div>
+</div>
+</div>
+</body>
+</html>

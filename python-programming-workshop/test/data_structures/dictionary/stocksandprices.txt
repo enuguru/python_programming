@@ -1,0 +1,3 @@
+
+
+print a dictionary that maps stock names to prices

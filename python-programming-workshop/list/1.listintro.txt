@@ -1,0 +1,15 @@
+
+
+built in data structures
+
+list
+
+dictionary
+
+tuple
+named tuple
+
+set
+frozen set
+
+array

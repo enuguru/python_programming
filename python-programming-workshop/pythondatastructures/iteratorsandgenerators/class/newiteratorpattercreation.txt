@@ -1,0 +1,6 @@
+
+You want to implement a custom iteration pattern that’s different than the usual builtin
+functions (e.g., range(), reversed(), etc.)
+
+If you want to implement a new kind of iteration pattern, define it using a generator
+function. Here’s a generator that produces a range of floating-point numbers

@@ -1,0 +1,34 @@
+
+
+compute the number of unique characters in a string using a dictionary
+(clue: unique characters means you have count the characters  and print
+       the characters that are unique
+
+
+find if two strings are anagrams of each other and report the answer
+as "yes" or "no"
+
+read a collection of words entered by the user. display each word entered
+by the user only once, in the same order that the words are entered. use a list
+
+please solve the above problem by using a dictionary
+
+read a collections of integers from the user which can be negative numbers, zeros or positive numbers. Display all the of the negative numbers, followed by all of the zeros, followed by all of the positive integers. do all this with lists
+
+solve the above problem using dictionary
+
+compute random and distinct numbers for a lottery ticket.
+(clue: what we I am asking is, generate unique random numbers
+       for a lottery ticket)
+
+
+create a pack of cards: 4 suits - ace, hearts, diamond and spade, 
+13 values per suit
+
+remove duplicates from a list of numbers
+
+count the number of elements in a list that are greater than or equal to 
+some minimum number and less that or equal to some maximum number
+for example, the list of numbers can be 12, 5, 23, 79, 63, 11, 7, 6, 115, 129
+minimum is 10 and maximum is 100
+

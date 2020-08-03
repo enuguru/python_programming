@@ -1,0 +1,13 @@
+!!python/object:__main__.Blog
+entries:
+- !!python/object:__main__.Post
+  date: 2013-11-14 17:25:00
+  rst_text: "Some embarrassing revelation. Including \u2639 and \u2693\uFE0E"
+  tags: !!python/tuple ['#RedRanger', '#Whitby42', '#ICW']
+  title: Hard Aground
+- !!python/object:__main__.Post
+  date: 2013-11-18 15:30:00
+  rst_text: Some witty epigram. Including < & > characters.
+  tags: !!python/tuple ['#RedRanger', '#Whitby42', '#Mistakes']
+  title: Anchor Follies
+title: Travel

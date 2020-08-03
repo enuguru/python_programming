@@ -1,0 +1,30 @@
+
+
+There's a huge difference.
+
+    Sets can't contain duplicates
+
+    Sets are unordered
+
+    In order to find an element in a set, a hash lookup is used (which is why sets are unordered).
+    This makes __contains__ (in operator) a lot more efficient for sets than lists.
+    Sets can only contain hashable items (see #3). If you try: set(([1],[2])) you'll get a TypeError.
+
+In practical applications, lists are very nice to sort and have order while sets are nice 
+to use when you don't want duplicates and don't care about order.
+
+
+
+
+sets — Unordered collections of unique elements
+
+lists - ordered collections of elements
+
+sets allows you to do operations such as intersection, union, difference, and 
+symmetric difference, i.e operations of math's set theory. Sets doesn't allow 
+indexing and are implemented on hash tables.
+
+lists are really variable-length arrays, not Lisp-style linked lists. 
+In lists the elements are accessed by indices.
+
+List can be 2-D whereas a set can't.

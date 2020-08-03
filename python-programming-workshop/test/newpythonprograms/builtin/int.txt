@@ -1,0 +1,4 @@
+
+
+Int, like float, converts from strings and other number types. It returns an integer (a number with 
+nothing past the decimal—no fractional part).

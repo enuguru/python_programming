@@ -1,0 +1,28 @@
+
+
+1. write a program create a tuple by taking input from the user
+
+2. write a program to create a tuple with different data types
+   and do the following
+	a) delete an element tuple -- not possible
+	b) add an element to the tuple  -- not possible
+	c) print the element which is 2nd from the beginning
+	d) print the element which is 2nd from the last
+
+3. write a program to reverse a tuple and print
+
+4. write a program to find the maximum and minimum value in a set
+
+5. write a program which first creates a set, then takes an element as 
+   input and deletes that element from the set if present
+
+6. write a python program to add members to a set
+
+7. write a program that uses a set to remove duplicates
+
+8. write a program to multiply all the data items in a dictionary
+
+9. write a program to print all the unique values in a dictionary
+
+10. write a program that creates a dictionary with numbers as values
+    and print the top 3 highest values in the dictionary

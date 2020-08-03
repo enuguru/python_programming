@@ -1,0 +1,7 @@
+
+
+Eval. With eval we evaluate an expression. The expression, specified as a string, is the first argument. 
+The globals, a dictionary, is second. And the local variables, also a dictionary, is the third argument.
+
+Result:
+The eval method returns the result from evaluating the expression.

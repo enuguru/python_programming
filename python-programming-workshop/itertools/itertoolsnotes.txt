@@ -1,0 +1,21 @@
+
+Is itertools worth using? With itertools we can write programs in a more 
+functional way. We can specify what we want, and have itertools do the 
+looping and processing for us—this is sometimes an improvement.
+
+However:In my experience, imperative style, as with for-loops and statements, 
+is often faster.
+
+Dictionary optimizes lookups with hash codes and : It is easier for other 
+developers to understand. I prefer using for-loops and dictionaries in programs 
+for these reasons.
+
+Concept:Itertools enables us to use a functional language, like Haskell, in 
+Python—with Python syntax.
+
+This module implements a number of iterator building blocks inspired by constructs 
+from APL, Haskell, and SML. Each has been recast in a form suitable for Python.
+
+The methods available in itertools are powerful. A key is advantage too is 
+their universality. You do not need to write them for each program. Instead, 
+once you use a method once, you can use it easily in many programs.

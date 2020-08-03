@@ -1,0 +1,3 @@
+
+i="karthik"
+print(i)

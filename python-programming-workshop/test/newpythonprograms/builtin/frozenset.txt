@@ -1,0 +1,5 @@
+
+
+A frozenset can be used where a set cannot. It can be a dictionary key or a set element itself
+
+We initialize a frozenset with the frozenset() built-in. We pass it a list of strings.

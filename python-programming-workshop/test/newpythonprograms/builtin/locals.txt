@@ -1,0 +1,4 @@
+
+
+Locals. Locals does the same thing as globals, but for methods. Here we call locals() within a 
+method. It displays the identifier names and values for the three local variables in method().

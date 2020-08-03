@@ -1,0 +1,153 @@
+..  #!/usr/bin/env python3
+
+Parsing to create immutable objects
+-----------------------------------
+
+Gather some basic timing information on parsing.
+Compare RE with named groups vs. unnamed groups.
+
+We're also going to compare two different namedtuple
+construction techniques.
+
+We need to work with a consistent piece of information.
+In this case, it's a gz-compressed logfile.
+
+Here's a typical log line.
+::
+
+  log_line= '''41.191.203.2 - - [01/Feb/2012:03:27:04 -0500] "GET /homepage/books/python/html/preface.html HTTP/1.1" 200 33322  "http://www.itmaybeahack.com/homepage/books/python/html/index.html"  "Mozilla/5.0 (Windows NT 6.1; rv:8.0.1) Gecko/20100101 Firefox/8.0.1"'''
+
+We're going to create namedtuples from the log rows.
+::
+
+  from collections import namedtuple
+  Access = namedtuple('Access',
+      ['host', 'identity', 'user', 'time', 'request',
+      'status', 'bytes', 'referer', 'user_agent'] )
+
+
+We'll parse this with the re module.
+
+Here's version one with the simple sequence of groups.
+::
+
+  import re
+
+  format_1_pat= re.compile(
+      r"([\d\.]+)\s+" # digits and .'s: host
+      r"(\S+)\s+"     # non-space: logname
+      r"(\S+)\s+"     # non-space: user
+      r"\[(.+?)\]\s+" # Everything in []: time
+      r'"(.+?)"\s+'   # Everything in "": request
+      r"(\d+)\s+"     # digits: status
+      r"(\S+)\s+"     # non-space: bytes
+      r'"(.*?)"\s+'   # Everything in "": referrer
+      r'"(.*?)"\s*'   # Everything in "": user agent
+  )
+  def parser_seq( line_iter ):
+      return ( Access( *format_1_pat.match(line).groups() ) for line in line_iter )
+
+
+Here's version two with named groups.
+::
+
+  format_2_pat= re.compile(
+      r"(?P<host>[\d\.]+)\s+"
+      r"(?P<identity>\S+)\s+"
+      r"(?P<user>\S+)\s+"
+      r"\[(?P<time>.+?)\]\s+"
+      r'"(?P<request>.+?)"\s+'
+      r"(?P<status>\d+)\s+"
+      r"(?P<bytes>\S+)\s+"
+      r'"(?P<referer>.*?)"\s+' # [SIC]
+      r'"(?P<user_agent>.+?)"\s*'
+  )
+  def parser_dict( line_iter ):
+      return ( Access( **format_2_pat.match(line).groupdict() ) for line in line_iter )
+
+We're going to cache using CSV.
+::
+
+  import csv
+
+Our sample File name requires a bit of fiddling.
+::
+
+  import os
+  path = os.path.expanduser( "./itmaybeahack.com.bkup-Feb-2012.gz" )
+
+Also, the files are gzip compressed. This means two things.
+First, obviously, we need the ``gzip`` library.
+Second, not so obviously, gzip produces bytes not strings. We're
+forced to decode the bytes into strings.
+::
+
+  import gzip
+
+Here's an iterator which decodes the lines and uses a parser function.
+It does nothing more, so that we can focus on parsing and namedtuple building.
+::
+
+  def parse_process( parser, path ):
+      with gzip.open(path, 'r') as source:
+          line_iter= (b.decode() for b in source)
+          for a in parser( line_iter ):
+              pass
+
+Here's another variation that explicitly writes a CSV file using simple
+sequential tuple writing.
+::
+
+  def cache_seq_process( parser, path ):
+      with gzip.open(path, 'r') as source:
+          access_iter= parser(b.decode() for b in source)
+          with open("cache_s.csv", 'w') as target:
+              wtr= csv.writer( target )
+              wtr.writerows( access_iter )
+
+Here's another variation that explicitly writes a CSV file using
+dictionary-based tuple writing.
+::
+
+  def cache_dict_process( parser, path ):
+      with gzip.open(path, 'r') as source:
+          access_iter= parser(b.decode() for b in source)
+          with open("cache_d.csv", 'w') as target:
+              wtr= csv.DictWriter( target, Access._fields )
+              wtr.writeheader()
+              wtr.writerows( (a._asdict() for a in access_iter) )
+
+Some timeit setup
+::
+
+  import timeit
+  fmt= "{0:16s} {1:5.2f}"
+  def report( label, function, args ):
+      start= timeit.default_timer()
+      function( *args )
+      end= timeit.default_timer()
+      print( fmt.format( label, end-start ) )
+
+Here is a parser function which uses positional processing.
+::
+
+  report( "Sequential Parse", parse_process, (parser_seq, path) )
+
+Here is a parser function which uses named field processing.
+::
+
+  report( "Dictionary Parse", parse_process, (parser_dict, path) )
+
+Now for caching using sequential CSV
+::
+
+  report( "Sequential Cache", cache_seq_process, (parser_seq, path) )
+
+And caching using dictionary CSV
+::
+
+  report( "Dictionary Cache", cache_dict_process, (parser_dict, path) )
+
+And yes, there are other combinations. They're not going to be
+magically faster.
+

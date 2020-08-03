@@ -1,0 +1,7 @@
+
+
+Float converts data to floating-point numbers. It acts on string values (like "10.0") or 
+integers (like 10). On strings, it handles signs (positive or negative) and infinity values ("inf").
+
+Conversion:
+Float is similar to other built-ins like int or str. Python simplifies common conversions.

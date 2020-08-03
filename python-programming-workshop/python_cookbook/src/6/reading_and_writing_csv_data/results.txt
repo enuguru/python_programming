@@ -1,0 +1,36 @@
+Reading as list:
+['Symbol', 'Price', 'Date', 'Time', 'Change', 'Volume']
+     ['AA', '39.48', '6/11/2007', '9:36am', '-0.18', '181800']
+     ['AIG', '71.38', '6/11/2007', '9:36am', '-0.15', '195500']
+     ['AXP', '62.58', '6/11/2007', '9:36am', '-0.46', '935000']
+     ['BA', '98.31', '6/11/2007', '9:36am', '+0.12', '104800']
+     ['C', '53.08', '6/11/2007', '9:36am', '-0.25', '360900']
+     ['CAT', '78.29', '6/11/2007', '9:36am', '-0.23', '225400']
+Reading as namedtuples
+     Row(Symbol='AA', Price='39.48', Date='6/11/2007', Time='9:36am', Change='-0.18', Volume='181800')
+     Row(Symbol='AIG', Price='71.38', Date='6/11/2007', Time='9:36am', Change='-0.15', Volume='195500')
+     Row(Symbol='AXP', Price='62.58', Date='6/11/2007', Time='9:36am', Change='-0.46', Volume='935000')
+     Row(Symbol='BA', Price='98.31', Date='6/11/2007', Time='9:36am', Change='+0.12', Volume='104800')
+     Row(Symbol='C', Price='53.08', Date='6/11/2007', Time='9:36am', Change='-0.25', Volume='360900')
+     Row(Symbol='CAT', Price='78.29', Date='6/11/2007', Time='9:36am', Change='-0.23', Volume='225400')
+Reading as dictionaries
+     OrderedDict([('Symbol', 'AA'), ('Price', '39.48'), ('Date', '6/11/2007'), ('Time', '9:36am'), ('Change', '-0.18'), ('Volume', '181800')])
+     OrderedDict([('Symbol', 'AIG'), ('Price', '71.38'), ('Date', '6/11/2007'), ('Time', '9:36am'), ('Change', '-0.15'), ('Volume', '195500')])
+     OrderedDict([('Symbol', 'AXP'), ('Price', '62.58'), ('Date', '6/11/2007'), ('Time', '9:36am'), ('Change', '-0.46'), ('Volume', '935000')])
+     OrderedDict([('Symbol', 'BA'), ('Price', '98.31'), ('Date', '6/11/2007'), ('Time', '9:36am'), ('Change', '+0.12'), ('Volume', '104800')])
+     OrderedDict([('Symbol', 'C'), ('Price', '53.08'), ('Date', '6/11/2007'), ('Time', '9:36am'), ('Change', '-0.25'), ('Volume', '360900')])
+     OrderedDict([('Symbol', 'CAT'), ('Price', '78.29'), ('Date', '6/11/2007'), ('Time', '9:36am'), ('Change', '-0.23'), ('Volume', '225400')])
+Reading into tuples with type conversion
+('AA', 39.48, '6/11/2007', '9:36am', -0.18, 181800)
+('AIG', 71.38, '6/11/2007', '9:36am', -0.15, 195500)
+('AXP', 62.58, '6/11/2007', '9:36am', -0.46, 935000)
+('BA', 98.31, '6/11/2007', '9:36am', 0.12, 104800)
+('C', 53.08, '6/11/2007', '9:36am', -0.25, 360900)
+('CAT', 78.29, '6/11/2007', '9:36am', -0.23, 225400)
+Reading as dicts with type conversion
+OrderedDict([('Symbol', 'AA'), ('Price', 39.48), ('Date', '6/11/2007'), ('Time', '9:36am'), ('Change', -0.18), ('Volume', 181800)])
+OrderedDict([('Symbol', 'AIG'), ('Price', 71.38), ('Date', '6/11/2007'), ('Time', '9:36am'), ('Change', -0.15), ('Volume', 195500)])
+OrderedDict([('Symbol', 'AXP'), ('Price', 62.58), ('Date', '6/11/2007'), ('Time', '9:36am'), ('Change', -0.46), ('Volume', 935000)])
+OrderedDict([('Symbol', 'BA'), ('Price', 98.31), ('Date', '6/11/2007'), ('Time', '9:36am'), ('Change', 0.12), ('Volume', 104800)])
+OrderedDict([('Symbol', 'C'), ('Price', 53.08), ('Date', '6/11/2007'), ('Time', '9:36am'), ('Change', -0.25), ('Volume', 360900)])
+OrderedDict([('Symbol', 'CAT'), ('Price', 78.29), ('Date', '6/11/2007'), ('Time', '9:36am'), ('Change', -0.23), ('Volume', 225400)])

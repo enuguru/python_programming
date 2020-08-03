@@ -1,0 +1,3 @@
+
+
+In keyword. Collections such as dictionaries can be used with the if-statement. With a dictionary, the in keyword is used in an if-statement. We test the collection for a key's existence.

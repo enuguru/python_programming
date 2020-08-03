@@ -1,0 +1,13 @@
+
+Reorder. The and-operator short-circuits. This means when a sub-expression 
+evaluates to false, no further ones are evaluated. We can exploit this 
+principle to improve speed.
+
+Here:A list contains four sub-lists. In the value pairs, the first element 
+differs most: there are three unique first numbers.
+
+Value 2:This is always 1 in the pairs. It is least specific when checking 
+the pairs.
+
+So: To find pairs with both values set to 1, we should first check the 
+most specific value—the first one.

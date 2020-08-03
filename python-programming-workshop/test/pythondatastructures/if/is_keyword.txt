@@ -1,0 +1,7 @@
+
+
+Is-keyword. This tests identity. Every object (like integers, classes) has an id. When 
+the ids of two objects are equal, their identities too are equal. And the is-test will return True.
+
+The operators "is" and "is not" test for object identity: "x is y" is true if and only if 
+"x" and "y" are the same object. 

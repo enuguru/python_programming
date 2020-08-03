@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module p3_c18</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>p3_c18</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/slott/Documents/Writing/Mastering OO Python/Code/p3_c18.py">/Users/slott/Documents/Writing/Mastering OO Python/Code/p3_c18.py</a></font></td></tr></table>
+    <p><tt>Part&nbsp;3&nbsp;Chapter&nbsp;18&nbsp;Example.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="p3_c18.html#Card">Card</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Card">class <strong>Card</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Definition&nbsp;of&nbsp;a&nbsp;numeric&nbsp;rank&nbsp;playing&nbsp;card.<br>
+Subclasses&nbsp;will&nbsp;define&nbsp;``FaceCard``&nbsp;and&nbsp;``AceCard``.<br>
+&nbsp;<br>
+:ivar&nbsp;rank:&nbsp;Rank<br>
+:ivar&nbsp;suit:&nbsp;Suit<br>
+:ivar&nbsp;hard:&nbsp;Hard&nbsp;point&nbsp;total&nbsp;for&nbsp;a&nbsp;card<br>
+:ivar&nbsp;soft:&nbsp;Soft&nbsp;total;&nbsp;same&nbsp;as&nbsp;hard&nbsp;for&nbsp;all&nbsp;cards&nbsp;except&nbsp;Aces.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Card-__init__"><strong>__init__</strong></a>(self, rank, suit, hard, soft<font color="#909090">=None</font>)</dt><dd><tt>Define&nbsp;the&nbsp;card.<br>
+&nbsp;<br>
+:param&nbsp;rank:&nbsp;Numeric&nbsp;rank&nbsp;in&nbsp;the&nbsp;range&nbsp;1-13.<br>
+:param&nbsp;suit:&nbsp;Suit&nbsp;<a href="builtins.html#object">object</a>&nbsp;(often&nbsp;a&nbsp;character&nbsp;from&nbsp;'♣♡♢♠')<br>
+:param&nbsp;hard:&nbsp;Hard&nbsp;point&nbsp;total&nbsp;(or&nbsp;10&nbsp;for&nbsp;FaceCard&nbsp;or&nbsp;1&nbsp;for&nbsp;AceCard)<br>
+:param&nbsp;soft:&nbsp;The&nbsp;soft&nbsp;total&nbsp;for&nbsp;AceCard,&nbsp;otherwise&nbsp;defaults&nbsp;to&nbsp;hard.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-card"><strong>card</strong></a>(rank, suit)</dt><dd><tt>Create&nbsp;a&nbsp;``<a href="#Card">Card</a>``&nbsp;instance&nbsp;from&nbsp;rank&nbsp;and&nbsp;suit.<br>
+&nbsp;<br>
+:param&nbsp;rank:&nbsp;Numeric&nbsp;rank&nbsp;in&nbsp;the&nbsp;range&nbsp;1-13.<br>
+:param&nbsp;suit:&nbsp;Suit&nbsp;<a href="builtins.html#object">object</a>&nbsp;(often&nbsp;a&nbsp;character&nbsp;from&nbsp;'♣♡♢♠')<br>
+:returns:&nbsp;<a href="#Card">Card</a>&nbsp;instance<br>
+:raises&nbsp;TypeError:&nbsp;rank&nbsp;out&nbsp;of&nbsp;range.</tt></dd></dl>
+</td></tr></table>
+</body></html>

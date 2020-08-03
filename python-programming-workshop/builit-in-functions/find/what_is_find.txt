@@ -1,0 +1,7 @@
+
+
+Find, index. A string has any amount of data. It has an ID code. It has a file name extension. 
+It has a keyword. This data must be searched for.
+
+With find, and its friend rfind, we scan strings. If the substring is found, find() returns 
+its index. If no match is located, it returns -1. Its parameters indicate a range.

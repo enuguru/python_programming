@@ -1,0 +1,1753 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.10: http://docutils.sourceforge.net/" />
+<title>Chapter 9 -- Simple Persistence: JSON, YAML, Pickle, CSV and XML</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7056 2011-06-17 10:50:48Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+/* example stylesheet for Docutils */
+
+/* :Author:    Günter Milde */
+/* :Copyright: © 2012 G. Milde */
+/* :License:   This stylesheet is placed in the public domain. */
+
+/* Syntax highlight rules for HTML documents generated with Docutils */
+/* using the ``--syntax-highlight=long`` option (new in v. 0.9). */
+
+/* This stylesheet implements Pygment's "default" style with less rules than */
+/* pygments-default using class hierarchies.                                 */
+/* Use it as example for "handcrafted" styles with only few rules.      */
+
+.code                              { background: #f8f8f8; }
+.code .comment                     { color: #008800; font-style: italic }
+.code .error                       { border: 1px solid #FF0000 }
+.code .generic.deleted             { color: #A00000 }
+.code .generic.emph                { font-style: italic }
+.code .generic.error               { color: #FF0000 }
+.code .generic.heading             { color: #000080; font-weight: bold }
+.code .generic.inserted            { color: #00A000 }
+.code .generic.output              { color: #808080 }
+.code .generic.prompt              { color: #000080; font-weight: bold }
+.code .generic.strong              { font-weight: bold }
+.code .generic.subheading          { color: #800080; font-weight: bold }
+.code .generic.traceback           { color: #0040D0 }
+.code .keyword                     { color: #AA22FF; font-weight: bold }
+.code .keyword.pseudo              { font-weight: normal }
+.code .literal.number              { color: #666666 }
+.code .literal.string              { color: #BB4444 }
+.code .literal.string.doc          { color: #BB4444; font-style: italic }
+.code .literal.string.escape       { color: #BB6622; font-weight: bold }
+.code .literal.string.interpol     { color: #BB6688; font-weight: bold }
+.code .literal.string.other        { color: #008000 }
+.code .literal.string.regex        { color: #BB6688 }
+.code .literal.string.symbol       { color: #B8860B }
+.code .name.attribute              { color: #BB4444 }
+.code .name.builtin                { color: #AA22FF }
+.code .name.class                  { color: #0000FF }
+.code .name.constant               { color: #880000 }
+.code .name.decorator              { color: #AA22FF }
+.code .name.entity                 { color: #999999; font-weight: bold }
+.code .name.exception              { color: #D2413A; font-weight: bold }
+.code .name.function               { color: #00A000 }
+.code .name.label                  { color: #A0A000 }
+.code .name.namespace              { color: #0000FF; font-weight: bold }
+.code .name.tag                    { color: #008000; font-weight: bold }
+.code .name.variable               { color: #B8860B }
+.code .operator                    { color: #666666 }
+.code .operator.word               { color: #AA22FF; font-weight: bold }
+
+</style>
+<style type="text/css">
+
+/* Page layout tweaks */
+div.document { width: 6in; }
+
+</style>
+</head>
+<body>
+<div class="document" id="chapter-9-simple-persistence-json-yaml-pickle-csv-and-xml">
+<h1 class="title">Chapter 9 -- Simple Persistence: JSON, YAML, Pickle, CSV and XML</h1>
+
+<!-- #!/usr/bin/env python3 -->
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#persistence-classes" id="id1">1&nbsp;&nbsp;&nbsp;Persistence Classes</a></li>
+<li><a class="reference internal" href="#json" id="id2">2&nbsp;&nbsp;&nbsp;JSON</a><ul class="auto-toc">
+<li><a class="reference internal" href="#example-1-simple" id="id3">2.1&nbsp;&nbsp;&nbsp;Example 1: Simple</a></li>
+<li><a class="reference internal" href="#example-2-json-flawed-design" id="id4">2.2&nbsp;&nbsp;&nbsp;Example 2. JSON: Flawed Design</a></li>
+<li><a class="reference internal" href="#example-3-json-better-design" id="id5">2.3&nbsp;&nbsp;&nbsp;Example 3 JSON: Better Design</a></li>
+<li><a class="reference internal" href="#sidebar-demo-of-rendering-1" id="id6">2.4&nbsp;&nbsp;&nbsp;Sidebar: Demo of rendering 1</a></li>
+<li><a class="reference internal" href="#sidebar-demo-of-rendering-2-using-jinja2" id="id7">2.5&nbsp;&nbsp;&nbsp;Sidebar: Demo of rendering 2 (using Jinja2)</a></li>
+<li><a class="reference internal" href="#example-4-json-refactoring-encoding" id="id8">2.6&nbsp;&nbsp;&nbsp;Example 4. JSON: Refactoring Encoding</a></li>
+<li><a class="reference internal" href="#example-5-json-better-date-encoding" id="id9">2.7&nbsp;&nbsp;&nbsp;Example 5: JSON: Better Date Encoding</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#yaml" id="id10">3&nbsp;&nbsp;&nbsp;YAML</a><ul class="auto-toc">
+<li><a class="reference internal" href="#example-1-that-s-it" id="id11">3.1&nbsp;&nbsp;&nbsp;Example 1: That's it.</a></li>
+<li><a class="reference internal" href="#example-2-cards" id="id12">3.2&nbsp;&nbsp;&nbsp;Example 2: Cards</a></li>
+<li><a class="reference internal" href="#example-3-safe-cards" id="id13">3.3&nbsp;&nbsp;&nbsp;Example 3: Safe Cards</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pickle" id="id14">4&nbsp;&nbsp;&nbsp;Pickle</a><ul class="auto-toc">
+<li><a class="reference internal" href="#example-1-working" id="id15">4.1&nbsp;&nbsp;&nbsp;Example 1: Working</a></li>
+<li><a class="reference internal" href="#example-2-won-t-init" id="id16">4.2&nbsp;&nbsp;&nbsp;Example 2: Won't Init</a></li>
+<li><a class="reference internal" href="#example-3-secure-pickle" id="id17">4.3&nbsp;&nbsp;&nbsp;Example 3: Secure Pickle</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#csv" id="id18">5&nbsp;&nbsp;&nbsp;CSV</a><ul class="auto-toc">
+<li><a class="reference internal" href="#example-1-gamestats" id="id19">5.1&nbsp;&nbsp;&nbsp;Example 1: GameStats</a></li>
+<li><a class="reference internal" href="#example-1-dumping" id="id20">5.2&nbsp;&nbsp;&nbsp;Example 1 dumping</a></li>
+<li><a class="reference internal" href="#example-2-loading" id="id21">5.3&nbsp;&nbsp;&nbsp;Example 2 loading</a></li>
+<li><a class="reference internal" href="#example-3-blog-and-post-one-file" id="id22">5.4&nbsp;&nbsp;&nbsp;Example 3 blog and post one file</a></li>
+<li><a class="reference internal" href="#example-4-blog-and-post-with-better-metadata-and-filter" id="id23">5.5&nbsp;&nbsp;&nbsp;Example 4 blog and post with better metadata and filter</a></li>
+<li><a class="reference internal" href="#example-5-blog-and-post-join" id="id24">5.6&nbsp;&nbsp;&nbsp;Example 5 Blog and Post join</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#legacy-files" id="id25">6&nbsp;&nbsp;&nbsp;Legacy Files</a><ul class="auto-toc">
+<li><a class="reference internal" href="#example-1-dumping-all-text" id="id26">6.1&nbsp;&nbsp;&nbsp;Example 1 dumping all text</a></li>
+<li><a class="reference internal" href="#example-2-loading-all-text" id="id27">6.2&nbsp;&nbsp;&nbsp;Example 2 loading all text</a></li>
+<li><a class="reference internal" href="#example-3-usage-display-and-usage-comp3" id="id28">6.3&nbsp;&nbsp;&nbsp;Example 3 -- USAGE DISPLAY and USAGE COMP3</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xml" id="id29">7&nbsp;&nbsp;&nbsp;XML</a><ul class="auto-toc">
+<li><a class="reference internal" href="#example-1-xml-output" id="id30">7.1&nbsp;&nbsp;&nbsp;Example 1: XML output</a></li>
+<li><a class="reference internal" href="#example-1-element-tree-output" id="id31">7.2&nbsp;&nbsp;&nbsp;Example 1: element Tree output</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="persistence-classes">
+<h1><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;Persistence Classes</a></h1>
+<p>A detail class for micro-blog posts</p>
+<pre class="literal-block">
+import datetime
+class Post:
+    def __init__( self, date, title, rst_text, tags ):
+        self.date= date
+        self.title= title
+        self.rst_text= rst_text
+        self.tags= tags
+    def as_dict( self ):
+        return dict(
+            date= str(self.date),
+            title= self.title,
+            underline= &quot;-&quot;*len(self.title),
+            rst_text= self.rst_text,
+            tag_text= &quot; &quot;.join(self.tags),
+        )
+</pre>
+<p>Here's a collection of these posts. This is an extension
+of list which doesn't work well with JSON.</p>
+<pre class="literal-block">
+from collections import defaultdict
+class Blog_x( list ):
+    def __init__( self, title, posts=None ):
+        self.title= title
+        super().__init__( posts if posts is not None else [] )
+    def by_tag(self):
+        tag_index= defaultdict(list)
+        for post in self:
+            for tag in post.tags:
+                tag_index[tag].append( post )
+        return tag_index
+    def as_dict( self ):
+        return dict(
+            title= self.title,
+            entries= [p.as_dict() for p in self],
+        )
+</pre>
+<p>An example blog</p>
+<pre class="literal-block">
+travel_x = Blog_x( &quot;Travel&quot; )
+travel_x.append(
+    Post( date=datetime.datetime(2013,11,14,17,25),
+        title=&quot;Hard Aground&quot;,
+        rst_text=&quot;&quot;&quot;Some embarrassing revelation. Including ☹ and ⚓&quot;&quot;&quot;,
+        tags=(&quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#ICW&quot;),
+        )
+)
+travel_x.append(
+    Post( date=datetime.datetime(2013,11,18,15,30),
+        title=&quot;Anchor Follies&quot;,
+        rst_text=&quot;&quot;&quot;Some witty epigram. Including &lt; &amp; &gt; characters.&quot;&quot;&quot;,
+        tags=(&quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#Mistakes&quot;),
+        )
+)
+</pre>
+</div>
+<div class="section" id="json">
+<h1><a class="toc-backref" href="#id2">2&nbsp;&nbsp;&nbsp;JSON</a></h1>
+<div class="section" id="example-1-simple">
+<h2><a class="toc-backref" href="#id3">2.1&nbsp;&nbsp;&nbsp;Example 1: Simple</a></h2>
+<p>Simple JSON dump</p>
+<pre class="literal-block">
+import json
+
+if __name__==&quot;__main__&quot;:
+    print( &quot;Less Elegant&quot; )
+    print( json.dumps(travel_x.as_dict(), indent=4) )
+</pre>
+</div>
+<div class="section" id="example-2-json-flawed-design">
+<h2><a class="toc-backref" href="#id4">2.2&nbsp;&nbsp;&nbsp;Example 2. JSON: Flawed Design</a></h2>
+<p>Flawed Encoder based on flowed design of the class.</p>
+<pre class="literal-block">
+def blogx_encode( object ):
+    if isinstance(object, datetime.datetime):
+        return dict(
+            __class__= &quot;datetime.datetime&quot;,
+            __args__= [],
+            __kw__= dict(
+                year= object.year,
+                month= object.month,
+                day= object.day,
+                hour= object.hour,
+                minute= object.minute,
+                second= object.second,
+            )
+        )
+    elif isinstance(object, Post):
+        return dict(
+            __class__= &quot;Post&quot;,
+            __args__= [],
+            __kw__= dict(
+                date= object.date,
+                title= object.title,
+                rst_text= object.rst_text,
+                tags= object.tags,
+            )
+        )
+    elif isinstance(object, Blog_x):
+        return dict(
+            __class__= &quot;Blog_x&quot;,
+            __args__= [],
+            __kw__= dict(
+                title= object.title,
+                entries= tuple(object),
+            )
+        )
+    else:
+        return super().default(o)
+
+def blogx_decode( some_dict ):
+    if set(some_dict.keys()) == set( [&quot;__class__&quot;, &quot;__args__&quot;, &quot;__kw__&quot;] ):
+        class_= eval(some_dict['__class__'])
+        return class_( *some_dict['__args__'], **some_dict['__kw__'] )
+    else:
+        return some_dict
+</pre>
+<p>Problem: The Blog entries vanished.</p>
+<pre class="literal-block">
+if __name__==&quot;__main__&quot;:
+
+    print( &quot;Damaged&quot; )
+    text= json.dumps(travel_x, indent=4, default=blogx_encode)
+    print( text )
+    copy= json.loads(text, object_hook= blogx_decode)
+</pre>
+</div>
+<div class="section" id="example-3-json-better-design">
+<h2><a class="toc-backref" href="#id5">2.3&nbsp;&nbsp;&nbsp;Example 3 JSON: Better Design</a></h2>
+<p>Consider this wrapped version instead of an extended version</p>
+<p>Here's another collection of these posts. This
+wraps a list which works much better with JSON than extending a list.</p>
+<pre class="literal-block">
+import datetime
+from collections import defaultdict
+class Blog:
+    def __init__( self, title, posts=None ):
+        self.title= title
+        self.entries= posts if posts is not None else []
+    def append( self, post ):
+        self.entries.append(post)
+    def by_tag(self):
+        tag_index= defaultdict(list)
+        for post in self.entries:
+            for tag in post.tags:
+                tag_index[tag].append( post.as_dict() )
+        return tag_index
+    def as_dict( self ):
+        return dict(
+            title= self.title,
+            underline= &quot;=&quot;*len(self.title),
+            entries= [p.as_dict() for p in self.entries],
+        )
+</pre>
+<p>An example blog</p>
+<pre class="literal-block">
+travel = Blog( &quot;Travel&quot; )
+travel.append(
+    Post( date=datetime.datetime(2013,11,14,17,25),
+        title=&quot;Hard Aground&quot;,
+        rst_text=&quot;&quot;&quot;Some embarrassing revelation. Including ☹ and ⚓︎&quot;&quot;&quot;,
+        tags=(&quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#ICW&quot;),
+        )
+)
+travel.append(
+    Post( date=datetime.datetime(2013,11,18,15,30),
+        title=&quot;Anchor Follies&quot;,
+        rst_text=&quot;&quot;&quot;Some witty epigram. Including &lt; &amp; &gt; characters.&quot;&quot;&quot;,
+        tags=(&quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#Mistakes&quot;),
+        )
+)
+
+def blog_encode( object ):
+    if isinstance(object, datetime.datetime):
+        return dict(
+            __class__= &quot;datetime.datetime&quot;,
+            __args__= [],
+            __kw__= dict(
+                year= object.year,
+                month= object.month,
+                day= object.day,
+                hour= object.hour,
+                minute= object.minute,
+                second= object.second,
+            )
+        )
+    elif isinstance(object, Post):
+        return dict(
+            __class__= &quot;Post&quot;,
+            __args__= [],
+            __kw__= dict(
+                date= object.date,
+                title= object.title,
+                rst_text= object.rst_text,
+                tags= object.tags,
+            )
+        )
+    elif isinstance(object, Blog):
+        return dict(
+            __class__= &quot;Blog&quot;,
+            __args__= [
+                object.title,
+                object.entries,
+            ],
+            __kw__= {}
+        )
+    else:
+        return json.JSONEncoder.default(o)
+
+def blog_decode( some_dict ):
+    if set(some_dict.keys()) == set( [&quot;__class__&quot;, &quot;__args__&quot;, &quot;__kw__&quot;] ):
+        class_= eval(some_dict['__class__'])
+        return class_( *some_dict['__args__'], **some_dict['__kw__'] )
+    else:
+        return some_dict
+
+if __name__==&quot;__main__&quot;:
+
+    print( &quot;Better&quot; )
+    text= json.dumps(travel, indent=4, default=blog_encode)
+    print( text )
+    copy= json.loads(text, object_hook= blog_decode)
+</pre>
+</div>
+<div class="section" id="sidebar-demo-of-rendering-1">
+<h2><a class="toc-backref" href="#id6">2.4&nbsp;&nbsp;&nbsp;Sidebar: Demo of rendering 1</a></h2>
+<p>Here's a template for an individual post</p>
+<pre class="literal-block">
+import string
+</pre>
+<p>Here's a way to render the entire blog in RST</p>
+<pre class="literal-block">
+def render( blog ):
+    post= string.Template( &quot;&quot;&quot;
+    $title
+    $underline
+
+    $rst_text
+
+    :date: $date
+
+    :tags: $tag_text
+    &quot;&quot;&quot;)
+
+    # with redirect_stdout(&quot;some_file&quot;):
+    print( &quot;{title}\n{underline}\n&quot;.format(**blog.as_dict()) )
+    for p in blog.entries:
+        print( post.substitute( **p.as_dict() ) )
+
+    tag_index= blog.by_tag()
+    print( &quot;Tag Index&quot; )
+    print( &quot;=========&quot; )
+    print()
+    for tag in tag_index:
+        print( &quot;*   {0}&quot;.format(tag) )
+        print()
+        for post_dict in tag_index[tag]:
+            print( &quot;    -   `{title}`_&quot;.format(**post_dict) )
+        print()
+
+render(travel)
+</pre>
+</div>
+<div class="section" id="sidebar-demo-of-rendering-2-using-jinja2">
+<h2><a class="toc-backref" href="#id7">2.5&nbsp;&nbsp;&nbsp;Sidebar: Demo of rendering 2 (using Jinja2)</a></h2>
+<pre class="literal-block">
+try:
+    from jinja2 import Template
+    blog_template= Template( &quot;&quot;&quot;
+{{title}}
+{{underline}}
+
+{% for e in entries %}
+{{e.title}}
+{{e.underline}}
+
+{{e.rst_text}}
+
+:date: {{e.date}}
+
+:tags: {{e.tag_text}}
+{% endfor %}
+
+Tag Index
+=========
+{% for t in tags %}
+
+*   {{t}}
+    {% for post in tags[t] %}
+
+    -   `{{post.title}}`_
+    {% endfor %}
+{% endfor %}
+&quot;&quot;&quot;)
+    print( blog_template.render( tags=travel.by_tag(), **travel.as_dict() ) )
+    #import sys
+    #sys.exit(0)
+
+except ImportError as e:
+    print( e )
+</pre>
+</div>
+<div class="section" id="example-4-json-refactoring-encoding">
+<h2><a class="toc-backref" href="#id8">2.6&nbsp;&nbsp;&nbsp;Example 4. JSON: Refactoring Encoding</a></h2>
+<p>Changes to the class definitions</p>
+<pre class="literal-block">
+class Blog_J( Blog ):
+    &#64;property
+    def _json( self ):
+        return dict( __class__= self.__class__.__name__,
+            __kw__= {},
+            __args__= [ self.title, self.entries ]
+        )
+
+class Post_J( Post ):
+    &#64;property
+    def _json( self ):
+        return dict(
+            __class__= self.__class__.__name__,
+            __kw__= dict(
+                date= self.date,
+                title= self.title,
+                rst_text= self.rst_text,
+                tags= self.tags,
+            ),
+            __args__= []
+        )
+
+def blog_j_encode( object ):
+    if isinstance(object, datetime.datetime):
+        return dict(
+            __class__= &quot;datetime.datetime&quot;,
+            __args__= [],
+            __kw__= dict(
+                year= object.year,
+                month= object.month,
+                day= object.day,
+                hour= object.hour,
+                minute= object.minute,
+                second= object.second,
+            )
+        )
+    else:
+        try:
+            encoding= object._json
+        except AttributeError:
+            encoding= json.JSONEncoder.default(o)
+        return encoding
+
+travel3 = Blog_J( &quot;Travel&quot; )
+travel3.append(
+    Post_J( date=datetime.datetime(2013,11,14,17,25),
+        title=&quot;Hard Aground&quot;,
+        rst_text=&quot;&quot;&quot;Some embarrassing revelation. Including ☹ and ⚓&quot;&quot;&quot;,
+        tags=(&quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#ICW&quot;),
+        )
+)
+travel3.append(
+    Post_J( date=datetime.datetime(2013,11,18,15,30),
+        title=&quot;Anchor Follies&quot;,
+        rst_text=&quot;&quot;&quot;Some witty epigram.&quot;&quot;&quot;,
+        tags=(&quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#Mistakes&quot;),
+        )
+)
+
+if __name__==&quot;__main__&quot;:
+    print( &quot;Best&quot; )
+    text= json.dumps(travel3, indent=4, default=blog_j_encode)
+    print( text )
+</pre>
+</div>
+<div class="section" id="example-5-json-better-date-encoding">
+<h2><a class="toc-backref" href="#id9">2.7&nbsp;&nbsp;&nbsp;Example 5: JSON: Better Date Encoding</a></h2>
+<p>Changes to the class definitions</p>
+<pre class="literal-block">
+def blog_j2_encode( object ):
+    if isinstance(object, datetime.datetime):
+        return dict(
+            __class__= &quot;datetime.datetime.strptime&quot;,
+            __args__= [
+                object.strftime(&quot;%Y-%m-%dT%H:%M:%S&quot;),
+                &quot;%Y-%m-%dT%H:%M:%S&quot;,
+            ],
+            __kw__= {}
+        )
+    else:
+        try:
+            encoding= object._json
+        except AttributeError:
+            encoding= json.JSONEncoder.default(o)
+        return encoding
+
+if __name__==&quot;__main__&quot;:
+    print( &quot;Best&quot; )
+    text= json.dumps(travel3, indent=4, default=blog_j2_encode)
+    print( text )
+    copy= json.loads(text, object_hook= blog_decode)
+
+with open(&quot;p2_c09.json&quot;, &quot;w&quot;, encoding=&quot;UTF-8&quot;) as target:
+    json.dump( travel3, target, separators=(',', ':'), default=blog_j2_encode )
+</pre>
+</div>
+</div>
+<div class="section" id="yaml">
+<h1><a class="toc-backref" href="#id10">3&nbsp;&nbsp;&nbsp;YAML</a></h1>
+<div class="section" id="example-1-that-s-it">
+<h2><a class="toc-backref" href="#id11">3.1&nbsp;&nbsp;&nbsp;Example 1: That's it.</a></h2>
+<p>Start with original defintions</p>
+<pre class="literal-block">
+import yaml
+
+if __name__==&quot;__main__&quot;:
+    text= yaml.dump(travel)
+    print( text )
+    copy= yaml.load(text)
+    print( type(copy), copy.title )
+    for p in copy.entries:
+        print( p.date.year, p.date.month, p.date.day, p.title, p.tags )
+
+    text2= yaml.dump(travel, allow_unicode=True )
+    print( text2 )
+
+with open(&quot;p2_c09.yaml&quot;, &quot;w&quot;, encoding=&quot;UTF-8&quot;) as target:
+    yaml.dump( travel, target )
+</pre>
+</div>
+<div class="section" id="example-2-cards">
+<h2><a class="toc-backref" href="#id12">3.2&nbsp;&nbsp;&nbsp;Example 2: Cards</a></h2>
+<pre class="literal-block">
+class Card:
+    def __init__( self, rank, suit, hard=None, soft=None ):
+        self.rank= rank
+        self.suit= suit
+        self.hard= hard or int(rank)
+        self.soft= soft or int(rank)
+    def __str__( self ):
+        return &quot;{0.rank!s}{0.suit!s}&quot;.format(self)
+
+class AceCard( Card ):
+    def __init__( self, rank, suit ):
+        super().__init__( rank, suit, 1, 11 )
+
+class FaceCard( Card ):
+    def __init__( self, rank, suit ):
+        super().__init__( rank, suit, 10, 10 )
+
+deck = [ AceCard('A','♣'), Card('2','♥'), FaceCard('K','♦') ]
+
+if __name__==&quot;__main__&quot;:
+    text= yaml.dump( deck, allow_unicode=True )
+    print( text )
+
+def card_representer(dumper, card):
+    return dumper.represent_scalar('!Card',
+    &quot;{0.rank!s}{0.suit!s}&quot;.format(card) )
+def acecard_representer(dumper, card):
+    return dumper.represent_scalar('!AceCard',
+    &quot;{0.rank!s}{0.suit!s}&quot;.format(card) )
+def facecard_representer(dumper, card):
+    return dumper.represent_scalar('!FaceCard',
+    &quot;{0.rank!s}{0.suit!s}&quot;.format(card) )
+
+yaml.add_representer(Card, card_representer)
+yaml.add_representer(AceCard, acecard_representer)
+yaml.add_representer(FaceCard, facecard_representer)
+
+def card_constructor(loader, node):
+    value = loader.construct_scalar(node)
+    rank, suit= value[:-1], value[-1]
+    return Card( rank, suit )
+
+def acecard_constructor(loader, node):
+    value = loader.construct_scalar(node)
+    rank, suit= value[:-1], value[-1]
+    return AceCard( rank, suit )
+
+def facecard_constructor(loader, node):
+    value = loader.construct_scalar(node)
+    rank, suit= value[:-1], value[-1]
+    return FaceCard( rank, suit )
+
+yaml.add_constructor('!Card', card_constructor)
+yaml.add_constructor('!AceCard', acecard_constructor)
+yaml.add_constructor('!FaceCard', facecard_constructor)
+
+if __name__==&quot;__main__&quot;:
+    text= yaml.dump( deck, allow_unicode=True )
+    print( text )
+    copy= yaml.load( text )
+    print( *map(str,copy) )
+</pre>
+</div>
+<div class="section" id="example-3-safe-cards">
+<h2><a class="toc-backref" href="#id13">3.3&nbsp;&nbsp;&nbsp;Example 3: Safe Cards</a></h2>
+<pre class="literal-block">
+class Card2( yaml.YAMLObject ):
+    yaml_tag = '!Card2'
+    yaml_loader= yaml.SafeLoader
+    def __init__( self, rank, suit, hard=None, soft=None ):
+        self.rank= rank
+        self.suit= suit
+        self.hard= hard or int(rank)
+        self.soft= soft or int(rank)
+    def __str__( self ):
+        return &quot;{0.rank!s}{0.suit!s}&quot;.format(self)
+
+class AceCard2( Card2 ):
+    yaml_tag = '!AceCard2'
+    def __init__( self, rank, suit ):
+        super().__init__( rank, suit, 1, 11 )
+
+class FaceCard2( Card2 ):
+    yaml_tag = '!FaceCard2'
+    def __init__( self, rank, suit ):
+        super().__init__( rank, suit, 10, 10 )
+
+deck2 = [ AceCard2('A','♣'), Card2('2','♥'), FaceCard2('K','♦') ]
+
+if __name__==&quot;__main__&quot;:
+    text2= yaml.dump( deck2 )
+    print( &quot;TEXT2&quot; )
+    print( text2 )
+    yaml.safe_load(text2)
+</pre>
+</div>
+</div>
+<div class="section" id="pickle">
+<h1><a class="toc-backref" href="#id14">4&nbsp;&nbsp;&nbsp;Pickle</a></h1>
+<div class="section" id="example-1-working">
+<h2><a class="toc-backref" href="#id15">4.1&nbsp;&nbsp;&nbsp;Example 1: Working</a></h2>
+<p>Use pickle to persist our microblog</p>
+<pre class="literal-block">
+import pickle
+with open(&quot;p2_c09_travel_blog.p&quot;,&quot;wb&quot;) as target:
+    pickle.dump( travel, target )
+
+with open(&quot;p2_c09_travel_blog.p&quot;,&quot;rb&quot;) as source:
+    copy= pickle.load( source )
+
+if __name__==&quot;__main__&quot;:
+    print( copy )
+</pre>
+</div>
+<div class="section" id="example-2-won-t-init">
+<h2><a class="toc-backref" href="#id16">4.2&nbsp;&nbsp;&nbsp;Example 2: Won't Init</a></h2>
+<pre class="literal-block">
+import logging,sys
+
+audit_log= logging.getLogger( &quot;audit&quot; )
+if __name__==&quot;__main__&quot;:
+    logging.basicConfig(stream=sys.stderr, level=logging.INFO)
+else:
+    logging.basicConfig(stream=sys.stderr, level=logging.ERROR)
+
+
+class Hand_x:
+    def __init__( self, dealer_card, *cards ):
+        self.dealer_card= dealer_card
+        self.cards= list(cards)
+        for c in self.cards:
+            audit_log.info( &quot;Initial %s&quot;, c )
+    def append( self, card ):
+        self.cards.append( card )
+        audit_log.info( &quot;Hit %s&quot;, card )
+    def __str__( self ):
+        cards= &quot;, &quot;.join( map(str,self.cards) )
+        return &quot;{self.dealer_card} | {cards}&quot;.format( self=self, cards=cards )
+
+if __name__==&quot;__main__&quot;:
+    h = Hand_x( FaceCard('K','♦'), AceCard('A','♣'), Card('9','♥') )
+    print( h )
+
+    b = pickle.dumps( h )
+    h2 = pickle.loads( b )
+    print( h2 )
+
+class Hand2:
+    def __init__( self, dealer_card, *cards ):
+        self.dealer_card= dealer_card
+        self.cards= list(cards)
+        for c in self.cards:
+            audit_log.info( &quot;Initial %s&quot;, c )
+    def append( self, card ):
+        self.cards.append( card )
+        audit_log.info( &quot;Hit %s&quot;, card )
+    def __str__( self ):
+        cards= &quot;, &quot;.join( map(str,self.cards) )
+        return &quot;{self.dealer_card} | {cards}&quot;.format( self=self, cards=cards )
+    def __getstate__( self ):
+        return self.__dict__
+    def __setstate__( self, state ):
+        self.__dict__.update(state)
+        for c in self.cards:
+            audit_log.info( &quot;Initial (unpickle) %s&quot;, c )
+
+hp = Hand2( FaceCard('K','♦'), AceCard('A','♣'), Card('9','♥') )
+
+data = pickle.dumps( hp )
+h2p = pickle.loads( data )
+</pre>
+</div>
+<div class="section" id="example-3-secure-pickle">
+<h2><a class="toc-backref" href="#id17">4.3&nbsp;&nbsp;&nbsp;Example 3: Secure Pickle</a></h2>
+<pre class="literal-block">
+import builtins
+class RestrictedUnpickler(pickle.Unpickler):
+    def find_class(self, module, name):
+        if module == &quot;builtins&quot;:
+            if name not in (&quot;exec&quot;, &quot;eval&quot;):
+                 return getattr(builtins, name)
+        elif module == &quot;__main__&quot;:
+            return globals()[name]
+        # elif module in any of our application modules...
+        raise pickle.UnpicklingError(
+        &quot;global '{module}.{name}' is forbidden&quot;.format(module=module, name=name))
+
+if __name__==&quot;__main__&quot;:
+    import io
+    try:
+        h2s = RestrictedUnpickler(io.BytesIO(data)).load()
+    except pickle.UnpicklingError as e:
+        print( e )
+</pre>
+</div>
+</div>
+<div class="section" id="csv">
+<h1><a class="toc-backref" href="#id18">5&nbsp;&nbsp;&nbsp;CSV</a></h1>
+<div class="section" id="example-1-gamestats">
+<h2><a class="toc-backref" href="#id19">5.1&nbsp;&nbsp;&nbsp;Example 1: GameStats</a></h2>
+<p>Our Simulation class definitions</p>
+<pre class="literal-block">
+class Player_Strategy_1:
+    pass
+
+class Betting:
+    def __init__( self, stake=100 ):
+        self.stake= stake
+    def bet(self, table, game_state):
+        table.bet(game_state, 1)
+    def win(self, amount):
+        self.stake += amount
+    def loss(self, amount):
+        self.stake -= amount
+
+class Flat_Bet( Betting ):
+    pass
+
+class Martingale_Bet( Betting ):
+    def __init__( self, *args ):
+        self.stage = 1
+        super().__init__( *args )
+    def bet(self, table, game_state):
+        try:
+            table.bet(game_state, min(self.stage, self.stake))
+        except BadBet as e:
+            limit= e.args[0]
+            table.bet(game_state, min(limit, self.stake))
+    def win(self, amount):
+        self.stage= 1
+        super().win(amount)
+    def loss(self, amount):
+        if self.stage &lt;= 500:
+            self.stage *= 2
+        super().loss(amount)
+
+import random
+
+class BadBet( Exception ):
+    pass
+
+class Broke( Exception ):
+    pass
+</pre>
+<p>A Fake simulator</p>
+<pre class="literal-block">
+class Blackjack:
+    def __init__( self, play, betting ):
+        self.player= play
+        self.betting= betting
+        self.bets= dict()
+        self.rounds= 0
+    &#64;property
+    def stake( self ):
+        return self.betting.stake
+    def bet( self, game_state, amount ):
+        if amount &gt; 50:
+            raise BadBet( 50 )
+        self.bets[game_state]= amount
+    def play_1( self ):
+        if self.betting.stake == 0:
+            raise Broke
+        self.betting.bet( self, 'initial' )
+        bet= sum( self.bets.values() )
+        if random.random() &lt;= .45:
+            if random.random() &lt;= 1/13*4/13:
+                self.betting.win(2*bet)
+            else:
+                self.betting.win(bet)
+        else:
+            self.betting.loss(bet)
+    def until_broke_or_rounds( self, limit ):
+        while self.rounds &lt; limit and self.betting.stake &gt; 0:
+            self.play_1()
+            self.rounds += 1
+</pre>
+</div>
+<div class="section" id="example-1-dumping">
+<h2><a class="toc-backref" href="#id20">5.2&nbsp;&nbsp;&nbsp;Example 1 dumping</a></h2>
+<p>An application of the above definitions.</p>
+<pre class="literal-block">
+from collections import namedtuple
+GameStat = namedtuple( &quot;GameStat&quot;, &quot;player,bet,rounds,final&quot; )
+
+def gamestat_iter( player, betting, limit=100 ):
+    for sample in range(30):
+        b = Blackjack( player(), betting() )
+        b.until_broke_or_rounds(limit)
+        yield GameStat( player.__name__, betting.__name__, b.rounds, b.betting.stake )
+
+import csv
+
+with open(&quot;p2_c09_blackjack.csv&quot;,&quot;w&quot;,newline=&quot;&quot;) as target:
+    writer= csv.DictWriter( target, GameStat._fields )
+    writer.writeheader()
+    for gamestat in gamestat_iter( Player_Strategy_1, Martingale_Bet ):
+        writer.writerow( gamestat._asdict() )
+
+data = gamestat_iter( Player_Strategy_1, Martingale_Bet )
+with open(&quot;p2_c09_blackjack.csv&quot;,&quot;w&quot;,newline=&quot;&quot;) as target:
+    writer= csv.DictWriter( target, GameStat._fields )
+    writer.writeheader()
+    writer.writerows( g._asdict() for g in data )
+</pre>
+</div>
+<div class="section" id="example-2-loading">
+<h2><a class="toc-backref" href="#id21">5.3&nbsp;&nbsp;&nbsp;Example 2 loading</a></h2>
+<p>Loading data from a simulator</p>
+<pre class="literal-block">
+with open(&quot;p2_c09_blackjack.csv&quot;,&quot;r&quot;,newline=&quot;&quot;) as source:
+    reader= csv.DictReader( source )
+    assert set(reader.fieldnames) == set(GameStat._fields)
+    for gs in ( GameStat(**r) for r in reader ):
+        pass # print( gs )
+
+def gamestat_rdr_iter(iterator):
+    for row in iterator:
+        yield GameStat( row['player'], row['bet'], int(row['rounds']), int(row['final']) )
+
+if __name__==&quot;__main__&quot;:
+    with open(&quot;p2_c09_blackjack.csv&quot;,&quot;r&quot;,newline=&quot;&quot;) as source:
+        reader= csv.DictReader( source )
+        assert set(reader.fieldnames) == set(GameStat._fields)
+        for gs in gamestat_rdr_iter(reader):
+            print( gs )
+</pre>
+</div>
+<div class="section" id="example-3-blog-and-post-one-file">
+<h2><a class="toc-backref" href="#id22">5.4&nbsp;&nbsp;&nbsp;Example 3 blog and post one file</a></h2>
+<p>Our blog data to be saved positionally.</p>
+<pre class="literal-block">
+blogs = [ travel ]
+
+with open(&quot;p2_c09_blog3.csv&quot;,&quot;w&quot;,newline=&quot;&quot;) as target:
+    wtr= csv.writer( target )
+    wtr.writerow(['__class__','title','date','title','rst_text','tags'])
+    for b in blogs:
+        wtr.writerow(['Blog',b.title,None,None,None,None])
+        for p in b.entries:
+            wtr.writerow(['Post',None,p.date,p.title,p.rst_text,p.tags])
+</pre>
+<p>Super-important: column order must match __init__() param order.</p>
+<pre class="literal-block">
+with open(&quot;p2_c09_blog3.csv&quot;,&quot;r&quot;,newline=&quot;&quot;) as source:
+    rdr= csv.reader( source )
+    header= next(rdr)
+    assert header == ['__class__','title','date','title','rst_text','tags']
+    blogs = []
+    for r in rdr:
+        if r[0] == 'Blog':
+            blog= Blog( *r[1:2] )
+            blogs.append( blog )
+        if r[0] == 'Post':
+            post= Post( *r[2:] )
+            blogs[-1].append( post )
+</pre>
+<p>Tags, however, will not be a proper tuple
+The above doesn't handle Post tags properly!</p>
+<p>Must use the following</p>
+<pre class="literal-block">
+import ast
+def post_builder( row ):
+    return Post(
+        date=datetime.datetime.strptime(row[2],&quot;%Y-%m-%d %H:%M:%S&quot;),
+        title=row[3],
+        rst_text=row[4],
+        tags=ast.literal_eval(row[5]) )
+
+with open(&quot;p2_c09_blog3.csv&quot;,&quot;r&quot;,newline=&quot;&quot;) as source:
+    rdr= csv.reader( source )
+    header= next(rdr)
+    assert header == ['__class__','title','date','title','rst_text','tags']
+    blogs = []
+    for r in rdr:
+        if r[0] == 'Blog':
+            blog= Blog( *r[1:2] )
+            blogs.append( blog )
+        if r[0] == 'Post':
+            post= post_builder( r )
+            blogs[-1].append( post )
+</pre>
+</div>
+<div class="section" id="example-4-blog-and-post-with-better-metadata-and-filter">
+<h2><a class="toc-backref" href="#id23">5.5&nbsp;&nbsp;&nbsp;Example 4 blog and post with better metadata and filter</a></h2>
+<p>Loading the blog with a generator function.</p>
+<pre class="literal-block">
+def blog_iter(source):
+    rdr= csv.reader( source )
+    header= next(rdr)
+    assert header == ['__class__','title','date','title','rst_text','tags']
+    blog= None
+    for r in rdr:
+        if r[0] == 'Blog':
+            if blog:
+                yield blog
+            blog= Blog( *r[1:2] )
+        if r[0] == 'Post':
+            post= post_builder( r )
+            blog.append( post )
+    if blog:
+        yield blog
+
+if __name__==&quot;__main__&quot;:
+    with open(&quot;p2_c09_blog3.csv&quot;,&quot;r&quot;,newline=&quot;&quot;) as source:
+        for b in blog_iter(source):
+            print(b.title,[p.title for p in b.entries])
+
+with open(&quot;p2_c09_blog3.csv&quot;,&quot;r&quot;,newline=&quot;&quot;) as source:
+    blogs= list(blog_iter(source))
+</pre>
+</div>
+<div class="section" id="example-5-blog-and-post-join">
+<h2><a class="toc-backref" href="#id24">5.6&nbsp;&nbsp;&nbsp;Example 5 Blog and Post join</a></h2>
+<p>Using a &quot;join&quot; between Blog and Post to create a file.</p>
+<pre class="literal-block">
+with open(&quot;p2_c09_blog5.csv&quot;,&quot;w&quot;,newline=&quot;&quot;) as target:
+    wtr= csv.writer( target )
+    wtr.writerow(['Blog.title','Post.date','Post.title', 'Post.tags','Post.rst_text'])
+    for b in blogs:
+        for p in b.entries:
+            wtr.writerow([b.title,p.date,p.title,p.tags,p.rst_text])
+</pre>
+<p>Decoding column names when reconstructing the file.
+Seductive but wrong.</p>
+<pre class="literal-block">
+def make_obj( row, class_=Post ):
+    prefix= class_.__name__
+    column_split = ( (k,)+tuple(k.split('.')) for k in row )
+    kw_args = dict( (attr,row[key])
+        for key,classname,attr in column_split if classname==prefix )
+    return class_( **kw_args )
+
+import ast
+def post_builder5( row ):
+    return Post(
+        date=datetime.datetime.strptime(
+            row['Post.date'],&quot;%Y-%m-%d %H:%M:%S&quot;),
+        title=row['Post.title'],
+        rst_text=row['Post.rst_text'],
+        tags=ast.literal_eval(row['Post.tags']) )
+</pre>
+<p>An iterator which fetches blogs</p>
+<pre class="literal-block">
+def blog_iter2( source ):
+
+    rdr= csv.DictReader( source )
+    assert set(rdr.fieldnames) == set(['Blog.title','Post.date','Post.title', 'Post.tags','Post.rst_text'])
+    row= next(rdr)
+    blog= Blog(row['Blog.title'])
+    post= post_builder5( row )
+    blog.append( post )
+
+    print( &quot;Wrong:&quot;, make_obj(row,Post).as_dict() )
+
+    for row in rdr:
+        if row['Blog.title'] != blog.title:
+            yield blog
+            blog= Blog( row['Blog.title'] )
+        post= post_builder5( row )
+        blog.append( post )
+    yield blog
+
+if __name__==&quot;__main__&quot;:
+    with open(&quot;p2_c09_blog5.csv&quot;,&quot;r&quot;,newline=&quot;&quot;) as source:
+        for b in blog_iter2( source ):
+            print(b.title, b.as_dict())
+</pre>
+</div>
+</div>
+<div class="section" id="legacy-files">
+<h1><a class="toc-backref" href="#id25">6&nbsp;&nbsp;&nbsp;Legacy Files</a></h1>
+<p>We'll look at pure text and mixed text w/ packed decimal.</p>
+<div class="section" id="example-1-dumping-all-text">
+<h2><a class="toc-backref" href="#id26">6.1&nbsp;&nbsp;&nbsp;Example 1 dumping all text</a></h2>
+<p>Metadata for Gamestat objects.
+attribute name, start, size, and an output format specification.</p>
+<pre class="literal-block">
+import types
+
+metadata_txt= types.SimpleNamespace(
+    fields = [
+        ('player', 0, 20, '{:&lt;{size}s}'),
+        ('bet', 20, 20, '{:&lt;{size}s}'),
+        ('rounds', 40, 5, '{:&gt;{size}d}'),
+        ('final', 45, 8, '{:&gt;{size}d}'),
+    ],
+    reclen= 53,
+)
+</pre>
+<p>A function to transform a namedtuple into a fixed-layout record.</p>
+<pre class="literal-block">
+def gamestat_record( gamestat, metadata ):
+    record= [
+        format_spec.format( getattr(gamestat,name),
+                size=size, )
+            for name, start, size, format_spec in metadata.fields ]
+    text= &quot;&quot;.join(record)
+    assert len(text) == metadata.reclen, &quot;Got {0} != Should Be {1}&quot;.format(len(text), metadata.reclen)
+    return text
+</pre>
+<p>An application of the game statistics definitions.</p>
+<pre class="literal-block">
+with open(&quot;p2_c09_blackjack.file&quot;,&quot;w&quot;,encoding='cp037',newline=&quot;&quot;) as target:
+    for gamestat in gamestat_iter( Player_Strategy_1, Martingale_Bet ):
+        record= gamestat_record(gamestat, metadata_txt)
+        target.write( record )
+</pre>
+</div>
+<div class="section" id="example-2-loading-all-text">
+<h2><a class="toc-backref" href="#id27">6.2&nbsp;&nbsp;&nbsp;Example 2 loading all text</a></h2>
+<p>Loading data from the simulator. Part 1 -- Physical decomposition into rows.</p>
+<pre class="literal-block">
+def line_iter( aFile, metadata ):
+    recBytes= aFile.read(metadata.reclen)
+    while recBytes:
+        yield recBytes
+        recBytes= aFile.read(metadata.reclen)
+</pre>
+<p>Part 2 -- decomposition into named fields.</p>
+<pre class="literal-block">
+def record_iter( aFile, metadata ):
+    for line in line_iter( aFile, metadata):
+        record = dict(
+            (name, line[start:start+size].strip())
+            for name, start, size, format_spec in metadata.fields )
+        yield record
+</pre>
+<p>Part 3 -- using the field to dictionary parser.</p>
+<pre class="literal-block">
+with open(&quot;p2_c09_blackjack.file&quot;,&quot;r&quot;,encoding='cp037',newline=&quot;&quot;) as source:
+    for record in record_iter(source, metadata_txt):
+        print(record)
+</pre>
+</div>
+<div class="section" id="example-3-usage-display-and-usage-comp3">
+<h2><a class="toc-backref" href="#id28">6.3&nbsp;&nbsp;&nbsp;Example 3 -- USAGE DISPLAY and USAGE COMP3</a></h2>
+<p>Using COMP-3 expands the problem into three kinds of data</p>
+<ul class="simple">
+<li>Alpha and Alphanumeric encoded in EBCDIC or ASCII</li>
+<li>Numeric, USAGE DISPLAY, as a string of digits encoded in EBCDIC or ASCII</li>
+<li>Numeric, USAGE COMP-3, as string of bytes encoded as packed decimal.</li>
+</ul>
+<p>All of which require the decimal module's Decimal class definition.</p>
+<pre class="literal-block">
+from decimal import Decimal
+</pre>
+<p>As a convenience, we map 'ebcdic' to 'cp037' by adding a new lookup function.</p>
+<pre class="literal-block">
+import codecs
+def ebcdic_lookup( name, fallback=codecs.lookup ):
+    if name == 'ebcdic':
+        return codecs.lookup( 'cp037' )
+    return fallback( name )
+
+codecs.register( ebcdic_lookup )
+</pre>
+<p>Alphanumeric USAGE DISPLAY conversion.
+The COBOL program stored text.</p>
+<pre class="literal-block">
+def alpha_decode( data, metadata, field_metadata ):
+    &quot;&quot;&quot;Decode alpha or alphanumeric data.
+    metadata has encoding.
+    field_metadata is not used.
+
+    &gt;&gt;&gt; import types
+    &gt;&gt;&gt; meta= types.SimpleNamespace( encoding='ebcdic' )
+    &gt;&gt;&gt; meta.decode= codecs.getdecoder( meta.encoding )
+    &gt;&gt;&gt; field_meta = types.SimpleNamespace() # Not used
+    &gt;&gt;&gt; data = bytes( [0xf9, 0xf8, 0xf7, 0xf6, 0xf5, 0x60] )
+    &gt;&gt;&gt; alpha_decode( data, meta, field_meta )
+    '98765-'
+
+    &quot;&quot;&quot;
+    text, _= metadata.decode( data )
+    return text
+</pre>
+<p>Numeric USAGE DISPLAY trailing sign conversion.
+The COBOL program stored text version of the number.</p>
+<pre class="literal-block">
+def display_decode( data, metadata, field_metadata ):
+    &quot;&quot;&quot;Decode USAGE DISPLAY numeric data.
+    metadata has encoding.
+    field_metadata has attributes name, start, size, format, precision, usage.
+
+    &gt;&gt;&gt; import types
+    &gt;&gt;&gt; meta= types.SimpleNamespace( encoding='ebcdic' )
+    &gt;&gt;&gt; meta.decode= codecs.getdecoder( meta.encoding )
+    &gt;&gt;&gt; field_meta = types.SimpleNamespace( precision=2 )
+    &gt;&gt;&gt; data = bytes( [0xf9, 0xf8, 0xf7, 0xf6, 0xf5, 0x60] )
+    &gt;&gt;&gt; display_decode( data, meta, field_meta )
+    Decimal('-987.65')
+
+    &quot;&quot;&quot;
+    text, _= metadata.decode( data )
+    precision= field_metadata.precision
+    text, sign = text[:-1], text[-1]
+    return Decimal(sign + text[:-precision] + '.' + text[-precision:])
+</pre>
+<p>Numeric USAGE COMP-3 conversion.
+The COBOL program encoded the number into packed decimal representation.</p>
+<pre class="literal-block">
+def comp3_decode( data, metadata, field_metadata ):
+    &quot;&quot;&quot;Decode USAGE COMP-3 data.
+    metadata has encoding, which is not used.
+    field_metadata has attributes name, start, size, format, precision, usage.
+
+    Note that the size is the overall resulting string of bytes.
+    NOT the number of digits involved.
+
+    &gt;&gt;&gt; import types
+    &gt;&gt;&gt; meta= types.SimpleNamespace() # Not used
+    &gt;&gt;&gt; field_meta = types.SimpleNamespace( precision=2 )
+    &gt;&gt;&gt; data = bytes( (0x98, 0x76, 0x5d) )
+    &gt;&gt;&gt; comp3_decode( data, meta, field_meta )
+    Decimal('-987.65')
+
+    &quot;&quot;&quot;
+    precision= field_metadata.precision
+    text= [ ]
+    for b in data[:-1]:
+        hi, lo = divmod( b, 16 )
+        text.append( str(hi) )
+        text.append( str(lo) )
+    digit, sign_byte = divmod( data[-1], 16 )
+    text.append( str(digit) )
+    text= &quot;&quot;.join(text)
+    sign= '-' if sign_byte in (0x0b, 0x0d) else '+'
+    return Decimal(sign + text[:-precision] + '.' + text[-precision:])
+</pre>
+<p>Encoder for simple alpha or alphanumeric.</p>
+<pre class="literal-block">
+def alpha_encode( data, metadata, field_metadata ):
+    &quot;&quot;&quot;Encode alpha or alphanumeric data.
+    metadata has encoding.
+    field_metadata is not used.
+
+    &gt;&gt;&gt; import types
+    &gt;&gt;&gt; meta= types.SimpleNamespace( encoding='ebcdic' )
+    &gt;&gt;&gt; meta.encode= codecs.getencoder( meta.encoding )
+    &gt;&gt;&gt; field_meta = types.SimpleNamespace( size=6 )
+    &gt;&gt;&gt; data = '98765-'
+    &gt;&gt;&gt; expected= bytes( [0xf9, 0xf8, 0xf7, 0xf6, 0xf5, 0x60] )
+    &gt;&gt;&gt; actual= alpha_encode( data, meta, field_meta )
+    &gt;&gt;&gt; repr(actual)
+    &quot;b'\\\\xf9\\\\xf8\\\\xf7\\\\xf6\\\\xf5`'&quot;
+    &gt;&gt;&gt; actual == expected
+    True
+
+    &quot;&quot;&quot;
+    bytes, _= metadata.encode(
+        &quot;{:&lt;{size}s}&quot;.format(data, size=field_metadata.size) )
+    return bytes
+</pre>
+<p>Encoder for numeric USAGE DISPLAY, trailing sign.</p>
+<pre class="literal-block">
+def display_encode( data, metadata, field_metadata ):
+    &quot;&quot;&quot;Encode numeric USAGE DISPLAY trailing sign.
+    metadata has encoding.
+    field_metadata has attributes name, start, size, format, precision, usage.
+
+    &gt;&gt;&gt; import types, decimal
+    &gt;&gt;&gt; meta= types.SimpleNamespace( encoding='ebcdic' )
+    &gt;&gt;&gt; meta.encode= codecs.getencoder( meta.encoding )
+    &gt;&gt;&gt; field_meta = types.SimpleNamespace( size=6, precision=2 )
+    &gt;&gt;&gt; expected= bytes( [0xf9, 0xf8, 0xf7, 0xf6, 0xf5, 0x60] )
+    &gt;&gt;&gt; actual= display_encode( Decimal('-987.65'), meta, field_meta )
+    &gt;&gt;&gt; repr(actual)
+    &quot;b'\\\\xf9\\\\xf8\\\\xf7\\\\xf6\\\\xf5`'&quot;
+    &gt;&gt;&gt; actual == expected
+    True
+
+    &quot;&quot;&quot;
+    text= &quot;{0:0&gt;{size}d}{1}&quot;.format(
+        abs(int(data*Decimal(10)**field_metadata.precision)),
+        '-' if data &lt; 0 else '+',
+        size=field_metadata.size-1 )
+    bytes, _= metadata.encode( text )
+    return bytes
+</pre>
+<p>Encoder for numeric USAGE COMP-3.</p>
+<pre class="literal-block">
+def comp3_encode( data, metadata, field_metadata ):
+    &quot;&quot;&quot;Encode numeric USAGE COMP-3.
+    metadata has encoding which is not used.
+    field_metadata has attributes name, start, size, format, precision, usage.
+
+    Note that the size is the overall resulting string of bytes.
+    NOT the number of digits involved.
+    This has 2 digits per byte + a digit and a sign.
+
+    &gt;&gt;&gt; import types
+    &gt;&gt;&gt; meta= types.SimpleNamespace( encoding='ebcdic' )
+    &gt;&gt;&gt; field_meta = types.SimpleNamespace( size=3, precision=2 )
+    &gt;&gt;&gt; expected= bytes( (0x98, 0x76, 0x5d) )
+    &gt;&gt;&gt; actual= comp3_encode( Decimal('-987.65'), meta, field_meta )
+    &gt;&gt;&gt; repr(actual)
+    &quot;b'\\\\x98v]'&quot;
+    &gt;&gt;&gt; actual == expected
+    True
+
+    &quot;&quot;&quot;
+    value= abs(int(data*Decimal(10)**field_metadata.precision))
+    digits = [ 0x0d if data &lt; 0 else 0x00 ] # Trailing sign.
+    nDigits= field_metadata.size*2-1
+    for i in range(nDigits):
+        digits = [value%10]+digits
+        value //= 10
+    b = bytes( (hi*16+lo for hi, lo in list(zip(digits[::2],digits[1::2]))) )
+    return b
+</pre>
+<p>Our expanded metadata to include more refined field-level definitions.
+First, we'll define some encode-decode pairs.</p>
+<pre class="literal-block">
+alphanumeric = ( alpha_encode, alpha_decode )
+usage_display = ( display_encode, display_decode )
+usage_comp3 = ( comp3_encode, comp3_decode )
+</pre>
+<p>Then we'll define a more sophisticated metadata that includes the
+precision and a reference to the relevant encode-decode pair.</p>
+<p>The overall metadata encoding name is transformed into an
+encode and decode function to save lookups on a field-by-field basis.</p>
+<pre class="literal-block">
+import collections
+Field= collections.namedtuple( &quot;Field&quot;,
+    &quot;name, start, size, precision, usage&quot; )
+NS= types.SimpleNamespace
+metadata_comp3= NS(
+    fields = [
+        Field('player', 0, 20, None, alphanumeric),
+        Field('bet', 20, 20, None, alphanumeric),
+        Field('rounds', 40, 8, 2, usage_display),
+        Field('final', 48, 8, 2, usage_comp3),
+    ],
+    reclen= 56,
+    encoding= 'ebcdic', # for display fields and alphanumeric fields.
+)
+metadata_comp3.decode= codecs.getdecoder( metadata_comp3.encoding )
+metadata_comp3.encode= codecs.getencoder( metadata_comp3.encoding )
+</pre>
+<p>A function to transform a namedtuple into a fixed-layout record.</p>
+<pre class="literal-block">
+def gamestat_record_comp3( gamestat, metadata ):
+    record= [
+        field.usage[0](getattr(gamestat,field.name),metadata,field)
+        for field in metadata.fields ]
+    text= b&quot;&quot;.join(record)
+    assert len(text) == metadata.reclen, &quot;Got {0} != Should Be {1}&quot;.format(len(text), metadata.reclen)
+    return text
+</pre>
+<p>Example encoding app.</p>
+<pre class="literal-block">
+with open(&quot;p2_c09_blackjack_comp3.file&quot;,&quot;wb&quot;) as target:
+    for gamestat in gamestat_iter( Player_Strategy_1, Martingale_Bet ):
+        record= gamestat_record_comp3(gamestat, metadata_comp3)
+        target.write( record )
+</pre>
+<p>Example decoding iterator using more sophisticated metadata.</p>
+<pre class="literal-block">
+def record2_iter( aFile, metadata ):
+    for line in line_iter( aFile, metadata):
+        field_data = ( (field, line[field.start:field.start+field.size])
+            for field in metadata.fields )
+        record = dict(
+            (field.name, field.usage[1](data, metadata, field))
+            for field, data in field_data )
+        yield record
+
+with open(&quot;p2_c09_blackjack_comp3.file&quot;,&quot;rb&quot;) as source:
+    for record in record2_iter( source, metadata_comp3 ):
+        print( record )
+</pre>
+</div>
+</div>
+<div class="section" id="xml">
+<h1><a class="toc-backref" href="#id29">7&nbsp;&nbsp;&nbsp;XML</a></h1>
+<div class="section" id="example-1-xml-output">
+<h2><a class="toc-backref" href="#id30">7.1&nbsp;&nbsp;&nbsp;Example 1: XML output</a></h2>
+<pre class="literal-block">
+class Blog_X( Blog ):
+    def xml( self ):
+        children= &quot;\n&quot;.join( c.xml() for c in self.entries )
+        return &quot;&quot;&quot;\
+&lt;blog&gt;&lt;title&gt;{0.title}&lt;/title&gt;
+&lt;entries&gt;
+{1}
+&lt;entries&gt;&lt;/blog&gt;&quot;&quot;&quot;.format(self,children)
+
+class Post_X( Post ):
+    def xml( self ):
+        tags= &quot;&quot;.join( &quot;&lt;tag&gt;{0}&lt;/tag&gt;&quot;.format(t) for t in self.tags )
+        return &quot;&quot;&quot;\
+&lt;entry&gt;
+    &lt;title&gt;{0.title}&lt;/title&gt;
+    &lt;date&gt;{0.date}&lt;/date&gt;
+    &lt;tags&gt;{1}&lt;/tags&gt;
+    &lt;text&gt;{0.rst_text}&lt;/text&gt;
+&lt;/entry&gt;&quot;&quot;&quot;.format(self,tags)
+
+travel4 = Blog_X( &quot;Travel&quot; )
+travel4.append(
+    Post_X( date=datetime.datetime(2013,11,14,17,25),
+        title=&quot;Hard Aground&quot;,
+        rst_text=&quot;&quot;&quot;Some embarrassing revelation. Including ☹ and ⚓&quot;&quot;&quot;,
+        tags=(&quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#ICW&quot;),
+        )
+)
+travel4.append(
+    Post_X( date=datetime.datetime(2013,11,18,15,30),
+        title=&quot;Anchor Follies&quot;,
+        rst_text=&quot;&quot;&quot;Some witty epigram.&quot;&quot;&quot;,
+        tags=(&quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#Mistakes&quot;),
+        )
+)
+
+if __name__==&quot;__main__&quot;:
+    print( travel4.xml() )
+</pre>
+</div>
+<div class="section" id="example-1-element-tree-output">
+<h2><a class="toc-backref" href="#id31">7.2&nbsp;&nbsp;&nbsp;Example 1: element Tree output</a></h2>
+<pre class="literal-block">
+import xml.etree.ElementTree as XML
+
+class Blog_E( Blog ):
+    def xml( self ):
+        blog= XML.Element( &quot;blog&quot; )
+        title= XML.SubElement( blog, &quot;title&quot; )
+        title.text= self.title
+        title.tail= &quot;\n&quot;
+        entities= XML.SubElement( blog, &quot;entries&quot; )
+        entities.extend( c.xml() for c in self.entries )
+        blog.tail= &quot;\n&quot;
+        return blog
+
+class Post_E( Post ):
+    def xml( self ):
+        post= XML.Element( &quot;entry&quot; )
+        title= XML.SubElement( post, &quot;title&quot; )
+        title.text= self.title
+        date= XML.SubElement( post, &quot;date&quot; )
+        date.text= str(self.date)
+        tags= XML.SubElement( post, &quot;tags&quot; )
+        for t in self.tags:
+            tag= XML.SubElement( tags, &quot;tag&quot; )
+            tag.text= t
+        text= XML.SubElement( post, &quot;rst_text&quot; )
+        text.text= self.rst_text
+        post.tail= &quot;\n&quot;
+        return post
+
+travel5 = Blog_E( &quot;Travel&quot; )
+travel5.append(
+    Post_E( date=datetime.datetime(2013,11,14,17,25),
+        title=&quot;Hard Aground&quot;,
+        rst_text=&quot;&quot;&quot;Some embarrassing revelation. Including ☹ and ⚓&quot;&quot;&quot;,
+        tags=(&quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#ICW&quot;),
+        )
+)
+travel5.append(
+    Post_E( date=datetime.datetime(2013,11,18,15,30),
+        title=&quot;Anchor Follies&quot;,
+        rst_text=&quot;&quot;&quot;Some witty epigram. Including &lt; &amp; &gt; characters.&quot;&quot;&quot;,
+        tags=(&quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#Mistakes&quot;),
+        )
+)
+
+if __name__==&quot;__main__&quot;:
+    tree= XML.ElementTree( travel5.xml() )
+    text= XML.tostring(tree.getroot())
+    print( text )
+
+import ast
+if __name__==&quot;__main__&quot;:
+    doc= XML.parse( io.StringIO(text.decode('utf-8')) )
+    xml_blog= doc.getroot()
+    blog= Blog( xml_blog.findtext('title') )
+    for xml_post in xml_blog.findall('entries/entry'):
+        tags= [t.text for t in xml_post.findall( 'tags/tag' )]
+        post= Post(
+            date= datetime.datetime.strptime(
+                xml_post.findtext('date'), &quot;%Y-%m-%d %H:%M:%S&quot;),
+            title=xml_post.findtext('title'),
+            tags=tags,
+            rst_text= xml_post.findtext('rst_text')
+         )
+        blog.append( post )
+    render( blog )
+</pre>
+</div>
+</div>
+</div>
+</body>
+</html>

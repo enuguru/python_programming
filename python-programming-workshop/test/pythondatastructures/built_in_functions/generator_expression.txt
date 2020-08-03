@@ -1,0 +1,26 @@
+
+
+Expression
+For loop
+
+Sometimes in Python programs we see loop-like statements. These are not exactly loops. 
+They are generator expressions. They return an iterator. Here we multiply each element 
+in the list by 2 with a generator expression.
+
+ListCopyright
+
+The expression "A" for "B" in "C" uses the generator expression syntax form. The first 
+part, "A," is the result expression. We can use any expression we want. The second, 
+"B," is the element we are acting upon within the collection "C."
+
+Tip: Generator expressions can be nested. This becomes hard to read. I discourage 
+writing excessively complex code.
+
+Python program that uses generator expression
+
+# Example integers.
+items = [100, 10, 1]
+
+# Use generator expression.
+multiplied = list(x * 2 for x in items)
+print(multiplied)

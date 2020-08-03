@@ -1,0 +1,4 @@
+
+
+Zip. With zip we can act upon two lists at once. Zip() is a built-in function. We pass it two iterables, 
+like lists, and it enumerates them together.

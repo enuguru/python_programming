@@ -1,0 +1,13 @@
+
+
+there is no function overloading in python
+you can only have default values for a function
+
+there is no operator overloading in python, we have
+dynamic typing any way. so what is the need
+
+the variables in a class can be defined on the fly
+
+there is multiple inheritance in python, unlike in java
+but c++ has multiple inheritance anyway
+

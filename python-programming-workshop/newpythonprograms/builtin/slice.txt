@@ -1,0 +1,8 @@
+
+
+Slice
+
+A slice extracts elements, based on a start and stop. We take slices on many types in Python. 
+
+We specify an optional first index, an optional last index, and an optional step. 
+When we omit a value, a default is used.

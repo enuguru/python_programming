@@ -1,0 +1,685 @@
+#!/usr/bin/env python3
+
+# Chapter 2 -- Basic Special Methods
+# ------------------------------------
+
+# ..  sectnum::
+#
+# ..  contents::
+#
+
+# Immutable Objects
+# ==============================
+
+# Card Class with anomalies
+# ############################
+
+# Definition of a simple class hierarchy for immutable objects
+# without a formal equality test or hash function. This will
+# somewhat work as expected. However, there will also be anomalies.
+# ::
+
+class Card:
+    insure= False
+    def __init__( self, rank, suit, hard, soft ):
+        self.rank= rank
+        self.suit= suit
+        self.hard= hard
+        self.soft= soft
+    def __repr__( self ):
+        return "{__class__.__name__}(suit={suit!r}, rank={rank!r})".format(__class__=self.__class__, **self.__dict__)
+    def __str__( self ):
+        return "{rank}{suit}".format(**self.__dict__)
+
+class NumberCard( Card ):
+    def  __init__( self, rank, suit ):
+        super().__init__( str(rank), suit, rank, rank )
+
+class AceCard( Card ):
+    def  __init__( self, rank, suit ):
+        super().__init__( "A", suit, 1, 11 )
+
+class FaceCard( Card ):
+    def  __init__( self, rank, suit ):
+        super().__init__( {11: 'J', 12: 'Q', 13: 'K' }[rank], suit, 10, 10 )
+
+Suits = '♣', '♦', '♥', '♠'
+
+# Some Use cases for two seemingly equal cards.
+# ::
+
+c1 = AceCard( 1, '♣' )
+c2 = AceCard( 1, '♣' )
+
+print( id(c1), id(c2) )
+print( c1 is c2 )
+print( hash(c1), hash(c2) )
+print( c1 == c2 )
+print( set( [c1, c2] ) )
+
+# Better Card Class
+# ############################
+
+# Definition of a more sophisticated class hierarchy
+# with a formal equality and hash test. This will create
+# properly immutable objects. There will be no anomalies with
+# seemingly equal objects.
+# ::
+
+class Card2:
+    insure= False
+    def __init__( self, rank, suit, hard, soft ):
+        self.rank= rank
+        self.suit= suit
+        self.hard= hard
+        self.soft= soft
+    def __repr__( self ):
+        return "{__class__.__name__}(suit={suit!r}, rank={rank!r})".format(__class__=self.__class__, **self.__dict__)
+    def __str__( self ):
+        return "{rank}{suit}".format(**self.__dict__)
+    def __eq__( self, other ):
+        return self.suit == other.suit and self.rank == other.rank
+        # and self.hard == other.hard and self.soft == other.soft
+    def __hash__( self ):
+        return hash(self.suit) ^ hash(self.rank)
+    def __format__( self, format_spec ):
+        if format_spec == "":
+            return str(self)
+        rs= format_spec.replace("%r",self.rank).replace("%s",self.suit)
+        rs= rs.replace("%%","%")
+        return rs
+    def __bytes__( self ):
+        class_code= self.__class__.__name__[0]
+        rank_number_str = {'A': '1', 'J': '11', 'Q': '12', 'K': '13'}.get( self.rank, self.rank )
+        string= "("+" ".join([class_code, rank_number_str, self.suit,] ) + ")"
+        return bytes(string,encoding="utf8")
+
+class NumberCard2( Card2 ):
+    def  __init__( self, rank, suit ):
+        super().__init__( str(rank), suit, rank, rank )
+class AceCard2( Card2 ):
+    insure= True
+    def  __init__( self, rank, suit ):
+        super().__init__( "A", suit, 1, 11 )
+class FaceCard2( Card2 ):
+    def  __init__( self, rank, suit ):
+        super().__init__( {11: 'J', 12: 'Q', 13: 'K' }[rank], suit, 10, 10 )
+
+# Some Use cases for two seemingly equal cards.
+# ::
+
+c1 = AceCard2( 1, '♣' )
+c2 = AceCard2( 1, '♣' )
+
+print( id(c1), id(c2) )
+print( c1 is c2 )
+print( hash(c1), hash(c2) )
+print( c1 == c2 )
+print( set( [c1, c2] ) )
+
+# Another Poorly-Designed Card Class
+# ##################################
+
+# Definition of a weird class hierarchy
+# with a formal equality but no hash test. This will create
+# properly mutable objects that can't be put into sets.
+# ::
+
+class Card3:
+    insure= False
+    def __init__( self, rank, suit, hard, soft ):
+        self.rank= rank
+        self.suit= suit
+        self.hard= hard
+        self.soft= soft
+    def __repr__( self ):
+        return "{__class__.__name__}(suit={suit!r}, rank={rank!r})".format(__class__=self.__class__, **self.__dict__)
+    def __str__( self ):
+        return "{rank}{suit}".format(**self.__dict__)
+    def __eq__( self, other ):
+        return self.suit == other.suit and self.rank == other.rank
+        # and self.hard == other.hard and self.soft == other.soft
+    __hash__ = None
+class AceCard3( Card3 ):
+    insure= True
+    def  __init__( self, rank, suit ):
+        super().__init__( "A", suit, 1, 11 )
+
+class NumberCard3( Card3 ):
+    def  __init__( self, rank, suit ):
+        super().__init__( str(rank), suit, rank, rank )
+class FaceCard3( Card3 ):
+    def  __init__( self, rank, suit ):
+        super().__init__( {11: 'J', 12: 'Q', 13: 'K' }[rank], suit, 10, 10 )
+
+# Some Use cases for two seemingly equal cards.
+# ::
+
+c1 = AceCard3( 1, '♣' )
+c2 = AceCard3( 1, '♣' )
+
+print( id(c1), id(c2) )
+print( c1 is c2 )
+try:
+    print( hash(c1), hash(c2) )
+except TypeError as e:
+    print( e )
+print( c1 == c2 )
+try:
+    print( set( [c1, c2] ) )
+except TypeError as e:
+    print( e )
+
+# Better Mutable Object Example
+# ###############################
+
+# Definition of a simple class hierarchy
+# with a formal equality and hash test.
+# ::
+
+class Hand:
+    def __init__( self, dealer_card, *cards ):
+        self.dealer_card= dealer_card
+        self.cards= list(cards)
+    def __str__( self ):
+        return ", ".join( map(str, self.cards) )
+    def __repr__( self ):
+        return "{__class__.__name__}({dealer_card!r}, {_cards_str})".format(
+        __class__=self.__class__,
+        _cards_str=", ".join( map(repr, self.cards) ),
+        **self.__dict__ )
+    def __format__( self, format_specification ):
+        if format_specification == "":
+            return str(self)
+        return ", ".join( "{0:{fs}}".format(c, fs=format_specification) for c in self.cards )
+    def __eq__( self, other ):
+        if isinstance(other,int):
+            return self.total() == other
+        try:
+            return self.cards == other.cards and self.dealer_card == other.dealer_card
+        except AttributeError:
+            return NotImplemented
+    def __lt__( self, other ):
+        if isinstance(other,int):
+            return self.total() < other
+        try:
+            return self.total() < other.total()
+        except AttributeError:
+            return NotImplemented
+    def __le__( self, other ):
+        if isinstance(other,int):
+            return self.total() <= other
+        try:
+            return self.total() <= other.total()
+        except AttributeError:
+            return NotImplemented
+    __hash__ = None
+    def total( self ):
+        delta_soft = max( c.soft-c.hard for c in self.cards )
+        hard = sum( c.hard for c in self.cards )
+        if hard+delta_soft <= 21: return hard+delta_soft
+        return hard
+
+import sys
+class FrozenHand( Hand ):
+    def __init__( self, *args, **kw ):
+        if len(args) == 1 and isinstance(args[0], Hand):
+            # Clone a hand
+            other= args[0]
+            self.dealer_card= other.dealer_card
+            self.cards= other.cards
+        else:
+            # Build a fresh hand
+            super().__init__( *args, **kw )
+    def __hash__( self ):
+        h= 0
+        for c in self.cards:
+            h = (h + hash(c)) % sys.hash_info.modulus
+        return h
+
+def card( rank, suit ):
+    if rank == 1: return AceCard2( rank, suit )
+    elif 2 <= rank < 11: return NumberCard2( rank, suit )
+    elif 11 <= rank < 14: return FaceCard2( rank, suit )
+    else:
+        raise Exception( "Rank out of range" )
+
+import random
+
+class Deck( list ):
+    def __init__( self ):
+        super().__init__( card(r+1,s) for r in range(13) for s in Suits )
+        random.shuffle( self )
+
+from collections import defaultdict
+stats = defaultdict(int)
+
+d= Deck()
+h = Hand( d.pop(), d.pop(), d.pop() )
+h_f = FrozenHand( h )
+stats[h_f] += 1
+print( stats )
+
+# __bool__
+# ====================
+
+# Not much to show here. The default works as expected.
+
+# __format__
+# =====================
+#
+# Really, this belongs with __str__() and __repr__()
+#
+
+# Examples of how __format__ gets invoked
+# ::
+
+c = card( 2, '♠' )
+print( "function", format( c ) )
+print( "Card plain {0}".format(c) )
+print( "Card !r {0!r}".format(c) )
+print( "Card !s {0!s}".format(c) )
+
+# Our own unique formatting language uses "r" and "s" for rank and suit.
+# ::
+
+print( "Card :%s {0:%s}".format(c) )
+print( "Card :%r {0:%r}".format(c) )
+print( "Card :%r of %s {0:%r of %s}".format(c) )
+print( "Card :%s%r {0:%s%r}".format(c) )
+
+# Extra literals we leave alone.
+# ::
+
+print( "Card nested {0:{fill}{align}16s}".format(c, fill="*", align="<") )
+
+# RE to parse the specification.
+# ::
+
+import re
+spec_pat = re.compile(
+r"(?P<fill_align>.?[\<\>=\^])?"
+"(?P<sign>[-+ ])?"
+"(?P<alt>#)?"
+"(?P<padding>0)?"
+"(?P<width>\d*)"
+"(?P<comma>,)?"
+"(?P<precision>\.\d*)?"
+"(?P<type>[bcdeEfFgGnosxX%])?" )
+
+for spec in ("<30", ">30", "^30", "*^30", "+f", "-f", " f", "d", "x", "o", "b",
+    "#x", "#o", "#b", ",", ".2%", "06.4f"):
+    print( spec, spec_pat.match(spec).groupdict() )
+
+# Nested {}'s
+# ::
+
+stats = defaultdict(int)
+
+d= Deck()
+h1 = FrozenHand( d.pop(), d.pop(), d.pop() )
+stats[h1] += 1
+h2 = FrozenHand( d.pop(), d.pop(), d.pop() )
+stats[h2] += 1
+
+width=6
+for hand,count in stats.items():
+    print( "{hand:%r%s} {count:{width}d}".format(hand=hand,count=count,width=width) )
+
+# __bytes__
+# =====================
+#
+#
+
+# Export card as a bytes
+#::
+
+d= Deck()
+c= d.pop()
+b= bytes(c)
+print( b )
+
+def card_from_bytes( buffer ):
+    string = buffer.decode("utf8")
+    assert string[0 ]=="(" and string[-1] == ")"
+    code, rank_number, suit = string[1:-1].split()
+    class_ = { 'A': AceCard, 'N': NumberCard, 'F': FaceCard }[code]
+    return class_( int(rank_number), suit )
+
+print( card_from_bytes(b) )
+
+# Comparison
+# ====================
+
+# The object resolution for comparison special methods.
+# A partial class to see what happens.
+# ::
+
+class BlackJackCard_p:
+    def __init__( self, rank, suit ):
+        self.rank= rank
+        self.suit= suit
+    def __lt__( self, other ):
+        print( "Compare {0} < {1}".format( self, other ) )
+        return self.rank < other.rank
+    def __str__( self ):
+        return "{rank}{suit}".format( **self.__dict__ )
+
+two = BlackJackCard_p( 2, '♠' )
+three = BlackJackCard_p( 3, '♠' )
+print( "{0} <  {1} :: {2!r}".format( two, three, two < three ) )
+print( "{0} >  {1} :: {2!r}".format( two, three, two > three ) )
+print( "{0} == {1} :: {2!r}".format( two, three, two == three ) )
+try:
+    print( "{0} <= {1} :: {2!r}".format( two, three, two <= three ) )
+except TypeError:
+    pass
+
+two_c = BlackJackCard_p( 2, '♣' )
+print( "{0} == {1} :: {2!r}".format( two, two_c, two == two_c ) )
+
+# A more complete class to show same-class comparisons.
+# ::
+
+class BlackJackCard:
+    def __init__( self, rank, suit, hard, soft ):
+        self.rank= rank
+        self.suit= suit
+        self.hard= hard
+        self.soft= soft
+    def __lt__( self, other ):
+        if not isinstance( other, BlackJackCard ):
+            return NotImplemented
+        return self.rank < other.rank
+    def __le__( self, other ):
+        try:
+            return self.rank <= other.rank
+        except AttributeError:
+            return NotImplemented
+    def __gt__( self, other ):
+        if not isinstance( other, BlackJackCard ):
+            return NotImplemented
+        return self.rank > other.rank
+    def __ge__( self, other ):
+        if not isinstance( other, BlackJackCard ):
+            return NotImplemented
+        return self.rank >= other.rank
+    def __eq__( self, other ):
+        if not isinstance( other, BlackJackCard ):
+            return NotImplemented
+        return self.rank == other.rank and self.suit == other.suit
+    def __ne__( self, other ):
+        if not isinstance( other, BlackJackCard ):
+            return NotImplemented
+        return self.rank != other.rank and self.suit == other.suit
+    def __str__( self ):
+        return "{rank}{suit}".format( **self.__dict__ )
+
+class Ace21Card( BlackJackCard ):
+    def __init__( self, rank, suit ):
+        super().__init__( 'A', suit, 1, 11 )
+
+class Face21Card( BlackJackCard ):
+    def __init__( self, rank, suit ):
+        super().__init__( {11:'J', 12:'Q', 13:'K'}[rank], suit, 10, 10 )
+
+class Number21Card( BlackJackCard ):
+    def __init__( self, rank, suit ):
+        super().__init__( str(rank), suit, rank, rank )
+
+def card21( rank, suit ):
+    if rank == 1: return Ace21Card( rank, suit )
+    elif 2 <= rank < 11: return Number21Card( rank, suit )
+    elif 11 <= rank < 14: return Face21Card( rank, suit )
+    else:
+        raise TypeError
+
+two = card21( 2, '♠' )
+three = card21( 3, '♠' )
+print( "{0} <  {1} :: {2!r}".format( two, three, two < three ) )
+print( "{0} >  {1} :: {2!r}".format( two, three, two > three ) )
+print( "{0} == {1} :: {2!r}".format( two, three, two == three ) )
+print( "{0} <= {1} :: {2!r}".format( two, three, two <= three ) )
+
+two_c = card21( 2, '♣' )
+print( "{0} == {1} :: {2!r}".format( two, two_c, two == two_c ) )
+
+# A mixed class comparison with int
+try:
+    print( "{0} <  {1} :: {2!r}".format( 2, three, 2 < three ) )
+except TypeError as e:
+    print( "Expected", e )
+
+# See ``Hand`` above.
+
+# Destruction and __del__()
+# ====================================
+
+# Noisy Exit
+# ::
+
+class Noisy:
+    def __del__( self ):
+        print( "Removing {0}".format(id(self)) )
+
+# Simple create and delete.
+# ::
+
+x= Noisy()
+del x
+
+# Shallow copy and multiple references.
+# ::
+
+ln = [ Noisy(), Noisy() ]
+ln2= ln[:]
+del ln
+del ln2
+
+# Circularity
+# ::
+
+class Parent:
+    def __init__( self, *children ):
+        self.children= list(children)
+        for child in self.children:
+            child.parent= self
+    def __del__( self ):
+        print( "Removing {__class__.__name__} {id:d}".format( __class__=self.__class__, id=id(self)) )
+
+class Child:
+    def __del__( self ):
+        print( "Removing {__class__.__name__} {id:d}".format( __class__=self.__class__, id=id(self)) )
+
+p = Parent( Child(), Child() )
+del p
+
+import gc
+gc.collect()
+print( gc.garbage )
+
+# No circularity via weak references.
+# ::
+
+import weakref
+class Parent2:
+    def __init__( self, *children ):
+        self.children= list(children)
+        for child in self.children:
+            child.parent= weakref.ref(self)
+    def __del__( self ):
+        print( "Removing {__class__.__name__} {id:d}".format( __class__=self.__class__, id=id(self)) )
+
+p = Parent2( Child(), Child() )
+del p
+
+# Immutable init and __new__()
+# ========================================
+
+# Doesn't work. Can't use this form of __init__ with immutable classes.
+# ::
+
+class Float_Fail( float ):
+    def __init__( self, value, unit ):
+        super().__init__( value )
+        self.unit = unit
+
+# This is how we can tweak an immutable object before the __init__ is invoked.
+# ::
+
+class Float_Units( float ):
+    def __new__( cls, value, unit ):
+       obj= super().__new__( cls, value )
+       obj.unit= unit
+       return obj
+
+# Metaclass and __new__()
+# ===================================
+
+# Example 1. Ordered Attributes
+# ::
+
+import collections
+
+class Ordered_Attributes(type):
+    @classmethod
+    def __prepare__(metacls, name, bases, **kwds):
+        return collections.OrderedDict()
+    def __new__(cls, name, bases, namespace, **kwds):
+        print( "Given", type(namespace) )
+        result = super().__new__(cls, name, bases, namespace)
+        print( "Result", type(result.__dict__) )
+        result._order = tuple(n for n in namespace if not n.startswith('__'))
+        return result
+
+class Order_Preserved( metaclass=Ordered_Attributes ):
+    pass
+
+class Something( Order_Preserved ):
+    this= 'text'
+    def z( self ):
+        return False
+    b= 'order is preserved'
+    a= 'more text'
+
+print( Something.__dict__, Something._order )
+
+# Example 2.  Unit Conversions
+# ::
+
+class Unit:
+    """Generic definition of a unit.
+    This unit is not the "standard" used for conversions.
+    This is converted to a standard or a standard is converted to this.
+
+    ::
+
+        class X( Unit ):
+            '''X full name'''
+            name= "x" # Abbreviation
+            factor= 123.45
+
+    Create a standard value from input in units of X.
+
+    ::
+
+        m_std= X.value( value )
+
+    Convert a standard value into units of X.
+
+    ::
+
+        m_x= X.convert( m_std )
+
+    Note that for Temperature, a simple "factor" isn't appropriate and the
+    :meth:`to_std` and :meth:`from_std` need to be overridden.
+
+    For all subclasses, the long version of the unit's name should
+    be the docstring.
+    """
+    factor= 1.0
+    standard= None # Reference to the StandardUnit
+    name= "" # Abbreviation of the unit's name.
+    @classmethod
+    def value( class_, value ):
+        if value is None: return None
+        return value/class_.factor
+    @classmethod
+    def convert( class_, value ):
+        if value is None: return None
+        return value*class_.factor
+
+class UnitMeta(type):
+    """Metaclass for Standard_Unit's to insert a self reference.
+    That way ``SomeStandardUnit.standard is SomeStandardUnit``.
+    """
+    def __new__(cls, name, bases, dict):
+        new_class= super().__new__(cls, name, bases, dict)
+        new_class.standard = new_class
+        return new_class
+
+class Standard_Unit( Unit, metaclass=UnitMeta ):
+    """The standard unit used for conversions.
+    Other units will convert to this.
+    This will convert to other units.
+
+    This is still a unit, but a conversion factor is not used.
+
+    For all subclasses, the long version of the unit's name should
+    be the docstring.
+    """
+#    name= "" # Abbreviation of the unit's name
+#    @classmethod
+#    def value( class_, value ):
+#        return value
+#    @classmethod
+#    def convert( class_, value ):
+#        return value
+    pass
+
+def convert( value, unit, *to ):
+    """Convert a value from one set of units to another.
+
+    :param value: A value, measured in the source unit.
+    :param unit: A subclass of :class:`Unit` describing value.
+    :param to: Subclasses of :class:`Unit`. If only a single
+        unit is supplied, then a single value is returned;
+        If multiple units are supplied, a tuple of values
+        is returned.
+    :return: value converted to the defined units.
+    """
+    std_value= unit.value( value )
+    if len(to) == 1:
+        converted= to[0].convert( std_value )
+    else:
+        converted= tuple( u.convert(std_value) for u in to )
+    return converted
+
+class INCH( Standard_Unit ):
+    """Inches"""
+    name= "in"
+
+class FOOT( Unit ):
+    """Feet"""
+    name= "ft"
+    standard= INCH
+    factor= 1/12
+
+class CENTIMETER( Unit ):
+    """Centimeters"""
+    name= "cm"
+    standard= INCH
+    factor= 2.54
+
+class METER( Unit ):
+    """Meters"""
+    name= "m"
+    standard= INCH
+    factor= .0254
+
+# >>> from p1_c02 import *
+# >>> x_std= INCH.value( 159.625 )
+# >>> FOOT.convert( x_std )
+# 13.302083333333332
+# >>> METER.convert( x_std )
+# 4.054475

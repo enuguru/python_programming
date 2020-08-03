@@ -1,0 +1,6 @@
+
+Problem
+You want to iterate over the items contained in more than one sequence at a time
+
+Solution
+To iterate over more than one sequence simultaneously, use the zip() function

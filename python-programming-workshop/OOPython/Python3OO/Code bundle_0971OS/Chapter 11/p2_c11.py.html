@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>Chapter 11 -- Object Storage via sqlite3</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7056 2011-06-17 10:50:48Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+/* example stylesheet for Docutils */
+
+/* :Author:    Günter Milde */
+/* :Copyright: © 2012 G. Milde */
+/* :License:   This stylesheet is placed in the public domain. */
+
+/* Syntax highlight rules for HTML documents generated with Docutils */
+/* using the ``--syntax-highlight=long`` option (new in v. 0.9). */
+
+/* This stylesheet implements Pygment's "default" style with less rules than */
+/* pygments-default using class hierarchies.                                 */
+/* Use it as example for "handcrafted" styles with only few rules.      */
+
+.code                              { background: #f8f8f8; }
+.code .comment                     { color: #008800; font-style: italic }
+.code .error                       { border: 1px solid #FF0000 }
+.code .generic.deleted             { color: #A00000 }
+.code .generic.emph                { font-style: italic }
+.code .generic.error               { color: #FF0000 }
+.code .generic.heading             { color: #000080; font-weight: bold }
+.code .generic.inserted            { color: #00A000 }
+.code .generic.output              { color: #808080 }
+.code .generic.prompt              { color: #000080; font-weight: bold }
+.code .generic.strong              { font-weight: bold }
+.code .generic.subheading          { color: #800080; font-weight: bold }
+.code .generic.traceback           { color: #0040D0 }
+.code .keyword                     { color: #AA22FF; font-weight: bold }
+.code .keyword.pseudo              { font-weight: normal }
+.code .literal.number              { color: #666666 }
+.code .literal.string              { color: #BB4444 }
+.code .literal.string.doc          { color: #BB4444; font-style: italic }
+.code .literal.string.escape       { color: #BB6622; font-weight: bold }
+.code .literal.string.interpol     { color: #BB6688; font-weight: bold }
+.code .literal.string.other        { color: #008000 }
+.code .literal.string.regex        { color: #BB6688 }
+.code .literal.string.symbol       { color: #B8860B }
+.code .name.attribute              { color: #BB4444 }
+.code .name.builtin                { color: #AA22FF }
+.code .name.class                  { color: #0000FF }
+.code .name.constant               { color: #880000 }
+.code .name.decorator              { color: #AA22FF }
+.code .name.entity                 { color: #999999; font-weight: bold }
+.code .name.exception              { color: #D2413A; font-weight: bold }
+.code .name.function               { color: #00A000 }
+.code .name.label                  { color: #A0A000 }
+.code .name.namespace              { color: #0000FF; font-weight: bold }
+.code .name.tag                    { color: #008000; font-weight: bold }
+.code .name.variable               { color: #B8860B }
+.code .operator                    { color: #666666 }
+.code .operator.word               { color: #AA22FF; font-weight: bold }
+
+</style>
+<style type="text/css">
+
+/* Page layout tweaks */
+div.document { width: 6in; }
+
+</style>
+</head>
+<body>
+<div class="document" id="chapter-11-object-storage-via-sqlite3">
+<h1 class="title">Chapter 11 -- Object Storage via sqlite3</h1>
+
+<!-- #!/usr/bin/env python3 -->
+<p>One issue here is that the microblog has no processing.
+The classes tend to be rather anemic.</p>
+<p>The upside is that it has all of the relevant relationships
+So it shows SQL key handling nicely.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#sql-basics" id="id1">1&nbsp;&nbsp;&nbsp;SQL Basics</a></li>
+<li><a class="reference internal" href="#acid" id="id2">2&nbsp;&nbsp;&nbsp;ACID</a></li>
+<li><a class="reference internal" href="#simple-sql" id="id3">3&nbsp;&nbsp;&nbsp;Simple SQL</a></li>
+<li><a class="reference internal" href="#naked-sql-query" id="id4">4&nbsp;&nbsp;&nbsp;Naked SQL Query</a></li>
+<li><a class="reference internal" href="#blob-mapping" id="id5">5&nbsp;&nbsp;&nbsp;BLOB Mapping</a></li>
+<li><a class="reference internal" href="#manual-mapping" id="id6">6&nbsp;&nbsp;&nbsp;Manual Mapping</a></li>
+<li><a class="reference internal" href="#sqlalchemy-mapping" id="id7">7&nbsp;&nbsp;&nbsp;SQLAlchemy Mapping</a></li>
+</ul>
+</div>
+<div class="section" id="sql-basics">
+<h1><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;SQL Basics</a></h1>
+<p>Some Example Table Declarations for a simple microblog.</p>
+<pre class="literal-block">
+sql_cleanup=&quot;&quot;&quot;
+DROP TABLE IF EXISTS BLOG;
+DROP TABLE IF EXISTS POST;
+DROP TABLE IF EXISTS TAG;
+DROP TABLE IF EXISTS ASSOC_POST_TAG;
+&quot;&quot;&quot;
+
+sql_ddl=&quot;&quot;&quot;
+CREATE TABLE BLOG(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    TITLE TEXT );
+CREATE TABLE POST(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    DATE TIMESTAMP,
+    TITLE TEXT,
+    RST_TEXT TEXT,
+    BLOG_ID INTEGER REFERENCES BLOG(ID)  );
+CREATE TABLE TAG(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    PHRASE TEXT UNIQUE ON CONFLICT FAIL );
+CREATE TABLE ASSOC_POST_TAG(
+    POST_ID INTEGER REFERENCES POST(ID),
+    TAG_ID INTEGER REFERENCES TAG(ID) );
+&quot;&quot;&quot;
+
+import sqlite3
+database = sqlite3.connect('p2_c11_blog.db')
+
+database.executescript( sql_cleanup )
+
+for stmt in (stmt.rstrip() for stmt in sql_ddl.split(';')):
+    print( stmt )
+    database.execute( stmt )
+
+database.close()
+</pre>
+</div>
+<div class="section" id="acid">
+<h1><a class="toc-backref" href="#id2">2&nbsp;&nbsp;&nbsp;ACID</a></h1>
+<pre class="literal-block">
+database = sqlite3.connect('p2_c11_blog.db', isolation_level='DEFERRED')
+try:
+    database.execute( 'BEGIN' )
+    #database.execute( &quot;some statement&quot; )
+    #database.execute( &quot;another statement&quot; )
+    database.commit()
+except Exception as e:
+    database.rollback()
+</pre>
+</div>
+<div class="section" id="simple-sql">
+<h1><a class="toc-backref" href="#id3">3&nbsp;&nbsp;&nbsp;Simple SQL</a></h1>
+<p>Import</p>
+<pre class="literal-block">
+import datetime
+</pre>
+<p>Connection</p>
+<pre class="literal-block">
+database = sqlite3.connect('p2_c11_blog.db')
+</pre>
+<p>Useful query to figuring out what PK was automatically assigned.</p>
+<pre class="literal-block">
+get_last_id= &quot;&quot;&quot;
+SELECT last_insert_rowid()
+&quot;&quot;&quot;
+</pre>
+<p>Build BLOG</p>
+<pre class="literal-block">
+database.execute( &quot;BEGIN&quot; )
+create_blog= &quot;&quot;&quot;
+INSERT INTO BLOG( TITLE ) VALUES( ? )
+&quot;&quot;&quot;
+database.execute( create_blog, (&quot;Travel Blog&quot;,) )
+row = database.execute( get_last_id ).fetchone()
+blog_id= row[0]
+</pre>
+<p>Build POST</p>
+<pre class="literal-block">
+create_post= &quot;&quot;&quot;
+INSERT INTO POST( DATE, TITLE, RST_TEXT, BLOG_ID ) VALUES( ?, ?, ?, ? )
+&quot;&quot;&quot;
+database.execute( create_post,
+    (datetime.datetime(2013,11,14,17,25),
+    &quot;Hard Aground&quot;,
+    &quot;&quot;&quot;Some embarrassing revelation. Including ☹ and ⚓︎&quot;&quot;&quot;,
+    blog_id) )
+row = database.execute( get_last_id ).fetchone()
+post_id= row[0]
+</pre>
+<p>Build TAGs for a Post</p>
+<pre class="literal-block">
+create_tag= &quot;&quot;&quot;
+INSERT INTO TAG( PHRASE ) VALUES( ? )
+&quot;&quot;&quot;
+retrieve_tag= &quot;&quot;&quot;
+SELECT ID, PHRASE FROM TAG WHERE PHRASE = ?
+&quot;&quot;&quot;
+create_tag_post_association= &quot;&quot;&quot;
+INSERT INTO ASSOC_POST_TAG( POST_ID, TAG_ID ) VALUES ( ?, ? )
+&quot;&quot;&quot;
+for tag in (&quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#ICW&quot;):
+    row= database.execute( retrieve_tag, (tag,) ).fetchone()
+    if row:
+        tag_id= row[0]
+    else:
+        database.execute( create_tag, (tag,) )
+        row = database.execute( get_last_id ).fetchone()
+        tag_id= row[0]
+    database.execute( create_tag_post_association, (post_id, tag_id) )
+
+database.commit()
+</pre>
+<p>Sample Update</p>
+<pre class="literal-block">
+update_blog=&quot;&quot;&quot;
+UPDATE BLOG SET TITLE=:new_title WHERE TITLE=:old_title
+&quot;&quot;&quot;
+database.execute( &quot;BEGIN&quot; )
+database.execute( update_blog,
+    dict(new_title=&quot;2013-2014 Travel&quot;, old_title=&quot;Travel Blog&quot;) )
+database.commit()
+</pre>
+<p>Sample Delete</p>
+<pre class="literal-block">
+delete_post_tag_by_blog_title= &quot;&quot;&quot;
+DELETE FROM ASSOC_POST_TAG
+WHERE POST_ID IN (
+    SELECT DISTINCT POST_ID
+    FROM BLOG JOIN POST ON BLOG.ID = POST.BLOG_ID
+    WHERE BLOG.TITLE=:old_title)
+&quot;&quot;&quot;
+delete_post_by_blog_title= &quot;&quot;&quot;
+DELETE FROM POST WHERE BLOG_ID IN (
+    SELECT ID FROM BLOG WHERE TITLE=:old_title)
+&quot;&quot;&quot;
+delete_blog_by_title=&quot;&quot;&quot;
+DELETE FROM BLOG WHERE TITLE=:old_title
+&quot;&quot;&quot;
+try:
+    with database:
+        title= dict(old_title=&quot;2013-2014 Travel&quot;)
+        database.execute( delete_post_tag_by_blog_title, title )
+        database.execute( delete_post_by_blog_title, title )
+        database.execute( delete_blog_by_title, title )
+        print( &quot;Post Delete, Pre Commit; should be no '2013-2014 Travel'&quot; )
+        for row in database.execute( &quot;SELECT * FROM BLOG&quot; ):
+            print( row )
+        for row in database.execute( &quot;SELECT * FROM POST&quot; ):
+            print( row )
+        for row in database.execute( &quot;SELECT * FROM ASSOC_POST_TAG&quot; ):
+            print( row )
+        raise Exception(&quot;Demonstrating an Error&quot;)
+    print( &quot;Should not get here to commit.&quot; )
+except Exception as e:
+    print( &quot;Rollback due to {0}&quot;.format(e) )
+</pre>
+<p>Bulk examination of database to show simple queries</p>
+<pre class="literal-block">
+print( &quot;Dumping whole database.&quot; )
+for row in database.execute( &quot;SELECT * FROM BLOG&quot; ):
+    print( &quot;BLOG&quot;, row )
+for row in database.execute( &quot;SELECT * FROM POST&quot; ):
+    print( &quot;POST&quot;, row )
+for row in database.execute( &quot;SELECT * FROM TAG&quot; ):
+    print( &quot;TAG&quot;, row )
+for row in database.execute( &quot;SELECT ASSOC_POST_TAG.* FROM POST JOIN ASSOC_POST_TAG ON POST.ID=ASSOC_POST_TAG.POST_ID JOIN TAG ON TAG.ID=ASSOC_POST_TAG.TAG_ID&quot; ):
+    print( &quot;ASSOC_POST_TAG&quot;, row )
+</pre>
+</div>
+<div class="section" id="naked-sql-query">
+<h1><a class="toc-backref" href="#id4">4&nbsp;&nbsp;&nbsp;Naked SQL Query</a></h1>
+<pre class="literal-block">
+print( &quot;Dump a single blog by title.&quot; )
+</pre>
+<p>Three-step nested queries</p>
+<pre class="literal-block">
+query_blog_by_title= &quot;&quot;&quot;
+SELECT * FROM BLOG WHERE TITLE=?
+&quot;&quot;&quot;
+query_post_by_blog_id= &quot;&quot;&quot;
+SELECT * FROM POST WHERE BLOG_ID=?
+&quot;&quot;&quot;
+query_tag_by_post_id= &quot;&quot;&quot;
+SELECT TAG.*
+FROM TAG JOIN ASSOC_POST_TAG ON TAG.ID = ASSOC_POST_TAG.TAG_ID
+WHERE ASSOC_POST_TAG.POST_ID=?
+&quot;&quot;&quot;
+for blog in database.execute( query_blog_by_title, (&quot;2013-2014 Travel&quot;,) ):
+    print( &quot;Blog&quot;, blog )
+    for post in database.execute( query_post_by_blog_id, (blog[0],) ):
+        print( &quot;Post&quot;, post )
+        for tag in database.execute( query_tag_by_post_id, (post[0],) ):
+            print( &quot;Tag&quot;, tag )
+</pre>
+<p>Tag index</p>
+<pre class="literal-block">
+from collections import defaultdict
+
+query_by_tag=&quot;&quot;&quot;
+SELECT TAG.PHRASE, POST.TITLE, POST.ID
+FROM TAG JOIN ASSOC_POST_TAG ON TAG.ID = ASSOC_POST_TAG.TAG_ID
+JOIN POST ON POST.ID = ASSOC_POST_TAG.POST_ID
+JOIN BLOG ON POST.BLOG_ID = BLOG.ID
+WHERE BLOG.TITLE=?
+&quot;&quot;&quot;
+tag_index= defaultdict(list)
+for tag, post_title, post_id in database.execute( query_by_tag, (&quot;2013-2014 Travel&quot;,) ):
+    tag_index[tag].append( (post_title, post_id) )
+print( tag_index )
+
+database.close()
+</pre>
+</div>
+<div class="section" id="blob-mapping">
+<h1><a class="toc-backref" href="#id5">5&nbsp;&nbsp;&nbsp;BLOB Mapping</a></h1>
+<p>Adding Decimal data to a SQLite database.</p>
+<pre class="literal-block">
+import sqlite3
+import decimal
+
+def adapt_currency(value):
+    return str(value)
+
+sqlite3.register_adapter(decimal.Decimal, adapt_currency)
+
+def convert_currency(bytes):
+    return decimal.Decimal(bytes.decode())
+
+sqlite3.register_converter(&quot;DECIMAL&quot;, convert_currency)
+</pre>
+<p>When we define a table, we must use the type &quot;decimal&quot;
+to get two-digit decimal values.</p>
+<pre class="literal-block">
+decimal_cleanup= &quot;&quot;&quot;
+DROP TABLE IF EXISTS BUDGET
+&quot;&quot;&quot;
+
+decimal_ddl= &quot;&quot;&quot;
+CREATE TABLE BUDGET(
+    year INTEGER,
+    month INTEGER,
+    category TEXT,
+    amount DECIMAL
+)
+&quot;&quot;&quot;
+</pre>
+<p>When we connect, we must do this.</p>
+<pre class="literal-block">
+database= sqlite3.connect( 'p2_c11_blog.db', detect_types=sqlite3.PARSE_DECLTYPES )
+
+database.execute( decimal_cleanup )
+database.execute( decimal_ddl )
+
+insert_budget= &quot;&quot;&quot;
+INSERT INTO BUDGET(year, month, category, amount) VALUES(:year, :month, :category, :amount)
+&quot;&quot;&quot;
+database.execute( insert_budget,
+    dict( year=2013, month=1, category=&quot;fuel&quot;,
+    amount=decimal.Decimal('256.78')) )
+database.execute( insert_budget,
+    dict( year=2013, month=2, category=&quot;fuel&quot;,
+    amount=decimal.Decimal('287.65')) )
+
+query_budget= &quot;&quot;&quot;
+SELECT * FROM BUDGET
+&quot;&quot;&quot;
+for row in database.execute( query_budget ):
+    print( row )
+</pre>
+</div>
+<div class="section" id="manual-mapping">
+<h1><a class="toc-backref" href="#id6">6&nbsp;&nbsp;&nbsp;Manual Mapping</a></h1>
+<p>Some Classes that reflect our SQL data.</p>
+<pre class="literal-block">
+class TooManyValues( Exception ):
+    pass
+
+from collections import defaultdict
+class Blog:
+    def __init__( self, **kw ):
+        &quot;&quot;&quot;Requires title&quot;&quot;&quot;
+        self.id= kw.pop('id', None)
+        self.title= kw.pop('title', None)
+        if kw: raise TooManyValues( kw )
+        self.entries= list() # ???
+    def append( self, post ):
+        self.entries.append(post)
+    def by_tag(self):
+        tag_index= defaultdict(list)
+        for post in self.entries: # ???
+            for tag in post.tags:
+                tag_index[tag].append( post )
+        return tag_index
+    def as_dict( self ):
+        return dict(
+            title= self.title,
+            underline= &quot;=&quot;*len(self.title),
+            entries= [p.as_dict() for p in self.entries],
+        )
+
+import datetime
+class Post:
+    def __init__( self, **kw ):
+        &quot;&quot;&quot;Requires date, title, rst_text.&quot;&quot;&quot;
+        self.id= kw.pop('id', None)
+        self.date= kw.pop('date', None)
+        self.title= kw.pop('title', None)
+        self.rst_text= kw.pop('rst_text', None)
+        self.tags= kw.pop('tags', list())
+        if kw: raise TooManyValues( kw )
+    def append( self, tag ):
+        self.tags.append( tag )
+    def as_dict( self ):
+        return dict(
+            date= str(self.date),
+            title= self.title,
+            underline= &quot;-&quot;*len(self.title),
+            rst_text= self.rst_text,
+            tag_text= &quot; &quot;.join(self.tags),
+        )
+</pre>
+<p>An access layer to map back and forth between Python objects and SQL rows.</p>
+<pre class="literal-block">
+class Access:
+    get_last_id= &quot;&quot;&quot;
+    SELECT last_insert_rowid()
+    &quot;&quot;&quot;
+    def open( self, filename ):
+        self.database= sqlite3.connect( filename )
+        self.database.row_factory = sqlite3.Row
+    def get_blog( self, id ):
+        query_blog= &quot;&quot;&quot;
+        SELECT * FROM BLOG WHERE ID=?
+        &quot;&quot;&quot;
+        row= self.database.execute( query_blog, (id,) ).fetchone()
+        blog= Blog( id= row['ID'], title= row['TITLE'] )
+        return blog
+    def add_blog( self, blog ):
+        insert_blog= &quot;&quot;&quot;
+        INSERT INTO BLOG(TITLE) VALUES(:title)
+        &quot;&quot;&quot;
+        self.database.execute( insert_blog, dict(title=blog.title) )
+        row = self.database.execute( get_last_id ).fetchone()
+        blog.id= row[0]
+        return blog
+    def get_post( self, id ):
+        query_post= &quot;&quot;&quot;
+        SELECT * FROM POST WHERE ID=?
+        &quot;&quot;&quot;
+        row= self.database.execute( query_post, (id,) ).fetchone()
+        post= Post( id= row['ID'], title= row['TITLE'], date= row['DATE'], rst_text= row['RST_TEXT'] )
+        # Get tags, too
+        query_tags= &quot;&quot;&quot;
+        SELECT TAG.*
+        FROM TAG JOIN ASSOC_POST_TAG ON TAG.ID = ASSOC_POST_TAG.TAG_ID
+        WHERE ASSOC_POST_TAG.POST_ID=?
+        &quot;&quot;&quot;
+        results= self.database.execute( query_tags, (id,) )
+        for id, tag in results:
+            post.append( tag )
+        return post
+    def add_post( self, blog, post ):
+        insert_post=&quot;&quot;&quot;
+        INSERT INTO POST(TITLE, DATE, RST_TEXT, BLOG_ID) VALUES(:title, :date, :rst_text, :blog_id)
+        &quot;&quot;&quot;
+        query_tag=&quot;&quot;&quot;
+        SELECT * FROM TAG WHERE PHRASE=?
+        &quot;&quot;&quot;
+        insert_tag= &quot;&quot;&quot;
+        INSERT INTO TAG(PHRASE) VALUES(?)
+        &quot;&quot;&quot;
+        insert_association= &quot;&quot;&quot;
+        INSERT INTO ASSOC_POST_TAG(POST_ID, TAG_ID) VALUES(:post_id, :tag_id)
+        &quot;&quot;&quot;
+        with self.database:
+            self.database.execute( insert_post,
+                dict(title=post.title, date=post.date, rst_text=post.rst_text, blog_id=blog.id) )
+            row = self.database.execute( get_last_id ).fetchone()
+            post.id= row[0]
+            for tag in post.tags:
+                tag_row= self.database.execute( query_tag, (tag,) ).fetchone()
+                if tag_row is not None:
+                    tag_id= tag_row['ID']
+                else:
+                    self.database.execute(insert_tag, (tag,))
+                    row = self.database.execute( get_last_id ).fetchone()
+                    tag_id= row[0]
+                self.database.execute(insert_association,
+                    dict(tag_id=tag_id,post_id=post.id))
+        return post
+    def blog_iter( self ):
+        query= &quot;&quot;&quot;
+        SELECT * FROM BLOG
+        &quot;&quot;&quot;
+        results= self.database.execute( query )
+        for row in results:
+            blog= Blog( id= row['ID'], title= row['TITLE'] )
+            yield blog
+    def post_iter( self, blog ):
+        query= &quot;&quot;&quot;
+        SELECT ID FROM POST WHERE BLOG_ID=?
+        &quot;&quot;&quot;
+        results= self.database.execute( query, (blog.id,) )
+        for row in results:
+            yield self.get_post( row['ID'] )
+
+database= Access()
+database.open('p2_c11_blog.db')
+b= Blog( title=&quot;2012 Travel&quot; )
+database.add_blog( b )
+print( b.id )
+p= Post( title=&quot;Some History&quot;, date=datetime.datetime(2012, 9, 16, 10, 00),
+rst_text=&quot;Some historyical notes.&quot;, tags= (&quot;#History&quot;, &quot;#RedRanger&quot;) )
+database.add_post( b, p )
+
+for b in database.blog_iter():
+    print( b.as_dict() )
+    for p in database.post_iter( b ):
+        print( p.as_dict() )
+</pre>
+</div>
+<div class="section" id="sqlalchemy-mapping">
+<h1><a class="toc-backref" href="#id7">7&nbsp;&nbsp;&nbsp;SQLAlchemy Mapping</a></h1>
+<p>Some Classes that reflect our SQL data.</p>
+<pre class="literal-block">
+from sqlalchemy.ext.declarative import declarative_base
+</pre>
+<p>Section 3.2.5 lists the column types</p>
+<pre class="literal-block">
+from sqlalchemy import Column, Table
+from sqlalchemy import BigInteger, Boolean, Date, DateTime, Enum, \
+    Float, Integer, Interval, LargeBinary, Numeric, PickleType, \
+    SmallInteger, String, Text, Time, Unicode, UnicodeText, ForeignKey
+from sqlalchemy.orm import relationship, backref
+</pre>
+<p>There are standard types and vendor types, also.
+We'll stick with generic types.</p>
+<p>The metaclass</p>
+<pre class="literal-block">
+Base = declarative_base()
+</pre>
+<p>The application class/table declarations</p>
+<pre class="literal-block">
+class Blog(Base):
+    __tablename__ = &quot;BLOG&quot;
+    id = Column(Integer, primary_key=True)
+    title = Column(String)
+    def as_dict( self ):
+        return dict(
+            title= self.title,
+            underline= '='*len(self.title),
+            entries= [ e.as_dict() for e in self.entries ]
+        )
+
+assoc_post_tag = Table('ASSOC_POST_TAG', Base.metadata,
+    Column('POST_ID', Integer, ForeignKey('POST.id') ),
+    Column('TAG_ID', Integer, ForeignKey('TAG.id') )
+)
+
+class Post(Base):
+    __tablename__ = &quot;POST&quot;
+    id = Column(Integer, primary_key=True)
+    title = Column(String)
+    date = Column(DateTime)
+    rst_text = Column(UnicodeText)
+    blog_id = Column(Integer, ForeignKey('BLOG.id'))
+    blog = relationship( 'Blog', backref='entries' )
+    tags = relationship('Tag', secondary=assoc_post_tag, backref='posts')
+    def as_dict( self ):
+        return dict(
+            title= self.title,
+            underline= '-'*len(self.title),
+            date= self.date,
+            rst_text= self.rst_text,
+            tags= [ t.phrase for t in self.tags],
+        )
+
+class Tag(Base):
+    __tablename__ = &quot;TAG&quot;
+    id = Column(Integer, primary_key=True)
+    phrase = Column(String, unique=True)
+</pre>
+<p>Building a schema</p>
+<pre class="literal-block">
+from sqlalchemy import create_engine
+engine = create_engine('sqlite:///./p2_c11_blog2.db', echo=True)
+Base.metadata.drop_all(engine)
+Base.metadata.create_all(engine)
+</pre>
+<p>Loading some data</p>
+<pre class="literal-block">
+import sqlalchemy.exc
+from sqlalchemy.orm import sessionmaker
+Session = sessionmaker(bind=engine)
+
+session= Session()
+
+blog= Blog( title=&quot;Travel 2013&quot; )
+session.add( blog )
+
+tags = [ ]
+for phrase in &quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#ICW&quot;:
+    try:
+        tag= session.query(Tag).filter(Tag.phrase == phrase).one()
+    except sqlalchemy.orm.exc.NoResultFound:
+        tag= Tag(phrase=phrase)
+        session.add(tag)
+    tags.append(tag)
+
+p2= Post( date=datetime.datetime(2013,11,14,17,25),
+    title=&quot;Hard Aground&quot;,
+    rst_text=&quot;&quot;&quot;Some embarrassing revelation. Including ☹ and ⚓︎&quot;&quot;&quot;,
+    blog=blog,
+    tags=tags
+    )
+session.add(p2)
+
+tags = [ ]
+for phrase in &quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#Mistakes&quot;:
+    try:
+        tag= session.query(Tag).filter(Tag.phrase == phrase).one()
+    except sqlalchemy.orm.exc.NoResultFound:
+        tag= Tag(phrase=phrase)
+        session.add(tag)
+    tags.append(tag)
+
+p3= Post( date=datetime.datetime(2013,11,18,15,30),
+        title=&quot;Anchor Follies&quot;,
+        rst_text=&quot;&quot;&quot;Some witty epigram. Including ☺ and ☀︎︎&quot;&quot;&quot;,
+        blog=blog,
+        tags=tags
+        )
+session.add(p3)
+blog.posts= [ p2, p3 ]
+
+session.commit()
+
+session= Session()
+
+for blog in session.query(Blog):
+    print( &quot;{title}\n{underline}\n&quot;.format(**blog.as_dict()) )
+    for p in blog.entries:
+        print( p.as_dict() )
+
+session2= Session()
+for post in session2.query(Post).join(assoc_post_tag).join(Tag).filter( Tag.phrase == &quot;#Whitby42&quot; ):
+    print( post.blog.title, post.date, post.title, [t.phrase for t in post.tags] )
+</pre>
+</div>
+</div>
+</body>
+</html>

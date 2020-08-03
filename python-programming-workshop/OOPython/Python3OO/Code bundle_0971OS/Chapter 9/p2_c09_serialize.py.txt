@@ -1,0 +1,83 @@
+..  #!/usr/bin/env python3
+
+Serializing immutable objects
+-----------------------------------
+
+Gather some basic timing information on serialization.
+Compare CSV, JSON and PICKLE.
+
+We need to work with a consistent piece of information.
+In this case, it's a parsed line from a logfile.
+
+We'll parse this with the re module.
+
+::
+
+  import re
+  format_pat= re.compile(
+      r"([\d\.]+)\s+" # digits and .'s: host
+      r"(\S+)\s+"     # non-space: logname
+      r"(\S+)\s+"     # non-space: user
+      r"\[(.+?)\]\s+" # Everything in []: time
+      r'"(.+?)"\s+'   # Everything in "": request
+      r"(\d+)\s+"     # digits: status
+      r"(\S+)\s+"     # non-space: bytes
+      r'"(.*?)"\s+'   # Everything in "": referrer
+      r'"(.*?)"\s*'   # Everything in "": user agent
+  )
+
+Here's a typical log line.
+
+::
+
+  log_line= '''41.191.203.2 - - [01/Feb/2012:03:27:04 -0500] "GET /homepage/books/python/html/preface.html HTTP/1.1" 200 33322  "http://www.itmaybeahack.com/homepage/books/python/html/index.html"  "Mozilla/5.0 (Windows NT 6.1; rv:8.0.1) Gecko/20100101 Firefox/8.0.1"'''
+
+Here's the two steps involved in line parsing.
+
+::
+
+  match= format_pat.match( log_line )
+  fields= match.groups()
+  print( fields )
+
+Given a tuple of fields, how can we serialize this most expeditiously?
+
+Some timeit setup
+::
+
+  import timeit
+  fmt= "{0:16s} {1:5.2f}"
+
+CSV?
+
+::
+
+  csv= timeit.timeit( "wtr.writerow(fields)", setup="""\
+  import io, csv
+  fields= ('41.191.203.2', '-', '-', '01/Feb/2012:03:27:04 -0500', 'GET /homepage/books/python/html/preface.html HTTP/1.1', '200', '33322', 'http://www.itmaybeahack.com/homepage/books/python/html/index.html', 'Mozilla/5.0 (Windows NT 6.1; rv:8.0.1) Gecko/20100101 Firefox/8.0.1')
+  target= io.StringIO()
+  wtr=csv.writer(target)
+  """, number=1000 )
+  print( fmt.format( "CSV", csv ) )
+
+JSON?
+
+::
+
+  json= timeit.timeit( "json.dump(fields,target)", setup="""\
+  import io, json
+  fields= ('41.191.203.2', '-', '-', '01/Feb/2012:03:27:04 -0500', 'GET /homepage/books/python/html/preface.html HTTP/1.1', '200', '33322', 'http://www.itmaybeahack.com/homepage/books/python/html/index.html', 'Mozilla/5.0 (Windows NT 6.1; rv:8.0.1) Gecko/20100101 Firefox/8.0.1')
+  target= io.StringIO()
+  """, number=1000 )
+  print( fmt.format( "JSON", json ) )
+
+pickle?
+
+::
+
+  pickle= timeit.timeit( "pickle.dump(fields,target)", setup="""\
+  import io, pickle
+  fields= ('41.191.203.2', '-', '-', '01/Feb/2012:03:27:04 -0500', 'GET /homepage/books/python/html/preface.html HTTP/1.1', '200', '33322', 'http://www.itmaybeahack.com/homepage/books/python/html/index.html', 'Mozilla/5.0 (Windows NT 6.1; rv:8.0.1) Gecko/20100101 Firefox/8.0.1')
+  target= io.BytesIO()
+  """, number=1000 )
+  print( fmt.format( "pickle", pickle ) )

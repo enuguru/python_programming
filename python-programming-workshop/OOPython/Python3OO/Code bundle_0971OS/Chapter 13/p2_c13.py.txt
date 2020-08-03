@@ -1,0 +1,966 @@
+..  #!/usr/bin/env python3
+
+Chapter 13 -- Configuration Files and Persistence
+-----------------------------------------------------
+
+..  sectnum::
+
+..  contents::
+
+
+::
+
+  from simulation_model import *
+
+A typical main program using the above class definitions
+::
+
+  import csv
+  def simulate_blackjack():
+      dealer_rule= Hit17()
+      split_rule= NoReSplitAces()
+      table= Table( decks=6, limit=50, dealer=dealer_rule,
+          split=split_rule, payout=(3,2) )
+      player_rule= SomeStrategy()
+      betting_rule= Flat()
+      player= Player( play=player_rule, betting=betting_rule, rounds=100, stake=50 )
+      simulator= Simulate( table, player, samples=100 )
+      with open("p2_c13_simulation.dat","w",newline="") as results:
+          wtr= csv.writer( results )
+          for gamestats in simulator:
+              wtr.writerow( gamestats )
+
+  def check( filename ):
+      with open(filename,"r",newline="") as results:
+          rdr= csv.reader( results )
+          outcomes= ( float(row[10]) for row in rdr )
+          first= next(outcomes)
+          sum_0, sum_1 = 1, first
+          value_min = value_max = first
+          for value in outcomes:
+              sum_0 += 1 # value**0
+              sum_1 += value # value**1
+              value_min= min( value_min, value )
+              value_max= max( value_max, value )
+          mean= sum_1/sum_0
+          print( "{4}\nMean = {0:.1f}\nHouse Edge = {1:.1%}\nRange = {2:.1f} {3:.1f}".format(mean, 1-mean/50, value_min, value_max, filename) )
+
+  if __name__ == "__main__":
+      simulate_blackjack()
+      check( "p2_c13_simulation.dat" )
+
+Locations
+============
+
+Tyical list of locations for config
+::
+
+  import os
+  def location_list( config_name= "someapp.config" ):
+      config_locations = (
+          os.path.expanduser("~thisapp/"), # or thisapp.__file__,
+          "/etc",
+          os.path.expanduser("~/"),
+          os.path.curdir,
+      )
+      candidates = ( os.path.join(dir,config_name)
+          for dir in config_locations )
+      config_names = [ name for name in candidates if os.path.exists(name) ]
+      return config_names
+
+INI files
+=========
+
+Sample INI files
+::
+
+  import io
+  ini_file= io.StringIO( """
+  ; Default casino rules
+  [table]
+      dealer= Hit17
+      split= NoResplitAces
+      decks= 6
+      limit= 50
+      payout= (3,2)
+
+  ; Player with SomeStrategy
+  [player]
+      play= SomeStrategy
+      betting= Flat
+      rounds= 100
+      stake= 50
+
+  [simulator]
+      samples= 100
+      outputfile= p2_c13_simulation1.dat
+  """ )
+
+  ini2_file= io.StringIO( """
+  ; Need to compare with OtherStrategy
+  [player]
+      play= OtherStrategy
+      betting= Flat
+      rounds= 100
+      stake= 50
+
+  [simulator]
+      samples= 100
+      outputfile= p2_c13_simulation1a.dat
+  """ )
+
+Using the config to build objects
+::
+
+  def main_ini( config ):
+      dealer_nm= config.get('table','dealer', fallback='Hit17')
+      dealer_rule= {'Hit17':Hit17(),
+          'Stand17':Stand17()}.get(dealer_nm, Hit17())
+      split_nm= config.get('table','split', fallback='ReSplit')
+      split_rule= {'ReSplit':ReSplit(),
+          'NoReSplit':NoReSplit(),
+          'NoReSplitAces':NoReSplitAces()}.get(split_nm, ReSplit())
+      decks= config.getint('table','decks', fallback=6)
+      limit= config.getint('table','limit', fallback=100)
+      payout= eval( config.get('table','payout', fallback='(3,2)') )
+      table= Table( decks=decks, limit=limit, dealer=dealer_rule,
+          split=split_rule, payout=payout )
+
+      player_nm= config.get('player','play', fallback='SomeStrategy')
+      player_rule= {'SomeStrategy':SomeStrategy(),
+          'AnotherStrategy':AnotherStrategy()}.get(player_nm,SomeStrategy())
+      bet_nm= config.get('player','betting', fallback='Flat')
+      betting_rule= {'Flat':Flat(),
+          'Martingale':Martingale(),
+          'OneThreeTwoSix':OneThreeTwoSix()}.get(bet_nm,Flat())
+      rounds= config.getint('player','rounds', fallback=100)
+      stake= config.getint('player','stake', fallback=50)
+      player= Player( play=player_rule, betting=betting_rule,
+          rounds=rounds, stake=stake )
+
+      outputfile= config.get('simulator', 'outputfile', fallback='blackjack.csv')
+      samples= config.getint('simulator', 'samples', fallback=100)
+      simulator= Simulate( table, player, samples=samples )
+      with open(outputfile,"w",newline="") as results:
+          wtr= csv.writer( results )
+          for gamestats in simulator:
+              wtr.writerow( gamestats )
+
+Sample Main Script to parse and start the application.
+::
+
+  if __name__ == "__main__":
+      import configparser
+      config = configparser.ConfigParser()
+      config.read_file(ini_file)
+      config.read_file(ini2_file)
+
+      # Could use config.read_string( text ), also
+      # When there are multiple candidate locations, config.read( location_list("blackjack.ini") )
+
+      for name, section in config.items():
+          print( name )
+          for p in config.items(name):
+              print( " ", p )
+
+      main_ini(config)
+
+      check( config.get('simulator', 'outputfile') )
+
+PY files
+========
+
+Top-level -- v1
+################
+
+Imported Stuff from some application module.
+::
+
+  import csv
+  def simulate( table, player, outputfile, samples ):
+      simulator= Simulate( table, player, samples=samples )
+      with open(outputfile,"w",newline="") as results:
+          wtr= csv.writer( results )
+          for gamestats in simulator:
+              wtr.writerow( gamestats )
+
+Configuration in the main script
+
+``from simulator import *``
+
+::
+
+  def simulate_SomeStrategy_Flat():
+      dealer_rule= Hit17()
+      split_rule= NoReSplitAces()
+      table= Table( decks=6, limit=50, dealer=dealer_rule,
+          split=split_rule, payout=(3,2) )
+      player_rule= SomeStrategy()
+      betting_rule= Flat()
+      player= Player( play=player_rule, betting=betting_rule, rounds=100, stake=50 )
+      simulate( table, player, "p2_c13_simulation3.dat", 100 )
+
+  if __name__ == "__main__":
+      simulate_SomeStrategy_Flat()
+      check("p2_c13_simulation3.dat")
+
+Top-level -- v2
+################
+
+Stuff imported from some application module
+
+``from simulator import *``
+
+::
+
+  class Default_App:
+      pass
+
+  def simulate_c( config ):
+      simulator= Simulate( config.table, config.player, config.samples )
+      with open(config.outputfile,"w",newline="") as results:
+          wtr= csv.writer( results )
+          for gamestats in simulator:
+              wtr.writerow( gamestats )
+
+Configuration in the main script
+::
+
+  class Example4( Default_App ):
+      dealer_rule= Hit17()
+      split_rule= NoReSplitAces()
+      table= Table( decks=6, limit=50, dealer=dealer_rule,
+          split=split_rule, payout=(3,2) )
+      player_rule= SomeStrategy()
+      betting_rule= Flat()
+      player= Player( play=player_rule, betting=betting_rule, rounds=100, stake=50 )
+      outputfile= "p2_c13_simulation4.dat"
+      samples= 100
+
+  if __name__ == "__main__":
+      simulate_c(Example4())
+      check("p2_c13_simulation4.dat")
+
+Top-level -- v3
+################
+
+SimpleNamespace version a
+::
+
+  import types
+  config5a= types.SimpleNamespace(
+          dealer_rule= Hit17(),
+          split_rule= NoReSplitAces(),
+          player_rule= SomeStrategy(),
+          betting_rule= Flat(),
+          outputfile= "p2_c13_simulation5a.dat",
+          samples= 100,
+          )
+
+  config5a.table= Table( decks=6, limit=50, dealer=config5a.dealer_rule,
+          split=config5a.split_rule, payout=(3,2) )
+  config5a.player= Player( play=config5a.player_rule, betting=config5a.betting_rule,
+          rounds=100, stake=50 )
+
+  if __name__ == "__main__":
+      simulate_c(config5a)
+      check("p2_c13_simulation5a.dat")
+
+SimpleNamespace version b
+::
+
+  import types
+  config5b= types.SimpleNamespace()
+  config5b.dealer_rule= Hit17()
+  config5b.split_rule= NoReSplitAces()
+  config5b.table= Table( decks=6, limit=50, dealer=config5b.dealer_rule,
+          split=config5b.split_rule, payout=(3,2) )
+  config5b.player_rule= SomeStrategy()
+  config5b.betting_rule= Flat()
+  config5b.player= Player( play=config5b.player_rule, betting=config5b.betting_rule,
+          rounds=100, stake=50 )
+  config5b.outputfile= "p2_c13_simulation5b.dat"
+  config5b.samples= 100
+
+  if __name__ == "__main__":
+      simulate_c(config5b)
+      check("p2_c13_simulation5b.dat")
+
+Execfile Import
+################
+
+Handy class to allow us attribute-like access
+::
+
+  class AttrDict( dict ):
+      def __getattr__( self, name ):
+          return self.get(name,None)
+      def __setattr__( self, name, value ):
+          self[name]= value
+      def __dir__( self ):
+          return list(self.keys())
+
+  import io
+  py_file= io.StringIO( """
+  # SomeStrategy setup
+
+  # Table
+  dealer_rule= Hit17()
+  split_rule= NoReSplitAces()
+  table= Table( decks=6, limit=50, dealer=dealer_rule,
+          split=split_rule, payout=(3,2) )
+
+  # Player
+  player_rule= SomeStrategy()
+  betting_rule= Flat()
+  player= Player( play=player_rule, betting=betting_rule,
+          rounds=100, stake=50 )
+
+  # Simulation
+  outputfile= "p2_c13_simulation6.dat"
+  samples= 100
+  """ )
+
+  if __name__ == "__main__":
+      config= AttrDict()
+      code= compile(py_file.read(),'stringio','exec')
+      exec( code, globals(), config  )
+
+      from pprint import pprint
+      pprint( config )
+      print( config.table )
+
+      simulate( config.table, config.player, config.outputfile, config.samples)
+      check( config.outputfile )
+
+ChainMap and Import
+=====================
+
+Essential Example
+::
+
+  from collections import ChainMap
+  import os
+  config_name= "config.py"
+  config_locations = (
+      os.path.expanduser("~thisapp/"), # or thisapp.__file__,
+      "/etc",
+      os.path.expanduser("~/"),
+      os.path.curdir,
+  )
+  candidates = ( os.path.join(dir,config_name)
+      for dir in config_locations )
+  config_names = ( name for name in candidates if os.path.exists(name) )
+  config = ChainMap()
+  for name in config_names:
+      config= config.new_child()
+      exec(name, globals(), config)
+
+Demo with Mock files
+::
+
+  import io
+  py_file= io.StringIO( """
+  # Default casino rules
+  # Table
+  dealer_rule= Hit17()
+  split_rule= NoReSplitAces()
+  table= Table( decks=6, limit=50, dealer=dealer_rule,
+          split=split_rule, payout=(3,2) )
+
+  # Player
+  player_rule= SomeStrategy()
+  betting_rule= Flat()
+  player= Player( play=player_rule, betting=betting_rule,
+          rounds=100, stake=50 )
+
+  # Simulation
+  outputfile= "p2_c13_simulation7.dat"
+  samples= 100
+  """ )
+
+  py2_file= io.StringIO( """
+  # Player
+  player_rule= AnotherStrategy()
+  player= Player( play=player_rule, betting=betting_rule,
+          rounds=100, stake=50 )
+
+  # Simulation
+  outputfile= "p2_c13_simulation7a.dat"
+  """ )
+
+  class AttrChainMap( ChainMap ):
+      def __getattr__( self, name ):
+          if name == "maps":
+              return self.__dict__['maps']
+          return super().get(name,None)
+      def __setattr__( self, name, value ):
+          if name == "maps":
+              self.__dict__['maps']= value
+              return
+          self[name]= value
+
+  if __name__ == "__main__":
+
+      config = AttrChainMap()
+      for file in py_file, py2_file:
+          config= config.new_child()
+          exec(file.read(),globals(),config)
+
+      pprint( config )
+      print( config.table )
+      print( config['table'] )
+
+      simulate( config.table, config.player, config.outputfile, config.samples)
+      check( config.outputfile )
+
+JSON or YAML files
+===================
+
+JSON using dictionary-of-dictionaries nested structures.
+This is inconvenient to handle multiple configuration files.
+::
+
+  import io
+  json_file= io.StringIO( """
+  {
+      "table":{
+          "dealer":"Hit17",
+          "split":"NoResplitAces",
+          "decks":6,
+          "limit":50,
+          "payout":[3,2]
+      },
+      "player":{
+          "play":"SomeStrategy",
+          "betting":"Flat",
+          "rounds":100,
+          "stake":50
+      },
+      "simulator":{
+          "samples":100,
+          "outputfile":"p2_c13_simulation8.dat"
+      }
+  }
+  """)
+
+  def main_nested_dict( config ):
+      dealer_nm= config.get('table',{}).get('dealer', 'Hit17')
+      dealer_rule= {'Hit17':Hit17(),
+          'Stand17':Stand17()}.get(dealer_nm, Hit17())
+      split_nm= config.get('table',{}).get('split', 'ReSplit')
+      split_rule= {'ReSplit':ReSplit(),
+          'NoReSplit':NoReSplit(),
+          'NoReSplitAces':NoReSplitAces()}.get(split_nm, ReSplit())
+      decks= config.get('table',{}).get('decks', 6)
+      limit= config.get('table',{}).get('limit', 100)
+      payout= config.get('table',{}).get('payout', (3,2))
+      table= Table( decks=decks, limit=limit, dealer=dealer_rule,
+          split=split_rule, payout=payout )
+
+      player_nm= config.get('player',{}).get('play', 'SomeStrategy')
+      player_rule= {'SomeStrategy':SomeStrategy(),
+          'AnotherStrategy':AnotherStrategy()}.get(player_nm,SomeStrategy())
+      bet_nm= config.get('player',{}).get('betting', 'Flat')
+      betting_rule= {'Flat':Flat(),
+          'Martingale':Martingale(),
+          'OneThreeTwoSix':OneThreeTwoSix()}.get(bet_nm,Flat())
+      rounds= config.get('player',{}).get('rounds', 100)
+      stake= config.get('player',{}).get('stake', 50)
+      player= Player( play=player_rule, betting=betting_rule,
+          rounds=rounds, stake=stake )
+
+      outputfile= config.get('simulator',{}).get('outputfile', 'blackjack.csv')
+      samples= config.get('simulator',{}).get('samples', 100)
+      simulator= Simulate( table, player, samples )
+      with open(outputfile,"w",newline="") as results:
+          wtr= csv.writer( results )
+          for gamestats in simulator:
+              wtr.writerow( gamestats )
+
+  if __name__ == "__main__":
+      import json
+      config= json.load( json_file )
+      main_nested_dict( config )
+      check( config['simulator']['outputfile'] )
+
+Flat Version, allows multiple configuration files.
+::
+
+  json2_file= io.StringIO("""
+  {
+  "player.betting": "Flat",
+  "player.play": "SomeStrategy",
+  "player.rounds": 100,
+  "player.stake": 50,
+  "table.dealer": "Hit17",
+  "table.decks": 6,
+  "table.limit": 50,
+  "table.payout": [3, 2],
+  "table.split": "NoResplitAces",
+  "simulator.outputfile": "p2_c13_simulation8.dat",
+  "simulator.samples": 100
+  }
+  """ )
+
+  json3_file= io.StringIO("""
+  {
+  "player.betting": "Flat",
+  "simulator.outputfile": "p2_c13_simulation8a.dat"
+  }
+  """ )
+
+Using the config to build objects
+::
+
+  def main_cm( config ):
+      dealer_nm= config.get('table.dealer', 'Hit17')
+      dealer_rule= {'Hit17':Hit17(),
+          'Stand17':Stand17()}.get(dealer_nm, Hit17())
+      split_nm= config.get('table.split', 'ReSplit')
+      split_rule= {'ReSplit':ReSplit(),
+          'NoReSplit':NoReSplit(),
+          'NoReSplitAces':NoReSplitAces()}.get(split_nm, ReSplit())
+      decks= int(config.get('table.decks', 6))
+      limit= int(config.get('table.limit', 100))
+      payout= config.get('table.payout', (3,2))
+      table= Table( decks=decks, limit=limit, dealer=dealer_rule,
+          split=split_rule, payout=payout )
+
+      player_nm= config.get('player.play', 'SomeStrategy')
+      player_rule= {'SomeStrategy':SomeStrategy(),
+          'AnotherStrategy':AnotherStrategy()}.get(player_nm,SomeStrategy())
+      bet_nm= config.get('player.betting', 'Flat')
+      betting_rule= {'Flat':Flat(),
+          'Martingale':Martingale(),
+          'OneThreeTwoSix':OneThreeTwoSix()}.get(bet_nm,Flat())
+      rounds= int(config.get('player.rounds', 100))
+      stake= int(config.get('player.stake', 50))
+      player= Player( play=player_rule, betting=betting_rule,
+          rounds=rounds, stake=stake )
+
+      outputfile= config.get('simulator.outputfile', 'blackjack.csv')
+      samples= int(config.get('simulator.samples', 100))
+      simulator= Simulate( table, player, samples )
+      with open(outputfile,"w",newline="") as results:
+          wtr= csv.writer( results )
+          for gamestats in simulator:
+              wtr.writerow( gamestats )
+
+Sample Main Script to parse and start the application.
+::
+
+  if __name__ == "__main__":
+      config_files= json2_file, json3_file,
+      config = ChainMap( *[json.load(file) for file in reversed(config_files)] )
+      print( config )
+
+      main_cm(config)
+
+      check( config.get('simulator.outputfile') )
+
+YAML
+#######
+
+Simple YAML
+::
+
+  yaml1_file= io.StringIO("""
+  player:
+    betting: Flat
+    play: SomeStrategy
+    rounds: 100
+    stake: 50
+  table:
+    dealer: Hit17
+    decks: 6
+    limit: 50
+    payout: [3, 2]
+    split: NoResplitAces
+  simulator: {outputfile: p2_c13_simulation.dat, samples: 100}
+  """)
+
+  import yaml
+  config= yaml.load( yaml1_file )
+  if __name__ == "__main__":
+      from pprint import pprint
+      pprint( config )
+
+
+  yaml1_file= io.StringIO("""
+  # Complete Simulation Settings
+  table: !!python/object:__main__.Table
+    dealer: !!python/object:__main__.Hit17 {}
+    decks: 6
+    limit: 50
+    payout: !!python/tuple [3, 2]
+    split: !!python/object:__main__.NoReSplitAces {}
+  player: !!python/object:__main__.Player
+    betting:  !!python/object:__main__.Flat {}
+    init_stake: 50
+    max_rounds: 100
+    play: !!python/object:__main__.SomeStrategy {}
+    rounds: 0
+    stake: 63.0
+  samples: 100
+  outputfile: p2_c13_simulation9.dat
+  """)
+
+  if __name__ == "__main__":
+      import yaml
+      config= yaml.load( yaml1_file )
+      print( config )
+
+      simulate( config['table'], config['player'], config['outputfile'], config['samples'] )
+      check( config['outputfile'] )
+
+
+Property files
+===============
+
+- Lines have keys and values.
+- Key ends with the first unescaped '=', ':', or white space character.
+- Value is optional and defaults to "".
+- Number sign (#) or the exclamation mark (!) as
+  the first non blank character in a line is a comment.
+- The backwards slash is used to escape a character.
+- Since  #, !, =, and : have meaning,
+  when involved in a piece of key or element, use a preceding backslash
+- Key with spaces is tolerated using '\ '.
+- Key or value with newline is tolerated using '\\n'.
+- Unicode escapes may be used:  \uxxxx is the format.
+- Everything is text, explicit conversions required
+
+Example 1
+From http://en.wikipedia.org/wiki/.properties
+::
+
+  prop1="""
+  # You are reading the ".properties" entry.
+  ! The exclamation mark can also mark text as comments.
+  # The key and element characters #, !, =, and : are written with a preceding backslash to ensure that they are properly loaded.
+  website = http\://en.wikipedia.org/
+  language = English
+  # The backslash below tells the application to continue reading
+  # the value onto the next line.
+  message = Welcome to \\
+            Wikipedia\!
+  # Add spaces to the key
+  key\ with\ spaces = This is the value that could be looked up with the key "key with spaces".
+  # Unicode
+  tab : \\u0009
+  """
+
+Example 2
+From http://docs.oracle.com/javase/7/docs/api/java/util/Properties.html
+::
+
+  prop2="""
+  \:\=
+  Truth = Beauty
+   Truth:Beauty
+  Truth                    :Beauty
+
+  fruits                          apple, banana, pear, \\
+                                  cantaloupe, watermelon, \\
+                                  kiwi, mango
+
+  cheeses
+  """
+
+Property File Parsing Class
+::
+
+  import re
+  class PropertyParser:
+      def read_string( self, data ):
+          return self._parse(data)
+      def read_file( self, file ):
+          data= file.read()
+          return self.read_string( data )
+      def read( self, filename ):
+          with open(filename) as file:
+              return self.read_file( file )
+
+      key_element_pat= re.compile(r"(.*?)\s*(?<!\\)[:=\s]\s*(.*)")
+      def _parse( self, data ):
+          logical_lines = (line.strip()
+              for line in re.sub(r"\\\n\s*", "", data).splitlines())
+          non_empty= (line for line in logical_lines
+              if len(line) != 0)
+          non_comment= (line for line in non_empty
+              if not( line.startswith("#") or line.startswith("!") ) )
+          for line in non_comment:
+              ke_match= self.key_element_pat.match(line)
+              if ke_match:
+                  key, element = ke_match.group(1), ke_match.group(2)
+              else:
+                  key, element = line, ""
+              key= self._escape(key)
+              element= self._escape(element)
+              yield key, element
+
+      def load( self, file_or_name ):
+          if isinstance(file_or_name,io.TextIOBase):
+              self.loads(file_or_name.read())
+          else:
+              with open(filename) as file:
+                  self.loads(file.read())
+      def loads( self, string ):
+          return self._parse(data)
+
+      def _escape( self, data ):
+          d1= re.sub( r"\\([:#!=\s])", lambda x:x.group(1), data )
+          d2= re.sub( r"\\u([0-9A-Fa-f]+)", lambda x:chr(int(x.group(1),16)), d1 )
+          return d2
+
+      def _escape2( self, data ):
+          d2= re.sub( r"\\([:#!=\s])|\\u([0-9A-Fa-f]+)",
+              lambda x:x.group(1) if x.group(1) else chr(int(x.group(2),16)), data )
+          return d2
+
+
+
+A Formal Unit Test. We'll use the examples from the Wikipedia page
+and from the Java page to be sure we're getting sensible output.
+::
+
+  if __name__ == "__main__":
+      import unittest
+
+TestCase class definition
+::
+
+      class TestPropertyParser( unittest.TestCase ):
+
+A setUp method to construct an instance of the parser
+:
+
+::
+
+          def setUp( self ):
+              self.parser= PropertyParser()
+
+A test for the prop1 example. We can create a dict since each key
+is unique.
+::
+
+          def test_should_parse_prop1( self ):
+              actual= dict(self.parser.read_string( prop1 ))
+              expected= {
+                  'key with spaces': 'This is the value that could be looked up with the key "key with spaces".',
+                  'language': 'English',
+                  'message': 'Welcome to Wikipedia!',
+                  'tab': '\t',
+                  'website': 'http://en.wikipedia.org/'}
+              self.assertDictEqual( expected, actual )
+
+A test for the prop2 example. We create a list since each key
+is not unique. The list is merely for testing, no practical app
+can depend on duplicate keys.
+::
+
+          def test_should_parse_prop2( self ):
+              actual= list(self.parser.read_string( prop2 ))
+              expected= [
+                  (':=', ''),
+                  ('Truth', 'Beauty'),
+                  ('Truth', 'Beauty'),
+                  ('Truth', 'Beauty'),
+                  ('fruits', 'apple, banana, pear, cantaloupe, watermelon, kiwi, mango'),
+                  ('cheeses', '')]
+              self.assertListEqual( expected, actual )
+
+The test suite
+::
+
+      def suite():
+          s= unittest.TestSuite()
+          s.addTests( unittest.defaultTestLoader.loadTestsFromTestCase(TestPropertyParser) )
+          return s
+
+Run the suite.
+::
+
+      t= unittest.TextTestRunner()
+      t.run( suite() )
+
+Main Program to use property file input
+::
+
+  import ast
+  def main_cm_str( config ):
+      dealer_nm= config.get('table.dealer', 'Hit17')
+      dealer_rule= {'Hit17':Hit17(),
+          'Stand17':Stand17()}.get(dealer_nm, Hit17())
+      split_nm= config.get('table.split', 'ReSplit')
+      split_rule= {'ReSplit':ReSplit(),
+          'NoReSplit':NoReSplit(),
+          'NoReSplitAces':NoReSplitAces()}.get(split_nm, ReSplit())
+      decks= int(config.get('table.decks', 6))
+      limit= int(config.get('table.limit', 100))
+      payout= ast.literal_eval(config.get('table.payout', '(3,2)'))
+      table= Table( decks=decks, limit=limit, dealer=dealer_rule,
+          split=split_rule, payout=payout )
+
+      player_nm= config.get('player.play', 'SomeStrategy')
+      player_rule= {'SomeStrategy':SomeStrategy(),
+          'AnotherStrategy':AnotherStrategy()}.get(player_nm,SomeStrategy())
+      bet_nm= config.get('player.betting', 'Flat')
+      betting_rule= {'Flat':Flat(),
+          'Martingale':Martingale(),
+          'OneThreeTwoSix':OneThreeTwoSix()}.get(bet_nm,Flat())
+      rounds= int(config.get('player.rounds', 100))
+      stake= int(config.get('player.stake', 50))
+      player= Player( play=player_rule, betting=betting_rule,
+          rounds=rounds, stake=stake )
+
+      outputfile= config.get('simulator.outputfile', 'blackjack.csv')
+      samples= int(config.get('simulator.samples', 100))
+      simulator= Simulate( table, player, samples )
+      with open(outputfile,"w",newline="") as results:
+          wtr= csv.writer( results )
+          for gamestats in simulator:
+              wtr.writerow( gamestats )
+
+Example property file.
+::
+
+  prop_file= io.StringIO("""
+  # Example Simulation Setup
+
+  player.betting: Flat
+  player.play: SomeStrategy
+  player.rounds: 100
+  player.stake: 50
+
+  table.dealer: Hit17
+  table.decks: 6
+  table.limit: 50
+  table.payout: (3,2)
+  table.split: NoResplitAces
+
+  simulator.outputfile = p2_c13_simulation10.dat
+  simulator.samples = 100
+  """)
+
+  if __name__ == "__main__":
+      pp= PropertyParser()
+
+      candidate_list= [ prop_file ]
+      config= ChainMap(
+          *[dict( pp.read_file(file) )
+          for file in reversed(candidate_list)] )
+
+      main_cm_str( config )
+      check( config['simulator.outputfile'] )
+
+
+
+XML files
+==========
+
+Plist
+#######
+
+Sample PLIST Document. As bytes.
+::
+
+  import io
+  plist_file= io.BytesIO( b"""<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+  <plist version="1.0">
+  <dict>
+      <key>player</key>
+      <dict>
+          <key>betting</key>
+          <string>Flat</string>
+          <key>play</key>
+          <string>SomeStrategy</string>
+          <key>rounds</key>
+          <integer>100</integer>
+          <key>stake</key>
+          <integer>50</integer>
+      </dict>
+      <key>simulator</key>
+      <dict>
+          <key>outputfile</key>
+          <string>p2_c13_simulation8.dat</string>
+          <key>samples</key>
+          <integer>100</integer>
+      </dict>
+      <key>table</key>
+      <dict>
+          <key>dealer</key>
+          <string>Hit17</string>
+          <key>decks</key>
+          <integer>6</integer>
+          <key>limit</key>
+          <integer>50</integer>
+          <key>payout</key>
+          <array>
+              <integer>3</integer>
+              <integer>2</integer>
+          </array>
+          <key>split</key>
+          <string>NoResplitAces</string>
+      </dict>
+  </dict>
+  </plist>
+  """)
+
+Non-Plist
+##########
+
+A completely customized XML document
+::
+
+  import io
+  xml_file= io.BytesIO( b"""<?xml version="1.0" encoding="UTF-8"?>
+  <simulation>
+      <table>
+          <dealer>Hit17</dealer>
+          <split>NoResplitAces</split>
+          <decks>6</decks>
+          <limit>50</limit>
+          <payout>(3,2)</payout>
+      </table>
+      <player>
+          <betting>Flat</betting>
+          <play>SomeStrategy</play>
+          <rounds>100</rounds>
+          <stake>50</stake>
+      </player>
+      <simulator>
+          <outputfile>p2_c13_simulation11.dat</outputfile>
+          <samples>100</samples>
+      </simulator>
+  </simulation>
+  """)
+
+  import xml.etree.ElementTree as XML
+  class Configuration:
+      def read_file( self, file ):
+          self.config= XML.parse( file )
+      def read( self, filename ):
+          self.config= XML.parse( filename )
+      def read_string( self, text ):
+          self.config= XML.fromstring( text )
+      def get( self, qual_name, default ):
+          section, _, item = qual_name.partition(".")
+          query= "./{0}/{1}".format( section, item )
+          node= self.config.find(query)
+          if node is None: return default
+          return node.text
+      def __getitem__( self, section ):
+          query= "./{0}".format(section)
+          parent= self.config.find(query)
+          return dict( (item.tag, item.text) for item in parent )
+
+  if __name__ == "__main__":
+
+      config= Configuration()
+      config.read_file( xml_file )
+      main_cm_str( config )
+      check( config['simulator']['outputfile'] )
+

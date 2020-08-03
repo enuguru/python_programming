@@ -1,0 +1,1051 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>Chapter 2 -- Basic Special Methods</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7056 2011-06-17 10:50:48Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+/* example stylesheet for Docutils */
+
+/* :Author:    Günter Milde */
+/* :Copyright: © 2012 G. Milde */
+/* :License:   This stylesheet is placed in the public domain. */
+
+/* Syntax highlight rules for HTML documents generated with Docutils */
+/* using the ``--syntax-highlight=long`` option (new in v. 0.9). */
+
+/* This stylesheet implements Pygment's "default" style with less rules than */
+/* pygments-default using class hierarchies.                                 */
+/* Use it as example for "handcrafted" styles with only few rules.      */
+
+.code                              { background: #f8f8f8; }
+.code .comment                     { color: #008800; font-style: italic }
+.code .error                       { border: 1px solid #FF0000 }
+.code .generic.deleted             { color: #A00000 }
+.code .generic.emph                { font-style: italic }
+.code .generic.error               { color: #FF0000 }
+.code .generic.heading             { color: #000080; font-weight: bold }
+.code .generic.inserted            { color: #00A000 }
+.code .generic.output              { color: #808080 }
+.code .generic.prompt              { color: #000080; font-weight: bold }
+.code .generic.strong              { font-weight: bold }
+.code .generic.subheading          { color: #800080; font-weight: bold }
+.code .generic.traceback           { color: #0040D0 }
+.code .keyword                     { color: #AA22FF; font-weight: bold }
+.code .keyword.pseudo              { font-weight: normal }
+.code .literal.number              { color: #666666 }
+.code .literal.string              { color: #BB4444 }
+.code .literal.string.doc          { color: #BB4444; font-style: italic }
+.code .literal.string.escape       { color: #BB6622; font-weight: bold }
+.code .literal.string.interpol     { color: #BB6688; font-weight: bold }
+.code .literal.string.other        { color: #008000 }
+.code .literal.string.regex        { color: #BB6688 }
+.code .literal.string.symbol       { color: #B8860B }
+.code .name.attribute              { color: #BB4444 }
+.code .name.builtin                { color: #AA22FF }
+.code .name.class                  { color: #0000FF }
+.code .name.constant               { color: #880000 }
+.code .name.decorator              { color: #AA22FF }
+.code .name.entity                 { color: #999999; font-weight: bold }
+.code .name.exception              { color: #D2413A; font-weight: bold }
+.code .name.function               { color: #00A000 }
+.code .name.label                  { color: #A0A000 }
+.code .name.namespace              { color: #0000FF; font-weight: bold }
+.code .name.tag                    { color: #008000; font-weight: bold }
+.code .name.variable               { color: #B8860B }
+.code .operator                    { color: #666666 }
+.code .operator.word               { color: #AA22FF; font-weight: bold }
+
+</style>
+<style type="text/css">
+
+/* Page layout tweaks */
+div.document { width: 6in; }
+
+</style>
+</head>
+<body>
+<div class="document" id="chapter-2-basic-special-methods">
+<h1 class="title">Chapter 2 -- Basic Special Methods</h1>
+
+<!-- #!/usr/bin/env python3 -->
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#immutable-objects" id="id1">1&nbsp;&nbsp;&nbsp;Immutable Objects</a><ul class="auto-toc">
+<li><a class="reference internal" href="#card-class-with-anomalies" id="id2">1.1&nbsp;&nbsp;&nbsp;Card Class with anomalies</a></li>
+<li><a class="reference internal" href="#better-card-class" id="id3">1.2&nbsp;&nbsp;&nbsp;Better Card Class</a></li>
+<li><a class="reference internal" href="#another-poorly-designed-card-class" id="id4">1.3&nbsp;&nbsp;&nbsp;Another Poorly-Designed Card Class</a></li>
+<li><a class="reference internal" href="#better-mutable-object-example" id="id5">1.4&nbsp;&nbsp;&nbsp;Better Mutable Object Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bool" id="id6">2&nbsp;&nbsp;&nbsp;__bool__</a></li>
+<li><a class="reference internal" href="#format" id="id7">3&nbsp;&nbsp;&nbsp;__format__</a></li>
+<li><a class="reference internal" href="#bytes" id="id8">4&nbsp;&nbsp;&nbsp;__bytes__</a></li>
+<li><a class="reference internal" href="#comparison" id="id9">5&nbsp;&nbsp;&nbsp;Comparison</a></li>
+<li><a class="reference internal" href="#destruction-and-del" id="id10">6&nbsp;&nbsp;&nbsp;Destruction and __del__()</a></li>
+<li><a class="reference internal" href="#immutable-init-and-new" id="id11">7&nbsp;&nbsp;&nbsp;Immutable init and __new__()</a></li>
+<li><a class="reference internal" href="#metaclass-and-new" id="id12">8&nbsp;&nbsp;&nbsp;Metaclass and __new__()</a></li>
+</ul>
+</div>
+<div class="section" id="immutable-objects">
+<h1><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;Immutable Objects</a></h1>
+<div class="section" id="card-class-with-anomalies">
+<h2><a class="toc-backref" href="#id2">1.1&nbsp;&nbsp;&nbsp;Card Class with anomalies</a></h2>
+<p>Definition of a simple class hierarchy for immutable objects
+without a formal equality test or hash function. This will
+somewhat work as expected. However, there will also be anomalies.</p>
+<pre class="literal-block">
+class Card:
+    insure= False
+    def __init__( self, rank, suit, hard, soft ):
+        self.rank= rank
+        self.suit= suit
+        self.hard= hard
+        self.soft= soft
+    def __repr__( self ):
+        return &quot;{__class__.__name__}(suit={suit!r}, rank={rank!r})&quot;.format(__class__=self.__class__, **self.__dict__)
+    def __str__( self ):
+        return &quot;{rank}{suit}&quot;.format(**self.__dict__)
+
+class NumberCard( Card ):
+    def  __init__( self, rank, suit ):
+        super().__init__( str(rank), suit, rank, rank )
+
+class AceCard( Card ):
+    def  __init__( self, rank, suit ):
+        super().__init__( &quot;A&quot;, suit, 1, 11 )
+
+class FaceCard( Card ):
+    def  __init__( self, rank, suit ):
+        super().__init__( {11: 'J', 12: 'Q', 13: 'K' }[rank], suit, 10, 10 )
+
+Suits = '♣', '♦', '♥', '♠'
+</pre>
+<p>Some Use cases for two seemingly equal cards.</p>
+<pre class="literal-block">
+c1 = AceCard( 1, '♣' )
+c2 = AceCard( 1, '♣' )
+
+print( id(c1), id(c2) )
+print( c1 is c2 )
+print( hash(c1), hash(c2) )
+print( c1 == c2 )
+print( set( [c1, c2] ) )
+</pre>
+</div>
+<div class="section" id="better-card-class">
+<h2><a class="toc-backref" href="#id3">1.2&nbsp;&nbsp;&nbsp;Better Card Class</a></h2>
+<p>Definition of a more sophisticated class hierarchy
+with a formal equality and hash test. This will create
+properly immutable objects. There will be no anomalies with
+seemingly equal objects.</p>
+<pre class="literal-block">
+class Card2:
+    insure= False
+    def __init__( self, rank, suit, hard, soft ):
+        self.rank= rank
+        self.suit= suit
+        self.hard= hard
+        self.soft= soft
+    def __repr__( self ):
+        return &quot;{__class__.__name__}(suit={suit!r}, rank={rank!r})&quot;.format(__class__=self.__class__, **self.__dict__)
+    def __str__( self ):
+        return &quot;{rank}{suit}&quot;.format(**self.__dict__)
+    def __eq__( self, other ):
+        return self.suit == other.suit and self.rank == other.rank
+        # and self.hard == other.hard and self.soft == other.soft
+    def __hash__( self ):
+        return hash(self.suit) ^ hash(self.rank)
+    def __format__( self, format_spec ):
+        if format_spec == &quot;&quot;:
+            return str(self)
+        rs= format_spec.replace(&quot;%r&quot;,self.rank).replace(&quot;%s&quot;,self.suit)
+        rs= rs.replace(&quot;%%&quot;,&quot;%&quot;)
+        return rs
+    def __bytes__( self ):
+        class_code= self.__class__.__name__[0]
+        rank_number_str = {'A': '1', 'J': '11', 'Q': '12', 'K': '13'}.get( self.rank, self.rank )
+        string= &quot;(&quot;+&quot; &quot;.join([class_code, rank_number_str, self.suit,] ) + &quot;)&quot;
+        return bytes(string,encoding=&quot;utf8&quot;)
+
+class NumberCard2( Card2 ):
+    def  __init__( self, rank, suit ):
+        super().__init__( str(rank), suit, rank, rank )
+class AceCard2( Card2 ):
+    insure= True
+    def  __init__( self, rank, suit ):
+        super().__init__( &quot;A&quot;, suit, 1, 11 )
+class FaceCard2( Card2 ):
+    def  __init__( self, rank, suit ):
+        super().__init__( {11: 'J', 12: 'Q', 13: 'K' }[rank], suit, 10, 10 )
+</pre>
+<p>Some Use cases for two seemingly equal cards.</p>
+<pre class="literal-block">
+c1 = AceCard2( 1, '♣' )
+c2 = AceCard2( 1, '♣' )
+
+print( id(c1), id(c2) )
+print( c1 is c2 )
+print( hash(c1), hash(c2) )
+print( c1 == c2 )
+print( set( [c1, c2] ) )
+</pre>
+</div>
+<div class="section" id="another-poorly-designed-card-class">
+<h2><a class="toc-backref" href="#id4">1.3&nbsp;&nbsp;&nbsp;Another Poorly-Designed Card Class</a></h2>
+<p>Definition of a weird class hierarchy
+with a formal equality but no hash test. This will create
+properly mutable objects that can't be put into sets.</p>
+<pre class="literal-block">
+class Card3:
+    insure= False
+    def __init__( self, rank, suit, hard, soft ):
+        self.rank= rank
+        self.suit= suit
+        self.hard= hard
+        self.soft= soft
+    def __repr__( self ):
+        return &quot;{__class__.__name__}(suit={suit!r}, rank={rank!r})&quot;.format(__class__=self.__class__, **self.__dict__)
+    def __str__( self ):
+        return &quot;{rank}{suit}&quot;.format(**self.__dict__)
+    def __eq__( self, other ):
+        return self.suit == other.suit and self.rank == other.rank
+        # and self.hard == other.hard and self.soft == other.soft
+    __hash__ = None
+class AceCard3( Card3 ):
+    insure= True
+    def  __init__( self, rank, suit ):
+        super().__init__( &quot;A&quot;, suit, 1, 11 )
+
+class NumberCard3( Card3 ):
+    def  __init__( self, rank, suit ):
+        super().__init__( str(rank), suit, rank, rank )
+class FaceCard3( Card3 ):
+    def  __init__( self, rank, suit ):
+        super().__init__( {11: 'J', 12: 'Q', 13: 'K' }[rank], suit, 10, 10 )
+</pre>
+<p>Some Use cases for two seemingly equal cards.</p>
+<pre class="literal-block">
+c1 = AceCard3( 1, '♣' )
+c2 = AceCard3( 1, '♣' )
+
+print( id(c1), id(c2) )
+print( c1 is c2 )
+try:
+    print( hash(c1), hash(c2) )
+except TypeError as e:
+    print( e )
+print( c1 == c2 )
+try:
+    print( set( [c1, c2] ) )
+except TypeError as e:
+    print( e )
+</pre>
+</div>
+<div class="section" id="better-mutable-object-example">
+<h2><a class="toc-backref" href="#id5">1.4&nbsp;&nbsp;&nbsp;Better Mutable Object Example</a></h2>
+<p>Definition of a simple class hierarchy
+with a formal equality and hash test.</p>
+<pre class="literal-block">
+class Hand:
+    def __init__( self, dealer_card, *cards ):
+        self.dealer_card= dealer_card
+        self.cards= list(cards)
+    def __str__( self ):
+        return &quot;, &quot;.join( map(str, self.cards) )
+    def __repr__( self ):
+        return &quot;{__class__.__name__}({dealer_card!r}, {_cards_str})&quot;.format(
+        __class__=self.__class__,
+        _cards_str=&quot;, &quot;.join( map(repr, self.cards) ),
+        **self.__dict__ )
+    def __format__( self, format_specification ):
+        if format_specification == &quot;&quot;:
+            return str(self)
+        return &quot;, &quot;.join( &quot;{0:{fs}}&quot;.format(c, fs=format_specification) for c in self.cards )
+    def __eq__( self, other ):
+        if isinstance(other,int):
+            return self.total() == other
+        try:
+            return self.cards == other.cards and self.dealer_card == other.dealer_card
+        except AttributeError:
+            return NotImplemented
+    def __lt__( self, other ):
+        if isinstance(other,int):
+            return self.total() &lt; other
+        try:
+            return self.total() &lt; other.total()
+        except AttributeError:
+            return NotImplemented
+    def __le__( self, other ):
+        if isinstance(other,int):
+            return self.total() &lt;= other
+        try:
+            return self.total() &lt;= other.total()
+        except AttributeError:
+            return NotImplemented
+    __hash__ = None
+    def total( self ):
+        delta_soft = max( c.soft-c.hard for c in self.cards )
+        hard = sum( c.hard for c in self.cards )
+        if hard+delta_soft &lt;= 21: return hard+delta_soft
+        return hard
+
+import sys
+class FrozenHand( Hand ):
+    def __init__( self, *args, **kw ):
+        if len(args) == 1 and isinstance(args[0], Hand):
+            # Clone a hand
+            other= args[0]
+            self.dealer_card= other.dealer_card
+            self.cards= other.cards
+        else:
+            # Build a fresh hand
+            super().__init__( *args, **kw )
+    def __hash__( self ):
+        h= 0
+        for c in self.cards:
+            h = (h + hash(c)) % sys.hash_info.modulus
+        return h
+
+def card( rank, suit ):
+    if rank == 1: return AceCard2( rank, suit )
+    elif 2 &lt;= rank &lt; 11: return NumberCard2( rank, suit )
+    elif 11 &lt;= rank &lt; 14: return FaceCard2( rank, suit )
+    else:
+        raise Exception( &quot;Rank out of range&quot; )
+
+import random
+
+class Deck( list ):
+    def __init__( self ):
+        super().__init__( card(r+1,s) for r in range(13) for s in Suits )
+        random.shuffle( self )
+
+from collections import defaultdict
+stats = defaultdict(int)
+
+d= Deck()
+h = Hand( d.pop(), d.pop(), d.pop() )
+h_f = FrozenHand( h )
+stats[h_f] += 1
+print( stats )
+</pre>
+</div>
+</div>
+<div class="section" id="bool">
+<h1><a class="toc-backref" href="#id6">2&nbsp;&nbsp;&nbsp;__bool__</a></h1>
+<p>Not much to show here. The default works as expected.</p>
+</div>
+<div class="section" id="format">
+<h1><a class="toc-backref" href="#id7">3&nbsp;&nbsp;&nbsp;__format__</a></h1>
+<p>Really, this belongs with __str__() and __repr__()</p>
+<p>Examples of how __format__ gets invoked</p>
+<pre class="literal-block">
+c = card( 2, '♠' )
+print( &quot;function&quot;, format( c ) )
+print( &quot;Card plain {0}&quot;.format(c) )
+print( &quot;Card !r {0!r}&quot;.format(c) )
+print( &quot;Card !s {0!s}&quot;.format(c) )
+</pre>
+<p>Our own unique formatting language uses &quot;r&quot; and &quot;s&quot; for rank and suit.</p>
+<pre class="literal-block">
+print( &quot;Card :%s {0:%s}&quot;.format(c) )
+print( &quot;Card :%r {0:%r}&quot;.format(c) )
+print( &quot;Card :%r of %s {0:%r of %s}&quot;.format(c) )
+print( &quot;Card :%s%r {0:%s%r}&quot;.format(c) )
+</pre>
+<p>Extra literals we leave alone.</p>
+<pre class="literal-block">
+print( &quot;Card nested {0:{fill}{align}16s}&quot;.format(c, fill=&quot;*&quot;, align=&quot;&lt;&quot;) )
+</pre>
+<p>RE to parse the specification.</p>
+<pre class="literal-block">
+import re
+spec_pat = re.compile(
+r&quot;(?P&lt;fill_align&gt;.?[\&lt;\&gt;=\^])?&quot;
+&quot;(?P&lt;sign&gt;[-+ ])?&quot;
+&quot;(?P&lt;alt&gt;#)?&quot;
+&quot;(?P&lt;padding&gt;0)?&quot;
+&quot;(?P&lt;width&gt;\d*)&quot;
+&quot;(?P&lt;comma&gt;,)?&quot;
+&quot;(?P&lt;precision&gt;\.\d*)?&quot;
+&quot;(?P&lt;type&gt;[bcdeEfFgGnosxX%])?&quot; )
+
+for spec in (&quot;&lt;30&quot;, &quot;&gt;30&quot;, &quot;^30&quot;, &quot;*^30&quot;, &quot;+f&quot;, &quot;-f&quot;, &quot; f&quot;, &quot;d&quot;, &quot;x&quot;, &quot;o&quot;, &quot;b&quot;,
+    &quot;#x&quot;, &quot;#o&quot;, &quot;#b&quot;, &quot;,&quot;, &quot;.2%&quot;, &quot;06.4f&quot;):
+    print( spec, spec_pat.match(spec).groupdict() )
+</pre>
+<p>Nested {}'s</p>
+<pre class="literal-block">
+stats = defaultdict(int)
+
+d= Deck()
+h1 = FrozenHand( d.pop(), d.pop(), d.pop() )
+stats[h1] += 1
+h2 = FrozenHand( d.pop(), d.pop(), d.pop() )
+stats[h2] += 1
+
+width=6
+for hand,count in stats.items():
+    print( &quot;{hand:%r%s} {count:{width}d}&quot;.format(hand=hand,count=count,width=width) )
+</pre>
+</div>
+<div class="section" id="bytes">
+<h1><a class="toc-backref" href="#id8">4&nbsp;&nbsp;&nbsp;__bytes__</a></h1>
+<pre class="literal-block">
+# Export card as a bytes
+#::
+
+d= Deck()
+c= d.pop()
+b= bytes(c)
+print( b )
+
+def card_from_bytes( buffer ):
+    string = buffer.decode(&quot;utf8&quot;)
+    assert string[0 ]==&quot;(&quot; and string[-1] == &quot;)&quot;
+    code, rank_number, suit = string[1:-1].split()
+    class_ = { 'A': AceCard, 'N': NumberCard, 'F': FaceCard }[code]
+    return class_( int(rank_number), suit )
+
+print( card_from_bytes(b) )
+</pre>
+</div>
+<div class="section" id="comparison">
+<h1><a class="toc-backref" href="#id9">5&nbsp;&nbsp;&nbsp;Comparison</a></h1>
+<p>The object resolution for comparison special methods.
+A partial class to see what happens.</p>
+<pre class="literal-block">
+class BlackJackCard_p:
+    def __init__( self, rank, suit ):
+        self.rank= rank
+        self.suit= suit
+    def __lt__( self, other ):
+        print( &quot;Compare {0} &lt; {1}&quot;.format( self, other ) )
+        return self.rank &lt; other.rank
+    def __str__( self ):
+        return &quot;{rank}{suit}&quot;.format( **self.__dict__ )
+
+two = BlackJackCard_p( 2, '♠' )
+three = BlackJackCard_p( 3, '♠' )
+print( &quot;{0} &lt;  {1} :: {2!r}&quot;.format( two, three, two &lt; three ) )
+print( &quot;{0} &gt;  {1} :: {2!r}&quot;.format( two, three, two &gt; three ) )
+print( &quot;{0} == {1} :: {2!r}&quot;.format( two, three, two == three ) )
+try:
+    print( &quot;{0} &lt;= {1} :: {2!r}&quot;.format( two, three, two &lt;= three ) )
+except TypeError:
+    pass
+
+two_c = BlackJackCard_p( 2, '♣' )
+print( &quot;{0} == {1} :: {2!r}&quot;.format( two, two_c, two == two_c ) )
+</pre>
+<p>A more complete class to show same-class comparisons.</p>
+<pre class="literal-block">
+class BlackJackCard:
+    def __init__( self, rank, suit, hard, soft ):
+        self.rank= rank
+        self.suit= suit
+        self.hard= hard
+        self.soft= soft
+    def __lt__( self, other ):
+        if not isinstance( other, BlackJackCard ):
+            return NotImplemented
+        return self.rank &lt; other.rank
+    def __le__( self, other ):
+        try:
+            return self.rank &lt;= other.rank
+        except AttributeError:
+            return NotImplemented
+    def __gt__( self, other ):
+        if not isinstance( other, BlackJackCard ):
+            return NotImplemented
+        return self.rank &gt; other.rank
+    def __ge__( self, other ):
+        if not isinstance( other, BlackJackCard ):
+            return NotImplemented
+        return self.rank &gt;= other.rank
+    def __eq__( self, other ):
+        if not isinstance( other, BlackJackCard ):
+            return NotImplemented
+        return self.rank == other.rank and self.suit == other.suit
+    def __ne__( self, other ):
+        if not isinstance( other, BlackJackCard ):
+            return NotImplemented
+        return self.rank != other.rank and self.suit == other.suit
+    def __str__( self ):
+        return &quot;{rank}{suit}&quot;.format( **self.__dict__ )
+
+class Ace21Card( BlackJackCard ):
+    def __init__( self, rank, suit ):
+        super().__init__( 'A', suit, 1, 11 )
+
+class Face21Card( BlackJackCard ):
+    def __init__( self, rank, suit ):
+        super().__init__( {11:'J', 12:'Q', 13:'K'}[rank], suit, 10, 10 )
+
+class Number21Card( BlackJackCard ):
+    def __init__( self, rank, suit ):
+        super().__init__( str(rank), suit, rank, rank )
+
+def card21( rank, suit ):
+    if rank == 1: return Ace21Card( rank, suit )
+    elif 2 &lt;= rank &lt; 11: return Number21Card( rank, suit )
+    elif 11 &lt;= rank &lt; 14: return Face21Card( rank, suit )
+    else:
+        raise TypeError
+
+two = card21( 2, '♠' )
+three = card21( 3, '♠' )
+print( &quot;{0} &lt;  {1} :: {2!r}&quot;.format( two, three, two &lt; three ) )
+print( &quot;{0} &gt;  {1} :: {2!r}&quot;.format( two, three, two &gt; three ) )
+print( &quot;{0} == {1} :: {2!r}&quot;.format( two, three, two == three ) )
+print( &quot;{0} &lt;= {1} :: {2!r}&quot;.format( two, three, two &lt;= three ) )
+
+two_c = card21( 2, '♣' )
+print( &quot;{0} == {1} :: {2!r}&quot;.format( two, two_c, two == two_c ) )
+
+# A mixed class comparison with int
+try:
+    print( &quot;{0} &lt;  {1} :: {2!r}&quot;.format( 2, three, 2 &lt; three ) )
+except TypeError as e:
+    print( &quot;Expected&quot;, e )
+</pre>
+<p>See <tt class="docutils literal">Hand</tt> above.</p>
+</div>
+<div class="section" id="destruction-and-del">
+<h1><a class="toc-backref" href="#id10">6&nbsp;&nbsp;&nbsp;Destruction and __del__()</a></h1>
+<p>Noisy Exit</p>
+<pre class="literal-block">
+class Noisy:
+    def __del__( self ):
+        print( &quot;Removing {0}&quot;.format(id(self)) )
+</pre>
+<p>Simple create and delete.</p>
+<pre class="literal-block">
+x= Noisy()
+del x
+</pre>
+<p>Shallow copy and multiple references.</p>
+<pre class="literal-block">
+ln = [ Noisy(), Noisy() ]
+ln2= ln[:]
+del ln
+del ln2
+</pre>
+<p>Circularity</p>
+<pre class="literal-block">
+class Parent:
+    def __init__( self, *children ):
+        self.children= list(children)
+        for child in self.children:
+            child.parent= self
+    def __del__( self ):
+        print( &quot;Removing {__class__.__name__} {id:d}&quot;.format( __class__=self.__class__, id=id(self)) )
+
+class Child:
+    def __del__( self ):
+        print( &quot;Removing {__class__.__name__} {id:d}&quot;.format( __class__=self.__class__, id=id(self)) )
+
+p = Parent( Child(), Child() )
+del p
+
+import gc
+gc.collect()
+print( gc.garbage )
+</pre>
+<p>No circularity via weak references.</p>
+<pre class="literal-block">
+import weakref
+class Parent2:
+    def __init__( self, *children ):
+        self.children= list(children)
+        for child in self.children:
+            child.parent= weakref.ref(self)
+    def __del__( self ):
+        print( &quot;Removing {__class__.__name__} {id:d}&quot;.format( __class__=self.__class__, id=id(self)) )
+
+p = Parent2( Child(), Child() )
+del p
+</pre>
+</div>
+<div class="section" id="immutable-init-and-new">
+<h1><a class="toc-backref" href="#id11">7&nbsp;&nbsp;&nbsp;Immutable init and __new__()</a></h1>
+<p>Doesn't work. Can't use this form of __init__ with immutable classes.</p>
+<pre class="literal-block">
+class Float_Fail( float ):
+    def __init__( self, value, unit ):
+        super().__init__( value )
+        self.unit = unit
+</pre>
+<p>This is how we can tweak an immutable object before the __init__ is invoked.</p>
+<pre class="literal-block">
+class Float_Units( float ):
+    def __new__( cls, value, unit ):
+       obj= super().__new__( cls, value )
+       obj.unit= unit
+       return obj
+</pre>
+</div>
+<div class="section" id="metaclass-and-new">
+<h1><a class="toc-backref" href="#id12">8&nbsp;&nbsp;&nbsp;Metaclass and __new__()</a></h1>
+<p>Example 1. Ordered Attributes</p>
+<pre class="literal-block">
+import collections
+
+class Ordered_Attributes(type):
+    &#64;classmethod
+    def __prepare__(metacls, name, bases, **kwds):
+        return collections.OrderedDict()
+    def __new__(cls, name, bases, namespace, **kwds):
+        print( &quot;Given&quot;, type(namespace) )
+        result = super().__new__(cls, name, bases, namespace)
+        print( &quot;Result&quot;, type(result.__dict__) )
+        result._order = tuple(n for n in namespace if not n.startswith('__'))
+        return result
+
+class Order_Preserved( metaclass=Ordered_Attributes ):
+    pass
+
+class Something( Order_Preserved ):
+    this= 'text'
+    def z( self ):
+        return False
+    b= 'order is preserved'
+    a= 'more text'
+
+print( Something.__dict__, Something._order )
+</pre>
+<p>Example 2.  Unit Conversions</p>
+<pre class="literal-block">
+class Unit:
+    &quot;&quot;&quot;Generic definition of a unit.
+    This unit is not the &quot;standard&quot; used for conversions.
+    This is converted to a standard or a standard is converted to this.
+
+    ::
+
+        class X( Unit ):
+            '''X full name'''
+            name= &quot;x&quot; # Abbreviation
+            factor= 123.45
+
+    Create a standard value from input in units of X.
+
+    ::
+
+        m_std= X.value( value )
+
+    Convert a standard value into units of X.
+
+    ::
+
+        m_x= X.convert( m_std )
+
+    Note that for Temperature, a simple &quot;factor&quot; isn't appropriate and the
+    :meth:`to_std` and :meth:`from_std` need to be overridden.
+
+    For all subclasses, the long version of the unit's name should
+    be the docstring.
+    &quot;&quot;&quot;
+    factor= 1.0
+    standard= None # Reference to the StandardUnit
+    name= &quot;&quot; # Abbreviation of the unit's name.
+    &#64;classmethod
+    def value( class_, value ):
+        if value is None: return None
+        return value/class_.factor
+    &#64;classmethod
+    def convert( class_, value ):
+        if value is None: return None
+        return value*class_.factor
+
+class UnitMeta(type):
+    &quot;&quot;&quot;Metaclass for Standard_Unit's to insert a self reference.
+    That way ``SomeStandardUnit.standard is SomeStandardUnit``.
+    &quot;&quot;&quot;
+    def __new__(cls, name, bases, dict):
+        new_class= super().__new__(cls, name, bases, dict)
+        new_class.standard = new_class
+        return new_class
+
+class Standard_Unit( Unit, metaclass=UnitMeta ):
+    &quot;&quot;&quot;The standard unit used for conversions.
+    Other units will convert to this.
+    This will convert to other units.
+
+    This is still a unit, but a conversion factor is not used.
+
+    For all subclasses, the long version of the unit's name should
+    be the docstring.
+    &quot;&quot;&quot;
+#    name= &quot;&quot; # Abbreviation of the unit's name
+#    &#64;classmethod
+#    def value( class_, value ):
+#        return value
+#    &#64;classmethod
+#    def convert( class_, value ):
+#        return value
+    pass
+
+def convert( value, unit, *to ):
+    &quot;&quot;&quot;Convert a value from one set of units to another.
+
+    :param value: A value, measured in the source unit.
+    :param unit: A subclass of :class:`Unit` describing value.
+    :param to: Subclasses of :class:`Unit`. If only a single
+        unit is supplied, then a single value is returned;
+        If multiple units are supplied, a tuple of values
+        is returned.
+    :return: value converted to the defined units.
+    &quot;&quot;&quot;
+    std_value= unit.value( value )
+    if len(to) == 1:
+        converted= to[0].convert( std_value )
+    else:
+        converted= tuple( u.convert(std_value) for u in to )
+    return converted
+
+class INCH( Standard_Unit ):
+    &quot;&quot;&quot;Inches&quot;&quot;&quot;
+    name= &quot;in&quot;
+
+class FOOT( Unit ):
+    &quot;&quot;&quot;Feet&quot;&quot;&quot;
+    name= &quot;ft&quot;
+    standard= INCH
+    factor= 1/12
+
+class CENTIMETER( Unit ):
+    &quot;&quot;&quot;Centimeters&quot;&quot;&quot;
+    name= &quot;cm&quot;
+    standard= INCH
+    factor= 2.54
+
+class METER( Unit ):
+    &quot;&quot;&quot;Meters&quot;&quot;&quot;
+    name= &quot;m&quot;
+    standard= INCH
+    factor= .0254
+</pre>
+<pre class="doctest-block">
+&gt;&gt;&gt; from p1_c02 import *
+&gt;&gt;&gt; x_std= INCH.value( 159.625 )
+&gt;&gt;&gt; FOOT.convert( x_std )
+13.302083333333332
+&gt;&gt;&gt; METER.convert( x_std )
+4.054475
+</pre>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+
+Dictionary 
+
+A dictionary optimizes element lookups 
+
+It associates keys to values
+
+Each key must have a value

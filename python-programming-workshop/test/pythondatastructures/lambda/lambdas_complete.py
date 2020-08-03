@@ -1,0 +1,21 @@
+
+
+def filterfunc(x):
+    return x % 3 == 0
+
+mult3 = filter(filterfunc, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+print(mult3)
+for i in mult3:
+    print(i)
+
+lambda x: x**2 + 2*x - 5
+
+mult3 = filter(lambda x: x % 3 == 0, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+print(mult3)
+for i in mult3:
+    print(i)
+
+mult3 = [x for x in [1, 2, 3, 4, 5, 6, 7, 8, 9] if x % 3 == 0]
+
+for i in mult3:
+    print(i)

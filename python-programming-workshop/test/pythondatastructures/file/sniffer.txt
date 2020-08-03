@@ -1,0 +1,13 @@
+
+Sniffer
+Method
+
+Sometimes a program may not know the format of the csv files. The delimiter characters may vary 
+between files.
+With Sniffer,a class,we can handle this situation. We call the sniff method to generate a dialect.
+
+The dialect returned by sniff() is then passed to the reader initialization method. A dialect class 
+stores information about the delimiter characters and how the file is formatted. We then use the reader.
+
+Tip: If you know the file format, you can pass a string literal to sniff() without reading a sample 
+of the file.

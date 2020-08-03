@@ -1,0 +1,38 @@
+Metadata-Version: 1.0
+Name: textmining
+Version: 1.0
+Summary: Python Text Mining Utilities
+Home-page: http://www.christianpeccei.com/projects/textmining
+Author: Christian Peccei
+Author-email: cpeccei@hotmail.com
+License: UNKNOWN
+Description: 
+        This package contains a variety of useful functions for text mining in Python.
+        It focuses on statistical text mining (i.e. the bag-of-words model) and makes it
+        very easy to create a term-document matrix from a collection of documents. This
+        matrix can then be read into a statistical package (R, MATLAB, etc.) for further
+        analysis. The package also provides some useful utilities for finding
+        collocations (i.e. significant two-word phrases), computing the edit distance
+        between words, and chunking long documents up into smaller pieces.
+        
+        The package has a large amount of curated data (stopwords, common names, an
+        English dictionary with parts of speech and word frequencies) which allows the
+        user to extract fairly sophisticated features from a document.
+        
+        This package does NOT have any natural language processing capabilities such as
+        part-of-speech tagging. Please see the Python NLTK for that sort of
+        functionality (plus much, much more).
+        
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Text Processing :: General
+Classifier: Topic :: Text Processing :: Linguistic

@@ -1,0 +1,134 @@
+
+
+list values are mutable, can be changed
+tuple values cannot be changed
+
+list have order
+tuples have structure
+
+compared to list tuples are faster
+compared to list tuples occupy slightly less space, it 
+becomes important if you store a lot of values
+
+by convention lists are considered to be homogeneous (is used for storing one type of elements)
+
+lists are appropriate for looping
+tuples are appropriate for structuring like  "%s %s" %tuple
+
+The key difference is that tuples are immutable. This means that you cannot change the values in a tuple once you have created it.
+
+So if you're going to need to change the values use a List. If you not going to change the values use a tuple
+
+Benefits to tuples:
+
+Slight performance improvement
+
+As a tuple is immutable it can be used as a key in a dictionary.
+
+If you can't change it neither can anyone else, which is to say you don't need to worry about any API functions etc. changing your tuple without being asked
+
+
+syntax of a list and tuple
+--------------------------
+
+my_list = [0,1,2,3,4]
+top_rock_list = ["Bohemian Rhapsody","Kashmir","Sweet Emotion", "Fortunate Son"]
+
+
+my_tuple = (a,b,c,d,e)
+celebrity_tuple = ("John", "Wayne", 90210, "Actor", "Male", "Dead")
+
+
+
+below there are some examples to show the comparision between a tuple and a list
+
+examples
+
+example 1:
+how to define tuple and a list
+
+someTuple = (1,2)
+someList  = [1,2] 
+
+
+example two:
+size of tuple and a list
+a = tuple(range(1000))
+b = list(range(1000))
+
+a.__sizeof__() # 8024
+b.__sizeof__() # 9088
+
+as you an see above, due to the smaller size of a tuple operation, it becomes a bit faster, but not that much to mention about until you have a huge number of elements
+
+
+
+example three:
+
+Permitted operations
+
+b    = [1,2]   
+b[0] = 3       # [3, 2]
+
+a    = (1,2)
+a[0] = 3       # Error
+
+That also means that you can't delete an element or sort a tuple. However, you could add new element to both list and tuple with the only difference that you will change id of the tuple by adding element
+
+a     = (1,2)
+b     = [1,2]  
+
+id(a)          # 140230916716520
+id(b)          # 748527696
+
+a = a + (3,)    # (1, 2, 3)
+b = b + [3]     # [1, 2, 3]
+
+id(a)          # 140230916878160
+id(b)          # 748527696
+
+
+
+example four:
+
+Usage
+
+very important:
+---------------
+
+List is mutable, so it can't be used as a key in a dictionary. Tuple is immutable, so can be used as a key in a dictionary
+
+a    = (1,2)
+b    = [1,2] 
+
+c = {a: 1}     # OK
+c = {b: 1}     # Error
+
+
+example five:
+
+Hashable Tuple is hashable while list is not. Hash functions return the hash value of the object, if it has one.
+
+x = (23,34,56)
+print(hash(x))
+
+45634566788
+
+y = [23,3,67]
+print(hash(y))
+
+TypeError : unhashable type: 'list'
+
+
+
+
+
+
+
+
+
+
+
+
+
+

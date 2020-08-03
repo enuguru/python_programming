@@ -1,0 +1,4 @@
+
+
+Hash. When comparing objects, a hash code can be used for more speed. A dictionary uses hashes. 
+With __hash__ we implement custom hash computations. A unique value is a good hash.

@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>Chapter 11</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7056 2011-06-17 10:50:48Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="chapter-11">
+<h1 class="title">Chapter 11</h1>
+
+<!-- #!/usr/bin/env python3 -->
+<p>Issue here is that the microblog has no processing.
+The classes tend to be rather anemic.</p>
+<p>The upside is that it has all of the relevant relationships
+So it shows SQL key handling nicely.</p>
+<p>If we add, say, Lat/Lon for geolocating each blog post,
+then, we might have something more sophisticated. The
+Lat/Lon point and differences between lat/lon points
+becomes a much more interesting object. Much more interesting.</p>
+<div class="section" id="part-i-sql-basics">
+<h1>Part I. SQL Basics</h1>
+<p>Some Example Table Declarations</p>
+<pre class="literal-block">
+sql_cleanup=&quot;&quot;&quot;\
+DROP TABLE IF EXISTS BLOG;
+DROP TABLE IF EXISTS POST;
+DROP TABLE IF EXISTS TAG;
+DROP TABLE IF EXISTS ASSOC_POST_TAG;
+&quot;&quot;&quot;
+
+sql_ddl=&quot;&quot;&quot;\
+CREATE TABLE BLOG(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    TITLE TEXT );
+CREATE TABLE POST(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    DATE TIMESTAMP,
+    TITLE TEXT,
+    RST_TEXT TEXT,
+    BLOG_ID INTEGER REFERENCES BLOG(ID)  );
+CREATE TABLE TAG(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    PHRASE TEXT UNIQUE ON CONFLICT FAIL );
+CREATE TABLE ASSOC_POST_TAG(
+        POST_ID INTEGER REFERENCES POST(ID),
+        TAG_ID INTEGER REFERENCES TAG(ID) );
+&quot;&quot;&quot;
+
+import sqlite3
+database = sqlite3.connect('p2_c11_blog.db')
+
+database.executescript( sql_cleanup )
+
+for stmt in (stmt.rstrip() for stmt in sql_ddl.split(';')):
+    print( stmt )
+    database.execute( stmt )
+
+database.close()
+</pre>
+</div>
+<div class="section" id="part-ii-simple-sql">
+<h1>Part II. Simple SQL</h1>
+<pre class="literal-block">
+import datetime
+
+database = sqlite3.connect('p2_c11_blog.db')
+
+get_last_id= &quot;&quot;&quot;\
+SELECT last_insert_rowid()
+&quot;&quot;&quot;
+
+database.execute( &quot;BEGIN&quot; )
+
+create_blog= &quot;&quot;&quot;\
+INSERT INTO BLOG( TITLE ) VALUES( ? )
+&quot;&quot;&quot;
+database.execute( create_blog, (&quot;Travel Blog&quot;,) )
+row = database.execute( get_last_id ).fetchone()
+blog_id= row[0]
+
+create_post= &quot;&quot;&quot;\
+INSERT INTO POST( DATE, TITLE, RST_TEXT, BLOG_ID ) VALUES( ?, ?, ?, ? )
+&quot;&quot;&quot;
+database.execute( create_post,
+    (datetime.datetime(2013,11,14,17,25),
+    &quot;Hard Aground&quot;,
+    &quot;&quot;&quot;Some embarrassing revelation. Including ☹ and ⚓︎&quot;&quot;&quot;,
+    blog_id) )
+row = database.execute( get_last_id ).fetchone()
+post_id= row[0]
+
+create_tag= &quot;&quot;&quot;\
+INSERT INTO TAG( PHRASE ) VALUES( ? )
+&quot;&quot;&quot;
+retrieve_tag= &quot;&quot;&quot;\
+SELECT ID, PHRASE FROM TAG WHERE PHRASE = ?
+&quot;&quot;&quot;
+create_tag_post_association= &quot;&quot;&quot;\
+INSERT INTO ASSOC_POST_TAG( POST_ID, TAG_ID ) VALUES ( ?, ? )
+&quot;&quot;&quot;
+for tag in (&quot;#RedRanger&quot;, &quot;#Whitby42&quot;, &quot;#ICW&quot;):
+    row= database.execute( retrieve_tag, (tag,) ).fetchone()
+    if row:
+        tag_id= row[0]
+    else:
+        database.execute( create_tag, (tag,) )
+        row = database.execute( get_last_id ).fetchone()
+        tag_id= row[0]
+    database.execute( create_tag_post_association, (post_id, tag_id) )
+
+database.commit()
+
+update_blog=&quot;&quot;&quot;\
+UPDATE BLOG SET TITLE=:new_title WHERE TITLE=:old_title
+&quot;&quot;&quot;
+database.execute( &quot;BEGIN&quot; )
+database.execute( update_blog,
+    dict(new_title=&quot;2013-2014 Travel&quot;, old_title=&quot;Travel Blog&quot;) )
+database.commit()
+
+delete_post_tag_by_blog_title= &quot;&quot;&quot;\
+DELETE FROM ASSOC_POST_TAG
+WHERE POST_ID IN (
+    SELECT DISTINCT POST_ID
+    FROM BLOG JOIN POST ON BLOG.ID = POST.BLOG_ID
+    WHERE BLOG.TITLE=:old_title)
+&quot;&quot;&quot;
+delete_post_by_blog_title= &quot;&quot;&quot;\
+DELETE FROM POST WHERE BLOG_ID IN (
+    SELECT ID FROM BLOG WHERE TITLE=:old_title)
+&quot;&quot;&quot;
+delete_blog_by_title=&quot;&quot;&quot;\
+DELETE FROM BLOG WHERE TITLE=:old_title
+&quot;&quot;&quot;
+database.execute( &quot;BEGIN&quot; )
+title= dict(old_title=&quot;2013-2014 Travel&quot;)
+database.execute( delete_post_tag_by_blog_title, title )
+database.execute( delete_post_by_blog_title, title )
+database.execute( delete_blog_by_title, title )
+print( &quot;Post Delete; Pre Commit&quot; )
+for row in database.execute( &quot;SELECT * FROM BLOG&quot; ):
+    print( row )
+for row in database.execute( &quot;SELECT * FROM POST&quot; ):
+    print( row )
+for row in database.execute( &quot;SELECT * FROM ASSOC_POST_TAG&quot; ):
+    print( row )
+print( &quot;Rolling Back&quot; )
+database.rollback()
+
+query_blog_by_title= &quot;&quot;&quot;\
+SELECT * FROM BLOG WHERE TITLE=?
+&quot;&quot;&quot;
+query_post_by_blog_id= &quot;&quot;&quot;\
+SELECT * FROM POST WHERE BLOG_ID=?
+&quot;&quot;&quot;
+for blog in database.execute( query_blog_by_title, (&quot;2013-2014 Travel&quot;,) ):
+    print( blog )
+    for post in database.execute( query_post_by_blog_id, (blog[0],) ):
+        print( post )
+
+for row in database.execute( &quot;SELECT * FROM BLOG&quot; ):
+    print( row )
+for row in database.execute( &quot;SELECT * FROM POST&quot; ):
+    print( row )
+for row in database.execute( &quot;SELECT * FROM TAG&quot; ):
+    print( row )
+for row in database.execute( &quot;SELECT * FROM POST JOIN ASSOC_POST_TAG ON POST.ID=ASSOC_POST_TAG.POST_ID JOIN TAG ON TAG.ID=ASSOC_POST_TAG.TAG_ID&quot; ):
+    print( row )
+
+query_blog_post_by_title= &quot;&quot;&quot;\
+SELECT *
+FROM BLOG JOIN POST ON BLOG.ID = POST.BLOG_ID
+WHERE BLOG.TITLE = ?
+&quot;&quot;&quot;
+for blog_post in database.execute(
+    query_blog_post_by_title, (&quot;2013-2014 Travel&quot;,) ):
+    pass
+    # print( [ &quot;{0}={1}&quot;.format(k,blog_post[k]) for k in blog_post.keys() ] )
+</pre>
+</div>
+</div>
+</body>
+</html>

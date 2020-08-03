@@ -1,0 +1,6 @@
+
+You have built a custom container object that internally holds a list, tuple, 
+or some other iterable. You would like to make iteration work with your new container
+
+Typically, all you need to do is define an __iter__() method that delegates iteration 
+to the internally held container

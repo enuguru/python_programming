@@ -1,0 +1,63 @@
+
+How to change a set in Python?
+
+Sets are mutable. But since they are unordered, indexing have no meaning.
+
+We cannot access or change an element of set using indexing or slicing. 
+Set does not support it.
+
+We can add single element using the add() method and multiple elements using 
+the update() method. The update() method can take tuples, lists, strings or 
+other sets as its argument. In all cases, duplicates are avoided.
+
+
+
+Built-in Functions with Set
+
+Built-in functions like all(), any(), enumerate(), len(), max(), min(), sorted(), 
+sum() etc. are commonly used with set to perform different tasks.
+
+Built-in Functions with Set Function 	Description
+
+all() 	Return True if all elements of the set are true (or if the set is empty).
+any() 	Return True if any element of the set is true. If the set is empty, 
+        return False.
+enumerate() 	Return an enumerate object. It contains the index and value 
+                of all the items of set as a pair.
+len() 	Return the length (the number of items) in the set.
+max() 	Return the largest item in the set.
+min() 	Return the smallest item in the set.
+
+
+Different Python Set Methods
+
+There are many set methods, some of which we have already used above. Here is 
+a list of all the methods that are available with set objects.
+
+Python Set Methods Method 	Description
+
+add() 		Add an element to a set
+clear() 	Remove all elements form a set
+copy() 		Return a shallow copy of a set
+difference() 	Return the difference of two or more sets as a new set
+difference_update() 	Remove all elements of another set from this set
+discard() 	Remove an element from set if it is a member. 
+                (Do nothing if the element is not in set)
+intersection() 	Return the intersection of two sets as a new set
+intersection_update() 	Update the set with the intersection of itself and another
+isdisjoint() 	Return True if two sets have a null intersection
+issubset() 	Return True if another set contains this set
+issuperset() 	Return True if this set contains another set
+pop() 		Remove and return an arbitary set element. Raise KeyError 
+                if the set is empty
+remove() 	Remove an element from a set. If the element is not a member, 
+                raise a KeyError
+symmetric_difference() 	Return the symmetric difference of two sets as a new set
+symmetric_difference_update() 	Update a set with the symmetric difference of itself 	            and another
+union() 	Return the union of sets in a new set
+update() 	Update a set with the union of itself and others
+
+Other Set Operations
+sorted() 	Return a new sorted list from elements in the set
+        	(does not sort the set itself).
+sum() 		Retrun the sum of all elements in the set.

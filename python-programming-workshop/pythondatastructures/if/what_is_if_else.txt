@@ -1,0 +1,16 @@
+
+
+If-statements. A selection statement changes the flow of control. It acts upon a value. The if-statement in Python is a core selection statement. We use "if" to make a choice.
+
+Array indexes, simple
+
+We can compare anything: numbers, strings, booleans, method results. With keywords (and, not, or) we modify the expressions within an if.
+
+
+An example. An if-statement can be followed by an elif-statement and an else-statement. The elif and else parts are optional. The if can stand alone and have no elif or else.
+
+If:This is followed by a colon character. Its expression is evaluated to true or false.
+
+Elif:This is the same as if, but it must come after if and before else. It can come at the end.
+
+Else:It must come at the end. It has no expression to evaluate. It is executed when if and elif evaluate to false.
