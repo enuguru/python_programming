@@ -13,3 +13,6 @@ fruits.sort()
 print(fruits)
 fruits.pop()
 print(fruits)
+
+fruits.remove('apple')
+print(fruits)

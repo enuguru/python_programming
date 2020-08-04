@@ -1,5 +1,4 @@
 
-
 def has_duplicates(values):
     # For each element, check all following elements for a duplicate.
     for i in range(0, len(values)):

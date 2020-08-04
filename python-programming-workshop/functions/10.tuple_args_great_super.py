@@ -18,4 +18,4 @@ def display(*t):
 # Pass parameters.
 
 display("San Francisco", "Los Angeles", "Sacramento")
-display(2, 0, 1, 4)
+#display(2, 0, 1, 4)

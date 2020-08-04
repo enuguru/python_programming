@@ -1,3 +1,4 @@
+
 class Shape:
     # class or static variable
     cat = 'Geometrical'

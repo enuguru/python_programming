@@ -27,15 +27,15 @@ class WiFiModem(Modem):
 
 class WirelessModem(Modem):
     def SendData(self):              
-        return 'WiFiModem sending data'
+        return 'WirelessModem sending data'
     def ReceiveData(self):          
-        return 'WiFiModem receiving data'
+        return 'WirelessModem receiving data'
 
 class DialUpModem(Modem):
     def SendData(self):              
-        return 'WiFiModem sending data'
+        return 'DialUpModem sending data'
     def ReceiveData(self):          
-        return 'WiFiModem receiving data'
+        return 'DialUpModem receiving data'
 
 mymodems = [WiFiModem('WiFi is HiFi'),
            BroadbandModem('Broadband is fast'),

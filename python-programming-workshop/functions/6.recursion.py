@@ -21,4 +21,4 @@ def recursive(depth):
     recursive(depth + 1)
 
 # Begin.
-recursive(5)
+recursive(7)

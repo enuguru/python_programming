@@ -1,3 +1,4 @@
+
 class Dates:
     def __init__(self, date):
         self.date = date
@@ -8,6 +9,7 @@ class Dates:
     @staticmethod
     def slash_to_dash(date):
         return date.replace("/", "-")
+
 
 date = Dates("15-12-2016")
 dateFromDB = "15/12/2016"

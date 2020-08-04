@@ -1,3 +1,4 @@
+
 # Python program to
 # demonstrate private methods
   
@@ -10,10 +11,11 @@ class Base:
         print("Public method")
   
     # Declaring private method
-    def _fun(self):
+    def __fun(self):
         print("Private method")
   
 # Creating a derived class
+
 class Derived(Base):
     def __init__(self):
           
@@ -30,7 +32,7 @@ class Derived(Base):
     def call_private(self):
         print(self._myvar)  
         # Calling private method of base class
-        self._fun()
+        self.__fun()
   
 # Driver code
 obj1 = Base()

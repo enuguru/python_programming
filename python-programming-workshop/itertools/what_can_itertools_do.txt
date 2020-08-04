@@ -1,0 +1,17 @@
+
+what can itertools module do ?
+
+chain
+
+repeat
+
+takewhile
+
+dropwhile
+
+filterfalse
+
+permutation
+
+generate count
+

@@ -1,5 +1,4 @@
 
-
 CHUNKSIZE = 8192
 def reader(s):
     while True:

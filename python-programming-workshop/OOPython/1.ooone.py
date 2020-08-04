@@ -2,8 +2,8 @@
 class MyFirstClass:
     pass
 
-a = MyFirstClass()
-b = MyFirstClass()
+obj1 = MyFirstClass()
+obj2 = MyFirstClass()
 
-print(a)
-print(b)
+print(obj1)
+print(obj2)
