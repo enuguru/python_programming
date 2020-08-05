@@ -2,7 +2,7 @@
 # Python program to demonstrate finally
   
 try:
-    k = 5//1 # No exception raised
+    k = 5//2 # No exception raised
     print(k)
   
 # intends to handle zerodivision exception
