@@ -7,7 +7,7 @@ import collections
 Employee = collections.namedtuple("Employee", ["id", "title", "salary"])
 
 # Create Employee instance.
-e = Employee(1, "engineer", 10000)
+e = Employee(1, "engineer", 100000)
 
 # Display Employee.
 print(e)

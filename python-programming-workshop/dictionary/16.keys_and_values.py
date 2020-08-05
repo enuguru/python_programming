@@ -1,5 +1,6 @@
 
 hits = {"home": 125, "sitemap": 27, "about": 43}
+
 keys = hits.keys()
 values = hits.values()
 

@@ -1,3 +1,4 @@
+
 def infinite_sequence():
     num = 0
     while True:
@@ -14,6 +15,7 @@ print(next(gen))
 #    num = 0
 #    while True:
 #        print(num)
+#        num = num + 1
 
 
 #for i in infinite_sequence():

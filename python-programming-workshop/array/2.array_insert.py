@@ -1,5 +1,4 @@
 
-
 from array import array
 
 # New int array.

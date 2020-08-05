@@ -21,7 +21,7 @@ class PowTwo:
 
 
 # create an object
-numbers = PowTwo(5)
+numbers = PowTwo(7)
 
 # create an iterable from the object
 i = iter(numbers)
@@ -31,3 +31,11 @@ print(next(i))
 print(next(i))
 print(next(i))
 print(next(i))
+print(next(i))
+print(next(i))
+print(next(i))
+print(next(i))
+print(next(i))
+
+
+

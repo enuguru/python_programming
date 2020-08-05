@@ -1,5 +1,4 @@
 
-
 Make method. Namedtuple offers extra methods—one of them is _make. 
 With _make() we create a namedtuple from an iterable (like a list) 
 The list elements are turned into tuple fields.

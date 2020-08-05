@@ -9,3 +9,11 @@ values = ["cat", "dog", "turnip", "carrot", "fish"]
 result = itertools.dropwhile(lambda s: len(s) <= 3, values)
 for value in result:
     print(value)
+
+result = itertools.filterfalse(lambda s: len(s) <= 3, values)
+for value in result:
+    print(value)
+
+result = itertools.takewhile(lambda s: len(s) <= 3, values)
+for value in result:
+    print(value)

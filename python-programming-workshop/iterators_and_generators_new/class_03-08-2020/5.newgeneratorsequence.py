@@ -1,4 +1,5 @@
 
+
 def countdown(n):
     print('Starting to count from', n)
     while n > 0:
@@ -9,6 +10,11 @@ def countdown(n):
 
 # Create the generator, notice no output appears
 c = countdown(9)
+print(c)
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
 print(next(c))
 print(next(c))
 print(next(c))
@@ -17,9 +23,9 @@ print(next(c))
 print(next(c))
 
 
-c = countdown(9)
-for num in range(9,3,-1):
-    print(next(c))
+#c = countdown(9)
+#for num in range(9,3,-1):
+#    print(next(c))
 #for num in range:
 #    print(c)
 
