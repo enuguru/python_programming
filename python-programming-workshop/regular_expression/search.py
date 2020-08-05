@@ -1,5 +1,4 @@
 
-
 #Search. This method is different from match. Both apply a pattern. But search attempts this 
 #at all possible starting points in the string. Match just tries the first starting point.
 

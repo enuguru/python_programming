@@ -1,5 +1,4 @@
 
-
 #Split. 
 
 #The re.split() method accepts a pattern argument. This pattern specifies the 
