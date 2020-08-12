@@ -13,4 +13,3 @@ bin(131)
 print()
 bin(3)
 
-# This code is contributed by PrinciRaj1992 

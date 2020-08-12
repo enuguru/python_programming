@@ -1,6 +1,4 @@
 
-
-
 tuples are immutable lists, frozensets are immutable sets.
 
 tuples are indeed an ordered collection of objects, but they can contain 
