@@ -1,0 +1,37 @@
+
+#github.com/RodneyShag
+
+
+#Answer: -3/4
+
+
+#*** Step 1: Rewrite the 2 lines in proper form ***
+
+#Rewrite the 2 lines as:
+
+y = -2 + (-3/4) * x
+x = -7/4 + (-3/4) * y
+
+#so b1 = -3/4 and b2 = -3/4
+
+
+#*** Step 2: Apply Pearson's Coefficient formula ***
+
+#Let p = pearson coefficient
+#Let x_std = standard deviation of x
+#Let y_std = standard deviation of y
+
+p = b1 (x_std / y_std)
+p = b2 (y_std / x_std)
+
+#Multiplying these 2 equations together we get
+p^2 = b1 * b2
+p^2 = (-3/4) * (-3/4)
+p^2 = 9/16
+p = 3/4 or -3/4 (depending on correlation of x and y)
+
+
+#*** Step 3: Find out if p is postive or negative ***
+
+#Notice that both of the original line equations have negative slopes,
+#so x and y are negatively correlated by definition. So, p = -3/4
