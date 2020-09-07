@@ -1,1 +1,0 @@
-There are no code files present for Chapters 1 and 2.
