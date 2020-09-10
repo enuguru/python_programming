@@ -10,4 +10,3 @@ def decode(col):
 col = input("enter a valid excel column id")
 col = col.upper()
 print(decode(col))
-

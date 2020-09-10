@@ -12,3 +12,11 @@ def lookandsaypythonic(n):
 for val in range(1,11):
     number = lookandsaypythonic(val)
     print(number)
+
+
+
+#  33322445
+
+# 3322
+
+#  3 [3,3,3] 2 [2,2] 4 [4,4] 5 [5]
