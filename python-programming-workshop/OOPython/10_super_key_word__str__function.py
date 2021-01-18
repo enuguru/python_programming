@@ -2,6 +2,11 @@
 # relationship between base and derived class
 # use of the word super
 
+# This __str__ method is called when print() or str() function is invoked on an object. 
+# This method must return the String object. If we don't implement __str__() function 
+# for a class, then built-in object implementation is used that actually calls __repr__() function
+
+
 class Person:
 
     def __init__(self, first, last, age):
@@ -11,6 +16,7 @@ class Person:
 
     def __str__(self):
         return self.firstname + " " + self.lastname + ", " + str(self.age)
+
 
 class Employee(Person):
 
@@ -25,5 +31,13 @@ class Employee(Person):
 xobj = Person("Marge", "Simpson", 36)
 yobj = Employee("Homer", "Simpson", 28, "1007")
 
+m = xobj.__str__()
+print(m)
+n = yobj.__str__()
+print(n)
+
+
 print(xobj)
 print(yobj)
+
+

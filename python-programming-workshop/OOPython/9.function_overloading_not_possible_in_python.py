@@ -3,10 +3,11 @@
 # if you need two differenct behaviour, then
 # give default values
 
-class A:
-    def stackoverflow(self, i='20'):    
+class thisclass:
+    def goodone(self, i='20'):    
         print('only method')
+        print(i)
 
-ob=A()
-ob.stackoverflow(2)
-ob.stackoverflow()
+ob=thisclass()
+ob.goodone(2)
+ob.goodone()
