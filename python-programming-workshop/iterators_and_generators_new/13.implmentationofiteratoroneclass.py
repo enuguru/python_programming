@@ -2,7 +2,6 @@
 #You are building custom objects on which you would like to support iteration, 
 #but would like an easy way to implement the iterator protocol
 
-
 class Node:
     def __init__(self, value):  // dunder methods, magic methods
         self._value = value

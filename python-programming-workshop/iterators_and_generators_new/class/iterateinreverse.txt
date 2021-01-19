@@ -1,3 +1,0 @@
-
-
-You want to iterate in reverse over a sequence

@@ -17,7 +17,7 @@ class linehistory:
 #However, since it creates an instance, you can access internal attributes, 
 #such as the history attribute or the clear() method. For example:
 
-with open('generatorfunctionwithextrastate.py') as f:
+with open('22.generatorfunctionwithextrastate.py') as f:
     lines = linehistory(f)
     for line in lines:
         if 'python' in line:

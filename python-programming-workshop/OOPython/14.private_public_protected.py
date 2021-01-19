@@ -1,3 +1,4 @@
+
 # program to illustrate protected
 # data members in a class
   
@@ -7,15 +8,15 @@ class Shape:
       
     # constructor
     def __init__(self, length, breadth):
-        self._length = length
-        self._breadth = breadth
+        self.length = length
+        self.breadth = breadth
           
     # public member function
     def displaySides(self):
   
         # accessing protected data members
-        print("Length: ", self._length)
-        print("Breadth: ", self._breadth)
+        print("Length: ", self.length)
+        print("Breadth: ", self.breadth)
   
   
 # derived class
@@ -32,7 +33,7 @@ class Rectangle(Shape):
     def calculateArea(self):
                       
         # accessing protected data members of super class
-        print("Area: ", self._length * self._breadth)
+        print("Area: ", self.length * self.breadth)
                       
   
 # creating objects of the

@@ -40,7 +40,6 @@ c = ['x','y','z']
 for i in zip(a, b, c):
     print(i)
 
-
 print("--------------------------------------")
 
 print(zip(a, b))

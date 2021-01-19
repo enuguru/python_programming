@@ -5,7 +5,7 @@
 # This __str__ method is called when print() or str() function is invoked on an object. 
 # This method must return the String object. If we don't implement __str__() function 
 # for a class, then built-in object implementation is used that actually calls __repr__() function
-
+# here we are using the builtin __repr__ function - you can see it is not very useful
 
 class Person:
 
@@ -17,7 +17,6 @@ class Person:
     def __str__(self):
         return self.firstname + " " + self.lastname + ", " + str(self.age)
 
-
 class Employee(Person):
 
     def __init__(self, first, last, age, staffnum):
@@ -27,16 +26,10 @@ class Employee(Person):
     def __str__(self):
         return super().__str__() + ", " +  self.staffnumber
 
-
 xobj = Person("Marge", "Simpson", 36)
 yobj = Employee("Homer", "Simpson", 28, "1007")
 
-m = xobj.__str__()
-print(xobj)
+m = xobj.__repr__()
 print(m)
-print(yobj)
-n = yobj.__str__()
+n = yobj.__repr__()
 print(n)
-
-print(xobj)
-print(yobj)
