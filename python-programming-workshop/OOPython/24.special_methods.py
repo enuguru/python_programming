@@ -60,3 +60,13 @@ print("The builtin click functions in python are\n")
 for e in dir(click):
     print(e,end="  ")
 print("\n\n")
+
+
+
+import itertools
+print("The builtin itertools functions in python are\n")
+for e in dir(itertools):
+    print(e,end="  ")
+print("\n\n")
+
+

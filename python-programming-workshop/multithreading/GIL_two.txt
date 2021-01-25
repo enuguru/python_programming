@@ -1,0 +1,7 @@
+
+In the multi-threaded version the GIL prevented the CPU-bound threads from executing in parellel.
+
+The GIL does not have much impact on the performance of 
+I/O-bound multi-threaded programs as the lock is shared between threads while they are waiting for I/O.
+
+But a program whose threads are entirely CPU-bound, e.g., a program that processes an image in parts using threads, would not only become single threaded due to the lock but will also see an increase in execution time, as seen in the above example, in comparison to a scenario where it was written to be entirely single-threaded.

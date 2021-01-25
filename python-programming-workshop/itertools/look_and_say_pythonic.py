@@ -1,5 +1,9 @@
+# Pythonic solution uses the power of itertools.groupby
 
-# Pythonic solutjon uses the power of itertools.groupby
+# 333
+# 21
+# 2 [2], 1 [1]
+# 7 7 [7]
 
 import itertools
 
@@ -12,8 +16,6 @@ def lookandsaypythonic(n):
 for val in range(1,11):
     number = lookandsaypythonic(val)
     print(number)
-
-
 
 #  33322445
 
