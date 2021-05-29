@@ -1,0 +1,28 @@
+
+
+Iterable is an object, which one can iterate over. It generates an Iterator when passed to iter() method. Iterator is an object, which is used to iterate over an iterable object using __next__() method. Iterators have __next__() method, which returns the next item of the object.
+
+Note that every iterator is also an iterable, but not every iterable is an iterator. For example, a list is iterable but a list is not an iterator. An iterator can be created from an iterable by using the function iter(). To make this possible, the class of an object needs either a method __iter__, which returns an iterator, or a __getitem__ method with sequential indexes starting with 0.
+
+An ITERABLE is:
+
+anything that can be looped over (i.e. you can loop over a string or file) or
+anything that can appear on the right-side of a for-loop: for x in iterable: ... or
+anything you can call with iter() that will return an ITERATOR: iter(obj) or
+an object that defines __iter__ that returns a fresh ITERATOR, 
+or it may have a __getitem__ method suitable for indexed lookup.
+
+
+An ITERATOR is an object:
+
+with state that remembers where it is during iteration,
+with a __next__ method that:
+returns the next value in the iteration
+updates the state to point at the next value
+signals when it is done by raising StopIteration
+and that is self-iterable (meaning that it has an __iter__ method that returns self).
+Notes:
+
+the process of looping over an iterable is called iteration
+
+iteration is general word that we use for going over many varibales step by step

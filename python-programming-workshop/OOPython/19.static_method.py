@@ -11,7 +11,7 @@ class Dates:
         return date.replace("/", "-")
 
 
-date = Dates("15-12-2016")
+date = Dates("15-11-2016")
 dateFromDB = "15/12/2016"
 dateWithDash = Dates.slash_to_dash(dateFromDB)
 

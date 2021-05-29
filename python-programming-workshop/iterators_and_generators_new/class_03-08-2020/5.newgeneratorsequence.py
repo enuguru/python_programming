@@ -21,23 +21,4 @@ print(next(c))
 print(next(c))
 print(next(c))
 print(next(c))
-
-
-#c = countdown(9)
-#for num in range(9,3,-1):
-#    print(next(c))
-#for num in range:
-#    print(c)
-
-
-# Run to first yield and emit a value
-#print(next(c))
-#print(next(c))
-#print(next(c))
-#print(next(c))
-#print(next(c))
-#print(next(c))
-#print(next(c))
-#print(next(c))
-#print(next(c))
-#print(next(c))
+print(next(c))

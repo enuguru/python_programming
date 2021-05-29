@@ -5,12 +5,12 @@
 
 def make_pretty(func):
     def inner():
-        print("I got decorated")
+        print("This is the decorator function I got decorated")
         func()
     return inner
 
 def ordinary():
-    print("I am ordinary")
+    print("This is the main function I am ordinary")
 
 #ordinary()
 

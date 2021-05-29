@@ -20,6 +20,3 @@ print("Children of fourth sister after inclusion : ",family)
 
 
 print(" Children in the Family of second Sister alone are : ",family[sister_two])
-
-
-

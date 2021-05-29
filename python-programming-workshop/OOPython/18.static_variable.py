@@ -1,3 +1,4 @@
+
 # Python program to show that the variables with a value
 # assigned in class declaration, are class variables
   

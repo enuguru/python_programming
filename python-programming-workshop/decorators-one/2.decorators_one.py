@@ -12,5 +12,6 @@ def just_some_function():
     print("Wheee!")
 
 some_function = my_decorator(just_some_function)
+print(some_function)
 
 some_function()
