@@ -1,0 +1,7 @@
+
+
+
+      python superstars - Raymond Hettinger, David Beazley, Raymond Hettinger, 
+      Wes Mckinney, Jake Vanderplas, Guido Von Russum
+
+      python leaders - Vicky, Boykis, Aaron Maxwell, Dan Bader, Trey Hunner, Luciano Ramalho, Jack Diederich, Jessica Mckeller, Kenneth Reitz, Michael Kennedy, Armin Ronacher, Miguel Grinberg, Alex Martelli, Brett cannon, Steven Lott, Mike Bayer

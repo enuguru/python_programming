@@ -1,0 +1,76 @@
+
+
+Good features of Python
+-----------------------
+
+The story goes, when a language buff asked Guido Von Russum, what is the purpose of creating python ?
+
+Guido replied the purpose of creating python was "programmer happiness". While writing code the developers should feel happy. 
+
+Python gives importance to aesthetic beauty of code as in looping in sorted order using for loops
+
+(Raymond Hettinger - "beautiful idiomatic python" - https://zhanxw.com/blog/wp-content/uploads/2013/03/BeautifulCode_2.pdf)
+
+colors = ['red', 'green', 'blue', 'yellow']
+
+for color in sorted(colors):
+	print color
+#output -> ['blue', 'green', 'red', 'yellow']
+
+
+for color in sorted(colors, reverse=True):
+	print color
+#output -> ["yellow", 'red', 'green', 'blue']
+
+
+there is always a pythonic way of doing things, such as reversing a string like mystr[:-1]
+
+python idioms and python one liners are useful, aesthetic and are almost legendary
+
+example: print(sorted(list(map(int, input().strip().split()))))
+
+here the output of one command is given as the input to another command - the unix piping style
+
+python community is present everywhere and if you are struck, chances are you will find an answer in the community
+
+python has support for multiple programming paradigms such
+
+object oriented programming, meta programming, functional programming and 
+procedural programming
+
+Python gives you all relevant libraries for AI, ML and DS - pandas, matplotlib, seaborn, numpy, scipy, iPython, Jupyter Notebook and scikit-learn
+
+python has very good visualization libraries such as matplotlib, seaborn and plotly for drawing interactive plots
+
+python has very flexible deep learning and neural network frameworks such as TensorFlow, Keras and torch
+
+Among the modern languages of the 90s and the millennium, python was one of the first to give access to functional programming style
+
+Python is very much suited for both data engineering (libraries such as pyspark) and data science (libraries such as statsmodels) because of the concise programming style and the presence of useful paradigms
+
+Python has very useful built in libraries such as itertools, collections and functools
+
+These python libraries are so powerful that during selection process, some of the companies even dis-allow the participants to take an assessment in python
+
+Python supports test driven development
+
+Python is very popular in web application development and financial domain as well
+
+Python helps you to do things without using object-oriented style just for the sake of using it, there is always an easier of doing anything in python
+
+Python has support for many abstractions such as wrapper, decorator, and factory there is no need to code for separate design patterns in python as in Java or C++. Infact you can achieve these abstractions without using a class hierarchy or inheritance
+
+In python objects and functions are interchangeable
+
+a class is also a callable - Trey Hunner
+https://treyhunner.com/2019/04/is-it-a-class-or-a-function-its-a-callable/
+
+There are many python leaders who are also good writers and speakers in the python community such as
+
+Raymond Hettinger, Trey Hunner, Brandon Rhodes and Jack Vanderplas (JVP)
+
+Python has many useful language features such as iterators, generators, decorators, abstract classes, list and dictionary comprehension and map-reduce-filter methods for functional programming style
+
+Python has excellent data base connectivity with both traditional sql and with modern no-sql such as mongo DB, Redis and Cassandra
+
+One of the good features of python is its superb interoperability with C and C++ languages. You can call python from inside C; C++ and you can call C and C++ from inside python. This is because many python built-in functions are written in C

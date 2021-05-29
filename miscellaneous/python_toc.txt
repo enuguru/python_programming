@@ -1,0 +1,47 @@
+
+
+      Table of Contents
+
+      Python scripting - Level 1
+
+      introduction, installation, python's superior characteristics, why python ?
+      python superstars and python leaders
+      problems / programs with builtin data structures - dictionary, list, tuple, set
+      simple functions, parameter passing, lambda functions, list and dictionary comprehension
+      string handling in python
+      handling input and output in python
+      object oriented programming, static keyword, overloading, overriding and polymorphism
+      magic methods / dunder methods in python
+      iterators and generators in python
+      python files, modules, package and frameworks
+      commonly asked problems / programs in client interviews solved in python
+      different python interpreters - CPython, IronPython, Jython.
+      competitive programming in python - competitive programming platforms and websites
+      pythonic code, python one liners, idioms and python clean code
+      python references books, youtube channles, python blogs and python conferences
+      python Vs C++, python Vs java
+
+
+
+      Python scripting - Level 2 
+
+      handling regular expressions
+      context manager and file handling in python
+      decorators in python
+      functools and itertools python frameworks 
+      multithreading in python and Global Interpreter Lock (GIL)
+      problems / programs using functools, itertools and collections framworks
+      problems solving with simple algorithms and data structures in python - queue and linked list 
+      problem solving with advanced algorithms and data structures in python - graphs, hashtable and trees
+      commonly asked problems / programs in client interviews in python
+      collections framework in python - frozen set and named tuple in python
+      python interface to C and C++
+      connecting to SQL and NoSQL databases from python
+      introduction to meta programming in python
+      introduction to GUI programming in python
+      abstract classes in python
+      introduction to design patterns using python
+      introductinon to functional programming in python
+      pythonic code, python one liners, idioms and python clean code
+      advanced competitive programming in python
+
