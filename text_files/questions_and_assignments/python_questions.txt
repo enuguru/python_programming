@@ -1,0 +1,331 @@
+
+
+
+Que1: How Many Words 
+
+ViewTryInsights 
+
+Recommended Time: 38 minsPoints: 5015 test cases (5 samples) 
+
+Skills:Problem Solving (Basic) 
+
+CodingEASYStringsFilteringProblem SolvingInterviewer Guidelines 
+
+A sentence is made up of a group of words. Each word is a sequence of letters, ('a'-'z', 'A'-'Z'), that may contain one or more hyphens and may end in a punctuation mark: period (.), comma (,), question mark (?), or exclamation point (!). Words will be separated by one or more white space characters. Hyphens join two words into one and should be retained while the other punctuation marks should be stripped. Determine the number of words in a given sentence. 
+
+  
+
+Example 
+
+s = 'How many eggs are in a half-dozen, 13?' 
+
+The list of words in the string is ['How', 'many', 'eggs', 'are', in', 'a', 'half-dozen'] and the number of words is 7. Notice that the numeric string, '13', is not a word because it is not within the allowed character set. 
+
+  
+
+Function Description 
+
+Complete the function howMany in the editor below. 
+
+  
+
+howMany has the following parameter(s): 
+
+    sentence: a string 
+
+  
+
+Returns: 
+
+    int: an integer that represents the number of words in the string 
+
+  
+
+Constraints 
+
+0 < length of s ≤ 105 
+
+Input Format For Custom Testing 
+
+The only line contains a string, sentence. 
+
+Sample Case 0 
+
+Sample Input 
+
+he is a good programmer, he won 865 competitions, but sometimes he dont. What do you think? All test-cases should pass. Done-done? 
+
+  
+
+Sample Output 
+
+21 
+
+  
+
+Explanation 
+
+The substring '865' is not a word, so is not included in the count. The hyphenated words 'test-cases' and 'Done-done' each count as 1 word. The total number of words in the string is 21. 
+
+Sample Case 1 
+
+Sample Input 
+
+jds dsaf lkdf kdsa fkldsf, adsbf ldka ads? asd bfdal ds bf[l. akf dhj ds 878  dwa WE DE 7475 dsfh ds  RAMU 748 dj. 
+
+  
+
+Sample Output 
+
+21 
+
+  
+
+Explanation 
+
+Note that the substring 'bf[l' is not a word because of the invalid character. Other substrings that are not words are '878', '7475' and '748'. The total number of words in the string is 21.  
+
+ 
+
+Que 2: Sort an Array 
+
+ViewTryInsights 
+
+Recommended Time: 22 minsPoints: 508 test cases (4 samples) 
+
+Skills:Problem Solving (Basic) 
+
+CodingAlgorithmsEASYImplementationProblem Solving 
+
+Given an array of integers, any array element can be moved to the end in one move. Determine the minimum number of moves required to sort the array, ascending.
+
+  
+
+Example: 
+
+arr = [5, 1, 3, 2] 
+
+  
+
+Move the value arr[2] = 3 to the end to get arr = [5, 1, 2, 3].  
+
+Move arr[0] = 5 to the end to achieve the sorted array, arr = [1, 2, 3, 5].  
+
+The minimum number of moves required to sort the array is 2. 
+
+  
+
+Function Description 
+
+Complete the function getMinimumMoves in the editor below. 
+
+  
+
+getMinimumMoves has the following parameter: 
+
+    int  arr[n]:  an array of integers 
+
+Returns: 
+
+    int: the minimum number of moves needed to sort the array in ascending order 
+
+  
+
+Constraints 
+
+1 ≤ n ≤ 105 
+
+0 ≤ arr[i] ≤ 106 
+
+array elements are distinct 
+
+  
+
+Input Format For Custom Testing 
+
+The first line contains an integer, n, the size of arr. 
+
+Each line i of the next n lines (where 0 ≤ i < n) contains an integer, arr[i]. 
+
+Sample Case 0 
+
+Sample Input For Custom Testing 
+
+STDIN      Function  
+
+-----      --------  
+
+3      →   arr[] size n = 3  
+
+1      →   arr = [1, 2, 3] 
+
+2  
+
+3 
+
+Sample Output 
+
+0 
+
+Explanation 
+
+ arr = [1, 2, 3] 
+
+The array is already sorted, so no moves are necessary. 
+
+Sample Case 1 
+
+Sample Input For Custom Testing 
+
+STDIN     Function 
+
+-----     -------- 
+
+3     →   arr[] size n = 3 
+
+1     →   arr = [1, 3, 2] 
+
+3 
+
+2 
+
+Sample Output 
+
+1 
+
+Explanation 
+
+  
+
+arr = [1, 3, 2] 
+
+Move the value arr[1] = 3 to the end to get arr = [1, 2, 3].  
+
+the minimum number of moves required to sort the array is 1. 
+
+ 
+
+Que 3 :Office Design 
+
+A company is repainting its office and would like to choose colors that work well together. They are presented with several various-priced color options presented in a specific order so that each color complements the surrounding colors. The company has a limited budget and would like to select the greatest number of consecutive colors that fit within this budget. Given the prices of the colors and the company's budget, what is the maximum number of colors that can be purchased for this repainting project? 
+
+  
+
+Example 
+
+prices = [2, 3, 5, 1, 1, 2, 1] 
+
+money = 7 
+
+  
+
+All subarrays that sum to less than or equal to 7: 
+
+Length 1 subarrays are [2], [3], [5], [1], [1], [2], [1] 
+
+Length 2 - [2, 3], [5, 1], [1, 1], [1, 2], [2, 1] 
+
+Length 3 - [5, 1, 1], [1, 1, 2], [1, 2, 1] 
+
+Length 4 - [1, 1, 2, 1] 
+
+  
+
+The longest of these, or the maximum number of colors that can be purchased, is 4. 
+
+  
+
+Function Description 
+
+  
+
+Complete the function getMaxColors in the editor below. 
+
+  
+
+getMaxColors has the following parameters: 
+
+    int prices[n]:  the prices of the various paint colors 
+
+    int money:  the amount of money the company can spend on paints 
+
+Returns: 
+
+    int: the maximum number of colors the company can purchase 
+
+  
+
+Constraints 
+
+1 ≤ n ≤ 105 
+
+1 ≤ prices[i] ≤ 100 
+
+1 ≤ money ≤ 106 
+
+  
+
+Input Format For Custom Testing 
+
+The first line contains an integer, n. 
+
+Each line i of the n subsequent lines (where 0 ≤ i < n) contains an integer describing prices[i]. 
+
+The next line contains an integer, money. 
+
+Sample Case 0 
+
+Sample Input For Custom Testing 
+
+STDIN     Function  
+
+-----     -------- 
+
+3     →   prices[] size n = 3 
+
+10    →   prices = [ 10, 10, 10 ]  
+
+10 
+
+10 
+
+5     →   money = 5  
+
+Sample Output 
+
+0 
+
+Explanation 
+
+There are 3 colors to choose from, each costing 10. With the company budget of 5, no colors can be purchased. Therefore, the answer is 0. 
+
+Sample Case 1 
+
+Sample Input For Custom Testing 
+
+STDIN     Function 
+
+-----     -------- 
+
+3     →   prices[] size n = 3 
+
+5     →   prices = [ 5, 10, 10 ] 
+
+10 
+
+10 
+
+5     →   money = 5  
+
+Sample Output 
+
+1 
+
+Explanation 
+
+With the company budget of 5, only 1 color (the first) can be purchased. Therefore, the answer is 1. 
+
+
+https://www.tutorialspoint.com/predicting-customer-churn-in-python
+
+ 

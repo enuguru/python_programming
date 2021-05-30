@@ -1,0 +1,50 @@
+
+types of data files
+
+csv file
+tsv file
+txt file
+excel file
+json file
+
+
+how to load data - computer or cloud
+
+data loading - 
+1. program in the cloud, data in the cloud
+2. program in the cloud, data in the PC
+3. program in the PC, data in the cloud
+4. program in the PC, data in the PC
+
+
+how to read
+
+read using basic python
+read using pandas
+read using numpy
+
+different types of loading data using python
+
+load data to a list
+load data to a dictionary
+load data to a tuple
+load data to a set
+using pandas - load data to a data frame
+using numpy or pandas - load data in to an array
+
+
+functions to read and write
+
+read_csv
+
+read_table
+
+read_excel
+
+csv_reader
+
+load_txt
+
+csv_writer
+
+df.tocsv("filename_to_write")

@@ -7,11 +7,12 @@
       introduction, installation, python's superior characteristics, why python ?
       python superstars and python leaders
       problems / programs with builtin data structures - dictionary, list, tuple, set
+      python builtin functions - map, filter, iter, all, any and others
       simple functions, parameter passing, lambda functions, list and dictionary comprehension
       string handling in python
       handling input and output in python
       object oriented programming, static keyword, overloading, overriding and polymorphism
-      magic methods / dunder methods in python
+      magic methods / dunder methods in python - __init__, __repr__ and others
       iterators and generators in python
       python files, modules, package and frameworks
       commonly asked problems / programs in client interviews solved in python
@@ -40,6 +41,7 @@
       introduction to meta programming in python
       introduction to GUI programming in python
       abstract classes in python
+      unit testing in python
       introduction to design patterns using python
       introductinon to functional programming in python
       pythonic code, python one liners, idioms and python clean code

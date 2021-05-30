@@ -1,0 +1,94 @@
+
+
+How to install anaconda on windows 
+----------------------------------
+
+go to the following page
+
+https://www.anaconda.com/products/individual
+
+download the exe file for windows 64 bit
+install the anaconda software
+keep all the defaults during the installation
+
+
+
+
+How to install git on windows 
+-----------------------------
+
+how to install git source code control system
+
+open the link from git editor download link
+https://git-scm.com/downloads
+
+click on windows, then download will start
+
+this file gvim81.exe is downloaded in C:\Users\yourname\Downloads\
+directory
+
+click on that and install
+then go to C:\Program Files\Git\cmd
+
+select git and click properties, then copy the location
+
+then open controlpanel
+click on system
+click on advancedsettings
+click on environment variales
+then click on systemvariables
+click on new and then paste the location copied
+
+type git --version on anaconda command prompt
+it will show the version
+
+
+
+how to install vim editor on windows
+------------------------------------
+
+how to install vim editor
+
+open the link from vim editor download link
+https://www.vim.org/download.php#pc
+
+click on PC, MS-DOS and MS-WINDOWS
+
+then click on link
+gvim81.exe (ftp)
+
+this file gvim81.exe is downloaded in C:\Users\yourname\Downloads\
+directory
+
+click on that and install
+then go to C:\Program Files (x86)\Vim\vim81\ directory
+
+select gvim.exe and click properties, then copy the location
+
+then open controlpanel
+click on system
+click on advancedsettings
+click on environment variales
+then click on systemvariables
+click on new and then paste the location copied
+
+give the command vim --version on anaconda command prompt
+it will show the version
+
+
+how to work on google colab
+---------------------------
+
+go to the below webpage
+
+https://colab.research.google.com/notebooks/intro.ipynb
+
+click on the top right hand corner on login
+then login with your gmail id
+
+go to top left hand corner and click on top left "file" and 
+"new notebook"
+
+then we can type the programs in the page seen
+
+

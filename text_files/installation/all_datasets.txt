@@ -1,0 +1,69 @@
+
+important dataset sources
+-------------------------
+
+kaggle datasets
+https://www.kaggle.com/datasets
+
+
+amazon datasets
+https://registry.opendata.aws/
+
+university of california irvine machine learning repository
+https://archive.ics.uci.edu/ml/datasets.php
+
+
+google's dataset search 
+https://datasetsearch.research.google.com/
+
+
+microsoft datasets
+https://msropendata.com/
+
+
+awesome public datasets
+https://github.com/awesomedata/awesome-public-datasets
+
+
+Government datasets
+
+EU Open Data Portal: European Government Datasets
+https://data.europa.eu/euodp/data/dataset
+
+US Government datasets
+https://www.data.gov/
+
+Newzealand Government
+https://catalogue.data.govt.nz/dataset
+
+Indian Government
+https://data.gov.in/
+
+Northern Ireland public dataset
+https://www.opendatani.gov.uk/
+
+
+lion bridge AI datasets
+https://lionbridge.ai/datasets/
+
+
+computer vision datasets
+
+visual data - search engine for computer vision datasets
+https://www.visualdata.io/discovery
+
+CIFAR 10 and CIFAR 100 datasets - Canadian Institute of Advanced Research
+https://www.cs.toronto.edu/~kriz/cifar.html
+
+
+Natural Language Processing - NLP datasets
+
+reuters dataset
+http://kdd.ics.uci.edu/databases/reuters21578/reuters21578.html
+
+Large movie review datasets
+http://ai.stanford.edu/~amaas/data/sentiment/
+
+A collection of movie reviews from the website imdb.com and their positive or negative sentiment.
+https://raw.githubusercontent.com/jbrownlee/Datasets/master/
+review_polarity.tar.gz

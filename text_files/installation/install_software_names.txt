@@ -1,0 +1,31 @@
+
+software needed for the class
+
+anaconda
+https://www.anaconda.com/distribution/#download-section
+
+jupyter notebook - comes with anaconda
+
+anaconda navigator - comes with anaconda
+
+python 3.7 - comes with anaconda, not needed seperately
+
+vim
+https://www.vim.org/download.php#pc
+
+git
+https://git-scm.com/downloads
+
+devc++ - has built in C and C++ compiler
+https://sourceforge.net/projects/orwelldevcpp/files/latest/download
+
+C++ compiler  - compiler needed command line
+https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download
+
+
+C compiler - comes with C++ compiler
+
+astyle - code formatting software for C, C++, Python, Java and many other languages
+https://sourceforge.net/projects/astyle/
+
+

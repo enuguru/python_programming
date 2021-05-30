@@ -1,0 +1,29 @@
+
+
+The main difference between the two is the pivot_table expects your input data to already be a DataFrame; you pass a DataFrame to pivot_table and specify the index/columns/values by passing the column names as strings. With cross_tab, you don't necessarily need to have a DataFrame going in, as you just pass array-like objects for index/columns/values.
+
+crosstab essentially takes the array-like objects you pass, creates a DataFrame, then calls pivot_table as appropriate.
+
+you can use pivot_table if you already have a DataFrame, so you don't have the additional overhead of creating the same DataFrame again. If you're starting from array-like objects and are only concerned with the pivoted data, use crosstab. In most cases, I don't think it will really make a difference which function you decide to use.
+
+
+groupby
+
+pivot table
+
+crosstab
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

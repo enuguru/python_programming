@@ -1,0 +1,17 @@
+
+
+how to check the different software versions?
+
+1. javac -version
+2. java -version
+3. hadoop version
+4. python --version
+5. ruby --version
+6. g++ --version
+7. gcc --version
+8. git version
+9. vim -version
+10. pig --version
+11. hbase version
+12. mvn -v
+13. anaconda --version

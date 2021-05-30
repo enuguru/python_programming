@@ -1,0 +1,139 @@
+
+
+1.
+onion dataset link
+https://data.gov.in/resources/daily-wholesale-price-onion-upto-april-2015
+retail dataset link : https://data.gov.in/resources/daily-retail-price-onion-upto-april-2015
+
+one hot encoding
+https://www.youtube.com/watch?v=v_4KWmkwmsU
+
+
+2.
+residence.csv used for data cleaning
+https://raw.githubusercontent.com/dataoptimal/posts/master/data%20cleaning%20with%20python%20and%20pandas/property%20data.csv
+
+
+3.
+wheat seeds dataset
+data - https://archive.ics.uci.edu/ml/machine-learning-databases/00236/
+description - https://archive.ics.uci.edu/ml/datasets/seeds#
+
+
+4.
+movies database
+ratings.csv, movies.csv, users.csv
+https://grouplens.org/datasets/movielens/
+
+
+5.
+salary.csv
+
+
+6.
+boston housing price dataset
+description - https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html
+data file - https://www.kaggle.com/vikrishnan/boston-house-prices 
+            (click on download)
+
+
+7.
+university admission dataset
+https://www.kaggle.com/mohansacharya/graduate-admissions
+(click on download)
+
+
+8.
+iris flowers dataset
+description - https://archive.ics.uci.edu/ml/datasets/iris
+data file - https://archive.ics.uci.edu/ml/machine-learning-databases/iris/ 
+            (click on iris.data)
+
+
+9.
+pima indians dataset
+description and data present here in the below link
+https://gist.github.com/ktisha/c21e73a1bd1700294ef790c56c8aec1f
+
+
+10.
+bank note authentication dataset
+description - https://archive.ics.uci.edu/ml/datasets/banknote+authentication
+data set - https://archive.ics.uci.edu/ml/machine-learning-databases/00267/
+           (click on data_bank_note_authentication.txt)
+
+
+11.
+canadian immigration dataset
+data set - 'https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/DV0101EN/labs/Data_Files/Canada.xlsx',
+      sheet_name='Canada by Citizenship
+
+12.
+sonar dataset - mines Vs rocks
+
+
+13.
+dataset description:
+http://archive.ics.uci.edu/ml/datasets/connectionist+bench+(sonar,+mines+vs.+rocks)
+dataset - http://archive.ics.uci.edu/ml/machine-learning-databases/undocumented/connectionist-bench/sonar/
+click on sonal-all-data
+
+14.
+mall customers dataset
+
+both dataset and the description are present here
+https://www.kaggle.com/shwetabh123/mall-customers
+(click on download)
+
+15.
+titanic dataset - full version
+
+both dataset and description are available below
+https://www.kaggle.com/prkukunoor/TitanicDataset
+(click on download)
+
+
+16.
+credit risk assessment dataset or loan repayment dataset
+
+
+
+
+17.
+tennis play or stay indoor dataset
+
+both description and data present here below
+https://www.kaggle.com/fredericobreno/play-tennis#play_tennis.csv
+(click on download)
+
+
+18.
+credit card dataset fraud detection dataset
+
+
+19.
+swedish auto insurance dataset for regression
+both description and data present in the link below
+https://www.kaggle.com/sunmarkil/auto-insurance-in-sweden-small-dataset
+(click on download)
+
+
+20.
+abalone
+description: https://archive.ics.uci.edu/ml/datasets/Abalone
+data set: https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/
+          (click on abalone.data)
+
+
+21.
+wine quality dataset
+description: https://archive.ics.uci.edu/ml/datasets/Wine+Quality
+data set: https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/
+(click on winequality-red.csv, winequality-white.csv)
+
+
+22.
+ionosphere dataset
+descrption: https://archive.ics.uci.edu/ml/datasets/Ionosphere
+data set: https://archive.ics.uci.edu/ml/machine-learning-databases/ionosphere/
+(click on ionosphere.data)

@@ -1,0 +1,6 @@
+
+most often used data analysis commands in pandas
+
+groupby
+crosstab
+pivot_table

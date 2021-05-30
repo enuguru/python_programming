@@ -1,0 +1,19 @@
+
+A normal distribution can be used to describe a variety of quantitative variables
+
+A normal distribution curve is bell-shaped
+
+The mean, median, and mode are equal and are located at the center of the distribution
+
+A normal distribution curve is unimodal ( it has only one mode)
+
+The curve is symmetric about the mean. It means that the right portion of the distribution is equal to the left portion of the distribution
+
+The curve is continuous; that is, there are no gaps or holes
+
+The curve never touches the x axis. Theoretically, no matter how far in either direction the curve extends, it never meets the x axis—but it gets increasingly closer
+
+The total area under a normal distribution curve is equal to 1.00, or 100%
+
+In the normal distribution, about 68% of the data fall within 1 standard deviation of the mean ; about 95% of the data fall within 2 standard deviation of the mean; and about 99.7% of data fall within 3 standard deviation of the mean
+

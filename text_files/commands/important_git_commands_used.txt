@@ -1,0 +1,6 @@
+
+
+you can remove untracked files and sync your current directory with 
+the remote git repository, this command removes the large files
+
+git reset --hard origin

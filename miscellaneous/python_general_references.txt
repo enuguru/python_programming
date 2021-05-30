@@ -1,0 +1,36 @@
+
+
+
+python documentation as .zip file and .pdf
+
+https://docs.python.org/3/download.html
+
+what is the different between python library reference and python language reference ?
+
+While The Python Language Reference describes the exact syntax and semantics of the Python language, this library reference manual describes the standard library that is distributed with Python. It also describes some of the optional components that are commonly included in Python distributions.
+
+https://docs.python.org/3/
+
+
+
+python developers guide below
+
+This guide is a comprehensive resource for contributing to Python – for both new and experienced contributors. It is maintained by the same community that maintains Python. We welcome your contributions to Python!
+
+https://devguide.python.org/
+
+
+
+
+python built-in functions
+
+https://docs.python.org/3.9/library/functions.html#built-in-funcs
+
+
+python dunder or magic methods 
+
+https://docs.python.org/3.9/reference/datamodel.html?highlight=__init__%20class%20method#object.__init__
+
+http://web.archive.org/web/20160317120552/http://www.rafekettler.com/magicmethods.pdf
+
+

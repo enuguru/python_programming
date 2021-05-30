@@ -1,0 +1,11 @@
+
+install dev-c++
+https://sourceforge.net/projects/orwelldevcpp/files/latest/download
+
+
+installing gcc and g++ compilers on windows 10
+installing gcc and g++ compilers on windows 10 using conda install
+http://seanlaw.github.io/2019/01/17/pip-installing-wheels-with-conda-gcc/
+
+online compiler
+https://www.tutorialspoint.com/compile_cpp_online.php

@@ -1,0 +1,78 @@
+
+
+what are the frameworks needed ?
+
+numpy
+scipy
+pandas
+matplotlib
+seaborn
+pylab
+tensorflow
+keras
+jupyter notebook
+
+
+
+what is conda and what is anaconda?
+
+Anaconda:
+
+Anaconda is a free and open-source distribution of the Python and R programming languages for scientific computing (data science, machine learning applications, large-scale data processing, predictive analytics, etc.), that aims to simplify package management and deployment
+
+Anaconda is a python distribution, with installation and package management tools
+
+It provides large selection of packages and commercial support. It is an environment manager, which provides the facility to create different python environments, each with their own settings
+
+It also provides much greater advantages in the data science platform.
+
+it already contains jupyter notebook and spyder IDE pre-installed
+
+
+Conda:
+
+“Conda”, the Anaconda’s own package manager, is used for updating anaconda and its packages
+
+Conda is a cross platform package and environment manager. It provides installing, executing and updating different packages along with their dependencies
+
+It helps in switching between environments in our local machine
+
+
+anaconda environment commands
+-----------------------------
+
+how to install and un-install a python package in anaconda environment ?
+
+conda install "package name"
+conda uninstall "package name"
+
+
+how to install and uninstall python packages outside of anaconda environment ?
+
+pip install "package name"
+pip uninstall "package name"
+
+
+how to update anaconda?
+
+conda update conda
+conda update anaconda
+
+what is anaconda navigator ?
+
+Channels are locations where Navigator and conda look for packages.
+Navigator and conda only search for packages in active channels. You can temporarily disable a channel by making it inactive.
+
+what is a channel in anaconda ?
+
+You can search and browse packages and channels on Anaconda Cloud
+Channels are locations where Navigator and conda look for packages
+
+you can find more information about anaconda navigator here
+https://docs.anaconda.com/anaconda/navigator/tutorials/manage-channels/
+
+
+how to find the list of packages, their versions and their channels in anaconda?
+
+conda list - will give packages, versions and their channels
+pip list - will give the names and versions of all the packdages

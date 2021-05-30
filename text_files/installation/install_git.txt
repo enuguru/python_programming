@@ -1,0 +1,22 @@
+
+how to install git source code control system
+
+open the link from git editor download link
+https://git-scm.com/downloads
+
+click on windows, then download will start
+
+this file gvim81.exe is downloaded in C:\Users\yourname\Downloads\
+directory
+
+click on that and install
+then go to C:\Program Files\Git\cmd
+
+select git and click properties, then copy the location
+
+then open controlpanel
+click on system
+click on advancedsettings
+click on environment variales
+then click on systemvariables
+click on new and then paste the location copied

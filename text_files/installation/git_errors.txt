@@ -1,0 +1,36 @@
+
+not able to access the git -
+git config --global http.sslVerify false
+
+how to check which is your current repository -
+git config --get remote.origin.url
+
+
+git reset --hard HEAD
+git pull
+
+echo $http_proxy
+echo $https_proxy
+echo $HTTPS_PROXY
+echo $HTTP_PROXY
+
+and delete with export http_proxy=
+
+Or check https and http proxy
+
+git config --global --unset https.proxy
+git config --global --unset http.proxy
+
+Or do you have the proxy in the local config?
+
+git config --unset http.proxy
+git config --unset https.proxy
+
+
+your local git repository is up to date with online git repository when you get the following messages while doing git push and git pull
+
+(base) C:\Users\Gururajan\DataScienceLevelTwo>git push
+Everything up-to-date
+
+(base) C:\Users\Gururajan\DataScienceLevelTwo>git pull
+Already up to date.

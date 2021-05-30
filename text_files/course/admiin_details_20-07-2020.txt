@@ -1,0 +1,42 @@
+
+covid dataset
+https://www.kaggle.com/sudalairajkumar/covid19-in-india/data#
+
+google colab
+https://colab.research.google.com/notebooks/intro.ipynb
+
+my main github page
+https://github.com/enuguru
+
+https://github.com/enuguru/DataScienceLevelTwo.git
+
+https://github.com/enuguru/DataScienceLevelOne.git
+
+https://github.com/enuguru/artificial_intelligence_and_machine_learning.git
+
+https://github.com/enuguru/c_programming
+
+
+Python for DS L1 July 2020 recording
+
+https://wipro365.sharepoint.com/sites/ku-practice-4044/ANALYTICS-COMPETENCY/Recordings/Forms/AllItems.aspx?id=%2Fsites%2Fku%2Dpractice%2D4044%2FANALYTICS%2DCOMPETENCY%2FRecordings%2FNon%20Academy%2FPython%20for%20DS%20L1%2Djuly2020&viewid=aa63c8dc%2D8568%2D4868%2Daad3%2Def4ed0b40a5f
+
+AIML L2A - June 2020 Recording
+
+https://wipro365.sharepoint.com/sites/ku-practice-4044/ANALYTICS-COMPETENCY/Recordings/Forms/AllItems.aspx?id=%2Fsites%2Fku%2Dpractice%2D4044%2FANALYTICS%2DCOMPETENCY%2FRecordings%2FNon%20Academy%2FAIML%20L2A%20Guru&viewid=aa63c8dc%2D8568%2D4868%2Daad3%2Def4ed0b40a5f
+
+
+L2A assessment link -
+https://topgear-app.wipro.com/artificial-intelligence/content/ml-algorithms
+
+L2B assessment link -
+https://topgear-app.wipro.com/artificial-intelligence/content/applied-ai-engineer-assignment
+
+
+Python for Data Science Level 1 - assessment link
+
+https://topgear-app.wipro.com/python-programming/content/python-data-science-level-1
+
+Python for Data Science Level 2 - assessment link
+
+https://topgear-app.wipro.com/python-programming/content/python-data-science-level-2

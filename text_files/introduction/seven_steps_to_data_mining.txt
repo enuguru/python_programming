@@ -1,0 +1,28 @@
+
+seven steps to data mining
+--------------------------
+
+data acquisition - data extraction from one source or many 
+                   sources, bringing it in the form of a csv file
+                   and then loading data in to a dataframe
+                   csv, tsv and json
+                   data acquisition = data extraction + data loading
+
+data inspection  - look at data from different view points
+
+data cleaning    - data deletion, data formatting, data inserted
+                   data replacement, data filling - data imputation
+
+data preprocessing - rescaling, standarization, normalization  
+                     and binarization, dimenstionality reduction, data encoding
+
+data analysis - summary statistics, data skewness, data kurtosis 
+                data correlation, causation and regression, density estimation, 
+                principal component analysis, what if analysis
+
+modelling -     regression, classification, clustering, outlier 
+                detection and time series analysis
+
+results and
+visualization - data visualization from different view points,
+                listing results and taking a decision

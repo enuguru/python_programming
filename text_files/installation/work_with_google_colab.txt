@@ -1,0 +1,18 @@
+
+
+how to work on google colab
+---------------------------
+
+go to the below webpage
+
+https://colab.research.google.com/notebooks/intro.ipynb
+
+click on the top right hand corner on login
+then login with your gmail id
+
+go to top left hand corner and click on top left "file" and 
+"new notebook"
+
+then we can type the programs in the page seen
+
+

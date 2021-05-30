@@ -1,0 +1,13 @@
+
+
+http://www.math.wm.edu/~leemis/chart/UDR/UDR.html
+
+binarization
+normalization
+standardization
+rescaling
+label encoding
+one hot encoding
+dimensionality reduction
+
+

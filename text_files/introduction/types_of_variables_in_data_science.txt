@@ -1,0 +1,15 @@
+
+what are the variables called?
+------------------------------
+
+in genearl in mathematics 
+input variable and output variable
+
+in statistics
+independent variable and dependent variable
+
+in machine learning
+feature variable and target variable
+
+in data science and data mining
+predictor variable - predicted variable or response variable

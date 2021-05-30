@@ -1,0 +1,50 @@
+
+
+
+learn the python, java, c++ build environment
+.envrc file
+makefile
+make update_conda
+virtual environment
+can you run different projects on the same computer?
+in real project how does python get built?
+do you know that is manage.py
+
+mac, linux and windows 10
+
+regular expression 
+
+learn the editors - eclipse, intellgi - paid
+jetbrains.com - GUI editors
+vim or emacs - terminal editors
+
+python - Jupyter notebook, pycharm, spyder, sublime
+         visual code 
+
+
+learn useful tools - tmux, click in python, groovy,
+                     ansible, docker,
+
+
+short cuts in every platform and language -
+
+learn the commands typing on command line
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

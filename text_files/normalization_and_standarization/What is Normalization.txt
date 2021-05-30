@@ -1,0 +1,8 @@
+
+
+normalization in statistics basically means
+
+I have dataset 1 with possible values from 0-1000 randomly distributed.
+I have dataset 2 with possible values from 0-1 randomly distributed
+
+If I want to compare the distributions between dataset 1 and dataset 2 I would normalize the data by either dividing every value in dataset 1 by 1000 or multiplying every value in dataset 2 by 1000. Then the 2 datasets are comparable and can be merged

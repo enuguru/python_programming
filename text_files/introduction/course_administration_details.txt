@@ -1,0 +1,21 @@
+
+Details of the AIML Course
+--------------------------
+
+pre-requisites for the program - python and appredication of mathematics
+tools needed to be installed - anaconda, git and Vim editor on windows 10
+how to resolve installation issues ?
+Table of contents for the whole AIML program, level 1, level 2 and level 3
+Level 0 vidoes - https://wilearn.sumtotal.host/core/search
+Level 1 assessment link - how to do assessment - at the end of the level 
+daily a simple assignment - to solve - takes 30 minutes
+traning feedback link and providing feedback
+what are the benefits of doing the AIML Level program ? - certificate, skills mapping and using it in your appraisal
+materials for the AIML session
+hands-on code for the session - on github - https://github.com/enuguru
+recordinngs for each day session
+group link for the session
+references, blogs, videos and papers will be provided on a daily basis
+
+https://www.youtube.com/watch?v=PPLop4L2eGk - andrew ng
+https://www.cs.toronto.edu/~hinton/coursera/lecture1/lec1a.mp4 - geoffery hinton

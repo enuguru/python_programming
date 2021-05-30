@@ -1,0 +1,14 @@
+
+
+find the number of cities in which the onion price was between
+Rs 20 and Rs 40
+
+how much of time the onion price was below Rs 20 ?
+
+analyse the correlation relationship between the independent variables
+in the pima indians diabetes dataset
+
+Is there a chance of diabetes for people above the age of 40 ?
+find the probability of people above 40 getting diabetes
+
+find out how many people got selected in best universities and how many got selected in very good universities ?

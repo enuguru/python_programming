@@ -1,0 +1,23 @@
+
+A probability distribution tells you what the probability of an event happening is. Probability distributions can show simple events, like tossing a coin or picking a card. They can also show much more complex events, like the probability of a certain drug successfully treating cancer.
+
+
+normal
+uniform
+chi-squared
+beta distribution
+pearson type III distribution
+log-normal distribution
+paretto distribution
+
+
+
+
+Binomial distribution.
+Geometric Distribution
+Hypergeometric distribution.
+Multinomial Distribution.
+Negative binomial distribution.
+Poisson distribution.
+
+

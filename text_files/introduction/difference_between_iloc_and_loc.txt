@@ -1,0 +1,12 @@
+
+
+what is the difference between loc and iloc usage in pandas?
+
+loc vs iloc:
+
+loc gets rows (or columns) with particular labels from the index
+
+iloc gets rows (or columns) at particular positions in the index (so it only takes integers)
+
+The loc indexer can also do boolean selection
+

@@ -1,0 +1,40 @@
+
+
+three correlation coefficients
+
+1. pearson
+2. kendall-tau
+3. Spearmen
+
+all three coefficients range from -1 to +1
+
+comparision of correlation coefficients
+
+Comparison of Pearson and Spearman coefficients
+
+The fundamental difference between the two correlation coefficients is that the Pearson coefficient works with a linear relationship between the two variables whereas the Spearman Coefficient works with monotonic relationships as well.
+
+2. One more difference is that Pearson works with raw data values of the variables whereas Spearman works with rank-ordered variables
+
+If we feel that a scatterplot is visually indicating a “might be monotonic, might be linear” relationship, our best bet would be to apply Spearman and not Pearson. No harm would be done by switching to Spearman even if the data turned out to be perfectly linear. But, if it’s not exactly linear and we use Pearson's coefficient then we’ll miss out on the information that Spearman could capture
+
+
+The Pearson product moment correlation is the most frequently used coefficient for normally distributed data. On the other hand, nonparametric methods such as Spearman's rank-order and Kendall's tau correlation coefficients are usually suggested for non-normal distributions.
+
+
+What is a monotonic relationship?
+
+A monotonic relationship is a relationship that does one of the following:
+
+(1) as the value of one variable increases, so does the value of the other variable, OR
+
+(2) as the value of one variable increases, the other variable value decreases.
+
+But the crucial thing is that the increase or decrease does not exactly happen at a constant rate whereas in a linear relationship the rate of increase or decrease is constant.
+
+
+
+
+
+
+

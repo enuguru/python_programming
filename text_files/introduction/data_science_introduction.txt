@@ -1,0 +1,20 @@
+
+
+Data mining is a process of discovering patterns 
+in large data sets involving methods at the intersection 
+of machine learning, statistics, and database systems. 
+
+Data mining is an interdisciplinary subfield of 
+computer science and statistics with an overall goal 
+to extract information (with intelligent methods) 
+from a data set and transform the information into a 
+comprehensible structure for further use.
+
+Data Science - Dhanurjay Patil
+
+In 2008, Dr DJ Patil and Jeff Hammerbacher, heads of 
+analytics and data at LinkedIn and Facebook respectively, 
+coined the term ‘data science’ to describe the emerging 
+field of study that focused on teasing out the hidden 
+value in the data that was being collected from touchpoints 
+all over the retail and business sectors.

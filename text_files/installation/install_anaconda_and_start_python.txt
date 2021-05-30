@@ -1,0 +1,86 @@
+
+anaconda installation
+---------------------
+
+step 1: Install anaconda
+
+go to the following webpage
+https://www.anaconda.com/distribution/#download-section
+
+click on download below Python 3.7 version
+
+while installing on the installation GUI do not check on
+"add anaconda to my path environment variable"
+(because this may cause problems later, you may have to reinstall anaconda)
+
+use the default settings for anaconda installation, it should work fine
+
+step 2: after installing anaconda
+
+1. click on windows button on the bottom left of the screen
+2. type anaconda prompt
+3. click on anaconda prompt on the start menu
+4. the anaconda command prompt will come up
+5. the anaconda command prompt will show -  (base) c:\Users\Gururajan>
+(if you get the following error on the first line of command prompt)
+
+step 3: if you get the error Could Not Find C:\Windows\TEMP\tmpphs6639h.bat
+
+do the following
+
+Right-click on C:\Windows\Temp in Windows Explorer and select Properties
+Click the Security tab
+Click Advanced
+give full control under permissions
+
+
+http://helpcenter.perpetuumsoft.com/kb/a590/error-source-file-c-windows-temp-xxxxx-could-not-be-found.aspx
+Click Change Permissions
+If the IIS group is not listed, Add the group.  Once added, or if it was already listed, set the permissions to at least ‘List folder / read data’ for this folder, subfolders and files
+If the Users group is not listed, Add the group.  Once added, or if it was already listed, set the permissions to at least ‘Traverse folder / execute file, Create files / write data, Create folders / append data’ for this folder, subfolders and files.
+Apply all changes and click OK until all dialogs are closed
+
+step 4: open the command prompt windows
+close the command prompt and open again
+then you should not get that error
+
+you will just get -  (base) c:\Users\Gururajan>
+
+
+step 5: check the version
+
+type python --version
+python 3.7.4
+
+type anaconda --version
+anaconda Command line client (version 1.7.2)
+
+
+step 6: go to the bottom left hand corner of your screen and press windows button
+
+the menu opens
+type jupyter notebook on the search box
+you will see jupyter notebook icon on the menu
+click on that
+jupyter notebook will open on the google chrome or microsoft edge
+if you are not able to see the directories on jupyter
+see if you can see the directories on anaconda prompt
+
+uninstall google chrome and re-install again
+re-launch jupyter notebook again
+you can see the directories on jupyter notebook now
+
+
+step 7: adjust the properites of the command prompt windows to suit your taste
+
+a) right click on the border of the command prompt window
+b) go to font tab
+c) select lucia console font
+d) select font size 18
+e) then click on layout tab
+f) increase the width of the command prompt window
+g) increaes the height of the command prompt windows
+
+ubuntu download
+https://ubuntu.com/download/desktop
+

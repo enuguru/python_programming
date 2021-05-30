@@ -1,0 +1,31 @@
+
+
+day 1
+
+agenda for 5 days
+agenda for today - day 1
+
+installation of anaconda
+installation of vim editor
+installation of git software
+
+working with google colab - four differnet types of operations
+how to run programs on google cloud
+how to save programs on google cloud
+program in the cloud, data in the cloud
+program in the cloud, data in the local PC
+program in the local PC, data in the local PC
+program in the local PC, data in the cloud
+
+
+activities
+one hot encoding
+label encoding
+standarization
+normalization
+binarization
+rescaling
+
+
+
+

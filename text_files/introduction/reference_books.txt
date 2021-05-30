@@ -1,0 +1,21 @@
+
+
+THe Hundred page machine learning book - Andrily Burkov
+
+elements of statistical learning by Trevor Hastie, Robert Tibshirani and Gareth James
+
+Stuart Russell and Peter Norvig, Artificial Intelligence: A Modern Approach
+
+Max Kuhn and Kjell Johnson, Applied Predictive Modeling, 2013
+
+pattern recognition and Machine learning - Bishop
+
+Pattern recognition and neural networks - Brian Ripley
+
+Machine Learning by Tom Mitchell
+
+
+
+
+
+

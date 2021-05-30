@@ -1,0 +1,37 @@
+
+Level 1
+
+7 steps of data mining - data science
+
+1. data inspection functions in pandas
+2. data loading - 
+3. data preprocessing - rescaling, binarization, 
+                        standarization, normalization, encoding
+4. data analysis - pivot, pivot_table, groupby, concat
+                   crosstab
+5. data modeling - clustering,  and regression
+6. data visualization - plots, bar charts, histogram,
+                         scatter plot, box plot
+7. data cleaning
+
+pandas, numpy, matplotlib, scikit-Learn
+
+
+Level 2
+
+advanced visualization - interacting plotting - plotly
+advanced techniques - waffle charts, staggered histograms
+                      bar charts, areas plots, heat based plots
+
+advanced preprocessing - PCA, LDA
+
+two new case studies with analysis - merge, types
+
+time series analysis
+SNS - seaborn and statsmodels
+
+
+
+
+
+

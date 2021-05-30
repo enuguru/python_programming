@@ -1,0 +1,7 @@
+
+
+pip install ipynb-py-convert
+
+ipynb-py-convert one.py one.ipynb
+
+ipynb-py-convert one.ipynb one.py

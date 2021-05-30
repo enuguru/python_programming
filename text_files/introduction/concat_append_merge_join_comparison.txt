@@ -1,0 +1,33 @@
+
+
+concat Vs append Vs merge Vs Join
+---------------------------------
+
+Concat gives the flexibility to join based on the axis( all rows or all columns)
+
+Append is the specific case(axis=0, join='outer') of concat
+
+Join is based on the indexes (set by set_index) on how variable =['left','right','inner','couter']
+
+Merge is based on any particular column each of the two dataframes, this columns are variables on like 'left_on', 'right_on', 'on'
+
+
+
+I have implemented a tiny benchmark (please find the code on Gist) to evaluate the pandas' concat and append. I updated the code snippet and the results after the comment by ssk08 - thanks alot!
+
+The benchmark ran on a Mac OS X 10.13 system with Python 3.6.2 and pandas 0.20.3.
+
++--------+---------------------------------+---------------------------------+
+|        | ignore_index=False              | ignore_index=True               |
++--------+---------------------------------+---------------------------------+
+| size   | append | concat | append/concat | append | concat | append/concat |
++--------+--------+--------+---------------+--------+--------+---------------+
+| small  | 0.4635 | 0.4891 | 94.77 %       | 0.4056 | 0.3314 | 122.39 %      |
++--------+--------+--------+---------------+--------+--------+---------------+
+| medium | 0.5532 | 0.6617 | 83.60 %       | 0.3605 | 0.3521 | 102.37 %      |
++--------+--------+--------+---------------+--------+--------+---------------+
+| large  | 0.9558 | 0.9442 | 101.22 %      | 0.6670 | 0.6749 | 98.84 %       |
++--------+--------+--------+---------------+--------+--------+---------------+
+Using ignore_index=False append is slightly faster, with ignore_index=True concat is slightly faster.
+
+tl;dr No significant difference between concat and append.
