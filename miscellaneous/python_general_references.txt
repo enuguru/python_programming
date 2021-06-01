@@ -21,6 +21,14 @@ https://devguide.python.org/
 
 
 
+python reference - a third party maintained page - great place to learn 
+https://www.w3schools.com/python/default.asp
+
+
+wonderful python reference
+https://realpython.com/
+
+
 
 python built-in functions
 
@@ -34,3 +42,71 @@ https://docs.python.org/3.9/reference/datamodel.html?highlight=__init__%20class%
 http://web.archive.org/web/20160317120552/http://www.rafekettler.com/magicmethods.pdf
 
 
+competitive programming and general solutions
+
+www.hackerrank.com  -  python solutions
+www.hackerearth.com -  python solutions
+
+
+youtube channels
+
+advanced
+https://www.youtube.com/channel/UCbNpPBMvCHr-TeJkkezog7Q
+
+how python develped
+https://www.youtube.com/watch?v=J0Aq44Pze-w
+
+dan bader - real python youtube channel
+https://www.youtube.com/realpython
+
+raymond hettinger youtube channel
+https://www.youtube.com/channel/UCDLORnRnJ-OJ97Vjf1g5b0g/featured
+
+
+
+The following channels provide the tutorials, talks, and session recordings from many of the smaller local Python conferences held throughout the world.
+
+Though on their own, most of these channels do not meet the requirement for 2000 subscribers, we list them here as honorable mentions because they represent the diverse Python community throughout the world.
+
+Note that some (maybe older) videos from these conferences are available (together with other non-Python content) on the Next Day Video and Engineers.SG channels. Alternatively, PyVideo.org can serve as a one-stop-shop where you can find most (but not all) of these session recordings.
+
+EuroPython
+EuroSciPy
+Kiwi PyCon
+PyCascades
+PyCon Argentina (Ar)
+PyCon Australia (AU)
+PyCon Canada
+PyCon Czech (CZ)
+PyCon Finland
+PyCon Germany (DE)
+PyCon Hong Kong (HG)
+PyCon Ireland (IE)
+PyCon Italy (Nove)
+PyCon Japan (JP)
+PyCon Korea (KR)
+PyCon Malaysia (MY)
+PyCon Phillipines (PH)
+PyCon Poland (PL)
+PyCon Singapore (SG)
+PyCon Slovakia (SK)
+PyCon Ukraine (UA)
+PyCon United Kingdom (UK)
+PyGotham 2017
+PyOhio
+
+
+paid premium channels
+
+datacamp
+https://www.datacamp.com/courses
+
+good place to start
+https://www.pluralsight.com/browse
+
+from real python site 
+Smaller Python Conferences
+
+www.leetcode.com - python solutions
+
+www.algoexpert.com - python solutions

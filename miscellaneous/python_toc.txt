@@ -11,6 +11,7 @@
       simple functions, parameter passing, lambda functions, list and dictionary comprehension
       string handling in python
       handling input and output in python
+      recursion in python
       object oriented programming, static keyword, overloading, overriding and polymorphism
       magic methods / dunder methods in python - __init__, __repr__ and others
       iterators and generators in python
@@ -19,7 +20,7 @@
       different python interpreters - CPython, IronPython, Jython.
       competitive programming in python - competitive programming platforms and websites
       pythonic code, python one liners, idioms and python clean code
-      python references books, youtube channles, python blogs and python conferences
+      python references books, youtube channles, python blogs and python conferences - how you can contribute for all of this
       python Vs C++, python Vs java
 
 

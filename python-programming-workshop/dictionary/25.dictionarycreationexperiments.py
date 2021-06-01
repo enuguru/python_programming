@@ -14,7 +14,7 @@ print(newdict[1])
 #newdict.append(45:"Ravi")
 print(newdict)
 
-anotherdict = {23:34, 45.66: "MeghaDharshini", 45:(34,"Jayashree")}
+anotherdict = {"Manooj":34, 45.66: "MeghaDharshini", 45:(34,"Jayashree")}
 print(anotherdict)
 #anotherdict.append({34:10})
 print(anotherdict)

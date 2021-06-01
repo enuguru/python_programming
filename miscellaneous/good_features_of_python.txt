@@ -3,6 +3,13 @@
 Good features of Python
 -----------------------
 
+easier to learn 
+programmer friendly
+there is a libraries and frameworks for any domain you like
+there is a superb community support
+code is brief and understandable
+
+
 The story goes, when a language buff asked Guido Von Russum, what is the purpose of creating python ?
 
 Guido replied the purpose of creating python was "programmer happiness". While writing code the developers should feel happy. 
