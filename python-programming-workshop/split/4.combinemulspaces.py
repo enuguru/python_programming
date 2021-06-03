@@ -8,4 +8,4 @@ print(newstring)
 mycollapsedstring = ' '.join(mystring.split())
 
 print(mycollapsedstring.split(' '))
-#['collapse', 'these', 'spaces']
+['collapse', 'these', 'spaces']

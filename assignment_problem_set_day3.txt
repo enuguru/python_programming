@@ -1,0 +1,32 @@
+
+
+
+    today's assignment
+
+    1. there are three types of accounts in a bank, salary account, savings accout and current account. implement methods, create account, withdraw amount and deposit amount for each type of account
+
+                        savings account     salary account     current account
+
+    online 
+    transaction          2,00,000            5,00,000           50,000,00
+    limit
+
+    minimum balance      0                   10,000             25,000
+
+
+    2. given a list yourlist = [33, 45, 77, 56, 33, 56, 56, 77, 100, 33, 33], print the frequency of occurence of each element
+
+    3.  Given a list of integers, every element appears twice except for one. Find that single one.
+
+    4.  Giving a number, find the Hamming weight of it. Hamming weight is the number of symbols that are different from the zero-symbol. (find the number of set bits)
+
+    5. find the parity of the given integer
+
+    6. Given an list of nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
+
+    7. Given a positive integer num, output its complement number. The complement strategy is to flip the bits of its binary representation.
+
+
+
+
+

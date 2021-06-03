@@ -1,3 +1,3 @@
 
-num = '1,2,3'.split(',')
+num = '1:2:3'.split(':')
 print(num)

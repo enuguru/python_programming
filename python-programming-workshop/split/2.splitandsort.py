@@ -12,5 +12,5 @@ words.sort()
 print(words)
 
 # display the sorted words
-for word in words:
-   print(word)
+#for word in words:
+#   print(word)
