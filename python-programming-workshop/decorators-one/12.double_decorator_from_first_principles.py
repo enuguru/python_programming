@@ -12,7 +12,7 @@ def make_pretty(func):
     return inner
 
 def ordinary():
-    print("I am ordinary")
+    print("I was supposed to be called I am ordinary")
 
 #ordinary()
 

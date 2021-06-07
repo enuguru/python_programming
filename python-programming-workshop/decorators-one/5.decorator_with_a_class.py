@@ -11,7 +11,7 @@ class my_decorator(object):
 
 @my_decorator
 def aFunction():
-    print("inside aFunction()")
+    print("now the flow is inside aFunction()")
 
 aFunction()
 print("Finished decorating aFunction()")

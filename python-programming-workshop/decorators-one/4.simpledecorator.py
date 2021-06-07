@@ -1,6 +1,7 @@
 
 def badri(some_function):
     print("This is the decorator called before actual function call")
+    print("Do something here before actual function call")
     return some_function
 
 @badri

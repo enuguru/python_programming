@@ -13,7 +13,7 @@ def my_decorator(some_function):
 
 
 def just_some_function():
-    print("Wheee!")
+    print("reached here just_some_function!")
 
 some_function_variable = my_decorator(just_some_function)
 

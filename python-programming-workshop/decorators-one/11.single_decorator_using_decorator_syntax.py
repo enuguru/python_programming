@@ -1,6 +1,7 @@
 
 # here we are using the decorator syntax
 # and doing the same thing done in problem 1
+
 def make_pretty(func):
     def inner():
         print("This is the decorator function I got decorated")

@@ -9,9 +9,9 @@ def my_decorator(some_function):
 
 
 def just_some_function():
-    print("Wheee!")
+    print("reached here just_some_function!")
 
-some_function = my_decorator(just_some_function)
-print(some_function)
+this_function = my_decorator(just_some_function)
+print(this_function)
 
-some_function()
+this_function()

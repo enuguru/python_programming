@@ -7,6 +7,6 @@ def fib():
 
 f = fib()
 print(f)
-for i in f:
-    print(i)
+#for i in f:
+#    print(i)
 #list(islice(f, 0, 10))
