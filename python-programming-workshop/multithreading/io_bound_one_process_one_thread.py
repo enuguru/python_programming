@@ -4,7 +4,7 @@ from threading import Thread, current_thread
 from multiprocessing import Process, current_process
 
 
-COUNT = 200000000
+COUNT = 2000000
 SLEEP = 10
 
 def io_bound(sec):

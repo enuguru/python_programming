@@ -1,3 +1,6 @@
+
+#include <stdio.h>
+
 int myFunction(int num)
 {
 	if (num == 0)
@@ -7,5 +10,6 @@ int myFunction(int num)
 	else
 		// if number is power of 2, return 1 else return 0
 		return ((num & (num - 1)) == 0 ? 1 : 0) ;
+	printf("reached here");
 
 }

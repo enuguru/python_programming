@@ -1,0 +1,2 @@
+
+gcc -o basic_function_win32.so -shared -fPIC -O2 basic_function.c

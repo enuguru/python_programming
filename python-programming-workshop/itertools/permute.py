@@ -7,3 +7,18 @@ values = [1, 2, 3,4]
 result = itertools.permutations(values, 4)
 for value in result:
     print(value)
+
+
+result = itertools.permutations(values, 3)
+for value in result:
+    print(value)
+
+
+result = itertools.permutations(values, 2)
+for value in result:
+    print(value)
+
+
+result = itertools.permutations(values, 1)
+for value in result:
+    print(value)

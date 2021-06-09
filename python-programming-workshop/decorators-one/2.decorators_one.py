@@ -5,6 +5,7 @@ def my_decorator(some_function):
         print("Something is happening before some_function() is called.")
         some_function()
         print("Something is happening after some_function() is called.")
+
     return wrapper
 
 

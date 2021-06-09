@@ -11,7 +11,7 @@ developers to understand. I prefer using for-loops and dictionaries in programs
 for these reasons.
 
 Concept:Itertools enables us to use a functional language, like Haskell, in 
-Python—with Python syntax.
+Python with Python syntax.
 
 This module implements a number of iterator building blocks inspired by constructs 
 from APL, Haskell, and SML. Each has been recast in a form suitable for Python.

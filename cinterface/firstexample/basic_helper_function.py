@@ -11,6 +11,4 @@ except:
     print('OS %s not recognized' % (sys.platform))
 
 python_c_square = basic_function_lib.c_square
-print(python_c_square)
 python_c_square.restype = None
-print("Reached the end of the program")
