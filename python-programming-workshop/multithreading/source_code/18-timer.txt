@@ -1,0 +1,5 @@
+
+Source code: 15-timer.py
+
+Documentation:
+- https://docs.python.org/3/library/threading.html#timer-objects

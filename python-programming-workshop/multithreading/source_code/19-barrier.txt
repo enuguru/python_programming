@@ -1,0 +1,8 @@
+In this video you will learn about barrier objects and see a program that
+creates a barrier to synchronize a known number of threads at a specific
+point in your program.
+
+Source code: 16-barrier.py
+
+Documentation:
+- https://docs.python.org/3/library/threading.html#barrier-objects

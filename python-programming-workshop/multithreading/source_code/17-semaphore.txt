@@ -1,0 +1,5 @@
+
+Source code: 14-semaphore.py
+
+Documentation:
+- https://docs.python.org/3/library/threading.html#semaphore-objects

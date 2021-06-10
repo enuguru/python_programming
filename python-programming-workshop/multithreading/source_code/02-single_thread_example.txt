@@ -1,0 +1,5 @@
+
+Source code: thread.py
+
+Documentation:
+- https://docs.python.org/3/library/time.html#time.sleep

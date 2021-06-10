@@ -1,0 +1,5 @@
+
+Source code: 03-thread.py
+
+Documentation: 
+- https://docs.python.org/3/library/threading.html#threading.Thread

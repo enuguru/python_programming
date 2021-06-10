@@ -1,3 +1,4 @@
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -9,5 +10,5 @@ void c_square(int n, double *array_in, double *array_out)
     {
         array_out[i] = array_in[i] * array_in[i];
     }
-    printf("Reached here");
+    printf("C file modified here");
 }

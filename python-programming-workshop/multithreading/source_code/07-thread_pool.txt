@@ -1,0 +1,6 @@
+
+Source code: 07-thread_pool.py
+
+Documentation:
+- https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.ThreadPoolExecutor
+- https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.Executor.map

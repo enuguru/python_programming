@@ -1,0 +1,13 @@
+Terminology:
+- CPU: Central processing unit. Piece of hardware in a computer that executes binary code
+- OS: Operating system. Software that schedules when programs can use the CPU
+- Process: A program that is being executed
+- Thread: Part of a process
+
+"Blocking" is where a thread is stuck, waiting for a something to finish so it can complete its function.
+
+When single-threaded apps get blocked, it results in poor user experience and slower overall execution time.
+
+Multi-threaded apps can do more than one function "at the same time" (not really, but it appears that way).
+
+While one thread is blocked, other threads can continue their execution.

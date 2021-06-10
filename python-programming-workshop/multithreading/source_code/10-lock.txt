@@ -1,0 +1,5 @@
+
+Source code: 10-lock.py
+
+Documentation:
+- https://docs.python.org/3/library/threading.html#lock-objects
