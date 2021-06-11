@@ -1,0 +1,8 @@
+>>> q = []
+>>> q.append("eat")
+>>> q.append("sleep")
+>>> q.append("code")
+>>> q
+['eat', 'sleep', 'code']
+>>> q.pop(0)
+'eat'

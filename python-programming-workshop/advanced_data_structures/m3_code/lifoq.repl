@@ -1,0 +1,18 @@
+>>> from queue import LifoQueue
+>>> q = LifoQueue()
+>>> q.put("eat")
+>>> q.put("sleep")
+>>> q
+<queue.LifoQueue object at 0x7fe40df298b0>
+>>> q.get()
+'sleep'
+>>> q.get_nowait()
+'eat'
+>>> q.get_nowait()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/queue.py", line 199, in get_nowait
+    return self.get(block=False)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/queue.py", line 168, in get
+    raise Empty
+_queue.Empty

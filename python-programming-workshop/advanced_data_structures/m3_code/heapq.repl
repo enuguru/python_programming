@@ -1,0 +1,13 @@
+>>> q = []
+>>> import heapq
+>>> heapq.heappush(q, (2, "code"))
+>>> q
+[(2, 'code')]
+>>> heapq.heappush(q, (1, "eat"))
+>>> q
+[(1, 'eat'), (2, 'code')]
+>>> heapq.heappush(q, (1.5, "sleep"))
+>>> q
+[(1, 'eat'), (2, 'code'), (1.5, 'sleep')]
+>>> heapq.heappop(q)
+(1, 'eat')

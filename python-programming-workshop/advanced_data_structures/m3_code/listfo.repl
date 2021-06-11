@@ -1,0 +1,18 @@
+>>> stack = []
+>>> stack.append("eat")
+>>> stack.append("sleep")
+>>> stack.append("code")
+>>> stack
+['eat', 'sleep', 'code']
+>>> stack.pop()
+'code'
+>>> stack
+['eat', 'sleep']
+>>> stack.pop()
+'sleep'
+>>> stack.pop()
+'eat'
+>>> stack.pop()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: pop from empty list

@@ -1,0 +1,17 @@
+>>> from collections import deque
+>>> q = deque()
+>>> # stack syntax the same as list
+>>> q.append("eat")
+>>> q.append("sleep")
+>>> q
+deque(['eat', 'sleep'])
+>>> # double-ended
+>>> q.appendleft("code")
+>>> q
+deque(['code', 'eat', 'sleep'])
+>>> q.pop()
+'sleep'
+>>> q.popleft()
+'code'
+>>> q
+deque(['eat'])

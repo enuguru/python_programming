@@ -1,0 +1,16 @@
+>>> q = [(2, "code"), (1, "eat")]
+>>> q.append((3, "sleep"))
+>>> q
+[(2, 'code'), (1, 'eat'), (3, 'sleep')]
+>>> q.sort(reverse=True)
+>>> q
+[(3, 'sleep'), (2, 'code'), (1, 'eat')]
+>>> q.pop()
+(1, 'eat')
+>>> q.append((4, "drink"))
+>>> q.sort(reverse=True)
+>>> q
+[(4, 'drink'), (3, 'sleep'), (2, 'code')]
+>>> q.sort(key=lambda x:x[1])
+>>> q
+[(2, 'code'), (4, 'drink'), (3, 'sleep')]

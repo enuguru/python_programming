@@ -8,14 +8,14 @@ import threading
 def print_cube(num):
 
 	print("Cube: {}".format(num * num * num))
-	for count in range(2000):
-		print(count,end= " ")
+	for count in range(200):
+		print(count,end= "-")
 
 def print_square(num):
 
 	print("Square: {}".format(num * num))
-	for count in range(2000):
-		print(count,end=" ")
+	for count in range(100):
+		print(count,end="_")
 
 
 t1 = threading.Thread(target=print_square, args=(10,))
@@ -32,6 +32,6 @@ t2.start()
 #t2.join()
 
 for count in range(1000):
-        print(count,end=" ")
+        print(count,end="a")
 # both threads completely executed
 print("Done!")

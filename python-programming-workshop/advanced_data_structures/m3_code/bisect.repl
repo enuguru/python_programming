@@ -1,0 +1,11 @@
+>>> from bisect import insort
+>>> p = [(1, "wake"), (2, "eat"), (3, "exercise")]
+>>> insort(p, (2.5, "brush teeth"))
+>>> p
+[(1, 'wake'), (2, 'eat'), (2.5, 'brush teeth'), (3, 'exercise')]
+>>> insort(p, (3, "shower"))
+>>> p
+[(1, 'wake'), (2, 'eat'), (2.5, 'brush teeth'), (3, 'exercise'), (3, 'shower')]
+>>> insort(p, (3, "get dressed"))
+>>> p
+[(1, 'wake'), (2, 'eat'), (2.5, 'brush teeth'), (3, 'exercise'), (3, 'get dressed'), (3, 'shower')]
