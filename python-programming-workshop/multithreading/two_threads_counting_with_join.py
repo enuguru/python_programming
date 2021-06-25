@@ -7,15 +7,17 @@ import threading
 
 def print_cube(num):
 
-	print("Cube: {}".format(num * num * num))
-	for count in range(200):
-		print(count,end= "-")
+	print("\nCube: {}".format(num * num * num))
+	for count in range(201):
+		print(count,end= " ")
+	print("\n")
 
 def print_square(num):
 
 	print("Square: {}".format(num * num))
-	for count in range(300):
+	for count in range(301):
 		print(count,end=" ")
+	print("\n")
 
 
 t1 = threading.Thread(target=print_square, args=(10,))
@@ -31,7 +33,7 @@ t1.join()
 # wait until thread 2 is completely executed
 t2.join()
 
-for count in range(100):
+for count in range(101):
         print(count,end=" ")
 # both threads completely executed
 print("Done!")
