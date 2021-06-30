@@ -1,10 +1,9 @@
-
 import time, os
 from threading import Thread, current_thread
 from multiprocessing import Process, current_process
 
 
-COUNT = 2000000
+COUNT = 200000000
 SLEEP = 10
 
 def io_bound(sec):
@@ -34,11 +33,15 @@ def cpu_bound(n):
 	print(f"{pid} * {processName} * {threadName} \
 		---> Finished counting...")
 
-start = time.time()
+if __name__=="__main__":
+	start = time.time()
 
-# YOUR CODE SNIPPET HERE
-io_bound(SLEEP)
-io_bound(SLEEP)
-
-end = time.time()
-print('Time taken in seconds -', end - start)
+	# YOUR CODE SNIPPET HERE
+	t1 = Thread(target = io_bound, args =(SLEEP, ))
+	t2 = Thread(target = io_bound, args =(SLEEP, ))
+	t1.start()
+	t2.start()
+	t1.join()
+	t2.join()
+	end = time.time()
+	print('Time taken in seconds -', end - start)

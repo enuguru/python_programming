@@ -8,12 +8,12 @@ def info(title):
     print('parent process:', os.getppid())
     print('process id:', os.getpid())
 
-def f(name):
-    info('function f')
-    print('hello', name)
+def newprocess(name):
+    info('function newprocess')
+    print('hello how are you doing', name)
 
 if __name__ == '__main__':
     info('main line')
-    p = Process(target=f, args=('bob',))
+    p = Process(target=newprocess, args=('bob',))
     p.start()
     p.join()

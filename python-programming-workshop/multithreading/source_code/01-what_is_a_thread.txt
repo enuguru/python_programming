@@ -1,3 +1,5 @@
+
+
 Terminology:
 - CPU: Central processing unit. Piece of hardware in a computer that executes binary code
 - OS: Operating system. Software that schedules when programs can use the CPU

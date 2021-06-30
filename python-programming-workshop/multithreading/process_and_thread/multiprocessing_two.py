@@ -3,6 +3,7 @@ from multiprocessing import Queue
 
 colors = ['red', 'green', 'blue', 'black']
 cnt = 1
+
 # instantiating a queue object
 queue = Queue()
 print('pushing items to queue:')
