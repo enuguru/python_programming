@@ -6,8 +6,8 @@ lock.acquire()
 print(lock)
 #lock.acquire() --> deadlock!
 
-#rlock = threading.RLock()
-#rlock.acquire()
+rlock = threading.RLock()
+rlock.acquire()
 #rlock.acquire() # no deadlock!
 #rlock.release()
 #print(rlock)

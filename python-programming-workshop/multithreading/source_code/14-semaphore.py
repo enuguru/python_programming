@@ -34,5 +34,3 @@ if __name__ == '__main__':
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
         executor.submit(welcome, semaphore, reached_max_users)
         executor.submit(monitor, semaphore, reached_max_users)
-
-

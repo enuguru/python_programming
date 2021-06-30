@@ -49,5 +49,3 @@ if __name__ == '__main__':
         ex.submit(consumer, pipeline)
     print(f'producer: {producer_pipeline}')
     print(f'consumer: {consumer_pipeline}')
-
-
