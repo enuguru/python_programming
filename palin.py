@@ -1,0 +1,4 @@
+
+
+def palindrome(mystr):
+    pass
