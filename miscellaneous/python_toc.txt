@@ -42,7 +42,7 @@
       introduction to meta programming in python
       introduction to GUI programming in python
       abstract classes in python
-      unit testing in python
+      unit testing in python, test driven development in python, fixtures
       introduction to design patterns using python
       introductinon to functional programming in python
       pythonic code, python one liners, idioms and python clean code

@@ -1,0 +1,63 @@
+
+
+
+pip install pytest
+
+mkdir ds
+cd ds
+
+    stack.py
+    class Stack:
+        pass
+
+    here type this in 
+    from ds.stack import Stack
+
+    now run pytest   python -m pytest -v
+
+    def test_constructor:
+        s = Stack()
+        assert 1 == 2
+        assert 2 == 2
+
+    now run pytest   python -m pytest -v
+
+
+
+    assert isinstance(s,Stack)
+    now run pytest   python -m pytest -v
+
+
+
+     
+    def test_constructor:
+        s = Stack()
+    assert isinstance(s,Stack)
+    assert len(s) == 0
+
+
+    stack.py
+    class Stack:
+
+       def __len__(self):
+           return 3
+
+    now run pytest   python -m pytest -v
+
+
+
+
+    def test_constructor:
+        s = Stack()
+    assert isinstance(s,Stack)
+    assert len(s) == 0
+
+
+    stack.py
+    class Stack:
+       def __init__(self):
+           self._storage = []
+       def __len__(self):
+           return len(self._storage)
+
+    now run pytest   python -m pytest -v

@@ -1,0 +1,7 @@
+
+
+fixtures have explicit names and are activated by declaring their use from test functions, modules, classes or whole projects.
+
+fixtures are implemented in a modular manner, as each fixture name triggers a fixture function which can itself use other fixtures.
+
+function, class, module, package and session
