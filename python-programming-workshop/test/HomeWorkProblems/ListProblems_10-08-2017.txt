@@ -1,15 +1,16 @@
 
-
-
 Take 10 names as input one by one and form a list.
-You can give any 10 name of person as input.
+You can give any 10 names of person as input.
 Then sort the names in the given list and find if a name is 
 present in the list. If present print "Present Madam". If not present
 then print "Not Present Madam"
 
-
-Take 10 numbers as input one by one and print the sum of all the 10 numbers
+Take 4 numbers as input one by one and print the sum of all the 4 numbers
 using list comprehension. Also print the product of all the numbers given
 
-Take 10 numbers as input one by one, and print the 2 to the power of each 
+Take 4 numbers as input one by one, and print the 2 to the power of each 
 number. Then print the sum of all the numbers. Use list and list comprehension
+
+
+find the mean,median and mode of the given data in an array
+

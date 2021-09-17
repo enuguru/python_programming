@@ -17,7 +17,7 @@
       iterators and generators in python
       python files, modules, package and frameworks
       commonly asked problems / programs in client interviews solved in python
-      different python interpreters - CPython, IronPython, Jython.
+      different python interpreters - CPython, IronPython, Jython
       competitive programming in python - competitive programming platforms and websites
       pythonic code, python one liners, idioms and python clean code
       python references books, youtube channles, python blogs and python conferences - how you can contribute for all of this

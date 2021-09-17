@@ -15,6 +15,8 @@ def lookandsay(n):
         s = nextnumber(s)
     return s
 
-for val in range(1,11):
+#print(lookandsay(5))
+
+for val in range(1,6):
     number = lookandsay(val)
     print(number)

@@ -18,6 +18,7 @@ print()
 
 
 mult3 = [x for x in [1, 2, 3, 4, 5, 6, 7, 8, 9] if x % 3 == 0]
+print(mult3)
 for i in mult3:
     print(i,end=" ")
 print()
