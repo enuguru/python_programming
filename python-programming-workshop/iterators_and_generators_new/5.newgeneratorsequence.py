@@ -1,5 +1,4 @@
 
-
 def countdown(n):
     print('Starting to count from', n)
     while n > 0:
