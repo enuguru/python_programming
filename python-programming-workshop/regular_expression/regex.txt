@@ -1,5 +1,6 @@
 
 
 
-Regular expressions are useful for extracting information from text such as code, log files, spreadsheets, or even documents. 
+Regular expressions are useful for extracting information from 
+text such as code, log files, spreadsheets, or even documents. 
 
