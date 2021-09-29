@@ -22,4 +22,4 @@ def ordinary():
 # let's decorate this ordinary function
 #pretty = make_more_pretty(make_pretty(ordinary))
 pretty = make_pretty(make_more_pretty(ordinary))
-#pretty()
+pretty()

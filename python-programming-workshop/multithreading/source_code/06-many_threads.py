@@ -18,11 +18,11 @@ def myfunc3(name):
 
 if __name__ == '__main__':
     print('main started')
-    t1 = threading.Thread(target=myfunc1, args=['Hi friends'])
+    t1 = threading.Thread(target=myfunc1, args=['Hi Pavani'])
     t1.start()
     t2 = threading.Thread(target=myfunc2, args=['Hi Karthik'])
     t2.start()
-    t3 = threading.Thread(target=myfunc3, args=['Hi Manooj'])
+    t3 = threading.Thread(target=myfunc3, args=['Hi Vikas'])
     t3.start()
     t1.join()
     t2.join()

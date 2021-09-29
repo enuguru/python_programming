@@ -8,8 +8,9 @@ Terminology:
 
 "Blocking" is where a thread is stuck, waiting for a something to finish so it can complete its function.
 
-When single-threaded apps get blocked, it results in poor user experience and slower overall execution time.
+When single-threaded apps get blocked, it results in poor user experience and slower overallexecution time.
 
-Multi-threaded apps can do more than one function "at the same time" (not really, but it appears that way).
+Multi-threaded apps can do more than one function "at the same time" (not really, but it 
+appears that way).
 
-While one thread is blocked, other threads can continue their execution.
+While one thread is blocked, other threads can continue their execution

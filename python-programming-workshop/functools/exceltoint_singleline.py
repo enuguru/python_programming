@@ -7,3 +7,5 @@ col = input("enter a valid excel column id ").upper()
 # it is reverse in reduce function
 
 print(functools.reduce(lambda ret,c:ret*26+ord(c)-ord('A')+1,col,0))
+
+

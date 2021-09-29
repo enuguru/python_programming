@@ -2,5 +2,36 @@
 
 
 Regular expressions are useful for extracting information from 
-text such as code, log files, spreadsheets, or even documents. 
+text such as code, log files, spreadsheets, or even documents.
+
+
+extract information
+find information
+find and replace information
+
+log files
+code
+text
+
+the initial work on data science and ML 
+was done using regex 30, 40 years back
+rule based learning
+
+maximum match
+minimum expression
+precise match
+
+
+
+
+5675-6780-0034-2367
+
+5675678000342367
+
+5675-6700-0034-2367
+
+5675-6780-3333-2367
+
+
+
 

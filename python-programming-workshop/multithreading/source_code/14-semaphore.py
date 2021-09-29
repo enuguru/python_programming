@@ -26,7 +26,6 @@ def monitor(semaphore, reached_max_users):
             time.sleep(0.05)
             reached_max_users.clear()
 
-
 if __name__ == '__main__':
     number_of_users = 50
     reached_max_users = threading.Event()
