@@ -37,8 +37,8 @@ class DialUpModem(Modem):
     def ReceiveData(self):          
         return 'DialUpModem receiving data'
 
-mymodems = [WiFiModem('WiFi is HiFi'),
-           BroadbandModem('Broadband is fast'),
+mymodems = [BroadbandModem('WiFi is HiFi'),
+           WiFiModem('Broadband is fast'),
            WirelessModem('Wireless is compact'),
            DialUpModem('DialUpModem is old style')]
 

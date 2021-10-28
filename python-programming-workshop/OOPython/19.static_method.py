@@ -12,9 +12,10 @@ class Dates:
 
 
 date = Dates("15-11-2016")
-dateFromDB = "15/12/2016"
+dateFromDB = Dates("15/12/2016")
 dateWithDash = Dates.slash_to_dash(dateFromDB)
-
+print(date)
+print(dateFromDB)
 if(date.getDate() == dateWithDash):
     print("Equal")
 else:

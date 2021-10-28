@@ -4,7 +4,7 @@ class India():
        print("New Delhi")
 
      def language(self):
-       print("Hindi and English")
+       print("Hindi,Telugu,Marathi,Kannada,Tamizh and English")
 
 class USA():
      def capital(self):

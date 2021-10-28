@@ -1,0 +1,18 @@
+
+
+private attributes and private methods
+- they can only be accessed by methods within the class
+
+protected attributes and protected methods
+- they can only be accessed by methods within the class
+  and the derived class
+
+public attributes and public methods
+- they can be accessed from anywhere
+
+
+
+create a public function with public attributes length and breadth
+create a protected function with protected attributes
+create a private function with private attributes
+
