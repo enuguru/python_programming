@@ -1,0 +1,5 @@
+
+
+What is CPython ?
+
+CPython is a version of the Python Interpreter that is written in the C Programming Language. CPython is the original and usually default interpreter used to run Python programs, and is the interpreter currently developed by Python creator Guido Van Rossum. Currently the CPython Interpreter supports versions 2.7 and 3.4.

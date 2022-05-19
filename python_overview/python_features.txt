@@ -1,0 +1,56 @@
+
+python features / advantages
+
+python is a dynamically typed language
+
+python is very expressive - just like natural language
+
+python learning is curve is easy - you can be working level in 2 weeks
+
+python has probably the largest programming community in the world
+
+python has a library for every field / domain
+
+python is object oriented and makes good use of classes
+
+python is an interpreted langauge
+
+python is a scripted language
+
+python is also a backend web development language - it has
+good frameworks such as Django and Flask
+
+python is the goto langauge for Data Science - some great data science libraries
+
+python is also the goto langauge for AI and ML - again some great AI and ML libraries
+
+It has very good interface with C, C++ and Java - more importantly with C
+
+It has also very good interface with databases like traditional databases like MySQL, PostgreSQL and SQLite 
+
+It has very good interface with NoSQL databases such as MongoDB, Redis and Cassandra
+
+Python is also very good with distributed system tools like Hadoop, Spark and streaming 
+applications
+
+
+python dis-advantages
+
+python is slightly slower than compiled languages like Java and C++
+and hence python may not be suitable for real time applications like computer vision
+
+althogh python talks about one obvious way to do a task, there are usually many 
+ways of doing a task in python and it is not obvious the select the best one
+
+
+
+
+
+
+
+
+
+
+
+
+

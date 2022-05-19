@@ -1,0 +1,86 @@
+
+
+Who created python ?
+
+Python was invented around 1990 by Guido van Rossum, when he was at CWI in Amsterdam. 
+(Centrum Wiskunde and Informatica)
+
+Why did Guido create python ?
+
+Guido was also involved with the Amoeba distributed operating system and the ABC language. In fact, the original motivation for Python was to create an advanced scripting language for the Amoeba system.
+
+
+why is it called python ?
+
+Python gets its name from the 1970s British TV comedy series, Monty Python’s Flying Circus. According to Python folklore, Guido van Rossum, Python’s creator, was watching reruns of the show at about the same time he needed a name for a new language he was developing. And, as they say in show business, “the rest is history.”
+
+Where is Guido working now ?
+
+On November 12, 2020, Guido Van Rossum announced that he was coming out of retirement to join the Developer Division at Microsoft. He tweeted: “I decided that retirement was boring and have joined the Developer Division at Microsoft. To do what? Too many options to say! But it’ll make using Python better for sure (and not just on Windows :-). There’s lots of open source here. Watch this space.’
+
+Where did he work before ?
+
+From late 2000 until 2003 he worked for Zope Corporation. In 2003 Van Rossum left Zope for Elemental Security. While there he worked on a custom programming language for the organization.[19] From 2005 to December 2012, he worked at Google, where he spent half of his time developing the Python language. In January 2013, he started working for Dropbox. In October 2019, Van Rossum officially retired before coming out of retirement the following year to join Microsoft. (distinguished engineer at microsoft)
+
+
+What is python design ?
+
+But Python’s design turned out to be general enough to address a wide variety of domains. It’s now used by hundreds of thousands of engineers around the world, in increasingly diverse roles. Companies use Python today in commercial products, for tasks such as testing chips and boards, developing GUIs, searching the Web, animating movies, scripting games, serving up maps and email on the Internet, customizing C++ class libraries, and much more.In fact, because Python is a completely general-purpose language, its target domains are only limited by the scope of computers in general.
+
+
+what is the difference between python and java ?
+
+There is more experimentation than production code. Java is a statically typed and compiled language, and Python is a dynamically typed and interpreted language. This single difference makes Java faster at runtime and easier to debug, but Python is easier to use and easier to read
+
+how long does it take to learn python ?
+
+3 to 4 weeks of intentional practice - 5 hours a day 
+
+who maintains python now ?
+
+The Python Software Foundation (PSF) is a 501(c)(3) non-profit corporation that holds the intellectual property rights behind the Python programming language. - www.python.org
+
+The Python Software Foundation is an organization devoted to advancing open source technology related to the Python programming language.
+
+
+which places to learn python ?
+
+www.realpython.org
+
+
+Who are the leaders of python ?
+
+Guido Von Russum - its creator
+
+Raymond Hettinger - core python developer and teacher
+
+David Beazley
+
+David Beazley wrote two books on Python: Python Essential Reference and Python Cookbook. As an educator, his personal website features upcoming classes where you can learn to tackle complex topics together. He also frequently tweets code examples and unique thoughts on programming puzzles. python developer and teacher 
+
+Łukasz Langa
+core developer
+
+what are the good reference books for python for beginners?
+
+Python Programming: An Introduction to Computer Science John Zelle, 3rd Edition
+Learn More Python 3 the Hard Way: The Next Step for New Python Programmers, by Zed A. Shaw
+Think Python: How to Think Like a Computer Scientist by Allen B. Downey 
+Python Crash Course, 2nd Edition: A Hands-On, Project-Based Introduction To Programming by Eric Matthes
+
+
+what are the good reference books for slightly advanced level of python learning ?
+
+professional python by Luke Sneeringer, 1st edition
+python cookbook by David Beazley, Brian K. Jones, 3rd edition
+fluent python by Luciano Ramalho 
+effective python by Brett Slatkin 
+
+
+
+
+
+
+
+
+
