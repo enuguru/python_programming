@@ -9,4 +9,4 @@ for num in numbers:
     squares = squares + ((num-mean) * (num-mean))
 stad = math.sqrt(squares/val)
 print(stad)
-print(squares)
+print(squares/val)
