@@ -7,7 +7,7 @@ def roman_to_decimal(s):
 s='ICCL'
 #s = "V"
 
-print(roman_to_decimal(s))
+print(roman_to_decimal(input()))
 
 
 #print(list(reversed(range(len(s)-1))))

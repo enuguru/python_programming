@@ -14,7 +14,7 @@ for value in result:
     print(value)
 
 
-result = itertools.combinations(values, 2)
+result = itertools.permutations(values, 2)
 for value in result:
     print(value)
 
