@@ -1,0 +1,80 @@
+
+
+list stores a list of values
+list is like an array in C and C++ but with lots of additional features
+list values are mutable
+you can store duplicates in list
+you can add, append, delete values in a list
+you can get any element of the list by using an index like newlist[index]
+lists are generally used for looping
+lists are used for variable length+
+technically lists are heterogeneous data structures but in practice we 
+use them with homogeneous values
+
+
+dictionary stoes values in pairs - key and value
+once a key it created it cannot be changed
+dictionary item can be deleted that is key and 
+The key in a dictionary can be string, char, number, tuple
+The key should not be a list or a set
+The value in the dictionary can be a int, char, float or string
+The value in the dictionary can be a list, set, another dictionary or tuple
+you can have a nested dictionary
+
+
+#python tip:  Generally, lists are for looping; tuples for structs. Lists are homogeneous; tuples heterogeneous.  Lists for variable length.
+
+
+struct {
+    int a;
+    char b;
+    float c;
+} foo;
+
+struct foo x = { 3, 'g', 5.9 };
+becomes in Python
+
+x = (3, 'g', 5.9)
+
+
+tuples:
+
+tuple values are immutable
+Generally, lists are for looping; tuples for structs. Lists are homogeneous; 
+tuples heterogeneous.  Lists for variable length.
+tuples are usually heterogeneous
+you can index in to tuples
+you can have duplicate values in tuples
+
+
+
+set
+
+set stores values 
+set values can be changed
+you cannot have duplicate values in set
+Sets and dictionaries are ideal data structures to be used when your data has no intrinsic order, but does have a unique object that can be used to reference it (the reference object is normally a string, but can be any hashable type). This reference object is called the “key,” while the data is the “value.” 
+
+Dictionaries and sets are almost identical, except that sets do not actually contain values: a set is simply a collection of unique keys. As the name implies, sets are very useful for doing set operations.
+
+Convert the set into list and you can use index() function in that list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

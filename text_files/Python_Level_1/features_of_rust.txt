@@ -1,0 +1,9 @@
+
+
+Rust has great performance, tooling, and an active community on its side that is continuously working on language improvement. Moreover, if you need a solution with a greater focus on safety than C and C++ and you don't want to compromise on speed, Rust is a good choice for you
+
+
+It is a multi-paradigm system programming language that performs C and C++ but with the design to keep the safety of the application in mind. The Rust programming language is useful as it allows the developer to write faster, more reliable software
+
+Rust does adhere to many of the tenets of functional programming. In many cases, you can easily, naturally, and idiomatically write Rust in a functional style.
+

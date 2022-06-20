@@ -1,0 +1,26 @@
+
+
+python web references
+---------------------
+
+realpython.com - best paid site for python 
+
+https://www.python.org/
+
+https://docs.python.org/3/download.html
+
+python developers guide as a single doc
+https://devguide.python.org/_/downloads/en/latest/pdf/
+
+
+https://bugs.python.org/file47781/Tutorial_EDIT.pdf
+
+
+
+
+
+
+
+
+
+

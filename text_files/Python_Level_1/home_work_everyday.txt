@@ -1,0 +1,29 @@
+
+Home work problems 
+
+Day 1 homework
+
+1. write a program to print the prime numbers using the else statement
+   outside the for loop in python
+
+
+Day 2 homework
+
+1. Write a one liner to print prime numbers from 1 to 100
+   using lambda and filter function
+2. write a one liner to print the perfect numbers from 1 to 100
+3. write a one liner to print the factorial of the given number
+3. print the fiboacci sequence in one line up to 1000
+
+Day 3 homework
+
+1. Give a list of numbers as input. write a python program to find 
+   the mean, median and mode from scratch without using any library
+2. Give a list of numbers as input. Find the variance and standard deviation
+   without using any library
+3. Given a list of numbers as input, calculate their weighted mean
+
+
+Day 4 Home work
+
+Convert the excel column numbers in to decimal

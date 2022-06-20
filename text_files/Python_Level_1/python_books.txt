@@ -1,0 +1,22 @@
+
+python books
+------------
+
+Python books for beginners
+
+effective python by Brett Slatkin 2019
+learn python3 the hard way Shaw Zed A. (Author)
+learn more python3 the hard way Shaw Zed A. (Author)
+Fluent Python by Luciano Ramalho 2022
+Think Python by Allen B Downey
+Python Tricks: A Buffet of Awesome Python Features by Dan Bader 2017
+
+
+
+
+Python books at an advanced level
+
+Professional python
+Python Cookbook: Recipes for Mastering Python 3 by David Beazley
+Python One-Liners: Write Concise, Eloquent Python Like a Professional by Christian Mayer 2020
+

@@ -1,0 +1,11 @@
+
+
+
+find the sum of alternating numbers
+print a half pyramid pattern
+print a full pyramid pattern
+print a hour glass pattern
+print a diamond patterh
+print sieve of eratosthanus
+reverse words in a sentence
+write a program to convert roman to decimal

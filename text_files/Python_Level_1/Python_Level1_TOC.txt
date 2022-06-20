@@ -1,0 +1,79 @@
+Python Programming Level 1 - TOC
+--------------------------------
+
+Overview of Python
+what are the good features of python
+all the advantages and few disadvantages of python
+important domains where python is used
+reason for python's popularity
+
+simple python declarations and statements
+variable types in python
+control structures in python
+programs and handson exercises using python control structures
+while, for, if-else-if statements in python
+simple programs using basic logic in python
+
+built in data types in python
+list, dictionary, set and tuple
+Simple programs using built in data types
+
+functions in python
+return types and arguments for python functions
+
+who are the python leaders
+good references, courses in python, youtube videos
+how to get a simple certification in python
+good books for a begineer in python
+
+programs using built in data types and looping
+how to use built in data types and looping together
+
+introduction to packing and unpacking in python
+how to use packing and unpacking for solving problems
+
+how to take inputs from the user in python
+input as a single variable
+inputs through a list and dictionary
+inputs through a set and tuple
+how to output a variable, a list, a dictionary and all other data types
+formatted input and output
+
+often required important tasks in python
+finding duplicates, searching and sorting, 
+printing the primes quickly and others
+
+What is a lambda function ?
+what are iterators in python ?
+how to create an iterator ?
+programs using iterators and generators
+exercises with iterators and generators
+what is a generator and how to create one
+applications of iterators and generators
+
+introduction to object oriented programming
+classes and class variables
+attributes and functions in classes
+constructors and classes
+different scenarios to use OOP in Python
+Comparitive study of Python OOP with C++ OOP and Java OOP
+applications using OOP
+Programs and Handson using OOP
+
+daily homework and simple projects in python
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+
+
+effective c++ by scott meyers 2005 edition
+
+effective modern c++ by scott meyers 2014 edition
+
+c++20 programming  by Paul Deitel and Harvey Deitel
+
+C++ Templates: The Complete Guide - 2002 edition
+David Vandevoorde and Nicolai M. Josuttis
+
+C++ Templates: The complete Guide - 2017 edition
+David Vandevoorde , Nicolai M. Josuttis and Douglas Gregor
+
+The C++ Programming Language (4th Edition) by Bjarne Stroustrup - May 2013
+A 5th edition of the same book will come in future, please buy that too
+
+
+
