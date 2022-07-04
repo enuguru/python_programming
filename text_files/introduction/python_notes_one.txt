@@ -1,0 +1,8 @@
+
+
+beautiful inheritance
+
+https://www.pythonprogramming.in/inheritance/example-of-multilevel-inheritance-in-python.html
+
+
+Python provides a generator to create your own iterator function. A generator is a special type of function which does not return a single value, instead, it returns an iterator object with a sequence of values. In a generator function, a yield statement is used rather than a return statement

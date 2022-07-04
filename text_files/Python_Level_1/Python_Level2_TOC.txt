@@ -1,0 +1,36 @@
+Python Programming Level 2 - TOC
+--------------------------------
+
+Python regular expression
+principles of regular expressions
+learning regular expressions by using 
+forming regular expressions
+searching, matching and finding regular expression
+re module in python
+
+iterators and generators in python
+how to create iterators
+three ways of creating iterators
+
+what are python decorators
+purpose of a decorator
+how was a decorator purpose done before
+single level decorators
+double decorators implementation
+triple decorators and their implementation
+
+python unit testing
+procedures for doing python unit testing
+abstract classes in python
+
+python design patterns
+building structural, creational and behavioral DPs in python
+differences of python design patterns with DPs in other languages
+applications of python design patterns
+
+
+
+
+
+
+
