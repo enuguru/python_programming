@@ -1,0 +1,22 @@
+
+
+algorithms and mathematics webpages
+-----------------------------------
+
+creative programming assignments
+https://introcs.cs.princeton.edu/java/assignments/
+
+bit wise programming by sean anderson
+http://graphics.stanford.edu/~seander/bithacks.html
+
+enjoyalgorithms
+https://www.enjoyalgorithms.com/
+
+problem solving website in CS
+https://www.techiedelight.com/
+
+great site for mathematics
+https://www.enjoymathematics.com/
+
+great page for mathematics
+https://projecteuler.net/about

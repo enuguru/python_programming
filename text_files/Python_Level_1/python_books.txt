@@ -12,8 +12,6 @@ Think Python by Allen B Downey
 Python Tricks: A Buffet of Awesome Python Features by Dan Bader 2017
 
 
-
-
 Python books at an advanced level
 
 Professional python
