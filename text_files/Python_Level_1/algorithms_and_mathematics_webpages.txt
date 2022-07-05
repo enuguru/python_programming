@@ -20,3 +20,11 @@ https://www.enjoymathematics.com/
 
 great page for mathematics
 https://projecteuler.net/about
+
+Tushar Roy
+https://github.com/mission-peace/interview
+https://github.com/mission-peace/interview/wiki
+https://github.com/mission-peace/interview/wiki/Dynamic-Programming
+
+stony brooks algorithm repository
+https://algorist.com/algorist.html
