@@ -9,7 +9,7 @@ def sleep_decorator(function):
 #   """
 
     def wrapper(*args, **kwargs):
-        sleep(1)
+        sleep(3)
         return function(*args, **kwargs)
     return wrapper
 

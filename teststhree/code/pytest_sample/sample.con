@@ -1,0 +1,33 @@
+$ cd pytest_sample
+$ pytest
+=========================== test session starts ============================
+platform darwin -- Python 3.10.0, pytest-7.1.1, pluggy-1.0.0
+rootdir: /Users/ctrudeau/code/pytest_sample
+collected 2 items
+
+test_pytest_sample.py .F                                                 [100%]
+
+================================= FAILURES =================================
+_____________________________ test_always_fail _____________________________
+
+    def test_always_fail():
+>       assert False
+E       assert False
+
+test_pytest_sample.py:7: AssertionError
+========================= short test summary info ==========================
+FAILED test_pytest_sample.py::test_always_fail - assert False
+======================= 1 failed, 1 passed in 0.07s ========================
+$ pytest -q
+.F                                                                       [100%]
+================================= FAILURES =================================
+_____________________________ test_always_fail _____________________________
+
+    def test_always_fail():
+>       assert False
+E       assert False
+
+test_pytest_sample.py:7: AssertionError
+========================= short test summary info ==========================
+FAILED test_pytest_sample.py::test_always_fail - assert False
+1 failed, 1 passed in 0.07s

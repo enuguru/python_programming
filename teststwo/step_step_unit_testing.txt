@@ -1,11 +1,18 @@
 
-
 pip install pytest
 
+mkdir testsone
+cd testsone
+
 mkdir ds
+mkdir tests
+
 cd ds
 
-    stack.py
+    touch __init__.py
+    touch stack.py
+    
+    type the below lines
     class Stack:
         pass
 
@@ -13,7 +20,9 @@ cd ds
     from ds.stack import Stack
 
     now run pytest   python -m pytest -v
-
+    it will pass
+    
+    the type the below lines in test_stack.py  
     def test_constructor:
         s = Stack()
         assert 1 == 2
@@ -22,7 +31,7 @@ cd ds
     now run pytest   python -m pytest -v
 
 
-
+    type the below lines in test_stack.py
     assert isinstance(s,Stack)
     now run pytest   python -m pytest -v
 
@@ -52,7 +61,7 @@ cd ds
     assert len(s) == 0
 
 
-    stack.py
+    now change the below lines in stack.py
     class Stack:
        def __init__(self):
            self._storage = []
