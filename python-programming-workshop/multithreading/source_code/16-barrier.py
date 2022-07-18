@@ -1,7 +1,7 @@
+
 import random
 import threading
 import time
-
 
 def can_vote(age):
     if age < 18:

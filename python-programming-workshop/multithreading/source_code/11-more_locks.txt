@@ -1,4 +1,3 @@
-In this video you continue exploring locks and learn about deadlock and how to avoid it.
 
 Side note: A lock is also called a "mutex" is other languages.
 
