@@ -13,6 +13,12 @@ https://devguide.python.org/_/downloads/en/latest/pdf/
 
 https://bugs.python.org/file47781/Tutorial_EDIT.pdf
 
+https://www.w3schools.com/python/default.asp
+
+https://developers.google.com/edu/python
+
+https://www.w3resource.com/python/python-tutorial.php
+
 www.leetcode.com
 
 www.algoexpert.com

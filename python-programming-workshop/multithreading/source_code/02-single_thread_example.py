@@ -1,3 +1,4 @@
+
 # SuperFastPython.com
 # example of joining a thread
 from time import sleep
