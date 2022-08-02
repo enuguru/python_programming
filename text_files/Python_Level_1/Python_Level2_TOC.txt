@@ -28,6 +28,12 @@ building structural, creational and behavioral DPs in python
 differences of python design patterns with DPs in other languages
 applications of python design patterns
 
+multithreading in python
+race condition - how to handle if racing occurs in python
+locks and semaphores
+producer consumer problem solved in python
+thread creation on server side in python
+
 
 
 

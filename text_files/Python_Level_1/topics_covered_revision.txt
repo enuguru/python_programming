@@ -1,0 +1,144 @@
+
+
+today's agenda
+
+mention of all the topics covered
+directories where all information is present
+python level 1 assignment - python level 2 assignment will be posted shortly
+python leaders
+python youtube channels
+python web references
+python youtube channels
+python books
+
+
+
+
+
+topics covered so far
+
+Python Programming Level 1
+
+Introduction to python features
+installation of anaconda, git and vim editors
+using anaconda prompt to navigate the code
+how to use jupyter notebook and google colab
+python assignment and data types - int,float, char and string
+python operators and operator precedence
+python looping statements
+python conditional statements
+python packing and unpacking
+functions, return types and default parameters
+polymorphism with default function arguments
+python built-in data structures - list,set,tuple and dictionary
+properties of each of the built-in data structures
+list comprehension
+all types of comprehension - dictionary, set and tuple also
+problem solving in python
+python strings and how to use them
+python built in functions
+split,strip and slice in python
+one liners in python
+writing normal code and writing pythonic code
+
+different ways to solve the same problem in python
+python lambda function and its uses
+taking input in python and printing output in python
+
+object oriented programming in python
+classes and objects
+polymorphism in python - 
+polymorphism through inheritance and polymorphism through class methods
+mixin classes and its applications
+different types of polymorphism in python
+
+
+doing simple statistics problems in python
+
+
+Python Programming Level 2
+iterators and generators
+iterators with for loops,iter function and with classes
+yield and generator expressions
+applications of iterators and generators
+
+decorators and its implementation in python
+applications of decorators in python
+
+map,reduce and groupby functions in python and its uses
+problem solving using python built-in functions
+
+reading, loading from CSV files and manipulating data
+csv module and read_csv and read_table functions
+
+regular expression handling in python 
+problem solving with regular expressions
+
+how to do unit testing in python
+python fixtures
+
+thread api and synchronization in python
+multithreading programming in python
+race condition
+how to avoid race condition in python
+locks re-entrant locks
+producer consumer problems
+
+
+some things not covered
+how create modules and packages
+python for data structures
+python GUI and game programming
+python interfacing with other languages such as C, C++ and Java
+python interfacing with SQL and NoSQL databases
+python design patterns
+abstract classes in python
+
+
+data science with python
+data science with python level 1
+data science with python level 2
+
+web development frameworks in python
+Django 
+Flask
+
+angular
+REACT
+
+
+lead engineer B2 or B3
+architect c1
+senior architect c2
+lead architect d1 
+principal architect d2
+DMTS or CTO = E
+
+
+domain knowledge 
+contribution to the project and business
+inter domain properties skills
+
+
+mutex
+binary semaphore
+counting semaphore
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

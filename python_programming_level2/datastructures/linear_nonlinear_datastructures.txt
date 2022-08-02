@@ -1,0 +1,13 @@
+
+data structures 
+linear and non linear data structures
+
+array
+stack
+list - single and double
+queue -simple queue,priority queue and double ended queue
+
+non linear data structures
+tree
+graph
+hash table

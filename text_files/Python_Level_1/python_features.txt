@@ -9,6 +9,7 @@ Easy to Read, Python code looks like simple English words. ...
 Free and Open-Source. ...
 community is very big as big as Java's community
 very much suited for data science, AI and Machine Learning
+very much suited for web development as well with Django and Flask frameworks
 Is also the language for deep learning and neural netowkrs
 many many fields - python is the "go to" language 
 code is more concise compared to other languages
