@@ -7,6 +7,14 @@ python programming microsoft teams group link
 python programming github page
 python programming video recording link for each day
 python programming session TOC
+prerequisite - basic knowledge of programming in other language
+
+daily problems
+quiz - mcqs
+assignment - 
+through programs - learning by doing
+
+
 
 
 4 software
@@ -16,44 +24,4 @@ git
 vim
 jupyter notebook 
 google colab
-
-
-.py extension
-
-.ipynb - interacitve python notebook
-
-simple statement
-conditional statement
-looping statement
-
-max of two numbers
-a > b ? a:b
-
-learning curve is very high
-
-most difficult
-
-
-C++ ship of vice venice
-Scala
-Clojure
-
-for and while
-
-do-while in python
-
-OkMann&^%$all
-
-HaH%_+<>grAmI
-
-
-
-
-
-
-
-
-
-
-
 

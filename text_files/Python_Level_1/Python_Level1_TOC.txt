@@ -7,6 +7,9 @@ all the advantages and few disadvantages of python
 important domains where python is used
 reason for python's popularity
 
+introduction to jupyter notebook
+introduction to google colab
+
 simple python declarations and statements
 variable types in python
 control structures in python
