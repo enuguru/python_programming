@@ -12,7 +12,6 @@ def timing_function(some_function):
         return "Time it took to run the function: " + str((t2 - t1)) + "\n"
     return wrapper
 
-
 @timing_function
 def my_function():
     num_list = []

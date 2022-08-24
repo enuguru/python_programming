@@ -7,7 +7,6 @@ def make_pretty(func):
     print("make_pretty I got first decorated")
     return func
 
-
 @make_more_pretty
 @make_pretty
 def ordinary():

@@ -9,11 +9,13 @@ def make_pretty(func):
         func()
     return inner
 
+def decoratefunction():
+    print("Iam decorator")
+
 def ordinary():
     print("This is the main function I am ordinary")
 
-#ordinary()
 
 # let's decorate this ordinary function
-pretty = make_pretty(ordinary)
-pretty()
+#pretty = make_pretty(ordinary)
+#pretty()

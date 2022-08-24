@@ -15,3 +15,5 @@ def ordinary():
     print("This is the main function I am ordinary")
 
 ordinary()
+
+#syntactic sugar
