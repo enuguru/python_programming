@@ -26,11 +26,11 @@ def test_push(stack):
     #assert len(stack) == 3
 
 
-#def test_pop(stack):
-#    stack.push("beautifulpython")
-#    stack.push("performancepython")
-#    assert stack.pop() == "performancepython"
-#    assert stack.pop() == "beautifulpython"
-#    assert stack.pop() == None
+def test_pop(stack):
+    stack.push("beautifulpython")
+    stack.push("performancepython")
+    assert stack.pop() == "performancepython"
+    assert stack.pop() == "beautifulpython"
+    assert stack.pop() == None
 
 
