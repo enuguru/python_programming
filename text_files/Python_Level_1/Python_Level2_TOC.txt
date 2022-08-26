@@ -1,3 +1,4 @@
+
 Python Programming Level 2 - TOC
 --------------------------------
 
@@ -22,6 +23,29 @@ triple decorators and their implementation
 python unit testing
 procedures for doing python unit testing
 abstract classes in python
+
+solving complex problems in python
+look and say numbers, roman to decimal, decimal to roman conversion,
+excel encoding and decoding
+
+building algorithms and data structures in python
+simple stack, queue, binary search trees (bst), 
+creating a heap, min heap, max heap
+four types of algorithm problem solving in python
+solving divide and conquer, dynamic programming, 
+greedy algorithm and backtracking problems in python
+
+named tuple and frozen set, type hints in python
+
+important libraries in python
+math, collections, itertools, functools
+
+files, scripts, modules, libraries and packages in python
+how to build modules, packages and libraries in python ?
+
+how to read files, read csv files, read .json files and tsv files
+csv and json module in python, how to do data inspection and
+manipulation in python
 
 python design patterns
 building structural, creational and behavioral DPs in python

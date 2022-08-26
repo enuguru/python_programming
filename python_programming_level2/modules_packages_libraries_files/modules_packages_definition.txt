@@ -1,0 +1,28 @@
+
+
+Library : It is a collection of modules.
+
+(Library either contains built in modules(written in C) + modules written in python)
+
+Module : Each of a set of standardized parts or independent units that can be used to construct a more complex structure
+
+Speaking in informal language, A module is set of lines of code which are used for a specific purpose and can be used in other programs as it is , to avoid DRY(Don’t Repeat Yourself) as a team and focusing on main requirement. source
+
+API is an interface for other applications to interact with your library without having direct access
+
+Package is basically a directory with files
+
+Script means series of commands within a single file
+
+Python uses some terms that you may not be familiar with if you’re coming from a different language. Among these are scripts, modules, packages, and libraries.
+
+A script is a Python file that’s intended to be run directly. When you run it, it should do something. This means that scripts will often contain code written outside the scope of any classes or functions
+
+A module is a Python file that’s intended to be imported into scripts or other modules. It often defines members like classes, functions, and variables intended to be used in other files that import it
+
+A package is a collection of related modules that work together to provide certain functionality. These modules are contained within a folder and can be imported just like any other modules. This folder will often contain a special __init__ file that tells Python it’s a package, potentially containing more modules nested within subfolders
+
+A library is an umbrella term that loosely means “a bundle of code.” These can have tens or even hundreds of individual modules that can provide a wide range of functionality. Matplotlib is a plotting library. The Python Standard Library contains hundreds of modules for performing common tasks, like sending emails or reading JSON data. What’s special about the Standard Library is that it comes bundled with your installation of Python, so you can use its modules without having to download them from anywhere
+
+These are not strict definitions. Many people feel these terms are somewhat open to interpretation. Script and module are terms that you may hear used interchangeably
+
