@@ -65,6 +65,8 @@ Programs and Handson using OOP
 
 daily homework and simple projects in python
 
+python debugging using pdb
+
 
 
 

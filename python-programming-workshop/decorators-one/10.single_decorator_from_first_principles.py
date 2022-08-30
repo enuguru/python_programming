@@ -3,19 +3,16 @@
 # but here we not using the decorator syntax, we are doing it
 # from first principles
 
-def make_pretty(func):
+def decorator_function(func):
     def inner():
-        print("This is the decorator function I got decorated")
+        print("I am the decorator function and I am doing decoration job")
         func()
     return inner
 
-def decoratefunction():
-    print("Iam decorator")
-
-def ordinary():
-    print("This is the main function I am ordinary")
+def function_one():
+    print("I am function_one and I got decorated")
 
 
-# let's decorate this ordinary function
-#pretty = make_pretty(ordinary)
-#pretty()
+# let's decorate function_one
+funcvar = decorator_function(function_one)
+funcvar()

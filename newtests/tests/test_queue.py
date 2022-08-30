@@ -22,8 +22,8 @@ def test_enqueue(queue):
     assert len(queue) == 1
     queue.enqueue(20)
     assert len(queue) == 2
-    #stack.enqueue(33)
-    #assert len(stack) == 3
+    queue.enqueue(33)
+    assert len(queue) == 3
 
 
 def test_dequeue(queue):

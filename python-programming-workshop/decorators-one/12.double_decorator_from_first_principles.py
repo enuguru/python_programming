@@ -1,18 +1,18 @@
 
-def make_more_pretty(func):
+def second_decorator(func):
     def inner():
-        print("I got second decorated")
+        print("I am the second decorater")
         func()
     return inner
 
-def make_pretty(func):
+def first_decorator(func):
     def inner():
-        print("I got first decorated")
+        print("I am the first decorater")
         func()
     return inner
 
-def ordinary():
-    print("I was supposed to be called I am ordinary")
+def function_one():
+    print("I am function one and I got decorated")
 
 #ordinary()
 
@@ -21,5 +21,5 @@ def ordinary():
 
 # let's decorate this ordinary function
 #pretty = make_more_pretty(make_pretty(ordinary))
-pretty = make_pretty(make_more_pretty(ordinary))
-pretty()
+funcvar = first_decorator(second_decorator(function_one))
+funcvar()

@@ -1,15 +1,15 @@
 
-def make_more_pretty(func):
-    print("make_more_pretty I got second decorated")
+def second_decorator(func):
+    print("I am the second decorator function")
     return func
 
-def make_pretty(func):
-    print("make_pretty I got first decorated")
+def first_decorator(func):
+    print("I am the first decorator function")
     return func
 
-@make_more_pretty
-@make_pretty
-def ordinary():
-    print("I am the actual function to be called I am ordinary")
+@second_decorator
+@first_decorator
+def function_one():
+    print("I am function one and I got decorated")
 
-ordinary()
+function_one()

@@ -1,17 +1,16 @@
 
-# PythonDecorators/my_decorator.py
-class my_decorator(object):
+class decorator_class(object):
 
     def __init__(self, badri):
-        print("inside my_decorator.__init__()")
-        badri() # Prove that function definition has completed
+        print("I am the decorator_class.__init__(), and an instance of decorator class created")
+        self._args = badri
 
     def __call__(self):
-        print("inside my_decorator.__call__()")
+        print("I am the decorator_class.__call__(), and I am doing decoration job")
+        self._args()
 
-@my_decorator
-def aFunction():
-    print("now the flow is inside aFunction()")
+@decorator_class
+def function_one():
+    print("I am function one and I got decorated")
 
-aFunction()
-print("Finished decorating aFunction()")
+function_one()
