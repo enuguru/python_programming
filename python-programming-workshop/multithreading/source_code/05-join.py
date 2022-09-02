@@ -3,7 +3,7 @@ import threading
 
 def myfunc(name):
     print(f'myfunc started with {name}')
-    time.sleep(10)
+    #time.sleep(10)
     print('myfunc ended')
 
 if __name__ == '__main__':

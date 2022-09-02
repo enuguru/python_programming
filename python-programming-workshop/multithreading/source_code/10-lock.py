@@ -3,7 +3,6 @@ import concurrent.futures
 import time
 import threading
 
-
 class Account:
     def __init__(self):
         self.balance = 100 # shared data
@@ -19,6 +18,7 @@ class Account:
 
 
 if __name__ == '__main__':
+ 
     account = Account()
     print(f'starting with balance of {account.balance}')
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as ex:

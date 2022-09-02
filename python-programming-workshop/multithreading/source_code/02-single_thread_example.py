@@ -7,7 +7,7 @@ from threading import Thread
 # target function
 def task():
     # block for a moment
-    sleep(1)
+    #sleep(1)
     # report a message
     print('All done in the new thread')
  
