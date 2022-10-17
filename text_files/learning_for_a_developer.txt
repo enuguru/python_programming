@@ -1,0 +1,10 @@
+
+
+1.have excellence in tools 
+2.have excellence in having a good build environment
+3.learn devops, docker and kubernetes
+4.learn about git protocol, check in check out and brancing
+5.learn principles of programming and two langauges thouroughly
+6.algorithms and DS and problem solving
+
+

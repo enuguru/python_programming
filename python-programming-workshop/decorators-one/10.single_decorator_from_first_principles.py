@@ -14,5 +14,5 @@ def function_one():
 
 
 # let's decorate function_one
-funcvar = decorator_function(function_one)
+funcvar = decorator_function(function_one) #higher order functions
 funcvar()

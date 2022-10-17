@@ -9,6 +9,7 @@ def timing_decorator(that_function):
         t1 = time.time()
         that_function()
         t2 = time.time()
+        print(t2-t1)
         return "Time it took to run the function: " + str((t2 - t1)) + "\n"
 
     return wrapper
