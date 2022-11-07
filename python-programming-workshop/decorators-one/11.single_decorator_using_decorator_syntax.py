@@ -3,11 +3,11 @@
 # the same thing done in the previous program
 # does'nt this look cleaner ?
 
-def function_two():
+def function_two(func):
 
     def inner():
         print("I am the decorator_function, and I am doing decoration job")
-        #func()
+        func()
 
     return inner
 

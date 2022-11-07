@@ -10,6 +10,7 @@ def fibonacci(n):
       b = temp + b
     return a
 
-# Display the first 15 Fibonacci numbers.
+# Display the first 15 Fibonacci numbers
 for c in range(0, 15):
     print(fibonacci(c))
+
