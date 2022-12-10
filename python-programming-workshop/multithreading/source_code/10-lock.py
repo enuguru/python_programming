@@ -5,7 +5,7 @@ import threading
 
 class Account:
     def __init__(self):
-        self.balance = 100 # shared data
+        self.balance = 10000 # shared data
         self.lock = threading.Lock()
     def update(self, transaction, amount):
         print(f'{transaction} thread updating...')
@@ -22,6 +22,6 @@ if __name__ == '__main__':
     account = Account()
     print(f'starting with balance of {account.balance}')
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as ex:
-        for transaction, amount in [('deposit', 50), ('withdrawal', -150)]:
+        for transaction, amount in [('deposit', 5000), ('withdrawal', -15000)]:
             ex.submit(account.update, transaction, amount)
     print(f'ending balance of {account.balance}')
