@@ -1,0 +1,23 @@
+
+    How to disable creation of swap files, undo files and backup files 
+    for the vim editor ? do the following steps to achieve this
+
+1.  Go to file explorer
+2.  Go to C:\Program Files (x86)\Vim
+3.  Select the _vimrc file
+4.  Right click and go to properties and click on permissions and click on edit
+5.  Click on 'Full Control' checkbox in the lower windows
+6.  Click 'Apply' and click 'ok' on all the windows
+7.  Now open the anaconda prompts from windows icon in the lower bottom of your
+    screen
+8.  Go to C:\Program Files (x86)\Vim
+9.  Type the command 'notepad _vimrc'
+10. Notepad will open on your screen
+11. Go to the end of the file
+12. Add the following lines at the end of the file
+    set nobackup
+    set noswapfiles
+    set noundofiles
+13. Save the file and close
+14. Exit the anaconda prompt and open again
+15. Now you will see no backup files, swap files or undo files will be formed 

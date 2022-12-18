@@ -1,0 +1,7 @@
+
+
+how to install gcc and g++ editor ?
+
+1. Go to https://osdn.net/projects/mingw/
+
+2. 
