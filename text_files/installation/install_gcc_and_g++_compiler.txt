@@ -2,6 +2,25 @@
 
 how to install gcc and g++ editor ?
 
+It is a 32 bit compiler but it will work with 64 bit system well
+The 64 bit compiler present in sourceforge.net is not downloading properly
+as of 18-12-2022 11.00 am, so we used this 32 bit compiler
+
 1. Go to https://osdn.net/projects/mingw/
 
-2. 
+2. Click on drop down tab 'Downloads' 
+
+3. Click on 'List of Releases'
+
+4. Scroll down and click on the icon "mingw-get-setup.exe" and 
+   download the exe file
+
+5. Open downloads directory in file explorer
+
+6. Click on the "mingw-get-setup.exe" file and install the compiler
+
+7. Open the anaconda prompt
+
+8. Give the command "gcc --version"
+
+9. Give the command "g++ --version"
