@@ -1,9 +1,9 @@
 
-import pytest
 import numpy
+import pytest
 import scipy
-import sklearn
 import matplotlib
+import sklearn
 
 print("pytest version: ", pytest.__version__)
 print("numpy version: ", numpy.__version__)
