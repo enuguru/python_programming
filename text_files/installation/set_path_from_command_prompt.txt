@@ -1,0 +1,6 @@
+
+set PATH=%PATH%;C:\Program Files\Git\cmd
+
+you can use the above method for setting any path using command line
+this is useful because in wipro laptops we do not have permission to 
+change the path using "environment variables" window
