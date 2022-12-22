@@ -1,0 +1,41 @@
+
+
+anaconda --version
+anacond -V
+
+python --version
+python -V
+
+jupyter notebook --version
+
+git --version
+
+vim --version
+
+go to python prompt by typing "python" on the command line
+
+>>>import numpy
+>>>print(numpy.__version__)
+
+>>>import scipy
+>>>print(scipy.__version__)
+
+>>>import sklearn
+>>>print(sklearn.__version__)
+
+>>>import matplotlib
+>>>print(matplotlib.__version__)
+
+>>>import pandas
+>>>print(pandas.__version__)
+
+
+
+
+
+
+
+
+
+
+
