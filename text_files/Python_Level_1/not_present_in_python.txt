@@ -1,0 +1,21 @@
+
+
+
+
+double, long, char
+
+struct and enum
+
+
+ternary operator 
+
+x > 10 ? Yes:No
+
+looping statements - for, while, do-while
+
+python - for and while
+
+condictionals - if, if-else, if-else-if, switch-case
+
+python - switch case is absent
+

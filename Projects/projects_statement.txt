@@ -1,0 +1,13 @@
+
+
+
+Implement a queue data structure in python using list
+with a menu driven interface and write all the 
+unit test cases for the same. The max number of elements
+should be 10 and handle the error cases as well
+
+Implement a BST-Binary Search Tree data structure in python using list
+with a menu driven interface and write all the 
+unit test cases for the same. The max number of elements
+should be 10 and handle the error cases as well
+

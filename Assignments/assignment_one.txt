@@ -1,0 +1,23 @@
+
+
+list, tuple, set, dictionary and string
+
+
+   Use the customized iterator to do this below
+   two problems
+1. Generate a geometric progression with initial value
+   as 3 and the common factor as 5, up to 10 elements
+
+2. Generatea a arithmetic progression with initial value
+   as 3 and the common difference as 5 up to 10 elements
+
+3. Use the concept of generators to do the above two problems
+
+
+1. Find the rules for Aadhar Card and implement 
+   a script using regex to check the validity of the
+   given Aadhar number
+
+2. Check the rules for valid mobile number and implement
+   a script
+

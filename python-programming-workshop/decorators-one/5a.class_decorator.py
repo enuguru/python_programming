@@ -8,5 +8,6 @@ class Cube(object):
 @Cube
 def mul_nums(x, y):
     return x * y
+
 print(mul_nums)
 print(mul_nums(4,3))

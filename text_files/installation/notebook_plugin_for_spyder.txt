@@ -1,0 +1,9 @@
+
+
+Install this plugin for getting notebook on spyder
+
+conda install spyder-notebook -c spyder-ide
+
+
+The jupyter notebook plugin currently works with Spyder 4.2.5 version and will not work with Spyder 5.X versions.
+

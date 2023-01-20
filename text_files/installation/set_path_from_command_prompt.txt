@@ -1,6 +1,8 @@
 
 set PATH=%PATH%;C:\Program Files\Git\cmd
 
+set PATH=%PATH%;C:\Program Files (x86)\Vim\vim74
+
 you can use the above method for setting any path using command line
 this is useful because in wipro laptops we do not have permission to 
 change the path using "environment variables" window

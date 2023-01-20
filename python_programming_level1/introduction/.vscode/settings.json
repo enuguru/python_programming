@@ -1,0 +1,10 @@
+{
+    "python.pythonPath":"C,
+    "python.terminal.activateEnvironment": true,
+    "terminal.integrated.profiles.windows": {
+        "PowerShell -NoProfile": {
+          "source": "PowerShell",
+          "args": ["-NoProfile"]
+        }
+    }
+}

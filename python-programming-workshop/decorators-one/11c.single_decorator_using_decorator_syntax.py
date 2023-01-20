@@ -5,14 +5,10 @@
 
 def decorator_function(func):
 
-    def inner():
-        print("I am the decorator_function, and I am doing decoration job")
-        func()
-
-    return inner
+    func()
+    
 
 
-@decorator_function
 def function_one():
     print("I am function_one, I got decorated")
 
