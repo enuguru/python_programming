@@ -1,0 +1,11 @@
+
+
+Count the number of vowels in the given string using a dictionary
+Count the frequency of each character in the given string using a dictionary
+Print the name of the company and the stock price using a dictionary
+Store the student name, subject and marks using dictionary and a list
+Create a dictionary and sort the dictionary by its values
+Create a geometric progression of total elements n = 10 with initial value 
+ of 3 and a common factor of 5 
+Create an arithmetic progression of total elements n = 10 with initial value 
+ of 3 and a common factor of 5
