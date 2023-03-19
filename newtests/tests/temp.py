@@ -2,12 +2,6 @@
 # python -m pytest -v --cov
 
 from ds.stack import Stack
-import pytest
-
-@pytest.fixture
-def stack():
-    return Stack()
-
 
 def test_constructor():
     s = Stack()
@@ -18,19 +12,20 @@ def test_constructor():
 
 
 def test_push(stack):
-    stack.push(11)
-    assert len(stack) == 1
-    stack.push(20)
-    assert len(stack) == 2
-    #stack.push(33)
-    #assert len(stack) == 3
+    s = Stack()
+    s.push(11)
+    assert len(s) == 1
+    s.push(20)
+    assert len(s) == 2
+    #s.push(33)
+    #assert len(s) == 3
 
 
 def test_pop(stack):
-    stack.push("beautifulpython")
-    stack.push("performancepython")
-    assert stack.pop() == "performancepython"
-    assert stack.pop() == "beautifulpython"
-    assert stack.pop() == None
+    s.push("beautifulpython")
+    s.push("performancepython")
+    assert s.pop() == "performancepython"
+    assert s.pop() == "beautifulpython"
+    assert s.pop() == None
 
 
