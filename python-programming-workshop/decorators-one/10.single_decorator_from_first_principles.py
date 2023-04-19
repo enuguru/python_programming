@@ -7,6 +7,7 @@ def decorator_function(func):
     def inner():
         print("I am the decorator function and I am doing decoration job")
         func()
+        print("after decoration")
     return inner
 
 def function_one():

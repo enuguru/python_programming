@@ -9,6 +9,7 @@ def timing_decorator(that_function):
         t1 = time.time()
         that_function()
         t2 = time.time()
+        print("Hello")
         return "Time it took to run the function: " + str((t2 - t1)) + "\n"
 
     return wrapper
@@ -21,3 +22,4 @@ def new_function():
     print("\nSum of all the numbers: " + str((sum(new_list))))
 
 print(new_function())
+#new_function()

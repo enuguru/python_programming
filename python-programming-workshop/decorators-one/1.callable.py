@@ -1,4 +1,5 @@
 
+
 class Foo:
 
   def __init__(self):
@@ -8,12 +9,14 @@ class Foo:
     print('This is the print statement in the __call__ function which is called')
 
 foo_instance = Foo()
-Foo()()
 print(foo_instance)
 foo_instance() #this is calling the __call__ method
+
+
+Foo()()
 
 
 def newfunc():
     print("This is new function")
 
-newfunc()
+#newfunc()
