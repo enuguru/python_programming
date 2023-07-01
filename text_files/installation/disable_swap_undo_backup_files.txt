@@ -21,3 +21,19 @@
 13. Save the file and close
 14. Exit the anaconda prompt and open again
 15. Now you will see no backup files, swap files or undo files will be formed 
+
+On windows, I had set nobackup in C:\Users\my-user-name\_vimrc file; but that didn't seem to work. I then added set nobackup to C:\Program Files (x86)\Vim\_vimrc file. Still didn't work!
+
+I later figured that C:\Program Files (x86)\Vim\_vimrc loads a sample vimrc script from $VIMRUNTIME/vimrc_example.vim and that script has this snippet:
+
+if has("vms")
+  set nobackup      " do not keep a backup file, use versions instead
+else
+  set backup        " keep a backup file (restore to previous version)
+  if has('persistent_undo')
+    set undofile    " keep an undo file (undo changes after closing)
+  endif
+endif
+Commenting that out worked for me! So it really comes down to figuring out the order in which these scripts are getting executed, thereby overriding anything you might have done
+
+
