@@ -3,7 +3,7 @@
 
 import threading
 
-class SingletonDoubleChecked(object):
+class SingletonDoubleChecked:
 
 	# resources shared by each and every
 	# instance
@@ -24,25 +24,25 @@ class SingletonDoubleChecked(object):
 		# return the singleton instance
 		return cls.__singleton_instance
 
-# main method
-if __name__ == '__main__':
+#create class X
+class X(SingletonDoubleChecked):
+	pass
 
-	# create class X
-	class X(SingletonDoubleChecked):
-		pass
+# create class Y
+class Y(SingletonDoubleChecked):
+	pass
 
-	# create class Y
-	class Y(SingletonDoubleChecked):
-		pass
+A1, A2 = X.instance(), X.instance()
+B1, B2 = Y.instance(), Y.instance()
 
-	A1, A2 = X.instance(), X.instance()
-	B1, B2 = Y.instance(), Y.instance()
+x = X()
+print(x)
 
-	assert A1 is not B1
-	assert A1 is A2
-	assert B1 is B2
+assert A1 is not B1
+assert A1 is A2
+assert B1 is B2
 
-	print('A1 : ', A1)
-	print('A2 : ', A2)
-	print('B1 : ', B1)
-	print('B2 : ', B2)
+print('A1 : ', A1)
+print('A2 : ', A2)
+print('B1 : ', B1)
+print('B2 : ', B2)

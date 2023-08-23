@@ -8,7 +8,7 @@ Ref: http://harkablog.com/dynamic-state-machines.html
 
 # States of a computer
 
-class ComputerState(object):
+class ComputerState:
     """ Abstract base class of state of a computer """
     
     name = "state"
@@ -49,7 +49,7 @@ class Hibernate(ComputerState):
     name = "hibernate"
     allowed = ['on']
 
-class Computer(object):
+class Computer:
     """ A class representing a computer """
 
     def __init__(self, model='HP'):

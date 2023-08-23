@@ -1,9 +1,11 @@
+
 class EuropeanSocketInterface:
    def voltage(self): pass
 
    def live(self): pass
    def neutral(self): pass
    def earth(self): pass
+
 
 # Adaptee
 class Socket(EuropeanSocketInterface):
@@ -19,11 +21,13 @@ class Socket(EuropeanSocketInterface):
    def earth(self):
       return 0
 
+
 # Target interface
 class USASocketInterface:
    def voltage(self): pass
    def live(self): pass
    def neutral(self): pass
+
 
 # The Adapter
 class Adapter(USASocketInterface):
@@ -39,6 +43,7 @@ class Adapter(USASocketInterface):
    
    def neutral(self):
       return self.__socket.neutral()
+
 
 # Client
 class ElectricKettle:
