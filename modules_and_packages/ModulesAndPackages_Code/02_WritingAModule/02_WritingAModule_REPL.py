@@ -1,10 +1,10 @@
 # Example 01
 import mod
-mod.a
+print(mod.a)
 
-mod.s
+print(mod.s)
 
-mod.printy('What is up!')
+mod.printy('How are you doing')
 
 x = mod.Classy()
-x
+print(x)

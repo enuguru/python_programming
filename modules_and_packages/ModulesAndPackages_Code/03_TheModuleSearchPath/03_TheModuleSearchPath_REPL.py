@@ -1,24 +1,23 @@
 # Example 01
 import mod
-mod.a
+print(mod.a)
 
-mod.s
+print(mod.s)
 
 # Example 02
 import sys
-sys.path
+print(sys.path,"\n")
 
 # Example 03
-sys.path.append(r'/Users/chris/ModulesAndPackages') # Change this to be the path on your own computer
-
+sys.path.append(r'/Users/karth/python_programming/modules_and_packages/ModulesAndPackages_Code') #change this to be the path on your own computer
 sys.path
 import mod
 
-mod.s
+print(mod.s)
 
 # Example 04
 import mod
-mod.__file__
+print(mod.__file__)
 
 import re
-re.__file__
+print(re.__file__)

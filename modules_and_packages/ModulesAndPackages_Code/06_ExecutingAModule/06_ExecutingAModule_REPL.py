@@ -4,12 +4,12 @@ import mod
 # Example 02
 import mod
 
-dir()
+print(dir())
 
-__name__
+print(__name__)
 
-mod.__name__
+print(mod.__name__)
 
 # Example 03
 from fact import fact
-fact(6)
+print(fact(6))

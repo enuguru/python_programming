@@ -3,7 +3,7 @@ import pkg.mod1, pkg.mod2
 pkg.mod1.load_data()
 
 x = pkg.mod2.Location()
-x
+print(x)
 
 # Example 02
 from pkg.mod1 import load_data
@@ -12,7 +12,7 @@ load_data()
 # Example 03
 from pkg.mod2 import Location as Primary
 y = Primary()
-y
+print(y)
 
 # Example 04
 from pkg import mod1

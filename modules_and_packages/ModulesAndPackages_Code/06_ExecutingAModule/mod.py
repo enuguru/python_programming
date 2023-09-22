@@ -1,3 +1,4 @@
+
 s = "Computers are useless. They can only give you answers."
 a = [100, 200, 300]
 
