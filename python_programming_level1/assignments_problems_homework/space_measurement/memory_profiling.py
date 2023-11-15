@@ -1,4 +1,5 @@
 # importing the library
+# how to install - pip install -U memory_profiler
 from memory_profiler import profile
 
 # instantiating the decorator

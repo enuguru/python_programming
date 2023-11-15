@@ -1,0 +1,16 @@
+
+
+
+python -m cProfile hillclimb.py
+
+python -m cProfile -s ncalls hillclimb.py
+
+python -m cProfile -o hillclimb.stats hillclimb.py
+
+python -m pstats hillclimb.stats
+
+
+Factorial primes are primes of the form n!±1
+
+
+

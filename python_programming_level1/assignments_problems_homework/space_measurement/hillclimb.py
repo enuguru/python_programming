@@ -1,4 +1,6 @@
 # manually search perceptron hyperparameters for binary classification
+# no new module needs to be installed
+# how to run the program - python -m cProfile hillclimb.py
 from numpy import mean
 from numpy.random import randn
 from numpy.random import rand
